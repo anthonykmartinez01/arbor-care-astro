@@ -1,6 +1,6 @@
 ---
 import BaseLayout from "../components/layout/BaseLayout.astro";
-import EstimateEmbed from "../components/ui/EstimateEmbed";
+import EstimateEmbedNative from "../components/ui/EstimateEmbedNative.astro";
 import { business } from "../data/business";
 
 const contactSchema = {
@@ -136,7 +136,7 @@ const contactSchema = {
         <!-- RIGHT — Form -->
         <div class="lg:col-span-3">
           <div class="rounded-xl border border-border bg-card overflow-hidden">
-            <EstimateEmbed client:visible />
+            <EstimateEmbedNative />
           </div>
         </div>
       </div>
