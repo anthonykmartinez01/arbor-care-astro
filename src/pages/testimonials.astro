@@ -1,334 +1,97 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import Header from "../components/Header.tsx";
-import Footer from "../components/Footer.astro";
-import { EstimateButton } from "../components/EstimateModal.tsx";
+import BaseLayout from "../components/layout/BaseLayout.astro";
+import EstimateModal from "../components/ui/EstimateModal";
+import { business } from "../data/business";
 ---
 
-<Layout title="Testimonials | Arbor Care Tree Solutions Denver" description="Read 100+ five-star reviews from Denver homeowners. See why Arbor Care Tree Solutions is Denver's most trusted tree service." canonical="/testimonials">
-  <Header slot="header" pathname="/testimonials" client:load />
-
-  <main class="min-h-screen">
-    <!-- Hero Section -->
-    <section class="bg-gradient-to-b from-green-600 to-green-800 text-white py-16 px-4">
-      <div class="max-w-4xl mx-auto text-center">
-        <h1 class="text-5xl md:text-6xl font-bold mb-4">100+ Five-Star Google Reviews</h1>
-        <p class="text-xl md:text-2xl">Denver's Most Trusted Tree Service</p>
-      </div>
-    </section>
-
-    <!-- Introduction -->
-    <section class="py-12 px-4 max-w-4xl mx-auto">
-      <div class="text-center mb-12">
-        <h2 class="text-4xl font-bold mb-4">What Our Customers Say</h2>
-        <p class="text-lg text-gray-600 max-w-3xl mx-auto">
-          With over 100 five-star reviews on Google, Arbor Care Tree Solutions has established a reputation for excellence in Denver. Our customers consistently praise our professionalism, expertise, and commitment to quality.
+<BaseLayout
+  title="Testimonials | Arbor Care Tree Solutions Denver CO"
+  description="Read real reviews from Denver homeowners about Arbor Care Tree Solutions. 100+ five-star Google reviews. ISA-certified, licensed & insured."
+>
+  <!-- HERO -->
+  <section class="relative min-h-[500px] md:min-h-[60vh] flex items-center overflow-hidden">
+    <img src="/assets/hero-tree-service.jpg" alt="Arbor Care Tree Solutions testimonials" class="absolute inset-0 h-full w-full object-cover" width="1920" height="1080" loading="eager" fetchpriority="high" />
+    <div class="absolute inset-0 bg-black/60"></div>
+    <div class="container relative z-10 py-20 pb-28 md:py-28 text-center">
+      <div class="mx-auto max-w-3xl">
+        <h1 class="text-3xl font-bold text-white md:text-5xl leading-tight">
+          What Our Customers Say
+          <span class="block text-accent mt-2 text-2xl md:text-3xl">100+ Five-Star Google Reviews</span>
+        </h1>
+        <p class="mx-auto mt-6 text-lg text-white/90 max-w-2xl">
+          Don't take our word for it - read what Denver homeowners say about working with us.
         </p>
-      </div>
-    </section>
-
-    <!-- Reviews Grid -->
-    <section class="py-12 px-4 max-w-4xl mx-auto">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <!-- Review 1 -->
-        <div class="bg-white rounded-lg shadow-lg p-6 border-t-4 border-green-600">
-          <div class="flex items-center mb-4">
-            <div class="flex text-yellow-400 text-lg">★★★★★</div>
-          </div>
-          <h3 class="text-lg font-bold text-gray-800 mb-2">Exceptional Service</h3>
-          <p class="text-gray-700 mb-4">
-            "Arbor Care did exceptional work on our property. The team was professional, efficient, and left our yard spotless. We've already recommended them to our neighbors!"
-          </p>
-          <p class="text-sm text-gray-600">- Sarah M., Denver</p>
-        </div>
-
-        <!-- Review 2 -->
-        <div class="bg-white rounded-lg shadow-lg p-6 border-t-4 border-green-600">
-          <div class="flex items-center mb-4">
-            <div class="flex text-yellow-400 text-lg">★★★★★</div>
-          </div>
-          <h3 class="text-lg font-bold text-gray-800 mb-2">Best in Denver</h3>
-          <p class="text-gray-700 mb-4">
-            "Had an emergency tree removal and Arbor Care responded same-day. Professional, safe, and they actually care about doing quality work. Best tree service in Denver!"
-          </p>
-          <p class="text-sm text-gray-600">- Mike T., Aurora</p>
-        </div>
-
-        <!-- Review 3 -->
-        <div class="bg-white rounded-lg shadow-lg p-6 border-t-4 border-green-600">
-          <div class="flex items-center mb-4">
-            <div class="flex text-yellow-400 text-lg">★★★★★</div>
-          </div>
-          <h3 class="text-lg font-bold text-gray-800 mb-2">Knowledgeable Arborists</h3>
-          <p class="text-gray-700 mb-4">
-            "The arborists were incredibly knowledgeable about tree care. They explained everything and provided recommendations for keeping our trees healthy. Great experience!"
-          </p>
-          <p class="text-sm text-gray-600">- Jennifer K., Littleton</p>
-        </div>
-
-        <!-- Review 4 -->
-        <div class="bg-white rounded-lg shadow-lg p-6 border-t-4 border-green-600">
-          <div class="flex items-center mb-4">
-            <div class="flex text-yellow-400 text-lg">★★★★★</div>
-          </div>
-          <h3 class="text-lg font-bold text-gray-800 mb-2">Fair Pricing</h3>
-          <p class="text-gray-700 mb-4">
-            "Got free estimates from several companies. Arbor Care had competitive pricing and the best customer service. Highly recommend them for any tree work!"
-          </p>
-          <p class="text-sm text-gray-600">- Robert J., Englewood</p>
-        </div>
-
-        <!-- Review 5 -->
-        <div class="bg-white rounded-lg shadow-lg p-6 border-t-4 border-green-600">
-          <div class="flex items-center mb-4">
-            <div class="flex text-yellow-400 text-lg">★★★★★</div>
-          </div>
-          <h3 class="text-lg font-bold text-gray-800 mb-2">Storm Damage Expert</h3>
-          <p class="text-gray-700 mb-4">
-            "After the big storm, Arbor Care cleared our entire yard of fallen branches and damaged trees. They worked fast and left everything clean. Outstanding!"
-          </p>
-          <p class="text-sm text-gray-600">- Linda H., Castle Rock</p>
-        </div>
-
-        <!-- Review 6 -->
-        <div class="bg-white rounded-lg shadow-lg p-6 border-t-4 border-green-600">
-          <div class="flex items-center mb-4">
-            <div class="flex text-yellow-400 text-lg">★★★★★</div>
-          </div>
-          <h3 class="text-lg font-bold text-gray-800 mb-2">Trusted Professional</h3>
-          <p class="text-gray-700 mb-4">
-            "We've used Arbor Care multiple times for different projects. They're always professional, on time, and deliver great results. Our go-to tree service!"
-          </p>
-          <p class="text-sm text-gray-600">- David P., Westminster</p>
-        </div>
-
-        <!-- Review 7 -->
-        <div class="bg-white rounded-lg shadow-lg p-6 border-t-4 border-green-600">
-          <div class="flex items-center mb-4">
-            <div class="flex text-yellow-400 text-lg">★★★★★</div>
-          </div>
-          <h3 class="text-lg font-bold text-gray-800 mb-2">Stump Grinding Experts</h3>
-          <p class="text-gray-700 mb-4">
-            "Had three stumps ground and they're completely gone. They ground them below grade and left the area level. Couldn't be happier with the results!"
-          </p>
-          <p class="text-sm text-gray-600">- Patricia D., Highlands Ranch</p>
-        </div>
-
-        <!-- Review 8 -->
-        <div class="bg-white rounded-lg shadow-lg p-6 border-t-4 border-green-600">
-          <div class="flex items-center mb-4">
-            <div class="flex text-yellow-400 text-lg">★★★★★</div>
-          </div>
-          <h3 class="text-lg font-bold text-gray-800 mb-2">Excellent Communication</h3>
-          <p class="text-gray-700 mb-4">
-            "The whole team communicated clearly from start to finish. They were on time, did excellent work, and kept us informed every step. Fantastic experience!"
-          </p>
-          <p class="text-sm text-gray-600">- Kevin C., Boulder Area</p>
-        </div>
-
-        <!-- Review 9 -->
-        <div class="bg-white rounded-lg shadow-lg p-6 border-t-4 border-green-600">
-          <div class="flex items-center mb-4">
-            <div class="flex text-yellow-400 text-lg">★★★★★</div>
-          </div>
-          <h3 class="text-lg font-bold text-gray-800 mb-2">Reliable and Safe</h3>
-          <p class="text-gray-700 mb-4">
-            "Watched them work on our large tree removal - they were safe, efficient, and professional. Highly recommend for any tree work. You can trust these guys!"
-          </p>
-          <p class="text-sm text-gray-600">- Nancy L., Denver</p>
-        </div>
-
-        <!-- Review 10 -->
-        <div class="bg-white rounded-lg shadow-lg p-6 border-t-4 border-green-600">
-          <div class="flex items-center mb-4">
-            <div class="flex text-yellow-400 text-lg">★★★★★</div>
-          </div>
-          <h3 class="text-lg font-bold text-gray-800 mb-2">Worth Every Penny</h3>
-          <p class="text-gray-700 mb-4">
-            "The price was reasonable and the quality of work was outstanding. They care about trees and it shows. Will definitely use them again. 100% recommend!"
-          </p>
-          <p class="text-sm text-gray-600">- Tom R., Littleton</p>
-        </div>
-
-        <!-- Review 11 -->
-        <div class="bg-white rounded-lg shadow-lg p-6 border-t-4 border-green-600">
-          <div class="flex items-center mb-4">
-            <div class="flex text-yellow-400 text-lg">★★★★★</div>
-          </div>
-          <h3 class="text-lg font-bold text-gray-800 mb-2">Tree Health Expert</h3>
-          <p class="text-gray-700 mb-4">
-            "Hired them for a tree health assessment and got detailed recommendations. They're truly knowledgeable about trees and care about their clients. Excellent!"
-          </p>
-          <p class="text-sm text-gray-600">- Angela S., Arvada</p>
-        </div>
-
-        <!-- Review 12 -->
-        <div class="bg-white rounded-lg shadow-lg p-6 border-t-4 border-green-600">
-          <div class="flex items-center mb-4">
-            <div class="flex text-yellow-400 text-lg">★★★★★</div>
-          </div>
-          <h3 class="text-lg font-bold text-gray-800 mb-2">No Pressure, Just Service</h3>
-          <p class="text-gray-700 mb-4">
-            "Gave us a free estimate with no pressure. They were honest about what needed to be done and worked within our budget. Refreshingly professional!"
-          </p>
-          <p class="text-sm text-gray-600">- Chris M., Thornton</p>
+        <div class="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+          <a href={business.phoneTel} class="inline-flex items-center justify-center gap-2 rounded-md bg-accent px-8 py-4 text-base font-bold text-accent-foreground shadow-lg hover:bg-accent/90 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            Call {business.phone}
+          </a>
+          <EstimateModal client:load className="inline-flex items-center justify-center gap-2 rounded-md bg-white/15 backdrop-blur border border-white/30 px-8 py-4 text-base font-bold text-white hover:bg-white/25 transition-colors">
+            Get Free Estimate
+          </EstimateModal>
         </div>
       </div>
-    </section>
-
-    <!-- Stats Section -->
-    <section class="bg-green-50 py-12 px-4">
-      <div class="max-w-4xl mx-auto">
-        <h2 class="text-4xl font-bold mb-8 text-center">By The Numbers</h2>
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
-          <div class="text-center">
-            <div class="text-5xl font-bold text-green-600 mb-2">100+</div>
-            <p class="text-lg text-gray-700">Five-Star Reviews</p>
-          </div>
-          <div class="text-center">
-            <div class="text-5xl font-bold text-green-600 mb-2">5.0</div>
-            <p class="text-lg text-gray-700">Google Rating</p>
-          </div>
-          <div class="text-center">
-            <div class="text-5xl font-bold text-green-600 mb-2">30+</div>
-            <p class="text-lg text-gray-700">Years Experience</p>
-          </div>
-          <div class="text-center">
-            <div class="text-5xl font-bold text-green-600 mb-2">24/7</div>
-            <p class="text-lg text-gray-700">Emergency Service</p>
-          </div>
-        </div>
+    </div>
+    <div class="absolute bottom-0 left-0 right-0 z-10 border-t border-white/20">
+      <div class="container flex flex-wrap items-center justify-center gap-x-8 gap-y-2 py-3 text-sm text-white/90">
+        <span class="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <span class="font-medium">100+ Five-Star Reviews</span>
+        </span>
+        <span class="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
+          <span class="font-medium">ISA-Certified Arborists</span>
+        </span>
+        <span class="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></svg>
+          <span class="font-medium">No Trip Charge</span>
+        </span>
+        <span class="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          <span class="font-medium">Family Owned</span>
+        </span>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Why Customers Choose Us -->
-    <section class="py-12 px-4 max-w-4xl mx-auto">
-      <h2 class="text-4xl font-bold mb-8 text-center">Why Customers Choose Arbor Care</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div class="flex items-start gap-4">
-          <div class="flex-shrink-0">
-            <div class="flex items-center justify-center h-12 w-12 rounded-md bg-green-600 text-white">
-              <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-              </svg>
-            </div>
-          </div>
-          <div>
-            <h3 class="text-lg font-bold text-gray-900">ISA Certified Arborists</h3>
-            <p class="text-gray-700">Professional credentials and ongoing education</p>
-          </div>
-        </div>
-
-        <div class="flex items-start gap-4">
-          <div class="flex-shrink-0">
-            <div class="flex items-center justify-center h-12 w-12 rounded-md bg-green-600 text-white">
-              <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-              </svg>
-            </div>
-          </div>
-          <div>
-            <h3 class="text-lg font-bold text-gray-900">Free Estimates</h3>
-            <p class="text-gray-700">No obligation, no trip charge for your estimate</p>
-          </div>
-        </div>
-
-        <div class="flex items-start gap-4">
-          <div class="flex-shrink-0">
-            <div class="flex items-center justify-center h-12 w-12 rounded-md bg-green-600 text-white">
-              <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-              </svg>
-            </div>
-          </div>
-          <div>
-            <h3 class="text-lg font-bold text-gray-900">24/7 Emergency Service</h3>
-            <p class="text-gray-700">Available anytime for urgent tree needs</p>
-          </div>
-        </div>
-
-        <div class="flex items-start gap-4">
-          <div class="flex-shrink-0">
-            <div class="flex items-center justify-center h-12 w-12 rounded-md bg-green-600 text-white">
-              <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-              </svg>
-            </div>
-          </div>
-          <div>
-            <h3 class="text-lg font-bold text-gray-900">Fully Insured</h3>
-            <p class="text-gray-700">Complete liability and workers' compensation</p>
-          </div>
-        </div>
-
-        <div class="flex items-start gap-4">
-          <div class="flex-shrink-0">
-            <div class="flex items-center justify-center h-12 w-12 rounded-md bg-green-600 text-white">
-              <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-              </svg>
-            </div>
-          </div>
-          <div>
-            <h3 class="text-lg font-bold text-gray-900">Fair Pricing</h3>
-            <p class="text-gray-700">Competitive rates and transparent estimates</p>
-          </div>
-        </div>
-
-        <div class="flex items-start gap-4">
-          <div class="flex-shrink-0">
-            <div class="flex items-center justify-center h-12 w-12 rounded-md bg-green-600 text-white">
-              <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-              </svg>
-            </div>
-          </div>
-          <div>
-            <h3 class="text-lg font-bold text-gray-900">Professional Team</h3>
-            <p class="text-gray-700">Trained and experienced arborists and crew</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Google Reviews Embed -->
-    <section class="py-12 px-4 max-w-4xl mx-auto">
-      <h2 class="text-4xl font-bold mb-8 text-center">See Our Reviews on Google</h2>
-      <div class="bg-white rounded-lg shadow-lg p-8">
+  <!-- REVIEWS EMBED -->
+  <section class="py-16 md:py-24">
+    <div class="container">
+      <h2 class="text-center text-2xl font-bold md:text-4xl mb-4">Google Reviews</h2>
+      <p class="mx-auto max-w-2xl text-center text-muted-foreground mb-10">
+        Every review below is from a real Google Business Profile review - verified and public.
+      </p>
+      <div class="mx-auto max-w-6xl">
         <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3069.3814234572647!2d-104.90819!3d39.680453!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x876b8df79e9ce9f9%3A0x4b4f8c8d8c8d8c8d!2sArbor%20Care%20Tree%20Solutions!5e0!3m2!1sen!2sus!4v1234567890"
-          width="100%"
-          height="450"
-          style="border:0;"
-          allowfullscreen=""
+          class="w-full min-w-full rounded-lg"
+          src={business.reviewWidget}
+          frameborder="0"
+          style="min-width:100%;width:100%;min-height:800px;height:800px"
+          title="Google Reviews for Arbor Care Tree Solutions"
           loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"
         ></iframe>
       </div>
-      <p class="text-center text-gray-600 mt-4">
-        <a href="https://www.google.com/search?q=arbor+care+tree+solutions+denver" target="_blank" rel="noopener noreferrer" class="text-green-600 hover:text-green-700 font-semibold">
-          Visit our Google Profile →
-        </a>
-      </p>
-    </section>
+    </div>
+  </section>
 
-    <!-- CTA Section -->
-    <section class="bg-green-600 text-white py-12 px-4">
-      <div class="max-w-4xl mx-auto text-center">
-        <h2 class="text-4xl font-bold mb-4">Join Our Happy Customers</h2>
-        <p class="text-xl mb-8">Experience the Arbor Care difference for yourself.</p>
-        <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <a href="tel:+13039496818" class="bg-white text-green-600 px-8 py-3 rounded-lg font-bold hover:bg-gray-100 transition flex items-center justify-center gap-2">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-            Call (303) 949-6818
+  <!-- CTA -->
+  <section class="py-16 md:py-24 bg-muted">
+    <div class="container">
+      <div class="mx-auto max-w-2xl rounded-xl border-2 border-accent/30 bg-card p-8 md:p-12 text-center">
+        <h2 class="text-2xl font-bold md:text-3xl">Ready to See Why We're Rated 5 Stars?</h2>
+        <p class="mt-4 text-muted-foreground leading-relaxed">
+          Get a free, no-obligation estimate from our ISA-certified arborists. No trip charge.
+        </p>
+        <div class="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+          <a href={business.phoneTel} class="inline-flex items-center justify-center gap-2 rounded-md bg-accent px-8 py-4 text-base font-bold text-accent-foreground shadow-lg hover:bg-accent/90 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            {business.phone}
           </a>
-          <EstimateButton client:load className="bg-white text-green-600 px-8 py-3 rounded-lg font-bold hover:bg-gray-100 transition">
-            Get Free Estimate
-          </EstimateButton>
+          <EstimateModal client:load className="inline-flex items-center justify-center gap-2 rounded-md border border-input bg-background px-8 py-4 text-base font-bold text-foreground hover:bg-muted transition-colors">
+            Request Free Estimate
+          </EstimateModal>
         </div>
       </div>
-    </section>
-  </main>
-
-  <Footer slot="footer" />
-</Layout>
+    </div>
+  </section>
+</BaseLayout>

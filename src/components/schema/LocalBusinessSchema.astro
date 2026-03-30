@@ -1,0 +1,48 @@
+---
+import { business } from "../../data/business";
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  additionalType: "https://schema.org/TreeService",
+  "@id": `${business.siteUrl}/#business`,
+  name: business.name,
+  description: "Professional tree trimming, tree removal, stump grinding, and arborist services in Denver, CO and surrounding areas.",
+  url: business.siteUrl,
+  telephone: business.phone,
+  email: business.email,
+  image: `${business.siteUrl}/og-image.jpg`,
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: business.address.street,
+    addressLocality: business.address.city,
+    addressRegion: business.address.state,
+    postalCode: business.address.zip,
+    addressCountry: business.address.country,
+  },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: business.geo.lat,
+    longitude: business.geo.lng,
+  },
+  areaServed: business.serviceAreas.map((area) => ({
+    "@type": "City",
+    name: area,
+  })),
+  sameAs: [
+    business.socialProfiles.facebook,
+    business.socialProfiles.instagram,
+    business.socialProfiles.google,
+  ],
+  priceRange: "$$",
+  aggregateRating: {
+    "@type": "AggregateRating",
+    ratingValue: "5.0",
+    bestRating: "5",
+    worstRating: "1",
+    ratingCount: "100",
+  },
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

@@ -1,224 +1,353 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import Header from "../components/Header.tsx";
-import Footer from "../components/Footer.astro";
-import { EstimateButton } from "../components/EstimateModal.tsx";
+import BaseLayout from "../components/layout/BaseLayout.astro";
+import ServiceSchema from "../components/schema/ServiceSchema.astro";
+import EstimateModal from "../components/ui/EstimateModal";
+import { business } from "../data/business";
 ---
 
-<Layout title="Firewood Supply Denver CO | Seasoned Hardwood | Arbor Care" description="Seasoned firewood for sale and delivery in Denver, CO. Split hardwood, cord & face cord. Family owned. Call (303) 949-6818." canonical="/other-services">
-  <Header slot="header" pathname="/other-services" client:load />
+<BaseLayout
+  title="Firewood Supplier Denver CO | Seasoned Hardwood Delivered"
+  description="Seasoned firewood for sale & delivery in Denver, CO. Split, dried hardwood ready to burn. Cord & face cord available. Call (303) 949-6818 for delivery."
+  canonical="/other-services"
+>
+  <ServiceSchema
+    slot="head"
+    name="Firewood Supplier Denver CO"
+    description="Seasoned firewood for sale and delivery in Denver, Colorado. Split, dried hardwood ready to burn. Cord and face cord available."
+    url="/other-services"
+  />
 
-  <main class="min-h-screen">
-    <!-- Hero Section -->
-    <section
-      class="relative h-96 bg-cover bg-center flex items-center justify-center"
-      style="background-image: url('/assets/hero-firewood-supply.jpg');"
-    >
-      <div class="absolute inset-0 bg-black/40"></div>
-      <div class="relative z-10 text-center text-white px-4">
-        <h1 class="text-5xl md:text-6xl font-bold mb-4">Premium Firewood Supply</h1>
-        <p class="text-xl md:text-2xl">Quality Seasoned Hardwood Delivered</p>
-      </div>
-    </section>
-
-    <!-- Introduction -->
-    <section class="py-12 px-4 max-w-4xl mx-auto">
-      <div class="prose prose-lg max-w-none">
-        <p class="text-lg text-gray-700 mb-6">
-          Arbor Care Tree Solutions provides premium seasoned firewood for Denver homeowners. Our firewood comes from local tree removal and trimming operations, ensuring a sustainable and cost-effective fuel source for your fireplace or fire pit. All wood is properly seasoned for optimal burning efficiency.
+  <!-- HERO -->
+  <section class="relative min-h-[500px] md:min-h-[60vh] flex items-center overflow-hidden">
+    <img src="/assets/hero-firewood-supply.jpg" alt="Stacked seasoned firewood ready for delivery in Denver Colorado" class="absolute inset-0 h-full w-full object-cover" loading="eager" width="1920" height="1080" />
+    <div class="absolute inset-0 bg-black/60"></div>
+    <div class="container relative z-10 py-20 pb-28 md:py-28 text-center">
+      <div class="mx-auto max-w-3xl">
+        <h1 class="text-3xl font-bold text-white md:text-5xl lg:text-6xl leading-tight">
+          Firewood Supplier in Denver, CO
+          <span class="block text-accent mt-2">Ready to Burn, Delivered to You</span>
+        </h1>
+        <p class="mx-auto mt-6 text-lg text-white/90 md:text-xl max-w-2xl">
+          Don't waste a cold Denver night trying to burn green wood that smokes and won't
+          stay lit. We supply properly seasoned, split hardwood that burns hot and clean.
+          Local source, fast delivery. Call{" "}
+          <a href={business.phoneTel} class="underline font-semibold text-accent hover:text-accent/80">{business.phone}</a>.
         </p>
-      </div>
-    </section>
-
-    <!-- Firewood Services -->
-    <section class="py-12 px-4 max-w-4xl mx-auto">
-      <h2 class="text-4xl font-bold mb-8 text-center">Our Firewood Services</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-          <div class="bg-red-600 h-24 flex items-center justify-center">
-            <span class="text-white text-3xl">🔥</span>
-          </div>
-          <div class="p-6">
-            <h3 class="text-xl font-bold mb-2"><a href="/seasoned-firewood-denver-co" class="text-green-600 hover:text-green-700">Seasoned Firewood</a></h3>
-            <p class="text-gray-600 mb-4">Premium split hardwood, properly seasoned for excellent burning quality.</p>
-          </div>
-        </div>
-
-        <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-          <div class="bg-red-600 h-24 flex items-center justify-center">
-            <span class="text-white text-3xl">🚚</span>
-          </div>
-          <div class="p-6">
-            <h3 class="text-xl font-bold mb-2"><a href="/firewood-delivery-denver-co" class="text-green-600 hover:text-green-700">Firewood Delivery</a></h3>
-            <p class="text-gray-600 mb-4">Convenient delivery to your home or business in Denver.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Why Choose Our Firewood -->
-    <section class="py-12 px-4 max-w-4xl mx-auto">
-      <h2 class="text-4xl font-bold mb-8 text-center">Why Choose Arbor Care Firewood?</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div class="bg-red-50 p-6 rounded-lg">
-          <h3 class="text-xl font-bold mb-2">Properly Seasoned</h3>
-          <p class="text-gray-700">Our wood is seasoned to optimal moisture content for clean, efficient burning.</p>
-        </div>
-        <div class="bg-red-50 p-6 rounded-lg">
-          <h3 class="text-xl font-bold mb-2">Quality Hardwood</h3>
-          <p class="text-gray-700">Premium hardwoods that burn longer and hotter than softwoods.</p>
-        </div>
-        <div class="bg-red-50 p-6 rounded-lg">
-          <h3 class="text-xl font-bold mb-2">Locally Sourced</h3>
-          <p class="text-gray-700">Firewood from local tree removal operations, reducing carbon footprint.</p>
-        </div>
-        <div class="bg-red-50 p-6 rounded-lg">
-          <h3 class="text-xl font-bold mb-2">Convenient Delivery</h3>
-          <p class="text-gray-700">We deliver directly to your home, saving you time and effort.</p>
-        </div>
-        <div class="bg-red-50 p-6 rounded-lg">
-          <h3 class="text-xl font-bold mb-2">Competitive Pricing</h3>
-          <p class="text-gray-700">Great prices on full cords and face cords.</p>
-        </div>
-        <div class="bg-red-50 p-6 rounded-lg">
-          <h3 class="text-xl font-bold mb-2">Consistent Quality</h3>
-          <p class="text-gray-700">Every load meets our high quality standards.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Firewood Types -->
-    <section class="py-12 px-4 max-w-4xl mx-auto">
-      <h2 class="text-4xl font-bold mb-8 text-center">Firewood Options</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div class="bg-white rounded-lg shadow-lg p-6">
-          <h3 class="text-2xl font-bold mb-4">Full Cord</h3>
-          <p class="text-gray-700 mb-4">A standard full cord measures 4 feet high, 4 feet deep, and 8 feet wide.</p>
-          <p class="text-gray-700">Perfect for those with larger fireplaces or who use firewood frequently.</p>
-        </div>
-        <div class="bg-white rounded-lg shadow-lg p-6">
-          <h3 class="text-2xl font-bold mb-4">Face Cord</h3>
-          <p class="text-gray-700 mb-4">A face cord is one-third the volume of a full cord, measuring 4 feet high, 8 feet wide, and varies in depth.</p>
-          <p class="text-gray-700">Ideal for occasional fireplace use or smaller spaces.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Wood Species -->
-    <section class="py-12 px-4 max-w-4xl mx-auto">
-      <h2 class="text-4xl font-bold mb-8 text-center">Hardwood Species</h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div class="text-center">
-          <div class="text-4xl mb-4">🌲</div>
-          <h3 class="text-xl font-bold mb-2">Oak</h3>
-          <p class="text-gray-600">Dense, high BTU output, excellent for long burns</p>
-        </div>
-        <div class="text-center">
-          <div class="text-4xl mb-4">🌲</div>
-          <h3 class="text-xl font-bold mb-2">Cottonwood</h3>
-          <p class="text-gray-600">Local species, good heat output, easy to split</p>
-        </div>
-        <div class="text-center">
-          <div class="text-4xl mb-4">🌲</div>
-          <h3 class="text-xl font-bold mb-2">Ash</h3>
-          <p class="text-gray-600">Great burning characteristics, minimal sparking</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Seasoning Info -->
-    <section class="py-12 px-4 max-w-4xl mx-auto">
-      <h2 class="text-4xl font-bold mb-8 text-center">About Seasoned Firewood</h2>
-      <div class="bg-blue-50 rounded-lg p-8">
-        <h3 class="text-2xl font-bold mb-4">Why Seasoned Wood Matters</h3>
-        <p class="text-lg text-gray-700 mb-4">
-          Properly seasoned firewood has moisture content below 20%, ensuring:
-        </p>
-        <ul class="space-y-3 text-gray-700 mb-6">
-          <li class="flex items-start">
-            <span class="mr-3 text-2xl">✓</span>
-            <span><strong>Better burning:</strong> Seasoned wood ignites more easily and burns hotter</span>
-          </li>
-          <li class="flex items-start">
-            <span class="mr-3 text-2xl">✓</span>
-            <span><strong>Less smoke:</strong> Proper seasoning reduces smoke and creosote buildup</span>
-          </li>
-          <li class="flex items-start">
-            <span class="mr-3 text-2xl">✓</span>
-            <span><strong>Chimney safety:</strong> Reduced creosote means safer fireplace operation</span>
-          </li>
-          <li class="flex items-start">
-            <span class="mr-3 text-2xl">✓</span>
-            <span><strong>More heat output:</strong> Dry wood produces more BTUs of heat</span>
-          </li>
-        </ul>
-        <p class="text-lg text-gray-700">
-          Green or unseasoned wood wastes money and creates safety hazards. Our firewood is aged and dried to perfection.
-        </p>
-      </div>
-    </section>
-
-    <!-- Delivery Information -->
-    <section class="py-12 px-4 max-w-4xl mx-auto">
-      <h2 class="text-4xl font-bold mb-8 text-center">Delivery Information</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div class="bg-white rounded-lg shadow-lg p-6">
-          <h3 class="text-2xl font-bold mb-4">Service Area</h3>
-          <p class="text-gray-700 mb-4">
-            We deliver throughout Denver and surrounding areas. Call for availability in your area.
-          </p>
-          <p class="text-gray-700">
-            <strong>Delivery Area:</strong> Denver metro and surrounding counties
-          </p>
-        </div>
-        <div class="bg-white rounded-lg shadow-lg p-6">
-          <h3 class="text-2xl font-bold mb-4">Ordering</h3>
-          <p class="text-gray-700 mb-4">
-            Contact us to place your firewood order. We can arrange delivery at a time convenient for you.
-          </p>
-          <p class="text-gray-700">
-            <strong>Call (303) 949-6818</strong> to order today
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Related Services -->
-    <section class="py-12 px-4 max-w-4xl mx-auto">
-      <h2 class="text-4xl font-bold mb-8 text-center">Related Services</h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <a href="/tree-removal" class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition text-center">
-          <h3 class="text-xl font-bold mb-2 text-green-600">Tree Removal</h3>
-          <p class="text-gray-600">Source of our quality firewood</p>
-        </a>
-        <a href="/tree-trimming" class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition text-center">
-          <h3 class="text-xl font-bold mb-2 text-green-600">Tree Trimming</h3>
-          <p class="text-gray-600">Preventive tree care services</p>
-        </a>
-        <a href="/stump-grinding-denver-co" class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition text-center">
-          <h3 class="text-xl font-bold mb-2 text-green-600">Brush Chipping</h3>
-          <p class="text-gray-600">Other wood disposal options</p>
-        </a>
-      </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="bg-green-600 text-white py-12 px-4">
-      <div class="max-w-4xl mx-auto text-center">
-        <h2 class="text-4xl font-bold mb-4">Order Your Premium Firewood Today</h2>
-        <p class="text-xl mb-8">Get seasoned firewood delivered to your Denver home.</p>
-        <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <a href="tel:+13039496818" class="bg-white text-green-600 px-8 py-3 rounded-lg font-bold hover:bg-gray-100 transition flex items-center justify-center gap-2">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-            Call (303) 949-6818
+        <div class="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+          <a href={business.phoneTel} class="inline-flex items-center justify-center gap-2 rounded-md bg-accent px-8 py-4 text-base font-bold text-accent-foreground shadow-lg hover:bg-accent/90 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+            Call {business.phone}
           </a>
-          <EstimateButton client:load className="bg-white text-green-600 px-8 py-3 rounded-lg font-bold hover:bg-gray-100 transition">
-            Get Pricing
-          </EstimateButton>
+          <EstimateModal client:load className="inline-flex items-center justify-center gap-2 rounded-md bg-white/15 backdrop-blur border border-white/30 px-8 py-4 text-base font-bold text-white hover:bg-white/25 transition-colors">
+            Request Delivery
+          </EstimateModal>
         </div>
       </div>
-    </section>
-  </main>
+    </div>
+    <div class="absolute bottom-0 left-0 right-0 bg-primary/95 backdrop-blur-sm">
+      <div class="container flex flex-wrap items-center justify-center gap-x-8 gap-y-2 py-3 text-sm text-primary-foreground">
+        <span class="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+          <span class="font-medium">100+ Five-Star Reviews</span>
+        </span>
+        <span class="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"></path></svg>
+          <span class="font-medium">Seasoned Hardwood Only</span>
+        </span>
+        <span class="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"></path><path d="M15 18H9"></path><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"></path><circle cx="17" cy="18" r="2"></circle><circle cx="7" cy="18" r="2"></circle></svg>
+          <span class="font-medium">Denver Metro Delivery</span>
+        </span>
+        <span class="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+          <span class="font-medium">Family Owned</span>
+        </span>
+      </div>
+    </div>
+  </section>
 
-  <Footer slot="footer" />
-</Layout>
+  <!-- OPENING -->
+  <section class="py-16 md:py-24">
+    <div class="container">
+      <div class="mx-auto max-w-3xl text-center">
+        <p class="text-lg leading-relaxed text-muted-foreground">
+          You've been there: you buy a load of firewood, stack it out back, and the first cold
+          night you try to use it, it smokes your living room, won't stay lit, and burns through
+          in 20 minutes. Green wood — wood that hasn't been properly dried — is nearly impossible
+          to burn well. It wastes your time, fills your home with creosote, and costs just as
+          much as the real thing.
+        </p>
+        <p class="mt-6 text-lg leading-relaxed text-foreground font-medium">
+          We're a tree service company, which means our firewood comes from the same trees we
+          take down and trim across Denver every day. The wood is split and seasoned the right
+          way — dried for the right amount of time before it ever gets delivered to you. When it
+          arrives, it's ready to use. No waiting, no guessing, no disappointment on a cold Front
+          Range evening.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY QUALITY MATTERS -->
+  <section class="bg-muted py-16 md:py-24">
+    <div class="container">
+      <h2 class="text-center text-2xl font-bold md:text-4xl">
+        Why Firewood Quality Matters in Denver
+      </h2>
+      <p class="mx-auto mt-6 max-w-3xl text-center text-muted-foreground leading-relaxed">
+        Denver winters are cold enough that a fireplace or wood stove isn't just atmosphere -
+        it's how a lot of households actually stay comfortable when temperatures drop. But not
+        all firewood is the same.
+      </p>
+      <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <!-- Green wood -->
+        <div class="rounded-lg border border-border bg-background p-6 text-center">
+          <div class="mx-auto mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-destructive/10">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-destructive" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"></path><path d="M12 9v4"></path><path d="M12 17h.01"></path></svg>
+          </div>
+          <p class="text-sm leading-relaxed text-muted-foreground">Green or wet wood that smokes, won't stay lit, and coats your chimney with creosote</p>
+        </div>
+        <!-- Shorted on quantity -->
+        <div class="rounded-lg border border-border bg-background p-6 text-center">
+          <div class="mx-auto mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-destructive/10">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-destructive" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m7.5 4.27 9 5.15"></path><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"></path><path d="m3.3 7 8.7 5 8.7-5"></path><path d="M12 22V12"></path></svg>
+          </div>
+          <p class="text-sm leading-relaxed text-muted-foreground">Getting shorted on quantity — loose piles that measure well under a full cord</p>
+        </div>
+        <!-- Overpriced bundles -->
+        <div class="rounded-lg border border-border bg-background p-6 text-center">
+          <div class="mx-auto mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-destructive/10">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-destructive" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4v10.54a4 4 0 1 1-4 0V4a2 2 0 0 1 4 0Z"></path></svg>
+          </div>
+          <p class="text-sm leading-relaxed text-muted-foreground">Overpriced store bundles at 5-10x the per-log price of bulk firewood</p>
+        </div>
+        <!-- Soft pine -->
+        <div class="rounded-lg border border-border bg-background p-6 text-center">
+          <div class="mx-auto mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-destructive/10">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-destructive" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"></path></svg>
+          </div>
+          <p class="text-sm leading-relaxed text-muted-foreground">Resinous soft pine that burns fast, throws sparks, and leaves nothing but ash</p>
+        </div>
+      </div>
+      <div class="mx-auto mt-10 max-w-3xl space-y-4 text-center">
+        <p class="text-muted-foreground leading-relaxed">
+          Properly seasoned hardwood has a moisture content low enough to combust cleanly. It
+          lights faster, burns hotter, and lasts longer. The difference between a fire that's
+          warm and satisfying and one that's frustrating and smoky is almost entirely the wood.
+        </p>
+        <p class="text-muted-foreground leading-relaxed">
+          We also understand the Front Range fire season. During high-fire-risk periods, having
+          seasoned, clean-burning wood matters more - wet or resinous wood produces more embers
+          and sparks. Our hardwood burns cleanly and is appropriate for fireplaces, outdoor fire
+          pits, and wood stoves.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- OUR SERVICES -->
+  <section class="py-16 md:py-24">
+    <div class="container">
+      <h2 class="text-center text-2xl font-bold md:text-4xl">
+        Our Firewood Services in Denver
+      </h2>
+      <p class="mx-auto mt-4 max-w-2xl text-center text-muted-foreground">
+        We offer two straightforward options for Denver customers.
+      </p>
+      <div class="mt-12 space-y-8">
+        <!-- Seasoned Firewood for Sale -->
+        <div class="flex flex-col gap-6 rounded-xl border border-border bg-card p-8 md:flex-row md:items-start">
+          <div class="flex-shrink-0">
+            <div class="inline-flex h-16 w-16 items-center justify-center rounded-full bg-accent/15">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"></path></svg>
+            </div>
+          </div>
+          <div class="flex-1">
+            <a href="/seasoned-firewood-denver-co" class="text-xl font-bold text-primary hover:underline">Seasoned Firewood for Sale</a>
+            <p class="mt-3 leading-relaxed text-muted-foreground">Our seasoned firewood for sale is available for pickup or delivery — split hardwood that's been properly dried and is genuinely ready to burn. We sell by the cord and face cord so you can order the right amount for the season. The wood is stacked and measured — you get what you pay for, no loose piles that look like more than they are.</p>
+            <a href="/seasoned-firewood-denver-co" class="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-primary hover:underline">
+              Learn more about Seasoned Firewood for Sale <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"></path></svg>
+            </a>
+          </div>
+        </div>
+        <!-- Firewood Delivery -->
+        <div class="flex flex-col gap-6 rounded-xl border border-border bg-card p-8 md:flex-row md:items-start md:flex-row-reverse">
+          <div class="flex-shrink-0">
+            <div class="inline-flex h-16 w-16 items-center justify-center rounded-full bg-accent/15">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"></path><path d="M15 18H9"></path><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"></path><circle cx="17" cy="18" r="2"></circle><circle cx="7" cy="18" r="2"></circle></svg>
+            </div>
+          </div>
+          <div class="flex-1">
+            <a href="/firewood-delivery-denver-co" class="text-xl font-bold text-primary hover:underline">Firewood Delivery</a>
+            <p class="mt-3 leading-relaxed text-muted-foreground">For most Denver homeowners, our firewood delivery service is the easiest option. We bring the wood to your address, stack it where you want it, and you're set for the season. We deliver throughout the Denver metro — including Aurora, Lakewood, Englewood, Littleton, Centennial, Highlands Ranch, Arvada, Westminster, and Thornton. Same family-owned team that handles tree care for Denver homeowners, now delivering the firewood we produce from those same trees.</p>
+            <a href="/firewood-delivery-denver-co" class="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-primary hover:underline">
+              Learn more about Firewood Delivery <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"></path></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      <p class="mx-auto mt-8 max-w-3xl text-center text-muted-foreground leading-relaxed">
+        All of our firewood comes from local tree removals. That means you're getting
+        quality hardwoods - ash, oak, maple, and locust - not soft pine that burns fast
+        and leaves nothing but ash. It's local wood from a local company, and it's the
+        same team that handles tree care for hundreds of Denver homeowners.
+      </p>
+    </div>
+  </section>
+
+  <!-- DENVER DELIVERY AREA -->
+  <section class="bg-muted py-16 md:py-24">
+    <div class="container">
+      <div class="mx-auto max-w-4xl">
+        <div class="grid gap-8 md:grid-cols-5">
+          <div class="md:col-span-3">
+            <h2 class="text-2xl font-bold md:text-4xl">
+              Firewood Delivery for the Denver Area
+            </h2>
+            <p class="mt-6 leading-relaxed text-muted-foreground">
+              We serve Denver and the surrounding Front Range communities for firewood delivery.
+              Because we're a full-service tree company operating throughout these same areas
+              every week, firewood delivery is a natural extension of what we already do.
+            </p>
+            <p class="mt-4 leading-relaxed text-muted-foreground">
+              Denver sits at elevation, which means winters here are genuinely cold — and a lot of
+              homes in established Denver neighborhoods have fireplaces that actually get used.
+              We're not a firewood broker sourcing wood from somewhere else. Our firewood comes from
+              trees removed and trimmed in the Denver metro. It's local wood, handled by a local
+              company, delivered by the same team that takes care of your trees.
+            </p>
+            <p class="mt-4 leading-relaxed text-muted-foreground">
+              We can also discuss timing — if you order early in fall before demand picks up, we can
+              often schedule delivery more flexibly. Call us to talk through what you need.
+            </p>
+          </div>
+          <div class="md:col-span-2">
+            <div class="rounded-lg border border-border bg-background p-6">
+              <div class="mb-4 flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                <h3 class="font-bold">Delivery Areas</h3>
+              </div>
+              <ul class="space-y-2">
+                {business.serviceAreas.map((area) => (
+                  <li class="flex items-center gap-2 text-sm text-muted-foreground">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-accent flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><path d="m9 11 3 3L22 4"></path></svg>
+                    {area}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY BUY FROM US -->
+  <section class="py-16 md:py-24">
+    <div class="container">
+      <h2 class="text-center text-2xl font-bold md:text-4xl">
+        Why Buy Firewood From Us
+      </h2>
+      <p class="mx-auto mt-6 max-w-3xl text-center text-muted-foreground leading-relaxed">
+        Arbor Care Tree Solutions is a family-owned tree service company - which means our
+        firewood isn't a side business, it's what happens to the wood we take down and trim
+        across Denver every day. We know exactly where the wood came from and how long it's
+        been seasoned because we cut it ourselves.
+      </p>
+      <div class="mx-auto mt-10 grid max-w-3xl gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div class="flex items-center gap-3 rounded-lg border border-border bg-card p-4">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+          <span class="text-sm font-medium">Family-owned tree service company</span>
+        </div>
+        <div class="flex items-center gap-3 rounded-lg border border-border bg-card p-4">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path><path d="m9 12 2 2 4-4"></path></svg>
+          <span class="text-sm font-medium">Licensed &amp; insured in Colorado</span>
+        </div>
+        <div class="flex items-center gap-3 rounded-lg border border-border bg-card p-4">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+          <span class="text-sm font-medium">100+ five-star Google reviews</span>
+        </div>
+        <div class="flex items-center gap-3 rounded-lg border border-border bg-card p-4">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m7.5 4.27 9 5.15"></path><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"></path><path d="m3.3 7 8.7 5 8.7-5"></path><path d="M12 22V12"></path></svg>
+          <span class="text-sm font-medium">Honestly measured, every cord</span>
+        </div>
+        <div class="flex items-center gap-3 rounded-lg border border-border bg-card p-4">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+          <span class="text-sm font-medium">We answer immediately, 24/7</span>
+        </div>
+        <div class="flex items-center gap-3 rounded-lg border border-border bg-card p-4">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+          <span class="text-sm font-medium">24-hour emergency delivery available</span>
+        </div>
+      </div>
+      <p class="mx-auto mt-8 max-w-3xl text-center text-muted-foreground leading-relaxed">
+        We have 100+ five-star Google reviews from Denver homeowners. We answer calls
+        immediately, 24 hours a day - so if you need to schedule a delivery or have a question
+        about your order, you'll always reach a real person. Free estimates are available for
+        larger orders.
+      </p>
+    </div>
+  </section>
+
+  <!-- SERVICES GRID -->
+  <section class="bg-muted py-16 md:py-24">
+    <div class="container">
+      <h2 class="text-center text-2xl font-bold md:text-4xl mb-12">
+        Our Firewood Services
+      </h2>
+      <div class="grid gap-8 sm:grid-cols-2 max-w-3xl mx-auto">
+        <!-- Seasoned Firewood for Sale -->
+        <div class="group rounded-lg border border-border bg-background p-8 transition-shadow hover:shadow-md">
+          <div class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-accent/15">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"></path></svg>
+          </div>
+          <h3 class="text-xl font-bold">Seasoned Firewood for Sale</h3>
+          <p class="mt-3 text-sm leading-relaxed text-muted-foreground">Properly dried, split hardwood available by the cord or face cord. No green wood, no smoke, no waiting.</p>
+          <a href="/seasoned-firewood-denver-co" class="mt-6 inline-flex items-center gap-1 text-sm font-semibold text-primary hover:underline">
+            Learn More <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"></path></svg>
+          </a>
+        </div>
+        <!-- Firewood Delivery -->
+        <div class="group rounded-lg border border-border bg-background p-8 transition-shadow hover:shadow-md">
+          <div class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-accent/15">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"></path><path d="M15 18H9"></path><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"></path><circle cx="17" cy="18" r="2"></circle><circle cx="7" cy="18" r="2"></circle></svg>
+          </div>
+          <h3 class="text-xl font-bold">Firewood Delivery</h3>
+          <p class="mt-3 text-sm leading-relaxed text-muted-foreground">We deliver and stack throughout Denver and surrounding metro communities. Schedule by phone — we answer immediately.</p>
+          <a href="/firewood-delivery-denver-co" class="mt-6 inline-flex items-center gap-1 text-sm font-semibold text-primary hover:underline">
+            Learn More <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"></path></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="py-16 md:py-24">
+    <div class="container">
+      <div class="mx-auto max-w-2xl rounded-xl border-2 border-accent/30 bg-card p-8 md:p-12 text-center">
+        <h2 class="text-2xl font-bold md:text-3xl">
+          Ready to Order Firewood in Denver?
+        </h2>
+        <p class="mt-4 text-muted-foreground leading-relaxed">
+          Call us to check availability, get a price, and schedule delivery. We answer
+          immediately - no voicemail, no callback queue. Same family-owned team, same
+          commitment to doing it right.
+        </p>
+        <div class="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+          <a href={business.phoneTel} class="inline-flex items-center justify-center gap-2 rounded-md bg-accent px-8 py-4 text-base font-bold text-accent-foreground shadow-lg hover:bg-accent/90 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+            Call {business.phone}
+          </a>
+          <EstimateModal client:load className="inline-flex items-center justify-center gap-2 rounded-md border border-input bg-background px-8 py-4 text-base font-bold text-foreground hover:bg-muted transition-colors">
+            Request Delivery
+          </EstimateModal>
+        </div>
+        <p class="mt-6 text-sm text-muted-foreground">
+          Need tree removal, trimming, or stump grinding too? Visit our{" "}
+          <a href="/" class="text-primary font-semibold hover:underline">Denver tree service homepage</a>.
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

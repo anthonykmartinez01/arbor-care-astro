@@ -1,302 +1,116 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import Header from "../components/Header.tsx";
-import Footer from "../components/Footer.astro";
+import BaseLayout from "../components/layout/BaseLayout.astro";
+import { business } from "../data/business";
+
+const benefits = [
+  "Competitive pay based on experience",
+  "Consistent, year-round work in the Denver metro",
+  "Professional equipment and well-maintained trucks",
+  "A crew that actually likes working together",
+  "Opportunities to grow and earn certifications",
+  "Respect - we treat our people the way they deserve",
+];
 ---
 
-<Layout title="We're Hiring | Arbor Care Tree Solutions Denver" description="Join the Arbor Care Tree Solutions team in Denver, CO. We're looking for experienced tree care professionals." canonical="/were-hiring">
-  <Header slot="header" pathname="/were-hiring" client:load />
-
-  <main class="min-h-screen">
-    <!-- Hero Section -->
-    <section class="bg-gradient-to-r from-green-600 to-green-800 text-white py-16 px-4">
-      <div class="max-w-4xl mx-auto text-center">
-        <h1 class="text-5xl md:text-6xl font-bold mb-4">Join Our Team</h1>
-        <p class="text-xl md:text-2xl">We're Hiring Experienced Tree Care Professionals</p>
-      </div>
-    </section>
-
-    <!-- Introduction -->
-    <section class="py-12 px-4 max-w-4xl mx-auto">
-      <div class="prose prose-lg max-w-none">
-        <p class="text-lg text-gray-700 mb-6">
-          Arbor Care Tree Solutions is growing, and we're looking for talented, dedicated professionals to join our team. If you love working outdoors, have tree care experience, and want to be part of a professional, family-oriented company, we'd like to hear from you.
+<BaseLayout
+  title="We're Hiring | Arbor Care Tree Solutions Denver CO"
+  description="Join the Arbor Care Tree Solutions crew in Denver, CO. We're hiring experienced tree workers and climbers. Competitive pay, great team. Call (303) 949-6818."
+>
+  <!-- HERO -->
+  <section class="relative min-h-[500px] md:min-h-[60vh] flex items-center overflow-hidden">
+    <img src="/assets/crew-action.jpg" alt="Arbor Care Tree Solutions crew at work in Denver" class="absolute inset-0 h-full w-full object-cover" width="1920" height="1080" loading="eager" fetchpriority="high" />
+    <div class="absolute inset-0 bg-black/60"></div>
+    <div class="container relative z-10 py-20 pb-28 md:py-28 text-center">
+      <div class="mx-auto max-w-3xl">
+        <div class="mx-auto mb-6 inline-flex h-16 w-16 items-center justify-center rounded-full bg-accent/20">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/><rect width="20" height="14" x="2" y="6" rx="2"/></svg>
+        </div>
+        <h1 class="text-3xl font-bold text-white md:text-5xl leading-tight">
+          We're Hiring
+          <span class="block text-accent mt-2 text-xl md:text-2xl">Join the Arbor Care Tree Solutions Crew</span>
+        </h1>
+        <p class="mx-auto mt-6 text-lg text-white/90 max-w-2xl">
+          We're looking for experienced, passionate tree workers who take pride in their craft. If that sounds like you, let's talk.
         </p>
-      </div>
-    </section>
-
-    <!-- Open Positions -->
-    <section class="py-12 px-4 max-w-4xl mx-auto">
-      <h2 class="text-4xl font-bold mb-8 text-center">We're Looking For</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div class="bg-white rounded-lg shadow-lg p-6">
-          <h3 class="text-2xl font-bold mb-4">Experienced Arborists</h3>
-          <p class="text-gray-700 mb-4">
-            We're seeking experienced tree climbers and arborists with strong safety records and technical skills.
-          </p>
-          <ul class="space-y-2 text-gray-700 text-sm">
-            <li>✓ ISA Certification preferred</li>
-            <li>✓ Climbing experience required</li>
-            <li>✓ Safety-focused mindset</li>
-            <li>✓ Strong work ethic</li>
-          </ul>
-        </div>
-
-        <div class="bg-white rounded-lg shadow-lg p-6">
-          <h3 class="text-2xl font-bold mb-4">Equipment Operators</h3>
-          <p class="text-gray-700 mb-4">
-            Skilled operators for stump grinders, chippers, and other specialized tree care equipment.
-          </p>
-          <ul class="space-y-2 text-gray-700 text-sm">
-            <li>✓ Equipment experience</li>
-            <li>✓ Mechanical aptitude</li>
-            <li>✓ Safety training</li>
-            <li>✓ Reliable and punctual</li>
-          </ul>
-        </div>
-
-        <div class="bg-white rounded-lg shadow-lg p-6">
-          <h3 class="text-2xl font-bold mb-4">Ground Crew Members</h3>
-          <p class="text-gray-700 mb-4">
-            Hardworking team members to support tree care operations and maintain high quality standards.
-          </p>
-          <ul class="space-y-2 text-gray-700 text-sm">
-            <li>✓ Physical fitness required</li>
-            <li>✓ Team player attitude</li>
-            <li>✓ Willingness to learn</li>
-            <li>✓ Safety-conscious</li>
-          </ul>
-        </div>
-
-        <div class="bg-white rounded-lg shadow-lg p-6">
-          <h3 class="text-2xl font-bold mb-4">Crew Leads</h3>
-          <p class="text-gray-700 mb-4">
-            Experienced supervisors to lead crews, manage projects, and ensure quality and safety.
-          </p>
-          <ul class="space-y-2 text-gray-700 text-sm">
-            <li>✓ Leadership experience</li>
-            <li>✓ Project management skills</li>
-            <li>✓ Customer service focus</li>
-            <li>✓ Safety knowledge</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- Who We're Looking For -->
-    <section class="py-12 px-4 max-w-4xl mx-auto">
-      <h2 class="text-4xl font-bold mb-8 text-center">Ideal Candidates</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div class="bg-green-50 p-6 rounded-lg">
-          <h3 class="text-xl font-bold mb-4">Skills & Experience</h3>
-          <ul class="space-y-3 text-gray-700">
-            <li class="flex items-start">
-              <span class="mr-3 text-2xl text-green-600">✓</span>
-              <span>Tree care or landscaping experience</span>
-            </li>
-            <li class="flex items-start">
-              <span class="mr-3 text-2xl text-green-600">✓</span>
-              <span>Knowledge of safety standards and protocols</span>
-            </li>
-            <li class="flex items-start">
-              <span class="mr-3 text-2xl text-green-600">✓</span>
-              <span>Ability to work at heights safely</span>
-            </li>
-            <li class="flex items-start">
-              <span class="mr-3 text-2xl text-green-600">✓</span>
-              <span>Strong problem-solving skills</span>
-            </li>
-            <li class="flex items-start">
-              <span class="mr-3 text-2xl text-green-600">✓</span>
-              <span>Valid driver's license</span>
-            </li>
-          </ul>
-        </div>
-
-        <div class="bg-green-50 p-6 rounded-lg">
-          <h3 class="text-xl font-bold mb-4">Personal Qualities</h3>
-          <ul class="space-y-3 text-gray-700">
-            <li class="flex items-start">
-              <span class="mr-3 text-2xl text-green-600">✓</span>
-              <span>Commitment to safety</span>
-            </li>
-            <li class="flex items-start">
-              <span class="mr-3 text-2xl text-green-600">✓</span>
-              <span>Strong work ethic and reliability</span>
-            </li>
-            <li class="flex items-start">
-              <span class="mr-3 text-2xl text-green-600">✓</span>
-              <span>Team player mentality</span>
-            </li>
-            <li class="flex items-start">
-              <span class="mr-3 text-2xl text-green-600">✓</span>
-              <span>Customer service oriented</span>
-            </li>
-            <li class="flex items-start">
-              <span class="mr-3 text-2xl text-green-600">✓</span>
-              <span>Willingness to learn and grow</span>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- What We Offer -->
-    <section class="py-12 px-4 max-w-4xl mx-auto">
-      <h2 class="text-4xl font-bold mb-8 text-center">What We Offer</h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div class="bg-white rounded-lg shadow-lg p-6 text-center">
-          <div class="text-4xl mb-4">💰</div>
-          <h3 class="text-xl font-bold mb-2">Competitive Pay</h3>
-          <p class="text-gray-700">Competitive wages based on experience and skills</p>
-        </div>
-
-        <div class="bg-white rounded-lg shadow-lg p-6 text-center">
-          <div class="text-4xl mb-4">🏥</div>
-          <h3 class="text-xl font-bold mb-2">Benefits</h3>
-          <p class="text-gray-700">Health insurance, retirement planning, and more</p>
-        </div>
-
-        <div class="bg-white rounded-lg shadow-lg p-6 text-center">
-          <div class="text-4xl mb-4">📚</div>
-          <h3 class="text-xl font-bold mb-2">Training</h3>
-          <p class="text-gray-700">Ongoing education and certification support</p>
-        </div>
-
-        <div class="bg-white rounded-lg shadow-lg p-6 text-center">
-          <div class="text-4xl mb-4">🚗</div>
-          <h3 class="text-xl font-bold mb-2">Equipment</h3>
-          <p class="text-gray-700">Professional-grade tools and equipment provided</p>
-        </div>
-
-        <div class="bg-white rounded-lg shadow-lg p-6 text-center">
-          <div class="text-4xl mb-4">🤝</div>
-          <h3 class="text-xl font-bold mb-2">Family Culture</h3>
-          <p class="text-gray-700">Supportive, professional team environment</p>
-        </div>
-
-        <div class="bg-white rounded-lg shadow-lg p-6 text-center">
-          <div class="text-4xl mb-4">📈</div>
-          <h3 class="text-xl font-bold mb-2">Growth</h3>
-          <p class="text-gray-700">Career advancement opportunities</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Our Culture -->
-    <section class="py-12 px-4 max-w-4xl mx-auto">
-      <h2 class="text-4xl font-bold mb-8 text-center">Our Company Culture</h2>
-      <div class="bg-blue-50 rounded-lg p-8">
-        <p class="text-lg text-gray-700 mb-6">
-          Arbor Care Tree Solutions is more than just a job - it's a commitment to excellence and safety. Our company culture emphasizes:
-        </p>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div>
-            <h3 class="text-xl font-bold mb-3">Safety First</h3>
-            <p class="text-gray-700">
-              We prioritize the safety of our team and our customers above all else. Every project is executed with strict safety protocols.
-            </p>
-          </div>
-          <div>
-            <h3 class="text-xl font-bold mb-3">Professional Excellence</h3>
-            <p class="text-gray-700">
-              We take pride in delivering high-quality work that exceeds customer expectations on every project.
-            </p>
-          </div>
-          <div>
-            <h3 class="text-xl font-bold mb-3">Team Collaboration</h3>
-            <p class="text-gray-700">
-              Our success depends on strong teamwork. We value communication, respect, and mutual support.
-            </p>
-          </div>
-          <div>
-            <h3 class="text-xl font-bold mb-3">Continuous Learning</h3>
-            <p class="text-gray-700">
-              We invest in employee development through training, certifications, and mentorship opportunities.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- How to Apply -->
-    <section class="py-12 px-4 max-w-4xl mx-auto">
-      <h2 class="text-4xl font-bold mb-8 text-center">How to Apply</h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-        <div class="bg-white rounded-lg shadow-lg p-6">
-          <div class="text-3xl font-bold text-green-600 mb-3">1</div>
-          <h3 class="text-xl font-bold mb-2">Contact Us</h3>
-          <p class="text-gray-700 mb-4">
-            Call or email to inquire about open positions and submit your resume.
-          </p>
-          <a href="tel:+13039496818" class="text-green-600 hover:text-green-700 font-semibold">
-            (303) 949-6818
-          </a>
-          <br />
-          <a href="mailto:ArborCareTreeSolutions@gmail.com" class="text-green-600 hover:text-green-700 font-semibold">
-            ArborCareTreeSolutions@gmail.com
+        <div class="mt-8">
+          <a href={business.phoneTel} class="inline-flex items-center justify-center gap-2 rounded-md bg-accent px-8 py-4 text-base font-bold text-accent-foreground shadow-lg hover:bg-accent/90 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            Call {business.phone}
           </a>
         </div>
-
-        <div class="bg-white rounded-lg shadow-lg p-6">
-          <div class="text-3xl font-bold text-green-600 mb-3">2</div>
-          <h3 class="text-xl font-bold mb-2">Interview</h3>
-          <p class="text-gray-700">
-            We'll discuss your experience, skills, and fit with our team. Bring references and documentation of certifications.
-          </p>
-        </div>
-
-        <div class="bg-white rounded-lg shadow-lg p-6">
-          <div class="text-3xl font-bold text-green-600 mb-3">3</div>
-          <h3 class="text-xl font-bold mb-2">Join Our Team</h3>
-          <p class="text-gray-700">
-            If we're a good fit, we'll discuss compensation, benefits, and start date.
-          </p>
-        </div>
       </div>
-    </section>
+    </div>
+    <div class="absolute bottom-0 left-0 right-0 bg-primary/95 backdrop-blur-sm">
+      <div class="container flex flex-wrap items-center justify-center gap-x-8 gap-y-2 py-3 text-sm text-primary-foreground">
+        <span class="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <span class="font-medium">100+ Five-Star Reviews</span>
+        </span>
+        <span class="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
+          <span class="font-medium">ISA-Certified Arborists</span>
+        </span>
+        <span class="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></svg>
+          <span class="font-medium">Growing Team</span>
+        </span>
+        <span class="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          <span class="font-medium">Family Owned</span>
+        </span>
+      </div>
+    </div>
+  </section>
 
-    <!-- Application Materials -->
-    <section class="py-12 px-4 max-w-4xl mx-auto">
-      <h2 class="text-4xl font-bold mb-8 text-center">What to Include in Your Application</h2>
-      <div class="bg-gray-50 rounded-lg p-8">
-        <ul class="space-y-4 text-gray-700">
-          <li class="flex items-start">
-            <span class="mr-4 text-2xl text-green-600">✓</span>
-            <span><strong>Resume:</strong> Include your relevant experience, certifications, and previous employers</span>
-          </li>
-          <li class="flex items-start">
-            <span class="mr-4 text-2xl text-green-600">✓</span>
-            <span><strong>References:</strong> Provide 3 professional references who can speak to your work quality and reliability</span>
-          </li>
-          <li class="flex items-start">
-            <span class="mr-4 text-2xl text-green-600">✓</span>
-            <span><strong>Certifications:</strong> Copies of ISA certification, OSHA cards, or other relevant credentials</span>
-          </li>
-          <li class="flex items-start">
-            <span class="mr-4 text-2xl text-green-600">✓</span>
-            <span><strong>Driver's License:</strong> Valid Colorado or valid out-of-state driver's license</span>
-          </li>
-          <li class="flex items-start">
-            <span class="mr-4 text-2xl text-green-600">✓</span>
-            <span><strong>Cover Letter:</strong> Tell us why you'd be a great fit for Arbor Care</span>
-          </li>
+  <!-- CONTENT -->
+  <section class="py-16 md:py-24">
+    <div class="container">
+      <div class="mx-auto max-w-3xl">
+        <h2 class="text-2xl font-bold md:text-4xl mb-6">Who We're Looking For</h2>
+        <p class="leading-relaxed text-muted-foreground">
+          Arbor Care Tree Solutions hires based on three things: experience, personality, and passion for doing the job right. We're a family-owned company built by people who genuinely love this work, and we want team members who share that same standard.
+        </p>
+        <p class="mt-4 leading-relaxed text-muted-foreground">
+          We're always looking for experienced tree climbers, ground crew, and equipment operators. If you've worked in tree care and want to be part of a crew that takes pride in quality work, we'd like to hear from you.
+        </p>
+
+        <h3 class="text-xl font-bold mt-10 mb-4">What We Offer</h3>
+        <ul class="space-y-2">
+          {benefits.map((item) => (
+            <li class="flex items-start gap-2 text-muted-foreground">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-accent mt-1 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg>
+              <span>{item}</span>
+            </li>
+          ))}
         </ul>
-      </div>
-    </section>
 
-    <!-- CTA Section -->
-    <section class="bg-green-600 text-white py-12 px-4">
-      <div class="max-w-4xl mx-auto text-center">
-        <h2 class="text-4xl font-bold mb-4">Ready to Join Arbor Care?</h2>
-        <p class="text-xl mb-8">Contact us today to discuss career opportunities.</p>
-        <a href="tel:+13039496818" class="bg-white text-green-600 px-8 py-3 rounded-lg font-bold hover:bg-gray-100 transition inline-flex items-center justify-center gap-2">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-          Call (303) 949-6818
-        </a>
+        <h3 class="text-xl font-bold mt-10 mb-4">How to Apply</h3>
+        <p class="leading-relaxed text-muted-foreground">
+          Give us a call at <a href={business.phoneTel} class="text-primary font-semibold hover:underline">{business.phone}</a> or send an email to <a href={`mailto:${business.email}`} class="text-primary font-semibold hover:underline">{business.email}</a>.
+          Tell us about your experience and we'll set up a time to talk. It's that simple.
+        </p>
       </div>
-    </section>
-  </main>
+    </div>
+  </section>
 
-  <Footer slot="footer" />
-</Layout>
+  <!-- CTA -->
+  <section class="py-16 md:py-24 bg-muted">
+    <div class="container">
+      <div class="mx-auto max-w-2xl rounded-xl border-2 border-accent/30 bg-card p-8 md:p-12 text-center">
+        <h2 class="text-2xl font-bold md:text-3xl">Ready to Join the Team?</h2>
+        <p class="mt-4 text-muted-foreground leading-relaxed">
+          Call us or send an email. We're always interested in talking to experienced tree workers.
+        </p>
+        <div class="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+          <a href={business.phoneTel} class="inline-flex items-center justify-center gap-2 rounded-md bg-accent px-8 py-4 text-base font-bold text-accent-foreground shadow-lg hover:bg-accent/90 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            {business.phone}
+          </a>
+          <a href={`mailto:${business.email}`} class="inline-flex items-center justify-center gap-2 rounded-md border border-input bg-background px-8 py-4 text-base font-bold text-foreground hover:bg-muted transition-colors">
+            Email Us
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

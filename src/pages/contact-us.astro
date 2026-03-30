@@ -1,178 +1,221 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import Header from "../components/Header.tsx";
-import Footer from "../components/Footer.astro";
-import EstimateEmbed from "../components/EstimateEmbed.tsx";
+import BaseLayout from "../components/layout/BaseLayout.astro";
+import EstimateEmbed from "../components/ui/EstimateEmbed";
+import { business } from "../data/business";
+
+const contactSchema = {
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  mainEntity: {
+    "@type": "LocalBusiness",
+    name: "Arbor Care Tree Solutions",
+    telephone: "(303) 949-6818",
+    email: "ArborCareTreeSolutions@gmail.com",
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "1130 S Santa Fe Dr",
+      addressLocality: "Denver",
+      addressRegion: "CO",
+      postalCode: "80223",
+    },
+  },
+};
 ---
 
-<Layout title="Contact Us | Arbor Care Tree Solutions Denver" description="Contact Arbor Care Tree Solutions in Denver, CO. Call (303) 949-6818, email, or fill out our form for a free estimate. We answer 24/7." canonical="/contact-us">
-  <Header slot="header" pathname="/contact-us" client:load />
+<BaseLayout
+  title="Contact Arbor Care Tree Solutions | Denver CO Tree Service"
+  description="Contact Arbor Care Tree Solutions for tree service in Denver. Call (303) 949-6818 for 24-hour emergency service. ISA-certified, licensed and insured."
+>
+  <script type="application/ld+json" set:html={JSON.stringify(contactSchema)} />
 
-  <main class="min-h-screen">
-    <!-- Hero Section -->
-    <section
-      class="relative h-96 bg-cover bg-center flex items-center justify-center"
-      style="background-image: url('/assets/contact-hero.jpg');"
-    >
-      <div class="absolute inset-0 bg-black/40"></div>
-      <div class="relative z-10 text-center text-white px-4">
-        <h1 class="text-5xl md:text-6xl font-bold mb-4">Contact Us</h1>
-        <p class="text-xl md:text-2xl">Get Your Free Estimate Today</p>
+  <!-- HERO -->
+  <section class="relative min-h-[500px] md:min-h-[60vh] flex items-center overflow-hidden">
+    <img src="/assets/contact-hero.jpg" alt="Chainsaw on the ground near trees at a Denver tree service job site" class="absolute inset-0 h-full w-full object-cover" width="1920" height="1080" loading="eager" fetchpriority="high" />
+    <div class="absolute inset-0 bg-black/60"></div>
+    <div class="container relative z-10 py-20 pb-28 md:py-28 text-center">
+      <div class="mx-auto max-w-3xl">
+        <h1 class="text-3xl font-bold text-white md:text-5xl leading-tight">
+          Contact Arbor Care Tree Solutions
+        </h1>
+        <p class="mx-auto mt-4 text-lg text-white/80">
+          Ready to help. Call now or send us a message.
+        </p>
+        <div class="mt-8">
+          <a href={business.phoneTel} class="inline-flex items-center justify-center gap-2 rounded-md bg-accent px-10 py-5 text-xl font-bold text-accent-foreground shadow-lg hover:bg-accent/90 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            {business.phone}
+          </a>
+        </div>
       </div>
-    </section>
+    </div>
+    <div class="absolute bottom-0 left-0 right-0 z-10 border-t border-white/20">
+      <div class="container flex flex-wrap items-center justify-center gap-x-8 gap-y-2 py-3 text-sm text-white/90">
+        <span class="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <span class="font-medium">Available 24/7</span>
+        </span>
+        <span class="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></svg>
+          <span class="font-medium">Free Estimates</span>
+        </span>
+        <span class="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <span class="font-medium">No Trip Charge</span>
+        </span>
+        <span class="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          <span class="font-medium">We Answer Immediately</span>
+        </span>
+      </div>
+    </div>
+  </section>
 
-    <!-- Contact Information -->
-    <section class="py-12 px-4 max-w-4xl mx-auto">
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-        <!-- Phone -->
-        <div class="bg-white rounded-lg shadow-lg p-6 text-center">
-          <div class="flex justify-center mb-4">
-            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-green-600"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+  <!-- CONTACT INFO + FORM -->
+  <section class="py-16 md:py-24">
+    <div class="container">
+      <div class="mx-auto max-w-5xl grid gap-12 lg:grid-cols-5">
+        <!-- LEFT — Contact Info -->
+        <div class="lg:col-span-2 space-y-8">
+          <div>
+            <div class="flex items-center gap-2 mb-3">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              <h2 class="font-bold text-lg">Call Us</h2>
+            </div>
+            <a href={business.phoneTel} class="text-2xl font-bold text-primary hover:underline">
+              {business.phone}
+            </a>
+            <p class="mt-1 text-sm text-muted-foreground">
+              Available 24/7 - we answer immediately, including nights and weekends.
+            </p>
           </div>
-          <h3 class="text-xl font-bold mb-2">Phone</h3>
-          <a href="tel:+13039496818" class="text-green-600 hover:text-green-700 font-semibold text-lg">
-            (303) 949-6818
-          </a>
-          <p class="text-gray-600 text-sm mt-2">Available 24/7</p>
+
+          <div>
+            <div class="flex items-center gap-2 mb-3">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+              <h2 class="font-bold text-lg">Email Us</h2>
+            </div>
+            <a href={`mailto:${business.email}`} class="text-primary font-semibold hover:underline">
+              {business.email}
+            </a>
+            <p class="mt-1 text-sm text-muted-foreground">We respond within 24 hours.</p>
+          </div>
+
+          <div>
+            <div class="flex items-center gap-2 mb-3">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+              <h2 class="font-bold text-lg">Our Location</h2>
+            </div>
+            <p class="text-foreground font-medium">1130 S Santa Fe Dr</p>
+            <p class="text-foreground font-medium">Denver, CO 80223</p>
+          </div>
+
+          <div>
+            <div class="flex items-center gap-2 mb-3">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              <h2 class="font-bold text-lg">Hours</h2>
+            </div>
+            <div class="text-sm text-muted-foreground space-y-1">
+              <p class="text-foreground font-medium">Emergency service: Available 24/7</p>
+              <p>Call any time — we answer immediately.</p>
+            </div>
+          </div>
         </div>
 
-        <!-- Email -->
-        <div class="bg-white rounded-lg shadow-lg p-6 text-center">
-          <div class="flex justify-center mb-4">
-            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-green-600"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
+        <!-- RIGHT — Form -->
+        <div class="lg:col-span-3">
+          <div class="rounded-xl border border-border bg-card overflow-hidden">
+            <EstimateEmbed client:visible />
           </div>
-          <h3 class="text-xl font-bold mb-2">Email</h3>
-          <a href="mailto:ArborCareTreeSolutions@gmail.com" class="text-green-600 hover:text-green-700 font-semibold break-all">
-            ArborCareTreeSolutions@gmail.com
-          </a>
-          <p class="text-gray-600 text-sm mt-2">We'll respond quickly</p>
         </div>
+      </div>
+    </div>
+  </section>
 
-        <!-- Location -->
-        <div class="bg-white rounded-lg shadow-lg p-6 text-center">
-          <div class="flex justify-center mb-4">
-            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-green-600"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-          </div>
-          <h3 class="text-xl font-bold mb-2">Location</h3>
-          <p class="text-gray-700 font-semibold">
-            1130 S Santa Fe Dr<br />
-            Denver, CO 80223
+  <!-- SERVICE AREAS -->
+  <section class="bg-muted py-16 md:py-24">
+    <div class="container">
+      <div class="mx-auto max-w-4xl grid gap-8 md:grid-cols-5">
+        <div class="md:col-span-3">
+          <h2 class="text-2xl font-bold md:text-3xl">Areas We Serve</h2>
+          <p class="mt-6 leading-relaxed text-muted-foreground">
+            We provide tree service throughout the Denver metro - Denver, Aurora, Lakewood, Englewood, Littleton, Centennial, Highlands Ranch, Arvada, Westminster, and Thornton. Not sure if we cover your area? Call us at <a href={business.phoneTel} class="text-primary font-semibold hover:underline">{business.phone}</a> and we'll let you know.
           </p>
         </div>
-
-        <!-- Hours -->
-        <div class="bg-white rounded-lg shadow-lg p-6 text-center">
-          <div class="flex justify-center mb-4">
-            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-green-600"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+        <div class="md:col-span-2">
+          <div class="rounded-lg border border-border bg-background p-6">
+            <div class="mb-4 flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+              <h3 class="font-bold">Service Areas</h3>
+            </div>
+            <ul class="space-y-2">
+              {business.serviceAreas.map((area) => (
+                <li class="flex items-center gap-2 text-sm text-muted-foreground">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-accent flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg>
+                  {area}
+                </li>
+              ))}
+            </ul>
           </div>
-          <h3 class="text-xl font-bold mb-2">Hours</h3>
-          <p class="text-gray-700 font-semibold">
-            24/7 Service<br />
-            Emergency Response
-          </p>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Contact Form -->
-    <section class="py-12 px-4 max-w-4xl mx-auto">
-      <h2 class="text-4xl font-bold mb-8 text-center">Get Your Free Estimate</h2>
-      <div class="bg-white rounded-lg shadow-lg p-8">
-        <EstimateEmbed client:visible />
-      </div>
-    </section>
-
-    <!-- Service Areas -->
-    <section class="py-12 px-4 max-w-4xl mx-auto">
-      <h2 class="text-4xl font-bold mb-8 text-center">Service Areas</h2>
-      <p class="text-lg text-gray-700 mb-8 text-center">
-        We proudly serve Denver and the surrounding metro area with professional tree care services.
-      </p>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div class="bg-blue-50 p-6 rounded-lg">
-          <h3 class="text-xl font-bold mb-4">Denver Area</h3>
-          <ul class="space-y-2 text-gray-700 text-sm">
-            <li>• Downtown Denver</li>
-            <li>• Capitol Hill</li>
-            <li>• Washington Park</li>
-            <li>• Cherry Creek</li>
-            <li>• South Platte</li>
-          </ul>
+  <!-- MAP -->
+  <section class="py-16 md:py-24">
+    <div class="container">
+      <div class="mx-auto max-w-3xl">
+        <h2 class="text-2xl font-bold md:text-3xl mb-8 text-center">Find Us</h2>
+        <div class="aspect-[16/9] rounded-xl overflow-hidden border border-border">
+          <iframe
+            src={business.mapsEmbed}
+            width="100%"
+            height="100%"
+            style="border:0"
+            allowfullscreen
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Arbor Care Tree Solutions location on Google Maps"
+          ></iframe>
         </div>
-        <div class="bg-blue-50 p-6 rounded-lg">
-          <h3 class="text-xl font-bold mb-4">South Denver</h3>
-          <ul class="space-y-2 text-gray-700 text-sm">
-            <li>• Aurora</li>
-            <li>• Littleton</li>
-            <li>• Englewood</li>
-            <li>• Castle Rock</li>
-            <li>• Highlands Ranch</li>
-          </ul>
-        </div>
-        <div class="bg-blue-50 p-6 rounded-lg">
-          <h3 class="text-xl font-bold mb-4">Denver Metro</h3>
-          <ul class="space-y-2 text-gray-700 text-sm">
-            <li>• Westminster</li>
-            <li>• Broomfield</li>
-            <li>• Thornton</li>
-            <li>• Arvada</li>
-            <li>• Boulder Area</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- Google Maps -->
-    <section class="py-12 px-4 max-w-4xl mx-auto">
-      <h2 class="text-4xl font-bold mb-8 text-center">Our Location</h2>
-      <div class="rounded-lg overflow-hidden shadow-lg" style="height: 400px;">
-        <iframe
-          width="100%"
-          height="400"
-          style="border:0"
-          loading="lazy"
-          allowfullscreen=""
-          referrerpolicy="no-referrer-when-downgrade"
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3069.3814234572647!2d-104.90819!3d39.680453!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x876b8df79e9ce9f9%3A0x4b4f8c8d8c8d8c8d!2sArbor%20Care%20Tree%20Solutions!5e0!3m2!1sen!2sus!4v1234567890"
-        ></iframe>
-      </div>
-    </section>
-
-    <!-- FAQ Section -->
-    <section class="py-12 px-4 max-w-4xl mx-auto">
-      <h2 class="text-4xl font-bold mb-8 text-center">Frequently Asked Questions</h2>
-      <div class="space-y-6">
-        <div class="bg-gray-50 rounded-lg p-6">
-          <h3 class="text-xl font-bold mb-3">Do you offer free estimates?</h3>
-          <p class="text-gray-700">Yes, we provide free, no-obligation estimates for all our services. There is no trip charge for the estimate.</p>
-        </div>
-        <div class="bg-gray-50 rounded-lg p-6">
-          <h3 class="text-xl font-bold mb-3">Are you available for emergency services?</h3>
-          <p class="text-gray-700">Yes, we provide 24/7 emergency tree removal and storm damage response. Call (303) 949-6818 anytime.</p>
-        </div>
-        <div class="bg-gray-50 rounded-lg p-6">
-          <h3 class="text-xl font-bold mb-3">What areas do you service?</h3>
-          <p class="text-gray-700">We serve Denver and the surrounding metro area, including Aurora, Littleton, Englewood, Boulder, and many other communities.</p>
-        </div>
-        <div class="bg-gray-50 rounded-lg p-6">
-          <h3 class="text-xl font-bold mb-3">How do I schedule a service?</h3>
-          <p class="text-gray-700">You can call us at (303) 949-6818, email us at ArborCareTreeSolutions@gmail.com, or fill out the estimate form on this page.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="bg-green-600 text-white py-12 px-4">
-      <div class="max-w-4xl mx-auto text-center">
-        <h2 class="text-4xl font-bold mb-4">Ready to Improve Your Trees?</h2>
-        <p class="text-xl mb-8">Contact us today for your free estimate. We're here to help!</p>
-        <a href="tel:+13039496818" class="bg-white text-green-600 px-8 py-3 rounded-lg font-bold hover:bg-gray-100 transition inline-flex items-center justify-center gap-2">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-          Call (303) 949-6818
+        <a
+          href={business.socialProfiles.google}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 mt-3 text-sm text-primary font-semibold hover:underline"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+          View on Google Maps
         </a>
       </div>
-    </section>
-  </main>
+    </div>
+  </section>
 
-  <Footer slot="footer" />
-</Layout>
+  <!-- TRUST REINFORCEMENT -->
+  <section class="bg-primary py-8">
+    <div class="container">
+      <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-primary-foreground">
+        <span class="flex items-center gap-1.5">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg>
+          <span class="font-medium">Licensed & Insured in Colorado</span>
+        </span>
+        <span class="flex items-center gap-1.5">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
+          <span class="font-medium">ISA-Certified Arborist</span>
+        </span>
+        <span class="flex items-center gap-1.5">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <span class="font-medium">100+ Five-Star Reviews</span>
+        </span>
+        <span class="flex items-center gap-1.5">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></svg>
+          <span class="font-medium">Free Estimates</span>
+        </span>
+        <span class="flex items-center gap-1.5">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <span class="font-medium">Available 24/7</span>
+        </span>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

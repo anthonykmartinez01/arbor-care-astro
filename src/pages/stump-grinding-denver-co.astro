@@ -1,214 +1,301 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import Header from "../components/Header.tsx";
-import Footer from "../components/Footer.astro";
-import { EstimateButton } from "../components/EstimateModal.tsx";
+import BaseLayout from "../components/layout/BaseLayout.astro";
+import ServiceSchema from "../components/schema/ServiceSchema.astro";
+import EstimateModal from "../components/ui/EstimateModal";
+import { business } from "../data/business";
 ---
 
-<Layout title="Stump Grinding Denver CO | Fast & Professional | Arbor Care" description="Professional stump grinding in Denver, CO. Below-grade grinding, root removal options. Free estimates. Call (303) 949-6818." canonical="/stump-grinding-denver-co">
-  <Header slot="header" pathname="/stump-grinding-denver-co" client:load />
+<BaseLayout
+  title="Stump Grinding Denver CO | 24-Hour Emergency Service"
+  description="Stump grinding in Denver, CO. Fast, clean removal below grade. No trip charge, free estimates. Family owned & ISA-certified. Call (303) 949-6818."
+  canonical="/stump-grinding-denver-co"
+>
+  <ServiceSchema
+    slot="head"
+    name="Stump Grinding Denver CO"
+    description="Stump grinding and stump removal in Denver, Colorado. Commercial grinding equipment, clean results, free estimates."
+    url="/stump-grinding-denver-co"
+  />
 
-  <main class="min-h-screen">
-    <!-- Hero Section -->
-    <section
-      class="relative h-96 bg-cover bg-center flex items-center justify-center"
-      style="background-image: url('/assets/hero-stump-grinding.jpg');"
-    >
-      <div class="absolute inset-0 bg-black/40"></div>
-      <div class="relative z-10 text-center text-white px-4">
-        <h1 class="text-5xl md:text-6xl font-bold mb-4">Professional Stump Grinding</h1>
-        <p class="text-xl md:text-2xl">Fast & Efficient Stump Removal</p>
+  <!-- HERO -->
+  <section class="relative min-h-[500px] md:min-h-[60vh] flex items-center overflow-hidden">
+    <img src="/assets/hero-stump-grinding.jpg" alt="Commercial stump grinder in action on a residential property in Denver Colorado" class="absolute inset-0 h-full w-full object-cover" loading="eager" width="1920" height="1080" />
+    <div class="absolute inset-0 bg-black/60"></div>
+    <div class="container relative z-10 py-20 pb-28 md:py-28 text-center">
+      <div class="mx-auto max-w-3xl">
+        <h1 class="text-3xl font-bold text-white md:text-5xl lg:text-6xl leading-tight">
+          Stump Grinding in Denver, CO
+          <span class="block text-accent mt-2">Gone Below Grade, Yard Ready to Use</span>
+        </h1>
+        <p class="mx-auto mt-6 text-lg text-white/90 md:text-xl max-w-2xl">
+          That stump in your yard isn't going anywhere on its own - and it's attracting insects, creating a tripping hazard, and blocking your landscaping plans. We grind stumps fast and clean throughout Denver. Free estimates. Call{" "}
+          <a href={business.phoneTel} class="underline font-semibold text-accent hover:text-accent/80">{business.phone}</a>.
+        </p>
+        <div class="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+          <a href={business.phoneTel} class="inline-flex items-center justify-center gap-2 rounded-md bg-accent px-8 py-4 text-base font-bold text-accent-foreground shadow-lg hover:bg-accent/90 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+            Call {business.phone}
+          </a>
+          <EstimateModal client:load className="inline-flex items-center justify-center gap-2 rounded-md bg-white/15 backdrop-blur border border-white/30 px-8 py-4 text-base font-bold text-white hover:bg-white/25 transition-colors">
+            Get Free Estimate
+          </EstimateModal>
+        </div>
       </div>
-    </section>
+    </div>
+    <div class="absolute bottom-0 left-0 right-0 bg-primary/95 backdrop-blur-sm">
+      <div class="container flex flex-wrap items-center justify-center gap-x-8 gap-y-2 py-3 text-sm text-primary-foreground">
+        <span class="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+          <span class="font-medium">100+ Five-Star Reviews</span>
+        </span>
+        <span class="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"></path></svg>
+          <span class="font-medium">Fast Turnaround</span>
+        </span>
+        <span class="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"></path></svg>
+          <span class="font-medium">No Trip Charge</span>
+        </span>
+        <span class="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+          <span class="font-medium">Family Owned</span>
+        </span>
+      </div>
+    </div>
+  </section>
 
-    <!-- Introduction -->
-    <section class="py-12 px-4 max-w-4xl mx-auto">
-      <div class="prose prose-lg max-w-none">
-        <p class="text-lg text-gray-700 mb-6">
-          After tree removal, you're left with an unsightly stump that can be a tripping hazard and attract pests. Arbor Care Tree Solutions provides professional stump grinding services to eliminate stumps completely. Our modern equipment can grind stumps below grade level, leaving your landscape clean and ready for new plantings or other uses.
+  <!-- OPENING -->
+  <section class="py-16 md:py-24">
+    <div class="container">
+      <div class="mx-auto max-w-3xl text-center">
+        <p class="text-lg leading-relaxed text-muted-foreground">
+          The tree is gone but the stump is still there - and it's been there long enough that you've started mowing around it, stepping over it, and explaining it to people who visit your yard. Stumps don't break down quickly. A large hardwood stump left in place can take a decade or more to rot on its own, and the process isn't clean - it gets soft and spongy, attracts wood-boring insects, and becomes a breeding ground for fungal growth that can spread to nearby healthy trees.
+        </p>
+        <p class="mt-6 text-lg leading-relaxed text-foreground font-medium">
+          Arbor Care Tree Solutions grinds stumps throughout Denver, taking them down below grade and leaving your yard level, clean, and ready for whatever you want to do with the space.
         </p>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Signs You Need Stump Grinding -->
-    <section class="py-12 px-4 max-w-4xl mx-auto">
-      <h2 class="text-4xl font-bold mb-8 text-center">Signs You Need Stump Grinding</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div class="bg-amber-50 p-6 rounded-lg">
-          <h3 class="text-xl font-bold mb-2">Unsightly Appearance</h3>
-          <p class="text-gray-700">Tree stumps detract from your landscape's appearance and curb appeal.</p>
+  <!-- SIGNS YOU NEED -->
+  <section class="bg-muted py-16 md:py-24">
+    <div class="container">
+      <h2 class="text-center text-2xl font-bold md:text-4xl">Signs You Need Stump Grinding</h2>
+      <p class="mx-auto mt-6 max-w-3xl text-center text-muted-foreground leading-relaxed">
+        The most obvious sign is a stump that's just in the way - blocking lawn mowing, sitting in the middle of a planting area, or taking up space in a yard you want to use. But there are practical reasons beyond appearance to deal with a stump sooner rather than later:
+      </p>
+      <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <!-- Tripping hazard -->
+        <div class="rounded-lg border border-border bg-background p-6 text-center">
+          <div class="mx-auto mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-destructive/10">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-destructive" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 16v-2.38C4 11.5 2.97 10.5 3 8c.03-2.72 1.49-6 4.5-6C9.37 2 10 3.8 10 5.5c0 3.11-2 5.66-2 8.68V16a2 2 0 1 1-4 0Z"></path><path d="M20 20v-2.38c0-2.12 1.03-3.12 1-5.62-.03-2.72-1.49-6-4.5-6C14.63 6 14 7.8 14 9.5c0 3.11 2 5.66 2 8.68V20a2 2 0 1 0 4 0Z"></path></svg>
+          </div>
+          <p class="text-sm leading-relaxed text-muted-foreground">Tripping hazard - especially older stumps that have blended into the grass</p>
         </div>
-        <div class="bg-amber-50 p-6 rounded-lg">
-          <h3 class="text-xl font-bold mb-2">Safety Hazard</h3>
-          <p class="text-gray-700">Stumps create tripping hazards, especially in yards with children or pets.</p>
+        <!-- Attracting insects -->
+        <div class="rounded-lg border border-border bg-background p-6 text-center">
+          <div class="mx-auto mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-destructive/10">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-destructive" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m8 2 1.88 1.88"></path><path d="M14.12 3.88 16 2"></path><path d="M9 7.13v-1a3.003 3.003 0 1 1 6 0v1"></path><path d="M12 20c-3.3 0-6-2.7-6-6v-3a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v3c0 3.3-2.7 6-6 6"></path><path d="M12 20v-9"></path><path d="M6.53 9C4.6 8.8 3 7.1 3 5"></path><path d="M6 13H2"></path><path d="M3 21c0-2.1 1.7-3.9 3.8-4"></path><path d="M20.97 5c0 2.1-1.6 3.8-3.5 4"></path><path d="M22 13h-4"></path><path d="M17.2 17c2.1.1 3.8 1.9 3.8 4"></path></svg>
+          </div>
+          <p class="text-sm leading-relaxed text-muted-foreground">Attracting carpenter ants, termites, and wood-boring beetles near your home</p>
         </div>
-        <div class="bg-amber-50 p-6 rounded-lg">
-          <h3 class="text-xl font-bold mb-2">Pest Attraction</h3>
-          <p class="text-gray-700">Decaying stumps attract termites, ants, and other wood-boring insects.</p>
+        <!-- Fungal growth -->
+        <div class="rounded-lg border border-border bg-background p-6 text-center">
+          <div class="mx-auto mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-destructive/10">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-destructive" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 20h10"></path><path d="M10 20c5.5-2.5.8-6.4 3-10"></path><path d="M9.5 9.4c1.1.8 1.8 2.2 2.3 3.7-2 .4-3.5.4-4.8-.3-1.2-.6-2.3-1.9-3-4.2 2.8-.5 4.4 0 5.5.8z"></path><path d="M14.1 6a7 7 0 0 0-1.1 4c1.9-.1 3.3-.6 4.3-1.4 1-1 1.6-2.3 1.7-4.6-2.7.1-4 1-4.9 2z"></path></svg>
+          </div>
+          <p class="text-sm leading-relaxed text-muted-foreground">Fungal growth spreading from dead stump to nearby live trees</p>
         </div>
-        <div class="bg-amber-50 p-6 rounded-lg">
-          <h3 class="text-xl font-bold mb-2">Space Reclamation</h3>
-          <p class="text-gray-700">Grinding allows you to use the space for new landscaping or construction.</p>
+        <!-- Blocking lawn -->
+        <div class="rounded-lg border border-border bg-background p-6 text-center">
+          <div class="mx-auto mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-destructive/10">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-destructive" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"></path><path d="M12 9v4"></path><path d="M12 17h.01"></path></svg>
+          </div>
+          <p class="text-sm leading-relaxed text-muted-foreground">Blocking lawn mowing, planting areas, or landscaping plans</p>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Service Options -->
-    <section class="py-12 px-4 max-w-4xl mx-auto">
-      <h2 class="text-4xl font-bold mb-8 text-center">Our Stump Services</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-          <div class="bg-amber-700 h-24 flex items-center justify-center">
-            <span class="text-white text-3xl">⚙️</span>
-          </div>
-          <div class="p-6">
-            <h3 class="text-xl font-bold mb-2">Commercial Stump Grinding</h3>
-            <p class="text-gray-600 mb-4">Professional grinding services for residential and commercial properties.</p>
-          </div>
-        </div>
-
-        <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-          <div class="bg-amber-700 h-24 flex items-center justify-center">
-            <span class="text-white text-3xl">🚚</span>
-          </div>
-          <div class="p-6">
-            <h3 class="text-xl font-bold mb-2"><a href="/stump-removal-denver-co" class="text-green-600 hover:text-green-700">Stump Removal</a></h3>
-            <p class="text-gray-600 mb-4">Complete stump removal with root extraction and cleanup.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Denver Specific Section -->
-    <section class="py-12 px-4 max-w-4xl mx-auto">
-      <h2 class="text-4xl font-bold mb-8 text-center">Denver Stump Grinding Expertise</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-        <div>
-          <h3 class="text-2xl font-bold mb-4">Below-Grade Grinding</h3>
-          <p class="text-lg text-gray-700 mb-4">
-            Our professional-grade equipment can grind stumps up to 12 inches below grade level, completely eliminating the stump and making the space level with your lawn.
-          </p>
-          <p class="text-lg text-gray-700 mb-4">
-            We handle Denver's rocky soil and difficult stumps efficiently and safely.
-          </p>
-          <p class="text-lg text-gray-700">
-            After grinding, you're left with wood chips that can be used for mulch or removed from your property.
+  <!-- OUR OPTIONS -->
+  <section class="py-16 md:py-24">
+    <div class="container">
+      <h2 class="text-center text-2xl font-bold md:text-4xl">Our Stump Grinding Options</h2>
+      <div class="mx-auto mt-8 max-w-3xl">
+        <div class="rounded-xl border border-border bg-card p-8">
+          <h3 class="text-lg font-bold mb-3">Commercial Stump Grinding</h3>
+          <p class="leading-relaxed text-muted-foreground">
+            Our primary service is stump grinding - we bring in a commercial grinder and reduce the stump to wood chips 6 to 12 inches below the surface. The chips can be raked into the hole as a natural fill that breaks down over time, or we can haul them away depending on your preference. The result is a level surface you can sod over, mulch, or landscape without any trace of the stump.
           </p>
         </div>
-        <div>
-          <img src="/assets/hero-climber.jpg" alt="Professional stump grinding equipment" class="rounded-lg shadow-lg" />
-        </div>
       </div>
-    </section>
-
-    <!-- What to Expect -->
-    <section class="py-12 px-4 max-w-4xl mx-auto">
-      <h2 class="text-4xl font-bold mb-8 text-center">What to Expect From Our Service</h2>
-      <div class="space-y-4">
-        <div class="flex gap-4">
-          <div class="flex-shrink-0 w-8 h-8 bg-green-600 text-white rounded-full flex items-center justify-center font-bold">1</div>
-          <div>
-            <h3 class="text-xl font-bold mb-2">Site Preparation</h3>
-            <p class="text-gray-700">We assess the stump location and prepare the area for safe grinding.</p>
+      <div class="mt-8 space-y-8">
+        <!-- Stump Removal -->
+        <div class="flex flex-col gap-6 rounded-xl border border-border bg-card p-8 md:flex-row md:items-start">
+          <div class="flex-shrink-0">
+            <div class="inline-flex h-16 w-16 items-center justify-center rounded-full bg-accent/15">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path><path d="M2 12h20"></path></svg>
+            </div>
           </div>
-        </div>
-        <div class="flex gap-4">
-          <div class="flex-shrink-0 w-8 h-8 bg-green-600 text-white rounded-full flex items-center justify-center font-bold">2</div>
-          <div>
-            <h3 class="text-xl font-bold mb-2">Professional Grinding</h3>
-            <p class="text-gray-700">We use modern equipment to grind the stump below grade level.</p>
-          </div>
-        </div>
-        <div class="flex gap-4">
-          <div class="flex-shrink-0 w-8 h-8 bg-green-600 text-white rounded-full flex items-center justify-center font-bold">3</div>
-          <div>
-            <h3 class="text-xl font-bold mb-2">Chip Removal</h3>
-            <p class="text-gray-700">We can remove or leave wood chips for use as mulch.</p>
-          </div>
-        </div>
-        <div class="flex gap-4">
-          <div class="flex-shrink-0 w-8 h-8 bg-green-600 text-white rounded-full flex items-center justify-center font-bold">4</div>
-          <div>
-            <h3 class="text-xl font-bold mb-2">Site Cleanup</h3>
-            <p class="text-gray-700">Your property is left clean and level, ready for new use.</p>
+          <div class="flex-1">
+            <a href="/stump-removal-denver-co" class="text-xl font-bold text-primary hover:underline">Stump Removal</a>
+            <p class="mt-3 leading-relaxed text-muted-foreground">For situations where the entire root system needs to be eliminated - such as replanting in the same spot, building a structure nearby, or dealing with a species that aggressively re-sprouts from roots - we offer stump removal. This is a more extensive process that involves excavating the root ball rather than just grinding the stump above ground, and it's the right choice when grinding alone won't fully solve the problem.</p>
+            <a href="/stump-removal-denver-co" class="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-primary hover:underline">
+              Learn more about Stump Removal <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"></path></svg>
+            </a>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Why Choose Us -->
-    <section class="py-12 px-4 max-w-4xl mx-auto">
-      <h2 class="text-4xl font-bold mb-8 text-center">Why Choose Arbor Care?</h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div class="text-center">
-          <div class="text-5xl mb-4">🏆</div>
-          <h3 class="text-xl font-bold mb-2">Professional Equipment</h3>
-          <p class="text-gray-700">Modern grinders capable of below-grade grinding.</p>
-        </div>
-        <div class="text-center">
-          <div class="text-5xl mb-4">📋</div>
-          <h3 class="text-xl font-bold mb-2">Licensed & Insured</h3>
-          <p class="text-gray-700">Fully licensed and insured for your protection.</p>
-        </div>
-        <div class="text-center">
-          <div class="text-5xl mb-4">⚡</div>
-          <h3 class="text-xl font-bold mb-2">Quick Service</h3>
-          <p class="text-gray-700">Fast and efficient grinding with minimal disruption.</p>
-        </div>
-        <div class="text-center">
-          <div class="text-5xl mb-4">💰</div>
-          <h3 class="text-xl font-bold mb-2">Free Estimates</h3>
-          <p class="text-gray-700">No obligation, no trip charge for your estimate.</p>
-        </div>
-        <div class="text-center">
-          <div class="text-5xl mb-4">🎯</div>
-          <h3 class="text-xl font-bold mb-2">Expert Service</h3>
-          <p class="text-gray-700">Years of experience in all types of stump grinding.</p>
-        </div>
-        <div class="text-center">
-          <div class="text-5xl mb-4">🏘️</div>
-          <h3 class="text-xl font-bold mb-2">Local Knowledge</h3>
-          <p class="text-gray-700">Experience with Denver's soil and conditions.</p>
+  <!-- FOR DENVER -->
+  <section class="bg-muted py-16 md:py-24">
+    <div class="container">
+      <div class="mx-auto max-w-4xl">
+        <div class="grid gap-8 md:grid-cols-5">
+          <div class="md:col-span-3">
+            <h2 class="text-2xl font-bold md:text-4xl">Stump Grinding for Denver Homes</h2>
+            <p class="mt-6 leading-relaxed text-muted-foreground">
+              Denver yards vary a lot in terms of soil type, stump size, and access. Properties in older Denver neighborhoods often have large, established stumps from cottonwoods, elms, and ash trees - hardwoods with extensive root systems that take longer to break down and require heavier grinding equipment. Newer developments in areas like Highlands Ranch, Centennial, or Arvada may have stumps from smaller ornamental trees but often have landscaping and irrigation lines nearby that require careful work.
+            </p>
+            <p class="mt-4 leading-relaxed text-muted-foreground">
+              We grind stumps throughout the Denver metro. We assess access and any nearby utilities or irrigation before grinding, and we let you know if anything needs to be worked around before we start.
+            </p>
+            <p class="mt-4 leading-relaxed text-muted-foreground">
+              Emerald Ash Borer has left a lot of ash tree stumps in Denver yards over the past several years. Ash stumps re-sprout aggressively from the root collar if not ground down far enough - we make sure the grind depth is sufficient to prevent regrowth.
+            </p>
+          </div>
+          <div class="md:col-span-2">
+            <div class="rounded-lg border border-border bg-background p-6">
+              <div class="mb-4 flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                <h3 class="font-bold">Service Areas</h3>
+              </div>
+              <ul class="space-y-2">
+                {business.serviceAreas.map((area) => (
+                  <li class="flex items-center gap-2 text-sm text-muted-foreground">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-accent flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><path d="m9 11 3 3L22 4"></path></svg>
+                    {area}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Related Services -->
-    <section class="py-12 px-4 max-w-4xl mx-auto">
-      <h2 class="text-4xl font-bold mb-8 text-center">Related Services</h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <a href="/tree-removal" class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition text-center">
-          <h3 class="text-xl font-bold mb-2 text-green-600">Tree Removal</h3>
-          <p class="text-gray-600">Professional removal before stump grinding</p>
-        </a>
-        <a href="/tree-trimming" class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition text-center">
-          <h3 class="text-xl font-bold mb-2 text-green-600">Tree Trimming</h3>
-          <p class="text-gray-600">Preventive tree care services</p>
-        </a>
-        <a href="/arborist-service-denver-co" class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition text-center">
-          <h3 class="text-xl font-bold mb-2 text-green-600">Arborist Services</h3>
-          <p class="text-gray-600">Tree health assessment</p>
-        </a>
+  <!-- WHAT TO EXPECT -->
+  <section class="py-16 md:py-24">
+    <div class="container">
+      <h2 class="text-center text-2xl font-bold md:text-4xl">What to Expect</h2>
+      <div class="mx-auto mt-12 max-w-3xl grid gap-6 sm:grid-cols-2">
+        <div class="rounded-lg border border-border bg-card p-6">
+          <div class="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-full bg-accent/15">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><path d="m9 12 2 2 4-4"></path></svg>
+          </div>
+          <h3 class="font-bold mb-2">Free On-Site Estimate</h3>
+          <p class="text-sm leading-relaxed text-muted-foreground">
+            We provide free on-site estimates for stump grinding. We look at the stump, check for anything nearby that needs to be worked around, and give you a firm price for the job. Most residential stumps are ground in under an hour. Multiple stumps on the same property are more efficient to schedule together, and we can often offer a better rate when grinding several at once.
+          </p>
+        </div>
+        <div class="rounded-lg border border-border bg-card p-6">
+          <div class="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-full bg-accent/15">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+          </div>
+          <h3 class="font-bold mb-2">Day of Service</h3>
+          <p class="text-sm leading-relaxed text-muted-foreground">
+            On the day of service, we grind the stump to the agreed depth, rake out the chips, and leave the area level and clean. If you want the chips hauled away rather than used as fill, let us know in advance and we'll plan for it.
+          </p>
+        </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- CTA Section -->
-    <section class="bg-green-600 text-white py-12 px-4">
-      <div class="max-w-4xl mx-auto text-center">
-        <h2 class="text-4xl font-bold mb-4">Ready to Remove Your Stumps?</h2>
-        <p class="text-xl mb-8">Get your free estimate for professional stump grinding today.</p>
-        <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <a href="tel:+13039496818" class="bg-white text-green-600 px-8 py-3 rounded-lg font-bold hover:bg-gray-100 transition flex items-center justify-center gap-2">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-            Call (303) 949-6818
+  <!-- WHY CHOOSE US -->
+  <section class="bg-muted py-16 md:py-24">
+    <div class="container">
+      <h2 class="text-center text-2xl font-bold md:text-4xl">Why Choose Us for Stump Grinding</h2>
+      <p class="mx-auto mt-6 max-w-3xl text-center text-muted-foreground leading-relaxed">
+        Arbor Care Tree Solutions is a family-owned company serving Denver with the right equipment for stumps of any size. We have 100+ five-star Google reviews from homeowners throughout the Denver metro who appreciated getting a clean result at a fair price with no surprises.
+      </p>
+      <div class="mx-auto mt-10 grid max-w-3xl gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div class="flex items-center gap-3 rounded-lg border border-border bg-background p-4">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+          <span class="text-sm font-medium">Family-owned company</span>
+        </div>
+        <div class="flex items-center gap-3 rounded-lg border border-border bg-background p-4">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+          <span class="text-sm font-medium">100+ five-star Google reviews</span>
+        </div>
+        <div class="flex items-center gap-3 rounded-lg border border-border bg-background p-4">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"></path></svg>
+          <span class="text-sm font-medium">Free estimates - no trip charge</span>
+        </div>
+        <div class="flex items-center gap-3 rounded-lg border border-border bg-background p-4">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+          <span class="text-sm font-medium">We answer immediately, 24/7</span>
+        </div>
+        <div class="flex items-center gap-3 rounded-lg border border-border bg-background p-4">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path><path d="m9 12 2 2 4-4"></path></svg>
+          <span class="text-sm font-medium">Licensed &amp; insured in Colorado</span>
+        </div>
+        <div class="flex items-center gap-3 rounded-lg border border-border bg-background p-4">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+          <span class="text-sm font-medium">Most stumps ground in under an hour</span>
+        </div>
+      </div>
+      <p class="mx-auto mt-8 max-w-3xl text-center text-muted-foreground leading-relaxed">
+        Estimates are free, there's no trip charge to come out, and we answer calls immediately 24 hours a day. Most stump jobs can be scheduled quickly - we're not a company where you wait three weeks for a simple grind. Licensed and insured in Colorado.
+      </p>
+    </div>
+  </section>
+
+  <!-- RELATED SERVICES GRID -->
+  <section class="py-16 md:py-24">
+    <div class="container">
+      <h2 class="text-center text-2xl font-bold md:text-4xl mb-12">Related Services</h2>
+      <div class="mx-auto max-w-md">
+        <!-- Stump Removal -->
+        <div class="group rounded-lg border border-border bg-card p-8 transition-shadow hover:shadow-md">
+          <div class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-accent/15">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path><path d="M2 12h20"></path></svg>
+          </div>
+          <h3 class="text-xl font-bold">Stump Removal</h3>
+          <p class="mt-3 text-sm leading-relaxed text-muted-foreground">Full root ball excavation for situations where grinding alone won't do - replanting, construction, or aggressive re-sprouting species.</p>
+          <a href="/stump-removal-denver-co" class="mt-6 inline-flex items-center gap-1 text-sm font-semibold text-primary hover:underline">
+            Learn More <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"></path></svg>
           </a>
-          <EstimateButton client:load className="bg-white text-green-600 px-8 py-3 rounded-lg font-bold hover:bg-gray-100 transition">
-            Get Free Estimate
-          </EstimateButton>
         </div>
       </div>
-    </section>
-  </main>
+    </div>
+  </section>
 
-  <Footer slot="footer" />
-</Layout>
+  <!-- FINAL CTA -->
+  <section class="bg-muted py-16 md:py-24">
+    <div class="container">
+      <div class="mx-auto max-w-2xl rounded-xl border-2 border-accent/30 bg-background p-8 md:p-12 text-center">
+        <h2 class="text-2xl font-bold md:text-3xl">Ready to Get Rid of That Stump for Good?</h2>
+        <p class="mt-4 text-muted-foreground leading-relaxed">
+          Free estimate, no trip charge. We grind stumps throughout Denver and the surrounding metro - call us and we'll get it scheduled fast. We answer immediately, any time.
+        </p>
+        <div class="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+          <a href={business.phoneTel} class="inline-flex items-center justify-center gap-2 rounded-md bg-accent px-8 py-4 text-base font-bold text-accent-foreground shadow-lg hover:bg-accent/90 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+            Call {business.phone}
+          </a>
+          <EstimateModal client:load className="inline-flex items-center justify-center gap-2 rounded-md border border-input bg-background px-8 py-4 text-base font-bold text-foreground hover:bg-muted transition-colors">
+            Request Free Estimate
+          </EstimateModal>
+        </div>
+        <p class="mt-6 text-sm text-muted-foreground">
+          Looking for all of our services? Visit our{" "}
+          <a href="/" class="text-primary font-semibold hover:underline">Denver tree service homepage</a>.
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

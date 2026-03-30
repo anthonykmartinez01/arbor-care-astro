@@ -1,202 +1,356 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import Header from "../components/Header.tsx";
-import Footer from "../components/Footer.astro";
-import { EstimateButton } from "../components/EstimateModal.tsx";
+import BaseLayout from "../components/layout/BaseLayout.astro";
+import ServiceSchema from "../components/schema/ServiceSchema.astro";
+import EstimateModal from "../components/ui/EstimateModal";
+import { business } from "../data/business";
 ---
 
-<Layout title="Tree Removal Denver CO | Safe & Professional | Arbor Care" description="Professional tree removal in Denver, CO. Emergency, hazardous & standard removal. ISA-certified, fully insured. Free estimates. Call (303) 949-6818." canonical="/tree-removal">
-  <Header slot="header" pathname="/tree-removal" client:load />
+<BaseLayout
+  title="Tree Removal Denver CO | 24-Hour Emergency Service"
+  description="Professional tree removal in Denver, CO. Emergency, hazardous & standard removal. ISA-certified, fully insured. Free estimates. Call (303) 949-6818."
+  canonical="/tree-removal"
+>
+  <ServiceSchema
+    slot="head"
+    name="Tree Removal Denver CO"
+    description="Professional tree removal in Denver, Colorado. Emergency, hazardous, and standard tree removal. ISA-certified arborists, fully insured."
+    url="/tree-removal"
+  />
 
-  <main class="min-h-screen">
-    <!-- Hero Section -->
-    <section
-      class="relative h-96 bg-cover bg-center flex items-center justify-center"
-      style="background-image: url('/assets/hero-tree-removal.jpg');"
-    >
-      <div class="absolute inset-0 bg-black/40"></div>
-      <div class="relative z-10 text-center text-white px-4">
-        <h1 class="text-5xl md:text-6xl font-bold mb-4">Professional Tree Removal</h1>
-        <p class="text-xl md:text-2xl">Safe Removal of Any Size Tree</p>
+  <!-- HERO -->
+  <section class="relative min-h-[500px] md:min-h-[60vh] flex items-center overflow-hidden">
+    <img src="/assets/hero-tree-removal.jpg" alt="Professional tree removal service with chainsaw and rigging in Denver Colorado" class="absolute inset-0 h-full w-full object-cover" loading="eager" width="1920" height="1080" />
+    <div class="absolute inset-0 bg-black/60"></div>
+    <div class="container relative z-10 py-20 pb-28 md:py-28 text-center">
+      <div class="mx-auto max-w-3xl">
+        <h1 class="text-3xl font-bold text-white md:text-5xl lg:text-6xl leading-tight">
+          Tree Removal in Denver, CO
+          <span class="block text-accent mt-2">Safe, Fast, and Done Right</span>
+        </h1>
+        <p class="mx-auto mt-6 text-lg text-white/90 md:text-xl max-w-2xl">
+          Dead, damaged, or dangerously positioned trees need to come down before they become a bigger problem. Our crew handles tree removal in Denver safely and efficiently, from small ornamentals to large hazard trees. Available 24/7. Call{" "}
+          <a href={business.phoneTel} class="underline font-semibold text-accent hover:text-accent/80">{business.phone}</a>.
+        </p>
+        <div class="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+          <a href={business.phoneTel} class="inline-flex items-center justify-center gap-2 rounded-md bg-accent px-8 py-4 text-base font-bold text-accent-foreground shadow-lg hover:bg-accent/90 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+            Call {business.phone}
+          </a>
+          <EstimateModal client:load className="inline-flex items-center justify-center gap-2 rounded-md bg-white/15 backdrop-blur border border-white/30 px-8 py-4 text-base font-bold text-white hover:bg-white/25 transition-colors">
+            Get Free Estimate
+          </EstimateModal>
+        </div>
       </div>
-    </section>
+    </div>
+    <div class="absolute bottom-0 left-0 right-0 bg-primary/95 backdrop-blur-sm">
+      <div class="container flex flex-wrap items-center justify-center gap-x-8 gap-y-2 py-3 text-sm text-primary-foreground">
+        <span class="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+          <span class="font-medium">100+ Five-Star Reviews</span>
+        </span>
+        <span class="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"></circle><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"></path></svg>
+          <span class="font-medium">ISA-Certified Arborists</span>
+        </span>
+        <span class="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path><path d="m9 12 2 2 4-4"></path></svg>
+          <span class="font-medium">Fully Insured</span>
+        </span>
+        <span class="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+          <span class="font-medium">Family Owned</span>
+        </span>
+      </div>
+    </div>
+  </section>
 
-    <!-- Introduction -->
-    <section class="py-12 px-4 max-w-4xl mx-auto">
-      <div class="prose prose-lg max-w-none">
-        <p class="text-lg text-gray-700 mb-6">
-          Tree removal is a serious task that requires professional expertise and specialized equipment. Whether you have a tree that's dead, diseased, hazardous, or simply in the way, Arbor Care Tree Solutions provides safe, efficient removal services. Our ISA-certified arborists ensure the job is done safely with minimal impact to your property.
+  <!-- OPENING -->
+  <section class="py-16 md:py-24">
+    <div class="container">
+      <div class="mx-auto max-w-3xl text-center">
+        <p class="text-lg leading-relaxed text-muted-foreground">
+          You already know the tree needs to come down. Maybe it died over the winter and didn't leaf out this spring. Maybe it took damage in a storm and now has a major limb hanging over your roof. Maybe it's leaning toward your fence and getting worse every year. Whatever the situation, a tree that needs to come down is not something you want to leave until it decides to come down on its own.
+        </p>
+        <p class="mt-6 text-lg leading-relaxed text-foreground font-medium">
+          Arbor Care Tree Solutions handles tree removal in Denver for residential properties of all sizes. We plan every job carefully, work safely around structures and landscaping, and leave your yard clean when we're done.
         </p>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- When You Need Tree Removal -->
-    <section class="py-12 px-4 max-w-4xl mx-auto">
-      <h2 class="text-4xl font-bold mb-8 text-center">Signs You Need Tree Removal</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div class="bg-red-50 p-6 rounded-lg">
-          <h3 class="text-xl font-bold mb-2">Dead or Dying Tree</h3>
-          <p class="text-gray-700">A tree that's no longer living poses a safety hazard and should be removed promptly.</p>
+  <!-- SIGNS YOU NEED -->
+  <section class="bg-muted py-16 md:py-24">
+    <div class="container">
+      <h2 class="text-center text-2xl font-bold md:text-4xl">Signs You Need Tree Removal</h2>
+      <p class="mx-auto mt-6 max-w-3xl text-center text-muted-foreground leading-relaxed">
+        The clearest sign is a tree that's dead or mostly dead. Dead trees don't stay standing indefinitely. They become unpredictable, especially after wind or snow. Other signs include:
+      </p>
+      <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <!-- Dead tree -->
+        <div class="rounded-lg border border-border bg-background p-6 text-center">
+          <div class="mx-auto mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-destructive/10">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-destructive" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="12" r="1"></circle><circle cx="15" cy="12" r="1"></circle><path d="M8 20v2h8v-2"></path><path d="m12.5 17-.5-1-.5 1h1z"></path><path d="M16 20a2 2 0 0 0 1.56-3.25 8 8 0 1 0-11.12 0A2 2 0 0 0 8 20"></path></svg>
+          </div>
+          <p class="text-sm leading-relaxed text-muted-foreground">Dead tree — no leaves in season, brittle branches, bark falling off in sheets</p>
         </div>
-        <div class="bg-red-50 p-6 rounded-lg">
-          <h3 class="text-xl font-bold mb-2">Disease or Pest Damage</h3>
-          <p class="text-gray-700">Severe disease or pest infestations may require removal to protect nearby trees.</p>
+        <!-- Trunk cracked -->
+        <div class="rounded-lg border border-border bg-background p-6 text-center">
+          <div class="mx-auto mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-destructive/10">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-destructive" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"></path><path d="M12 9v4"></path><path d="M12 17h.01"></path></svg>
+          </div>
+          <p class="text-sm leading-relaxed text-muted-foreground">Trunk cracked, split, or showing significant decay at the base</p>
         </div>
-        <div class="bg-red-50 p-6 rounded-lg">
-          <h3 class="text-xl font-bold mb-2">Storm Damage</h3>
-          <p class="text-gray-700">Trees damaged by severe weather may become hazardous and require removal.</p>
+        <!-- Noticeable lean -->
+        <div class="rounded-lg border border-border bg-background p-6 text-center">
+          <div class="mx-auto mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-destructive/10">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-destructive" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m17 14 3 3.3a1 1 0 0 1-.7 1.7H4.7a1 1 0 0 1-.7-1.7L7 14"></path><path d="m17 14V2H7v12"></path><rect x="2" y="18" width="20" height="4" rx="1"></rect></svg>
+          </div>
+          <p class="text-sm leading-relaxed text-muted-foreground">Noticeable lean that's getting worse, or roots heaving the soil</p>
         </div>
-        <div class="bg-red-50 p-6 rounded-lg">
-          <h3 class="text-xl font-bold mb-2">Hazardous Location</h3>
-          <p class="text-gray-700">Trees growing too close to structures or power lines may need to be removed.</p>
+        <!-- Major limbs failed -->
+        <div class="rounded-lg border border-border bg-background p-6 text-center">
+          <div class="mx-auto mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-destructive/10">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-destructive" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"></path></svg>
+          </div>
+          <p class="text-sm leading-relaxed text-muted-foreground">Major limbs already failed, leaving large wounds on the trunk</p>
         </div>
       </div>
-    </section>
+      <div class="mx-auto mt-10 max-w-3xl space-y-4 text-center">
+        <p class="text-muted-foreground leading-relaxed">
+          Location matters too. A declining tree in an open field is a different risk than the same tree 10 feet from your house. In Denver's established neighborhoods, trees are often close to homes, fences, driveways, and utilities — which means the stakes for a failure are higher and the removal requires more planning.
+        </p>
+        <p class="text-muted-foreground leading-relaxed">
+          Sometimes a tree that looks bad can be saved with treatment or structural support. Our arborists will tell you honestly whether removal is necessary or whether there's a viable alternative.
+        </p>
+      </div>
+    </div>
+  </section>
 
-    <!-- Service Options -->
-    <section class="py-12 px-4 max-w-4xl mx-auto">
-      <h2 class="text-4xl font-bold mb-8 text-center">Our Removal Services</h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-          <div class="bg-red-600 h-24 flex items-center justify-center">
-            <span class="text-white text-3xl">🚨</span>
+  <!-- OUR OPTIONS -->
+  <section class="py-16 md:py-24">
+    <div class="container">
+      <h2 class="text-center text-2xl font-bold md:text-4xl">Our Tree Removal Options</h2>
+      <p class="mx-auto mt-4 max-w-2xl text-center text-muted-foreground">
+        Not all tree removals are the same job.
+      </p>
+      <div class="mt-12 space-y-8">
+        <!-- Emergency Tree Removal -->
+        <div class="flex flex-col gap-6 rounded-xl border border-border bg-card p-8 md:flex-row md:items-start">
+          <div class="flex-shrink-0">
+            <div class="inline-flex h-16 w-16 items-center justify-center rounded-full bg-accent/15">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"></path></svg>
+            </div>
           </div>
-          <div class="p-6">
-            <h3 class="text-xl font-bold mb-2"><a href="/emergency-tree-removal-denver-co" class="text-green-600 hover:text-green-700">Emergency Removal</a></h3>
-            <p class="text-gray-600 mb-4">24/7 emergency response for storm damage and hazardous situations.</p>
+          <div class="flex-1">
+            <a href="/emergency-tree-removal-denver-co" class="text-xl font-bold text-primary hover:underline">Emergency Tree Removal</a>
+            <p class="mt-3 leading-relaxed text-muted-foreground">For trees that have already failed, fallen, or pose an immediate threat to a structure, we offer emergency tree removal. We answer calls immediately 24 hours a day and dispatch crews as fast as possible — because a tree on your roof or blocking your driveway at 11pm can't wait until the next business day.</p>
+            <a href="/emergency-tree-removal-denver-co" class="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-primary hover:underline">
+              Learn more about Emergency Tree Removal <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"></path></svg>
+            </a>
           </div>
         </div>
-
-        <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-          <div class="bg-red-600 h-24 flex items-center justify-center">
-            <span class="text-white text-3xl">⚠️</span>
+        <!-- Hazardous Tree Removal -->
+        <div class="flex flex-col gap-6 rounded-xl border border-border bg-card p-8 md:flex-row md:items-start md:flex-row-reverse">
+          <div class="flex-shrink-0">
+            <div class="inline-flex h-16 w-16 items-center justify-center rounded-full bg-accent/15">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"></path><path d="M12 9v4"></path><path d="M12 17h.01"></path></svg>
+            </div>
           </div>
-          <div class="p-6">
-            <h3 class="text-xl font-bold mb-2"><a href="/hazardous-tree-removal-denver-co" class="text-green-600 hover:text-green-700">Hazardous Tree Removal</a></h3>
-            <p class="text-gray-600 mb-4">Expert removal of dangerous or hard-to-reach trees.</p>
+          <div class="flex-1">
+            <a href="/hazardous-tree-removal-denver-co" class="text-xl font-bold text-primary hover:underline">Hazardous Tree Removal</a>
+            <p class="mt-3 leading-relaxed text-muted-foreground">For trees that are structurally compromised, heavily diseased, or positioned near power lines and structures in a way that makes failure a real risk, we handle hazardous tree removal. These jobs require careful rigging, the right equipment, and experienced crew members who know how to bring down a large or awkward tree without damaging what's around it.</p>
+            <a href="/hazardous-tree-removal-denver-co" class="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-primary hover:underline">
+              Learn more about Hazardous Tree Removal <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"></path></svg>
+            </a>
           </div>
         </div>
-
-        <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-          <div class="bg-red-600 h-24 flex items-center justify-center">
-            <span class="text-white text-3xl">🌿</span>
+        <!-- Bush & Shrub Removal -->
+        <div class="flex flex-col gap-6 rounded-xl border border-border bg-card p-8 md:flex-row md:items-start">
+          <div class="flex-shrink-0">
+            <div class="inline-flex h-16 w-16 items-center justify-center rounded-full bg-accent/15">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 22v-5l5-5 5 5-5 5z"></path><path d="M9.5 14.5 16 8"></path><path d="m17 2 5 5-.5.5a3.53 3.53 0 0 1-5 0s0 0 0 0a3.53 3.53 0 0 1 0-5L17 2"></path></svg>
+            </div>
           </div>
-          <div class="p-6">
-            <h3 class="text-xl font-bold mb-2"><a href="/bush-shrub-removal-denver-co" class="text-green-600 hover:text-green-700">Bush & Shrub Removal</a></h3>
-            <p class="text-gray-600 mb-4">Complete removal of unwanted bushes and shrubs.</p>
+          <div class="flex-1">
+            <a href="/bush-shrub-removal-denver-co" class="text-xl font-bold text-primary hover:underline">Bush &amp; Shrub Removal</a>
+            <p class="mt-3 leading-relaxed text-muted-foreground">We also remove bush &amp; shrub removal for properties where overgrown shrubs have become unmanageable, are damaging foundations or irrigation, or are simply taking up space that needs to be reclaimed.</p>
+            <a href="/bush-shrub-removal-denver-co" class="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-primary hover:underline">
+              Learn more about Bush &amp; Shrub Removal <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"></path></svg>
+            </a>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Process Section -->
-    <section class="py-12 px-4 max-w-4xl mx-auto">
-      <h2 class="text-4xl font-bold mb-8 text-center">Our Removal Process</h2>
-      <div class="space-y-4">
-        <div class="flex gap-4">
-          <div class="flex-shrink-0 w-8 h-8 bg-green-600 text-white rounded-full flex items-center justify-center font-bold">1</div>
-          <div>
-            <h3 class="text-xl font-bold mb-2">Safety Assessment</h3>
-            <p class="text-gray-700">We evaluate the tree's condition, size, location, and any hazards.</p>
+  <!-- FOR DENVER -->
+  <section class="bg-muted py-16 md:py-24">
+    <div class="container">
+      <div class="mx-auto max-w-4xl">
+        <div class="grid gap-8 md:grid-cols-5">
+          <div class="md:col-span-3">
+            <h2 class="text-2xl font-bold md:text-4xl">Tree Removal for Denver Homes</h2>
+            <p class="mt-6 leading-relaxed text-muted-foreground">
+              Denver's tree canopy is full of mature trees — cottonwoods, ash, elms, and large ornamentals that have been growing for decades. These trees add real value to a property, but when they fail or die, they're substantial removal jobs. Size, proximity to structures, and access all factor into how a removal gets planned and executed.
+            </p>
+            <p class="mt-4 leading-relaxed text-muted-foreground">
+              The Front Range storm season - late spring snowstorms especially - regularly causes tree failures across Denver, Aurora, Lakewood, Englewood, Littleton, and surrounding areas. We handle post-storm removals regularly throughout the Denver metro. If a storm just came through and you've got a tree situation, call us - we answer immediately and can assess the urgency.
+            </p>
+            <p class="mt-4 leading-relaxed text-muted-foreground">
+              Emerald Ash Borer has also killed a significant number of ash trees across Denver's neighborhoods. Dead ash trees become removal jobs quickly — once an ash tree dies from EAB, it deteriorates fast and becomes a hazard within one to two seasons.
+            </p>
           </div>
-        </div>
-        <div class="flex gap-4">
-          <div class="flex-shrink-0 w-8 h-8 bg-green-600 text-white rounded-full flex items-center justify-center font-bold">2</div>
-          <div>
-            <h3 class="text-xl font-bold mb-2">Professional Removal</h3>
-            <p class="text-gray-700">Using proper rigging and cutting techniques, we safely bring down the tree.</p>
-          </div>
-        </div>
-        <div class="flex gap-4">
-          <div class="flex-shrink-0 w-8 h-8 bg-green-600 text-white rounded-full flex items-center justify-center font-bold">3</div>
-          <div>
-            <h3 class="text-xl font-bold mb-2">Wood Processing</h3>
-            <p class="text-gray-700">We chip branches, cut logs, and haul away all debris.</p>
-          </div>
-        </div>
-        <div class="flex gap-4">
-          <div class="flex-shrink-0 w-8 h-8 bg-green-600 text-white rounded-full flex items-center justify-center font-bold">4</div>
-          <div>
-            <h3 class="text-xl font-bold mb-2">Site Cleanup</h3>
-            <p class="text-gray-700">Your property is left clean with no trace of the removal.</p>
+          <div class="md:col-span-2">
+            <div class="rounded-lg border border-border bg-background p-6">
+              <div class="mb-4 flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                <h3 class="font-bold">Service Areas</h3>
+              </div>
+              <ul class="space-y-2">
+                {business.serviceAreas.map((area) => (
+                  <li class="flex items-center gap-2 text-sm text-muted-foreground">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-accent flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><path d="m9 11 3 3L22 4"></path></svg>
+                    {area}
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Why Choose Us -->
-    <section class="py-12 px-4 max-w-4xl mx-auto">
-      <h2 class="text-4xl font-bold mb-8 text-center">Why Choose Arbor Care?</h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div class="text-center">
-          <div class="text-5xl mb-4">🏆</div>
-          <h3 class="text-xl font-bold mb-2">ISA Certified</h3>
-          <p class="text-gray-700">Our arborists are certified by the International Society of Arboriculture.</p>
+  <!-- WHAT TO EXPECT -->
+  <section class="py-16 md:py-24">
+    <div class="container">
+      <h2 class="text-center text-2xl font-bold md:text-4xl">What to Expect</h2>
+      <div class="mx-auto mt-12 max-w-3xl grid gap-6 sm:grid-cols-2">
+        <div class="rounded-lg border border-border bg-card p-6">
+          <div class="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-full bg-accent/15">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><path d="m9 12 2 2 4-4"></path></svg>
+          </div>
+          <h3 class="font-bold mb-2">Free On-Site Estimate</h3>
+          <p class="text-sm leading-relaxed text-muted-foreground">
+            Call us and we'll schedule a free on-site estimate. We look at the tree, assess the risks and access, and give you a firm quote for the full job - removal, cleanup, and haul-away. No hidden fees for debris removal or stump grinding unless you want to add it.
+          </p>
         </div>
-        <div class="text-center">
-          <div class="text-5xl mb-4">🛡️</div>
-          <h3 class="text-xl font-bold mb-2">Fully Insured</h3>
-          <p class="text-gray-700">Comprehensive liability and workers' compensation insurance.</p>
-        </div>
-        <div class="text-center">
-          <div class="text-5xl mb-4">⚡</div>
-          <h3 class="text-xl font-bold mb-2">24/7 Response</h3>
-          <p class="text-gray-700">Emergency service available 24/7 for urgent situations.</p>
-        </div>
-        <div class="text-center">
-          <div class="text-5xl mb-4">💰</div>
-          <h3 class="text-xl font-bold mb-2">Free Estimates</h3>
-          <p class="text-gray-700">No obligation, no trip charge for your free estimate.</p>
-        </div>
-        <div class="text-center">
-          <div class="text-5xl mb-4">🎯</div>
-          <h3 class="text-xl font-bold mb-2">Expert Technique</h3>
-          <p class="text-gray-700">Specialized equipment and professional rigging for any tree.</p>
-        </div>
-        <div class="text-center">
-          <div class="text-5xl mb-4">🏘️</div>
-          <h3 class="text-xl font-bold mb-2">Property Protection</h3>
-          <p class="text-gray-700">We protect your home, landscaping, and surrounding trees.</p>
+        <div class="rounded-lg border border-border bg-card p-6">
+          <div class="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-full bg-accent/15">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+          </div>
+          <h3 class="font-bold mb-2">Day of Service</h3>
+          <p class="text-sm leading-relaxed text-muted-foreground">
+            On the day of service, we arrive with the right equipment, work safely around your property, and clean up completely before we leave. For large or complex removals, we'll walk you through the plan before we start so you know exactly how the job will go.
+          </p>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Related Services -->
-    <section class="py-12 px-4 max-w-4xl mx-auto">
-      <h2 class="text-4xl font-bold mb-8 text-center">Related Services</h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <a href="/stump-grinding-denver-co" class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition text-center">
-          <h3 class="text-xl font-bold mb-2 text-green-600">Stump Grinding</h3>
-          <p class="text-gray-600">Remove stumps after tree removal</p>
-        </a>
-        <a href="/tree-trimming" class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition text-center">
-          <h3 class="text-xl font-bold mb-2 text-green-600">Tree Trimming</h3>
-          <p class="text-gray-600">Preventive tree care and maintenance</p>
-        </a>
-        <a href="/arborist-service-denver-co" class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition text-center">
-          <h3 class="text-xl font-bold mb-2 text-green-600">Arborist Services</h3>
-          <p class="text-gray-600">Tree health assessment and expert care</p>
-        </a>
+  <!-- WHY CHOOSE US -->
+  <section class="bg-muted py-16 md:py-24">
+    <div class="container">
+      <h2 class="text-center text-2xl font-bold md:text-4xl">Why Choose Us for Tree Removal</h2>
+      <p class="mx-auto mt-6 max-w-3xl text-center text-muted-foreground leading-relaxed">
+        Arbor Care Tree Solutions is fully licensed and insured in Colorado - that matters for tree removal more than almost any other service, because the risks are real if something goes wrong. We carry full liability insurance and workers' compensation, and we'll show you the certificate before we start.
+      </p>
+      <div class="mx-auto mt-10 grid max-w-3xl gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div class="flex items-center gap-3 rounded-lg border border-border bg-background p-4">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path><path d="m9 12 2 2 4-4"></path></svg>
+          <span class="text-sm font-medium">Full liability insurance &amp; workers' comp</span>
+        </div>
+        <div class="flex items-center gap-3 rounded-lg border border-border bg-background p-4">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"></circle><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"></path></svg>
+          <span class="text-sm font-medium">ISA-certified arborists</span>
+        </div>
+        <div class="flex items-center gap-3 rounded-lg border border-border bg-background p-4">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+          <span class="text-sm font-medium">Family-owned company</span>
+        </div>
+        <div class="flex items-center gap-3 rounded-lg border border-border bg-background p-4">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+          <span class="text-sm font-medium">100+ five-star Google reviews</span>
+        </div>
+        <div class="flex items-center gap-3 rounded-lg border border-border bg-background p-4">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"></path></svg>
+          <span class="text-sm font-medium">Free estimates - no trip charge</span>
+        </div>
+        <div class="flex items-center gap-3 rounded-lg border border-border bg-background p-4">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+          <span class="text-sm font-medium">We answer immediately, 24/7</span>
+        </div>
       </div>
-    </section>
+      <p class="mx-auto mt-8 max-w-3xl text-center text-muted-foreground leading-relaxed">
+        We're a family-owned company with ISA-certified arborists, 100+ five-star Google reviews, and the equipment to handle jobs from small ornamentals to large hazard trees. Free estimates, no trip charge, and we answer calls immediately 24 hours a day.
+      </p>
+    </div>
+  </section>
 
-    <!-- CTA Section -->
-    <section class="bg-green-600 text-white py-12 px-4">
-      <div class="max-w-4xl mx-auto text-center">
-        <h2 class="text-4xl font-bold mb-4">Need Professional Tree Removal?</h2>
-        <p class="text-xl mb-8">Get your free estimate today. Available 24/7 for emergency removal.</p>
-        <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <a href="tel:+13039496818" class="bg-white text-green-600 px-8 py-3 rounded-lg font-bold hover:bg-gray-100 transition flex items-center justify-center gap-2">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-            Call (303) 949-6818
+  <!-- RELATED SERVICES GRID -->
+  <section class="py-16 md:py-24">
+    <div class="container">
+      <h2 class="text-center text-2xl font-bold md:text-4xl mb-12">Related Services</h2>
+      <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        <!-- Emergency Tree Removal -->
+        <div class="group rounded-lg border border-border bg-card p-8 transition-shadow hover:shadow-md">
+          <div class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-accent/15">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"></path></svg>
+          </div>
+          <h3 class="text-xl font-bold">Emergency Tree Removal</h3>
+          <p class="mt-3 text-sm leading-relaxed text-muted-foreground">A tree down on your property can't wait. We answer immediately 24/7 and dispatch crews fast across the Denver metro.</p>
+          <a href="/emergency-tree-removal-denver-co" class="mt-6 inline-flex items-center gap-1 text-sm font-semibold text-primary hover:underline">
+            Learn More <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"></path></svg>
           </a>
-          <EstimateButton client:load className="bg-white text-green-600 px-8 py-3 rounded-lg font-bold hover:bg-gray-100 transition">
-            Get Free Estimate
-          </EstimateButton>
+        </div>
+        <!-- Hazardous Tree Removal -->
+        <div class="group rounded-lg border border-border bg-card p-8 transition-shadow hover:shadow-md">
+          <div class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-accent/15">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"></path><path d="M12 9v4"></path><path d="M12 17h.01"></path></svg>
+          </div>
+          <h3 class="text-xl font-bold">Hazardous Tree Removal</h3>
+          <p class="mt-3 text-sm leading-relaxed text-muted-foreground">Compromised, leaning, or structurally failing trees removed safely with proper rigging and experienced crew.</p>
+          <a href="/hazardous-tree-removal-denver-co" class="mt-6 inline-flex items-center gap-1 text-sm font-semibold text-primary hover:underline">
+            Learn More <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"></path></svg>
+          </a>
+        </div>
+        <!-- Bush & Shrub Removal -->
+        <div class="group rounded-lg border border-border bg-card p-8 transition-shadow hover:shadow-md">
+          <div class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-accent/15">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 22v-5l5-5 5 5-5 5z"></path><path d="M9.5 14.5 16 8"></path><path d="m17 2 5 5-.5.5a3.53 3.53 0 0 1-5 0s0 0 0 0a3.53 3.53 0 0 1 0-5L17 2"></path></svg>
+          </div>
+          <h3 class="text-xl font-bold">Bush &amp; Shrub Removal</h3>
+          <p class="mt-3 text-sm leading-relaxed text-muted-foreground">Overgrown or unwanted shrubs removed cleanly, including root ball extraction when needed.</p>
+          <a href="/bush-shrub-removal-denver-co" class="mt-6 inline-flex items-center gap-1 text-sm font-semibold text-primary hover:underline">
+            Learn More <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"></path></svg>
+          </a>
         </div>
       </div>
-    </section>
-  </main>
+    </div>
+  </section>
 
-  <Footer slot="footer" />
-</Layout>
+  <!-- FINAL CTA -->
+  <section class="bg-muted py-16 md:py-24">
+    <div class="container">
+      <div class="mx-auto max-w-2xl rounded-xl border-2 border-accent/30 bg-background p-8 md:p-12 text-center">
+        <h2 class="text-2xl font-bold md:text-3xl">Tree Needs to Come Down? Let's Get It Scheduled.</h2>
+        <p class="mt-4 text-muted-foreground leading-relaxed">
+          Free estimates, no trip charge. We handle everything from routine removals to 24-hour emergencies. Call now - we answer immediately any time of day or night.
+        </p>
+        <div class="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+          <a href={business.phoneTel} class="inline-flex items-center justify-center gap-2 rounded-md bg-accent px-8 py-4 text-base font-bold text-accent-foreground shadow-lg hover:bg-accent/90 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+            Call {business.phone}
+          </a>
+          <EstimateModal client:load className="inline-flex items-center justify-center gap-2 rounded-md border border-input bg-background px-8 py-4 text-base font-bold text-foreground hover:bg-muted transition-colors">
+            Request Free Estimate
+          </EstimateModal>
+        </div>
+        <p class="mt-6 text-sm text-muted-foreground">
+          Looking for all of our services? Visit our{" "}
+          <a href="/" class="text-primary font-semibold hover:underline">Denver tree service homepage</a>.
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

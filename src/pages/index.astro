@@ -1,108 +1,157 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import Header from "../components/Header.tsx";
-import Footer from "../components/Footer.astro";
-import HeroVideo from "../components/HeroVideo.tsx";
-import EstimateEmbed from "../components/EstimateEmbed.tsx";
-import { EstimateButton } from "../components/EstimateModal.tsx";
+import BaseLayout from "../components/layout/BaseLayout.astro";
+import LocalBusinessSchema from "../components/schema/LocalBusinessSchema.astro";
+import FAQSchema from "../components/schema/FAQSchema.astro";
+import EstimateEmbed from "../components/ui/EstimateEmbed";
+import EstimateModal from "../components/ui/EstimateModal";
+import { business } from "../data/business";
 
-const PHONE = "(303) 949-6818";
-const PHONE_TEL = "tel:+13039496818";
-
-const faqItems = [
-  { q: "How much does tree trimming cost in Denver?", a: "It depends on the tree's size, height, and complexity. A small ornamental might run $200-$400, while a large cottonwood over a structure can be $800-$2,000+. We give you a firm price in a free on-site estimate before any work starts." },
-  { q: "Do you offer emergency tree removal?", a: "Yes. We answer immediately 24/7 and dispatch crews based on urgency. If a tree is on your roof or blocking your driveway, call us now." },
-  { q: "Are you licensed and insured?", a: "Fully licensed and insured in Colorado. Our arborists hold ISA certification. We carry general liability and workers' compensation coverage." },
-  { q: "How do I know if a tree needs to be removed?", a: "Signs include significant trunk decay, a sudden lean, large dead sections in the canopy, root heaving, and cracks in structural wood. If you're unsure, call us for a free assessment. We'll give you a straight answer." },
-  { q: "Do you grind stumps after tree removal?", a: "Stump grinding is a separate service but we can include it in your quote. Most homeowners add it on since we're already on site with equipment." },
-  { q: "What areas do you serve?", a: "We serve Denver and the surrounding metro including Aurora, Lakewood, Englewood, Littleton, Centennial, Highlands Ranch, Arvada, Westminster, and Thornton." },
+const trustStrip = [
+  { label: "Licensed & Insured", icon: "shield" },
+  { label: "24/7 Emergency", icon: "clock" },
+  { label: "24-Hour Emergency Service", icon: "zap" },
+  { label: "ISA Certified", icon: "award" },
 ];
-
-const localBusinessSchema = {
-  "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  name: "Arbor Care Tree Solutions",
-  image: "https://arborcaretreesolutions.com/og-image.jpg",
-  telephone: "(303) 949-6818",
-  email: "ArborCareTreeSolutions@gmail.com",
-  address: { "@type": "PostalAddress", streetAddress: "1130 S Santa Fe Dr", addressLocality: "Denver", addressRegion: "CO", postalCode: "80223", addressCountry: "US" },
-  url: "https://arborcaretreesolutions.com",
-  priceRange: "$$",
-  openingHoursSpecification: { "@type": "OpeningHoursSpecification", dayOfWeek: ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"], opens: "00:00", closes: "23:59" },
-  areaServed: [
-    { "@type": "City", name: "Denver" }, { "@type": "City", name: "Aurora" }, { "@type": "City", name: "Lakewood" },
-    { "@type": "City", name: "Englewood" }, { "@type": "City", name: "Littleton" }, { "@type": "City", name: "Centennial" },
-    { "@type": "City", name: "Highlands Ranch" }, { "@type": "City", name: "Arvada" }, { "@type": "City", name: "Westminster" },
-    { "@type": "City", name: "Thornton" },
-  ],
-  aggregateRating: { "@type": "AggregateRating", ratingValue: "5.0", reviewCount: "100" },
-};
-
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: faqItems.map((f) => ({
-    "@type": "Question",
-    name: f.q,
-    acceptedAnswer: { "@type": "Answer", text: f.a },
-  })),
-};
 
 const whyChooseUs = [
-  { icon: "star", title: "100+ Five-Star Reviews", desc: "Denver homeowners trust us. Read what they say." },
-  { icon: "award", title: "ISA-Certified Arborists", desc: "Trained professionals who know trees, not just chainsaws." },
-  { icon: "shield", title: "Licensed & Fully Insured", desc: "General liability + workers' comp. You're covered." },
-  { icon: "users", title: "Family Owned & Operated", desc: "Local roots, not a franchise. We answer our own phone." },
+  {
+    icon: "star",
+    headline: "100+ Five-Star Google Reviews",
+    text: "Denver homeowners have rated us 5 stars more than 100 times — because we show up on time, charge what we quoted, and leave the yard cleaner than we found it. Read the reviews before you call.",
+  },
+  {
+    icon: "clock",
+    headline: "We Answer Immediately — 24/7, Including Emergencies",
+    text: "Call us at 2am after a storm takes down a tree and someone will pick up. We dispatch crews across Denver around the clock so you're never left waiting with a dangerous situation on your hands.",
+  },
+  {
+    icon: "file",
+    headline: "Free Estimates — No Trip Charge, No Obligation",
+    text: "We come to your property, assess the job in person, and hand you a firm written quote at zero cost. You'll know exactly what you're paying before a single branch comes down.",
+  },
+  {
+    icon: "award",
+    headline: "ISA-Certified Arborists — Not Just a Crew With a Chainsaw",
+    text: "Our arborists hold ISA certification — the industry's highest credential for tree care. That means every cut, removal, and treatment decision is made by someone who actually knows trees, not just someone who owns equipment.",
+  },
 ];
 
-const coreServices = [
-  { title: "Tree Trimming & Pruning", path: "/tree-trimming", desc: "Crown shaping, deadwooding, and structural pruning by ISA-certified arborists.", img: "/assets/hero-tree-trimming.jpg" },
-  { title: "Tree Removal", path: "/tree-removal", desc: "Safe, efficient removal of hazardous, dead, and unwanted trees.", img: "/assets/hero-tree-removal.jpg" },
-  { title: "Stump Grinding", path: "/stump-grinding-denver-co", desc: "Below-grade grinding that eliminates the stump and lets you reclaim the space.", img: "/assets/hero-stump-grinding.jpg" },
+const coreServicesCopy = [
+  {
+    title: "Tree Trimming & Pruning",
+    path: "/tree-trimming",
+    text: "Overgrown branches over your roof, fence line, or power lines are one Front Range wind storm away from a serious problem. Our ISA-certified arborists prune using proper technique — not just cutting back what looks long, but removing the right wood to improve structure, reduce risk, and promote healthy growth. Your trees will look better and last longer. We clean up every branch before we leave.",
+  },
+  {
+    title: "Tree Removal",
+    path: "/tree-removal",
+    text: "Dead, diseased, storm-damaged, or dangerously positioned trees need to come down safely — and in Denver's established neighborhoods, that often means working in tight spaces near homes, fences, and utilities. We plan every removal carefully, use the right equipment for the job, and haul everything away. No hidden fees. No surprises on the invoice.",
+  },
+  {
+    title: "Stump Grinding",
+    path: "/stump-grinding-denver-co",
+    text: "A leftover stump is more than an eyesore — it's a tripping hazard, a magnet for wood-boring insects, and a barrier to new landscaping. Our grinders take stumps down below grade fast, leaving you with a clean, level surface ready for sod, mulch, or replanting. We rake out the chips before we go. You won't be able to tell there was ever a tree there.",
+  },
 ];
 
-const secondaryServices = [
-  { title: "Arborist Services", path: "/arborist-service-denver-co", desc: "Tree health assessments, treatment plans, and expert planting guidance.", img: "/assets/hero-arborist-services.jpg" },
-  { title: "Firewood Supply", path: "/other-services", desc: "Seasoned, split hardwood for sale and delivery across the Denver metro.", img: "/assets/hero-firewood-supply.jpg" },
+const secondaryCategoriesCopy = [
+  {
+    title: "Arborist Services",
+    path: "/arborist-service-denver-co",
+    text: "Denver's Front Range climate is hard on trees — Emerald Ash Borer, drought stress, bark beetles, and heavy wet snow can silently compromise a tree long before it becomes a visible hazard. Our ISA-certified arborists identify problems early, build treatment plans that work, and help you protect the trees on your property for the long term. If your trees look off, don't guess — get a professional assessment.",
+  },
+  {
+    title: "Firewood Supply",
+    path: "/other-services",
+    text: "We supply seasoned, split hardwood that's ready to burn — no green wood, no guesswork. Whether you need a full cord for the season or a smaller load to get through the next cold snap, we deliver throughout the Denver metro area. Local wood, delivered by the same family-owned team that handles your tree care.",
+  },
+];
+
+const faqs = [
+  {
+    q: "How much does tree removal cost in Denver?",
+    a: `It depends on the size, species, location, and complexity of the job — a small ornamental tree is a very different scope than a 70-foot cottonwood near your house. Most residential removals range from $300 to $1,800+. We offer free estimates so you have an exact number before you decide.`,
+  },
+  {
+    q: "Do you charge just to come out and give me a quote?",
+    a: "No — estimates are completely free, no trip charge. We come to your property, look at the tree in person, and give you a firm written quote with no pressure and no obligation.",
+  },
+  {
+    q: "What if a tree falls on my house tonight — can I call you?",
+    a: `Yes. We're available 24/7 and answer immediately. Call ${business.phone} any time and we'll get a crew dispatched to your property to safely remove the tree and secure the area.`,
+  },
+  {
+    q: "Are you licensed and insured in Colorado?",
+    a: "Yes — we carry full general liability insurance and workers' compensation. We'll provide proof of insurance before any job starts. If a tree service can't or won't show you their insurance certificate, don't hire them.",
+  },
+  {
+    q: "How do I know if my tree needs to come down or can just be trimmed?",
+    a: "That's exactly the kind of question our ISA-certified arborists are trained to answer. We assess structural integrity, signs of disease, root damage, and proximity risk to give you an honest recommendation. If the tree can be saved, we'll tell you — we don't push removal when it's not necessary.",
+  },
+  {
+    q: "Do you clean up after the job?",
+    a: "Completely. All branches, debris, and stump grindings are hauled away or raked out before we leave. Your yard will be clean — if anything, cleaner than before we arrived. Stump chips can be left as mulch if you prefer.",
+  },
 ];
 ---
 
-<Layout
+<BaseLayout
   title="Tree Service Denver CO | Arbor Care Tree Solutions"
-  description="Denver's trusted tree service. ISA-certified arborists, 100+ five-star reviews. Tree trimming, removal, stump grinding & more. Free estimates. Call (303) 949-6818."
-  canonical="/"
-  schemaJson={[localBusinessSchema, faqSchema]}
+  description="Denver's trusted tree service. ISA-certified arborists, 100+ five-star reviews. Tree removal, trimming, stump grinding & more. Call (303) 949-6818."
 >
-  <Header slot="header" pathname="/" client:load />
+  <LocalBusinessSchema slot="head" />
+  <FAQSchema slot="head" faqs={faqs} />
 
   <!-- HERO -->
-  <section class="relative min-h-[600px] md:min-h-[80vh] flex items-center overflow-hidden">
-    <HeroVideo client:load />
-    <div class="absolute inset-0 bg-black/50"></div>
-    <div class="container relative z-10 py-20 text-center">
+  <section class="relative min-h-[500px] md:min-h-[60vh] flex items-center overflow-hidden bg-black">
+    <img
+      src="/assets/hero-home.jpg"
+      alt="Firewood and tree service in Denver CO"
+      class="absolute inset-0 h-full w-full object-cover object-center"
+      width="1920"
+      height="1080"
+      loading="eager"
+    />
+    <div class="absolute inset-0 bg-black/60"></div>
+    <div class="container relative z-10 py-16 pb-28 md:py-28 md:pb-28 text-center">
       <div class="mx-auto max-w-3xl">
-        <h1 class="text-4xl font-bold text-white md:text-6xl leading-tight">
-          Denver's Most Trusted<br />
-          <span class="text-accent">Tree Service</span>
+        <h1 class="text-3xl font-bold text-white md:text-5xl lg:text-6xl leading-tight">
+          Denver's Tree Service Experts
+          <span class="block text-accent mt-2">| 100+ Five-Star Reviews</span>
         </h1>
-        <p class="mx-auto mt-6 max-w-2xl text-lg text-white/90">
-          ISA-certified arborists. 100+ five-star reviews. Family owned and operated. We answer immediately 24/7.
+        <p class="mx-auto mt-6 text-lg text-white/90 md:text-xl max-w-2xl">
+          Family owned, ISA-certified, available 24/7. Free estimates with no trip charge. Call
+          <a href={business.phoneTel} class="underline font-semibold text-accent hover:text-accent/80">{business.phone}</a>.
         </p>
-        <div class="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+        <div class="mt-8 mb-4 md:mb-0 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
           <a
-            href={PHONE_TEL}
-            class="inline-flex items-center justify-center gap-2 rounded-md bg-accent px-8 py-4 text-lg font-bold text-accent-foreground shadow-lg hover:bg-accent/90 transition-colors"
+            href={business.phoneTel}
+            class="inline-flex items-center justify-center gap-2 rounded-md bg-accent px-8 py-4 text-base font-bold text-accent-foreground shadow-lg hover:bg-accent/90 transition-colors"
           >
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-            Call {PHONE}
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+            Call Now {business.phone}
           </a>
-          <EstimateButton
-            client:load
-            className="inline-flex items-center justify-center gap-2 rounded-md bg-white/15 backdrop-blur border border-white/30 px-8 py-4 text-lg font-bold text-white hover:bg-white/25 transition-colors"
-          >
+          <EstimateModal client:load className="inline-flex items-center justify-center gap-2 rounded-md bg-white/15 backdrop-blur border border-white/30 px-8 py-4 text-base font-bold text-white hover:bg-white/25 transition-colors">
             Get Free Estimate
-          </EstimateButton>
+          </EstimateModal>
         </div>
+      </div>
+    </div>
+
+    <!-- Trust Strip -->
+    <div class="absolute bottom-0 left-0 right-0 bg-primary/95 backdrop-blur-sm">
+      <div class="container flex flex-wrap items-center justify-center gap-x-8 gap-y-2 py-3 text-sm text-primary-foreground">
+        {trustStrip.map((t) => (
+          <span class="flex items-center gap-2">
+            <span class="h-4 w-4 text-accent">
+              {t.icon === "shield" && <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path></svg>}
+              {t.icon === "clock" && <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>}
+              {t.icon === "zap" && <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"></path></svg>}
+              {t.icon === "award" && <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15.477 12.89 1.515 8.526a.5.5 0 0 1-.81.47l-3.58-2.687a1 1 0 0 0-1.197 0l-3.586 2.686a.5.5 0 0 1-.81-.469l1.514-8.526"></path><circle cx="12" cy="8" r="6"></circle></svg>}
+            </span>
+            <span class="font-medium">{t.label}</span>
+          </span>
+        ))}
       </div>
     </div>
   </section>
@@ -110,84 +159,96 @@ const secondaryServices = [
   <!-- WHY CHOOSE US -->
   <section class="py-16 md:py-24">
     <div class="container">
-      <h2 class="text-center text-3xl font-bold md:text-4xl">
-        Why Denver Homeowners Choose <span class="text-accent">Arbor Care</span>
+      <h2 class="text-center text-2xl font-bold md:text-4xl">
+        Why {business.address.city} Homeowners Call Us First
       </h2>
-      <div class="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+      <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
         {whyChooseUs.map((item) => (
-          <div class="rounded-xl border border-border bg-card p-6 text-center">
-            <div class="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-accent/10">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="hsl(var(--accent))" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <div class="rounded-lg border border-border bg-card p-6 transition-shadow hover:shadow-md">
+            <div class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-accent/15">
+              {item.icon === "star" && <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>}
+              {item.icon === "clock" && <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>}
+              {item.icon === "file" && <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"></path><path d="M14 2v4a2 2 0 0 0 2 2h4"></path></svg>}
+              {item.icon === "award" && <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15.477 12.89 1.515 8.526a.5.5 0 0 1-.81.47l-3.58-2.687a1 1 0 0 0-1.197 0l-3.586 2.686a.5.5 0 0 1-.81-.469l1.514-8.526"></path><circle cx="12" cy="8" r="6"></circle></svg>}
             </div>
-            <h3 class="text-lg font-bold">{item.title}</h3>
-            <p class="mt-2 text-sm text-muted-foreground">{item.desc}</p>
+            <h3 class="text-lg font-bold leading-snug">{item.headline}</h3>
+            <p class="mt-3 text-sm leading-relaxed text-muted-foreground">{item.text}</p>
           </div>
         ))}
       </div>
     </div>
   </section>
 
-  <!-- GOOGLE REVIEWS -->
-  <section class="bg-muted py-16 md:py-24">
+  <!-- GOOGLE REVIEWS EMBED -->
+  <section class="bg-muted py-16 md:py-20">
     <div class="container">
-      <h2 class="text-center text-3xl font-bold md:text-4xl">What Our Customers Say</h2>
-      <div class="mt-8 overflow-hidden rounded-xl">
+      <h2 class="text-center text-2xl font-bold md:text-4xl">See What Our Customers Say</h2>
+      <div class="mx-auto mt-10 max-w-6xl">
         <iframe
-          src="https://reputationhub.site/reputation/widgets/reviews_combined/BLCxrXNsCJTFCvSiZSee"
-          style="width: 100%; min-height: 500px; border: none;"
+          class="w-full rounded-lg h-[450px] max-[767px]:h-[700px]"
+          src={business.reviewWidget}
+          style="min-width: 100%; width: 100%; border: none;"
+          title="Google Reviews for Arbor Care Tree Solutions"
           loading="lazy"
-          title="Arbor Care Tree Solutions Google Reviews"
         ></iframe>
       </div>
     </div>
   </section>
 
-  <!-- ESTIMATE FORM -->
+  <!-- LEAD CAPTURE FORM -->
   <section class="py-16 md:py-24">
     <div class="container">
-      <div class="mx-auto max-w-2xl text-center">
-        <h2 class="text-3xl font-bold md:text-4xl">Get Your Free Estimate</h2>
-        <p class="mt-4 text-muted-foreground">Fill out the form below and we'll get back to you promptly with a free, no-obligation quote.</p>
-      </div>
-      <div class="mx-auto mt-8 max-w-lg">
+      <div class="mx-auto max-w-2xl rounded-xl border-2 border-accent/30 bg-card shadow-lg overflow-hidden">
         <EstimateEmbed client:visible />
       </div>
     </div>
   </section>
 
-  <!-- SECONDARY SERVICES -->
+  <!-- SECONDARY CATEGORY CARDS -->
   <section class="bg-muted py-16 md:py-24">
     <div class="container">
-      <h2 class="text-center text-3xl font-bold md:text-4xl">Additional Services</h2>
+      <h2 class="text-center text-2xl font-bold md:text-4xl">Specialized Tree Care Services</h2>
       <div class="mt-12 grid gap-8 md:grid-cols-2">
-        {secondaryServices.map((svc) => (
-          <a href={svc.path} class="group relative overflow-hidden rounded-xl">
-            <img src={svc.img} alt={svc.title} class="h-64 w-full object-cover transition-transform duration-300 group-hover:scale-105" loading="lazy" />
-            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
-            <div class="absolute bottom-0 left-0 right-0 p-6">
-              <h3 class="text-xl font-bold text-white">{svc.title}</h3>
-              <p class="mt-1 text-sm text-white/80">{svc.desc}</p>
+        {secondaryCategoriesCopy.map((cat) => (
+          <div class="group rounded-lg border border-border bg-background p-8 transition-shadow hover:shadow-md">
+            <div class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-accent/15">
+              {cat.title === "Arborist Services" && <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15.477 12.89 1.515 8.526a.5.5 0 0 1-.81.47l-3.58-2.687a1 1 0 0 0-1.197 0l-3.586 2.686a.5.5 0 0 1-.81-.469l1.514-8.526"></path><circle cx="12" cy="8" r="6"></circle></svg>}
+              {cat.title === "Firewood Supply" && <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"></path></svg>}
             </div>
-          </a>
+            <h3 class="text-xl font-bold">{cat.title}</h3>
+            <p class="mt-3 text-sm leading-relaxed text-muted-foreground">{cat.text}</p>
+            <a href={cat.path} class="mt-6 inline-flex items-center gap-1 text-sm font-semibold text-primary hover:underline">
+              Learn More
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"></path></svg>
+            </a>
+          </div>
         ))}
       </div>
     </div>
   </section>
 
-  <!-- CORE SERVICES -->
+  <!-- CORE SERVICE CARDS -->
   <section class="py-16 md:py-24">
     <div class="container">
-      <h2 class="text-center text-3xl font-bold md:text-4xl">Our Core Services</h2>
+      <h2 class="text-center text-2xl font-bold md:text-4xl">Our Core Tree Services</h2>
+      <p class="mx-auto mt-4 max-w-2xl text-center text-muted-foreground">
+        Every job handled by ISA-certified arborists. Free estimates, no trip charge.
+      </p>
       <div class="mt-12 grid gap-8 md:grid-cols-3">
-        {coreServices.map((svc) => (
-          <a href={svc.path} class="group relative overflow-hidden rounded-xl">
-            <img src={svc.img} alt={svc.title} class="h-64 w-full object-cover transition-transform duration-300 group-hover:scale-105" loading="lazy" />
-            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
-            <div class="absolute bottom-0 left-0 right-0 p-6">
-              <h3 class="text-xl font-bold text-white">{svc.title}</h3>
-              <p class="mt-1 text-sm text-white/80">{svc.desc}</p>
+        {coreServicesCopy.map((svc) => (
+          <div class="group rounded-lg border border-border bg-card p-8 transition-shadow hover:shadow-md">
+            <div class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-accent/15">
+              {svc.title === "Tree Trimming & Pruning" && <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.9C15.5 4.9 17 3.5 19 2c1 2 2 4.5 1 8-5.5 1.5-5 4-4 7a7 7 0 0 1-5 3Z"></path></svg>}
+              {svc.title === "Tree Removal" && <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m14 12-8.5 8.5a2.12 2.12 0 1 1-3-3L11 9"></path><path d="M15 13 9 7l4-4 6 6h3a8 8 0 0 1-7 7z"></path></svg>}
+              {svc.title === "Stump Grinding" && <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 14a4 4 0 0 0-4-4h-1a4 4 0 0 0-4 4c0 2.5 2 4.5 4 6.5 2-2 4-4 4-6.5z"></path><path d="M12 2v8"></path><path d="m8 6 4 4 4-4"></path></svg>}
             </div>
-          </a>
+            <h3 class="text-xl font-bold">{svc.title}</h3>
+            <p class="mt-3 text-sm leading-relaxed text-muted-foreground">{svc.text}</p>
+            <a href={svc.path} class="mt-6 inline-flex items-center gap-1 text-sm font-semibold text-primary hover:underline">
+              Learn More
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"></path></svg>
+            </a>
+          </div>
         ))}
       </div>
     </div>
@@ -196,45 +257,83 @@ const secondaryServices = [
   <!-- SERVICE AREA -->
   <section class="bg-muted py-16 md:py-24">
     <div class="container">
-      <div class="grid gap-8 lg:grid-cols-2 items-center">
-        <div>
-          <h2 class="text-3xl font-bold md:text-4xl">Serving the Denver Metro</h2>
-          <p class="mt-4 text-muted-foreground">We provide tree services across Denver and the surrounding communities.</p>
-          <ul class="mt-6 grid grid-cols-2 gap-2 text-sm">
-            {["Denver CO","Aurora CO","Lakewood CO","Englewood CO","Littleton CO","Centennial CO","Highlands Ranch CO","Arvada CO","Westminster CO","Thornton CO"].map((area) => (
-              <li class="flex items-center gap-2">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="hsl(var(--accent))" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-                {area}
-              </li>
-            ))}
-          </ul>
+      <div class="mx-auto max-w-4xl">
+        <div class="grid gap-10 md:grid-cols-5">
+          <div class="md:col-span-3">
+            <h2 class="text-2xl font-bold md:text-4xl">Serving Denver &amp; Surrounding Areas</h2>
+            <p class="mt-6 leading-relaxed text-muted-foreground">
+              Arbor Care Tree Solutions serves homeowners and property managers throughout the Denver metro and surrounding Front Range communities. Our crews work across the metro every day, and most service calls can be scheduled within a few days. Emergency calls are responded to immediately, 24/7.
+            </p>
+            <p class="mt-4 leading-relaxed text-foreground font-medium">
+              Not sure if we cover your area? Call us at
+              <a href={business.phoneTel} class="text-primary hover:underline">{business.phone}</a>
+              and we'll give you a straight answer.
+            </p>
+          </div>
+          <div class="md:col-span-2">
+            <div class="rounded-lg border border-border bg-card p-6">
+              <div class="mb-4 flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                <h3 class="font-bold">Service Areas</h3>
+              </div>
+              <ul class="space-y-2">
+                {business.serviceAreas.map((area) => (
+                  <li class="flex items-center gap-2 text-sm text-muted-foreground">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-accent flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><path d="m9 11 3 3L22 4"></path></svg>
+                    {area}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
         </div>
-        <div class="overflow-hidden rounded-xl">
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d392520.2564172813!2d-105.05578864316406!3d39.76440015!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x876c7e5d18b32c4b%3A0x4ddf28b1b90e8a4b!2sArbor%20Care%20Tree%20Solutions!5e0!3m2!1sen!2sus!4v1&zoom=10"
-            style="border:0; width:100%; height:350px;"
-            allowfullscreen=""
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-            title="Arbor Care Tree Solutions Service Area"
-          ></iframe>
+        <div class="mt-10">
+          <h3 class="text-lg font-bold mb-4">Find Us on Google</h3>
+          <div class="aspect-[16/9] rounded-xl overflow-hidden border border-border">
+            <iframe
+              src={business.mapsEmbed}
+              width="100%"
+              height="100%"
+              style="border:0"
+              allowfullscreen
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              title="Arbor Care Tree Solutions on Google Maps"
+            ></iframe>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ABOUT PREVIEW -->
+  <!-- ABOUT / CREW PHOTO -->
   <section class="py-16 md:py-24">
     <div class="container">
-      <div class="grid gap-8 lg:grid-cols-2 items-center">
-        <img src="/assets/crew-photo.png" alt="Arbor Care Tree Solutions crew" class="rounded-xl" loading="lazy" />
+      <div class="mx-auto max-w-6xl grid gap-10 md:grid-cols-2 items-center">
         <div>
-          <h2 class="text-3xl font-bold md:text-4xl">A Family Business That<br /><span class="text-accent">Knows Trees</span></h2>
-          <p class="mt-4 text-muted-foreground">Led by Thomas Fraser with over 30 years in the tree industry, Arbor Care Tree Solutions brings real experience and ISA certification to every job. We're not a franchise and we don't subcontract your work.</p>
-          <a href="/about-arbor-care-index" class="mt-6 inline-flex items-center gap-2 text-primary font-semibold hover:underline">
-            Learn more about our team
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
-          </a>
+          <h2 class="text-2xl font-bold md:text-4xl">Family Owned. Professionally Trained.</h2>
+          <p class="mt-6 leading-relaxed text-muted-foreground">
+            Arbor Care Tree Solutions was built by people who genuinely love this work. Our owner is an ISA-certified arborist with 30 years of hands-on experience in the tree care industry. Every team member is hired based on three things: experience, personality, and passion for doing the job right.
+          </p>
+          <p class="mt-4 leading-relaxed text-foreground font-medium">
+            Price is what you pay. Value is what you get.
+          </p>
+          <div class="mt-6">
+            <a href="/about-arbor-care-index" class="inline-flex items-center gap-1 text-sm font-semibold text-primary hover:underline">
+              Learn more about us
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"></path></svg>
+            </a>
+          </div>
+        </div>
+        <div class="overflow-hidden rounded-xl h-80 md:h-96">
+          <img
+            src="/assets/crew-photo.png"
+            alt="Arbor Care Tree Solutions crew in Denver Colorado"
+            class="w-full h-full object-cover object-[center_70%] scale-[1.5]"
+            width="600"
+            height="400"
+            loading="lazy"
+          />
         </div>
       </div>
     </div>
@@ -243,15 +342,15 @@ const secondaryServices = [
   <!-- FAQ -->
   <section class="bg-muted py-16 md:py-24">
     <div class="container">
-      <h2 class="text-center text-3xl font-bold md:text-4xl">Frequently Asked Questions</h2>
-      <div class="mx-auto mt-8 max-w-3xl space-y-3">
-        {faqItems.map((faq, i) => (
-          <details class="group rounded-lg border border-border bg-card overflow-hidden">
-            <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-left font-medium">
-              <span>{faq.q}</span>
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 ml-4 transition-transform group-open:rotate-180"><polyline points="6 9 12 15 18 9"/></svg>
+      <h2 class="text-center text-2xl font-bold md:text-4xl">Frequently Asked Questions</h2>
+      <div class="mx-auto mt-10 max-w-3xl space-y-3">
+        {faqs.map((faq) => (
+          <details class="rounded-lg border border-border bg-card px-6 group">
+            <summary class="cursor-pointer py-4 text-left font-bold text-base list-none flex items-center justify-between">
+              {faq.q}
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 shrink-0 transition-transform group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"></path></svg>
             </summary>
-            <div class="px-6 pb-4 text-muted-foreground">{faq.a}</div>
+            <p class="text-sm leading-relaxed text-muted-foreground pb-4">{faq.a}</p>
           </details>
         ))}
       </div>
@@ -260,26 +359,39 @@ const secondaryServices = [
 
   <!-- FINAL CTA -->
   <section class="py-16 md:py-24">
-    <div class="container text-center">
-      <h2 class="text-3xl font-bold md:text-4xl">Ready to Get Started?</h2>
-      <p class="mx-auto mt-4 max-w-xl text-muted-foreground">Call us now for a free estimate. We answer immediately, 24/7.</p>
-      <div class="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-        <a
-          href={PHONE_TEL}
-          class="inline-flex items-center justify-center gap-2 rounded-md bg-accent px-8 py-4 text-lg font-bold text-accent-foreground shadow-lg hover:bg-accent/90 transition-colors"
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-          Call {PHONE}
-        </a>
-        <EstimateButton
-          client:visible
-          className="inline-flex items-center justify-center gap-2 rounded-md border border-input bg-background px-8 py-4 text-lg font-bold text-foreground hover:bg-muted transition-colors"
-        >
-          Request Free Estimate
-        </EstimateButton>
+    <div class="container">
+      <div class="mx-auto max-w-2xl rounded-xl border-2 border-accent/30 bg-card p-8 md:p-12 text-center">
+        <h2 class="text-2xl font-bold md:text-3xl">Ready to Talk About Your Trees?</h2>
+        <p class="mt-4 text-muted-foreground leading-relaxed">
+          Call us any time — we answer immediately, 24/7. Or send us a message and we'll get back to you within an hour during business hours.
+        </p>
+        <div class="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+          <a
+            href={business.phoneTel}
+            class="inline-flex items-center justify-center gap-2 rounded-md bg-accent px-8 py-4 text-base font-bold text-accent-foreground shadow-lg hover:bg-accent/90 transition-colors"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+            Call {business.phone}
+          </a>
+          <a
+            href="/contact-us"
+            class="inline-flex items-center justify-center gap-2 rounded-md border border-input bg-background px-8 py-4 text-base font-bold text-foreground hover:bg-muted transition-colors"
+          >
+            Contact Us
+          </a>
+        </div>
+        <div class="mt-8 flex flex-col items-center gap-1 text-sm text-muted-foreground">
+          <span class="font-bold text-foreground">{business.name}</span>
+          <span class="flex items-center gap-1.5">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            {business.address.street}, {business.address.city}, {business.address.stateAbbr} {business.address.zip}
+          </span>
+          <a href={business.phoneTel} class="flex items-center gap-1.5 font-semibold text-primary hover:underline">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+            {business.phone}
+          </a>
+        </div>
       </div>
     </div>
   </section>
-
-  <Footer slot="footer" />
-</Layout>
+</BaseLayout>

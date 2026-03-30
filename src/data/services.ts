@@ -66,28 +66,10 @@ export const generalServices: ServiceRoute[] = [
 
 export function getAllServiceRoutes(): ServiceRoute[] {
   const routes: ServiceRoute[] = [];
-
   [...coreServices, ...secondaryCategories].forEach((cat) => {
     routes.push({ title: cat.title, path: cat.path });
     cat.children.forEach((child) => routes.push(child));
   });
-
   generalServices.forEach((s) => routes.push(s));
-
   return routes;
 }
-
-export const BUSINESS = {
-  name: "Arbor Care Tree Solutions",
-  phone: "(303) 949-6818",
-  phoneTel: "tel:+13039496818",
-  email: "ArborCareTreeSolutions@gmail.com",
-  city: "Denver",
-  state: "Colorado",
-  stateAbbr: "CO",
-  zip: "80223",
-  serviceAreas: [
-    "Denver CO", "Aurora CO", "Lakewood CO", "Englewood CO", "Littleton CO",
-    "Centennial CO", "Highlands Ranch CO", "Arvada CO", "Westminster CO", "Thornton CO",
-  ],
-} as const;

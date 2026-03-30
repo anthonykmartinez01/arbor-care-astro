@@ -1,0 +1,160 @@
+---
+import BaseLayout from "../layout/BaseLayout.astro";
+import EstimateModal from "../ui/EstimateModal";
+import { business } from "../../data/business";
+import type { ChildServiceData } from "../../data/childServices";
+
+interface Props {
+  data: ChildServiceData;
+}
+
+const { data } = Astro.props;
+const homePath = data.parentPath === "/" ? "/tree-service-denver-co" : data.parentPath;
+
+const whyChooseBadges = [
+  "ISA-certified arborists",
+  "Family-owned company",
+  "Fully licensed & insured",
+  "100+ five-star reviews",
+  "Free estimates, no trip charge",
+  "We answer immediately 24/7",
+];
+---
+
+<BaseLayout title={data.titleTag} description={data.metaDescription}>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(data.schema)} />
+
+  <!-- HERO -->
+  <section class="relative min-h-[500px] md:min-h-[60vh] flex items-center overflow-hidden">
+    <img
+      src="/assets/hero-tree-service.jpg"
+      alt={data.h1}
+      class="absolute inset-0 h-full w-full object-cover"
+      width="1920"
+      height="1080"
+      loading="eager"
+    />
+    <div class="absolute inset-0 bg-black/60"></div>
+    <div class="container relative z-10 py-20 pb-28 md:py-28 text-center">
+      <div class="mx-auto max-w-3xl">
+        <a
+          href={data.parentPath}
+          class="mb-6 inline-flex items-center gap-1.5 text-sm font-medium text-white/80 hover:text-white transition-colors"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7"></path><path d="M19 12H5"></path></svg>
+          {data.parentTitle}
+        </a>
+        <h1 class="text-3xl font-bold text-white md:text-5xl leading-tight">
+          {data.h1}
+          <span class="block text-accent mt-2 text-2xl md:text-3xl">{data.h1Accent}</span>
+        </h1>
+        <p class="mx-auto mt-6 text-lg text-white/90 max-w-2xl">{data.subheadline}</p>
+        <div class="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+          <a
+            href={business.phoneTel}
+            class="inline-flex items-center justify-center gap-2 rounded-md bg-accent px-8 py-4 text-base font-bold text-accent-foreground shadow-lg hover:bg-accent/90 transition-colors"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+            Call {business.phone}
+          </a>
+          <EstimateModal client:load className="inline-flex items-center justify-center gap-2 rounded-md bg-white/15 backdrop-blur border border-white/30 px-8 py-4 text-base font-bold text-white hover:bg-white/25 transition-colors">
+            Get Free Estimate
+          </EstimateModal>
+        </div>
+      </div>
+    </div>
+    <div class="absolute bottom-0 left-0 right-0 z-10 border-t border-white/20">
+      <div class="container flex flex-wrap items-center justify-center gap-x-8 gap-y-2 py-3 text-sm text-white/90">
+        <span class="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+          <span class="font-medium">100+ Five-Star Reviews</span>
+        </span>
+        <span class="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15.477 12.89 1.515 8.526a.5.5 0 0 1-.81.47l-3.58-2.687a1 1 0 0 0-1.197 0l-3.586 2.686a.5.5 0 0 1-.81-.469l1.514-8.526"></path><circle cx="12" cy="8" r="6"></circle></svg>
+          <span class="font-medium">ISA-Certified Arborists</span>
+        </span>
+        <span class="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"></path></svg>
+          <span class="font-medium">No Trip Charge</span>
+        </span>
+        <span class="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+          <span class="font-medium">Family Owned</span>
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <!-- OPENING PARAGRAPHS -->
+  <section class="py-16 md:py-24">
+    <div class="container">
+      <div class="mx-auto max-w-3xl">
+        {data.openingParagraphs.map((p, i) => (
+          <p
+            class:list={[
+              "text-lg leading-relaxed",
+              i > 0 ? "mt-6" : "",
+              i === data.openingParagraphs.length - 1
+                ? "text-foreground font-medium"
+                : "text-muted-foreground",
+            ]}
+          >
+            {p}
+          </p>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTENT SECTIONS -->
+  {data.sections.map((section, idx) => (
+    <section class:list={["py-16 md:py-24", idx % 2 === 0 ? "bg-muted" : ""]}>
+      <div class="container">
+        <div class="mx-auto max-w-3xl">
+          <h2 class="text-2xl font-bold md:text-3xl">{section.heading}</h2>
+          {section.paragraphs.map((p) => (
+            <p class="mt-6 leading-relaxed text-muted-foreground">{p}</p>
+          ))}
+          {idx === data.sections.length - 1 && (
+            <div class="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              {whyChooseBadges.map((text) => (
+                <div class="flex items-center gap-3 rounded-lg border border-border bg-card p-3">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><path d="m9 11 3 3L22 4"></path></svg>
+                  <span class="text-sm font-medium">{text}</span>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      </div>
+    </section>
+  ))}
+
+  <!-- FINAL CTA -->
+  <section class="py-16 md:py-24">
+    <div class="container">
+      <div class="mx-auto max-w-2xl rounded-xl border-2 border-accent/30 bg-card p-8 md:p-12 text-center">
+        <h2 class="text-2xl font-bold md:text-3xl">{data.finalCta.headline}</h2>
+        <p class="mt-4 text-muted-foreground leading-relaxed">{data.finalCta.body}</p>
+        <div class="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+          <a
+            href={business.phoneTel}
+            class="inline-flex items-center justify-center gap-2 rounded-md bg-accent px-8 py-4 text-base font-bold text-accent-foreground shadow-lg hover:bg-accent/90 transition-colors"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+            {business.phone}
+          </a>
+          <EstimateModal client:load className="inline-flex items-center justify-center gap-2 rounded-md border border-input bg-background px-8 py-4 text-base font-bold text-foreground hover:bg-muted transition-colors">
+            Request Free Estimate
+          </EstimateModal>
+        </div>
+        <p class="mt-6 text-sm text-muted-foreground">
+          <a href={homePath} class="text-primary font-semibold hover:underline inline-flex items-center gap-1">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"></path></svg>
+            {data.finalCta.parentLinkText}
+          </a>
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

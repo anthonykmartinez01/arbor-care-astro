@@ -1,220 +1,364 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import Header from "../components/Header.tsx";
-import Footer from "../components/Footer.astro";
-import { EstimateButton } from "../components/EstimateModal.tsx";
+import BaseLayout from "../components/layout/BaseLayout.astro";
+import ServiceSchema from "../components/schema/ServiceSchema.astro";
+import EstimateModal from "../components/ui/EstimateModal";
+import { business } from "../data/business";
 ---
 
-<Layout title="Tree Trimming Denver CO | Expert Pruning | Arbor Care" description="Professional tree trimming and pruning in Denver, CO. Crown reduction, deadwooding, bush & shrub trimming. ISA-certified arborists. Free estimates. Call (303) 949-6818." canonical="/tree-trimming">
-  <Header slot="header" pathname="/tree-trimming" client:load />
+<BaseLayout
+  title="Tree Trimming & Pruning Denver CO | 24-Hour Emergency Service"
+  description="Professional tree trimming & pruning in Denver, CO. ISA-certified arborists. Free estimates, no trip charge. Available 24/7. Call (303) 949-6818."
+  canonical="/tree-trimming"
+>
+  <ServiceSchema
+    slot="head"
+    name="Tree Trimming & Pruning Denver CO"
+    description="Professional tree trimming and pruning in Denver, Colorado. ISA-certified arborists. Crown reduction, deadwooding, and bush and shrub trimming."
+    url="/tree-trimming"
+  />
 
-  <main class="min-h-screen">
-    <!-- Hero Section -->
-    <section
-      class="relative h-96 bg-cover bg-center flex items-center justify-center"
-      style="background-image: url('/assets/hero-tree-trimming.jpg');"
-    >
-      <div class="absolute inset-0 bg-black/40"></div>
-      <div class="relative z-10 text-center text-white px-4">
-        <h1 class="text-5xl md:text-6xl font-bold mb-4">Professional Tree Trimming</h1>
-        <p class="text-xl md:text-2xl">Expert Pruning Services in Denver</p>
+  <!-- HERO -->
+  <section class="relative min-h-[500px] md:min-h-[60vh] flex items-center overflow-hidden">
+    <img src="/assets/hero-tree-trimming.jpg" alt="Professional tree trimming and pruning service in Denver Colorado" class="absolute inset-0 h-full w-full object-cover" loading="eager" width="1920" height="1080" />
+    <div class="absolute inset-0 bg-black/60"></div>
+    <div class="container relative z-10 py-20 pb-28 md:py-28 text-center">
+      <div class="mx-auto max-w-3xl">
+        <h1 class="text-3xl font-bold text-white md:text-5xl lg:text-6xl leading-tight">
+          Tree Trimming &amp; Pruning in Denver, CO
+          <span class="block text-accent mt-2">Safer Trees, Better Property</span>
+        </h1>
+        <p class="mx-auto mt-6 text-lg text-white/90 md:text-xl max-w-2xl">
+          Overgrown branches over your roof, fence, or power lines aren't just an eyesore - they're a liability. Our ISA-certified arborists prune trees properly, protecting your property and keeping your trees healthy long-term. Available 24/7. Free estimates. Call{" "}
+          <a href={business.phoneTel} class="underline font-semibold text-accent hover:text-accent/80">{business.phone}</a>.
+        </p>
+        <div class="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+          <a href={business.phoneTel} class="inline-flex items-center justify-center gap-2 rounded-md bg-accent px-8 py-4 text-base font-bold text-accent-foreground shadow-lg hover:bg-accent/90 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+            Call {business.phone}
+          </a>
+          <EstimateModal client:load className="inline-flex items-center justify-center gap-2 rounded-md bg-white/15 backdrop-blur border border-white/30 px-8 py-4 text-base font-bold text-white hover:bg-white/25 transition-colors">
+            Get Free Estimate
+          </EstimateModal>
+        </div>
       </div>
-    </section>
+    </div>
+    <div class="absolute bottom-0 left-0 right-0 bg-primary/95 backdrop-blur-sm">
+      <div class="container flex flex-wrap items-center justify-center gap-x-8 gap-y-2 py-3 text-sm text-primary-foreground">
+        <span class="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+          <span class="font-medium">100+ Five-Star Reviews</span>
+        </span>
+        <span class="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"></circle><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"></path></svg>
+          <span class="font-medium">ISA-Certified Arborists</span>
+        </span>
+        <span class="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"></path></svg>
+          <span class="font-medium">No Trip Charge</span>
+        </span>
+        <span class="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+          <span class="font-medium">Family Owned</span>
+        </span>
+      </div>
+    </div>
+  </section>
 
-    <!-- Introduction -->
-    <section class="py-12 px-4 max-w-4xl mx-auto">
-      <div class="prose prose-lg max-w-none">
-        <p class="text-lg text-gray-700 mb-6">
-          Tree trimming and pruning are essential services that keep your trees healthy, attractive, and safe. At Arbor Care Tree Solutions, our ISA-certified arborists use proper techniques to enhance tree structure, encourage healthy growth, and prevent disease. Whether you need routine maintenance pruning or specialized crown reduction, we have the expertise to care for your trees.
+  <!-- OPENING -->
+  <section class="py-16 md:py-24">
+    <div class="container">
+      <div class="mx-auto max-w-3xl text-center">
+        <p class="text-lg leading-relaxed text-muted-foreground">
+          That branch hanging over your roof has been bothering you for a while. Maybe it scraped the shingles during the last wind storm, or you noticed a thick limb pushing against your gutters. These aren't problems that fix themselves - they get heavier, weaker, and closer to causing real damage every season you wait. One good Front Range storm is all it takes to turn a maintenance issue into an insurance claim.
+        </p>
+        <p class="mt-6 text-lg leading-relaxed text-foreground font-medium">
+          Arbor Care Tree Solutions handles tree trimming and pruning in Denver with ISA-certified arborists on every job. That means every cut is made with the tree's structure and health in mind - not just cutting back what looks long.
         </p>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Signs You Need Tree Trimming -->
-    <section class="py-12 px-4 max-w-4xl mx-auto">
-      <h2 class="text-4xl font-bold mb-8 text-center">Signs You Need Tree Trimming & Pruning</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div class="bg-blue-50 p-6 rounded-lg">
-          <h3 class="text-xl font-bold mb-2">Overgrown Branches</h3>
-          <p class="text-gray-700">Branches extending over roof lines, driveways, or walkways should be trimmed for safety and property protection.</p>
+  <!-- SIGNS YOU NEED -->
+  <section class="bg-muted py-16 md:py-24">
+    <div class="container">
+      <h2 class="text-center text-2xl font-bold md:text-4xl">Signs You Need Tree Trimming &amp; Pruning</h2>
+      <p class="mx-auto mt-6 max-w-3xl text-center text-muted-foreground leading-relaxed">
+        The most obvious sign is branches that are too close to your house, fence, power lines, or other structures. But there are others worth watching:
+      </p>
+      <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <!-- Warning: Branches too close -->
+        <div class="rounded-lg border border-border bg-background p-6 text-center">
+          <div class="mx-auto mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-destructive/10">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-destructive" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"></path><path d="M12 9v4"></path><path d="M12 17h.01"></path></svg>
+          </div>
+          <p class="text-sm leading-relaxed text-muted-foreground">Branches too close to your roof, fence, power lines, or other structures</p>
         </div>
-        <div class="bg-blue-50 p-6 rounded-lg">
-          <h3 class="text-xl font-bold mb-2">Dead or Diseased Limbs</h3>
-          <p class="text-gray-700">Dead wood should be removed to prevent disease spread, improve appearance, and reduce hazard risks.</p>
+        <!-- Warning: Dead or hanging limbs -->
+        <div class="rounded-lg border border-border bg-background p-6 text-center">
+          <div class="mx-auto mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-destructive/10">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-destructive" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.7 7.7a2.5 2.5 0 1 1 1.8 4.3H2"></path><path d="M9.6 4.6A2 2 0 1 1 11 8H2"></path><path d="M12.6 19.4A2 2 0 1 0 14 16H2"></path></svg>
+          </div>
+          <p class="text-sm leading-relaxed text-muted-foreground">Dead or hanging limbs that move differently in wind from the rest of the tree</p>
         </div>
-        <div class="bg-blue-50 p-6 rounded-lg">
-          <h3 class="text-xl font-bold mb-2">Crossing Branches</h3>
-          <p class="text-gray-700">Branches rubbing against each other can cause damage and create entry points for disease.</p>
+        <!-- Warning: Dense canopy -->
+        <div class="rounded-lg border border-border bg-background p-6 text-center">
+          <div class="mx-auto mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-destructive/10">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-destructive" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+          </div>
+          <p class="text-sm leading-relaxed text-muted-foreground">Canopy so dense it's blocking light or inviting fungal disease</p>
         </div>
-        <div class="bg-blue-50 p-6 rounded-lg">
-          <h3 class="text-xl font-bold mb-2">Dense Canopy</h3>
-          <p class="text-gray-700">Thick growth reduces light penetration and air circulation, promoting disease and pest problems.</p>
+        <!-- Warning: Heavy snow -->
+        <div class="rounded-lg border border-border bg-background p-6 text-center">
+          <div class="mx-auto mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-destructive/10">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-destructive" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="2" x2="22" y1="12" y2="12"></line><line x1="12" x2="12" y1="2" y2="22"></line><path d="m20 16-4-4 4-4"></path><path d="m4 8 4 4-4 4"></path><path d="m16 4-4 4-4-4"></path><path d="m8 20 4-4 4 4"></path></svg>
+          </div>
+          <p class="text-sm leading-relaxed text-muted-foreground">Heavy wet spring snow loading onto unpruned, structurally weak branches</p>
         </div>
       </div>
-    </section>
+      <div class="mx-auto mt-10 max-w-3xl space-y-4 text-center">
+        <p class="text-muted-foreground leading-relaxed">
+          In Denver specifically, the combination of heavy wet spring snow and high winds makes unpruned trees a real seasonal risk. A large branch that's structurally weak doesn't need much to fail. The time to deal with it is before a storm, not after. Waiting until a limb falls means paying for removal and whatever it landed on.
+        </p>
+        <p class="text-muted-foreground leading-relaxed">
+          Crown density also matters for tree health. A canopy that's too thick limits airflow and light, which invites fungal disease and stress - especially in Denver's dry summers. Proper pruning isn't just about appearance. It's about keeping the tree structurally sound for years to come.
+        </p>
+      </div>
+    </div>
+  </section>
 
-    <!-- Service Options -->
-    <section class="py-12 px-4 max-w-4xl mx-auto">
-      <h2 class="text-4xl font-bold mb-8 text-center">Our Trimming Services</h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-          <div class="bg-green-600 h-24 flex items-center justify-center">
-            <span class="text-white text-3xl">👑</span>
+  <!-- OUR OPTIONS -->
+  <section class="py-16 md:py-24">
+    <div class="container">
+      <h2 class="text-center text-2xl font-bold md:text-4xl">Our Tree Trimming &amp; Pruning Options</h2>
+      <p class="mx-auto mt-4 max-w-2xl text-center text-muted-foreground">
+        Our pruning work falls into a few categories depending on what your trees need.
+      </p>
+      <div class="mt-12 space-y-8">
+        <!-- Crown Reduction -->
+        <div class="flex flex-col gap-6 rounded-xl border border-border bg-card p-8 md:flex-row md:items-start">
+          <div class="flex-shrink-0">
+            <div class="inline-flex h-16 w-16 items-center justify-center rounded-full bg-accent/15">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m17 14 3 3.3a1 1 0 0 1-.7 1.7H4.7a1 1 0 0 1-.7-1.7L7 14"></path><path d="m17 14V2H7v12"></path><rect x="2" y="18" width="20" height="4" rx="1"></rect></svg>
+            </div>
           </div>
-          <div class="p-6">
-            <h3 class="text-xl font-bold mb-2"><a href="/crown-reduction-denver-co" class="text-green-600 hover:text-green-700">Crown Reduction</a></h3>
-            <p class="text-gray-600 mb-4">Strategically reduce tree size while maintaining natural form and health.</p>
+          <div class="flex-1">
+            <a href="/crown-reduction-denver-co" class="text-xl font-bold text-primary hover:underline">Crown Reduction</a>
+            <p class="mt-3 leading-relaxed text-muted-foreground">For trees that have grown too large or wide for their space, we perform crown reduction - selectively reducing the overall size of the canopy while maintaining the tree's natural shape and long-term health. This is the right approach when a tree is encroaching on a structure or has become too heavy at the top.</p>
+            <a href="/crown-reduction-denver-co" class="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-primary hover:underline">
+              Learn more about Crown Reduction <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"></path></svg>
+            </a>
           </div>
         </div>
-
-        <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-          <div class="bg-green-600 h-24 flex items-center justify-center">
-            <span class="text-white text-3xl">💀</span>
+        <!-- Deadwooding -->
+        <div class="flex flex-col gap-6 rounded-xl border border-border bg-card p-8 md:flex-row md:items-start md:flex-row-reverse">
+          <div class="flex-shrink-0">
+            <div class="inline-flex h-16 w-16 items-center justify-center rounded-full bg-accent/15">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"></circle><path d="M8.12 8.12 12 12"></path><path d="M20 4 8.12 15.88"></path><circle cx="6" cy="18" r="3"></circle><path d="M14.8 14.8 20 20"></path></svg>
+            </div>
           </div>
-          <div class="p-6">
-            <h3 class="text-xl font-bold mb-2"><a href="/deadwooding-denver-co" class="text-green-600 hover:text-green-700">Deadwooding</a></h3>
-            <p class="text-gray-600 mb-4">Remove dead branches to improve appearance, prevent disease, and enhance safety.</p>
+          <div class="flex-1">
+            <a href="/deadwooding-denver-co" class="text-xl font-bold text-primary hover:underline">Deadwooding</a>
+            <p class="mt-3 leading-relaxed text-muted-foreground">For trees carrying dead, dying, or diseased limbs, we offer deadwooding. Removing dead wood eliminates falling hazards and stops disease from spreading to healthy parts of the tree. It's one of the most impactful things you can do for a mature tree that otherwise looks fine.</p>
+            <a href="/deadwooding-denver-co" class="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-primary hover:underline">
+              Learn more about Deadwooding <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"></path></svg>
+            </a>
           </div>
         </div>
-
-        <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-          <div class="bg-green-600 h-24 flex items-center justify-center">
-            <span class="text-white text-3xl">🌿</span>
+        <!-- Bush & Shrub Trimming -->
+        <div class="flex flex-col gap-6 rounded-xl border border-border bg-card p-8 md:flex-row md:items-start">
+          <div class="flex-shrink-0">
+            <div class="inline-flex h-16 w-16 items-center justify-center rounded-full bg-accent/15">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"></circle><path d="M8.12 8.12 12 12"></path><path d="M20 4 8.12 15.88"></path><circle cx="6" cy="18" r="3"></circle><path d="M14.8 14.8 20 20"></path></svg>
+            </div>
           </div>
-          <div class="p-6">
-            <h3 class="text-xl font-bold mb-2"><a href="/bush-shrub-trimming-denver-co" class="text-green-600 hover:text-green-700">Bush & Shrub Trimming</a></h3>
-            <p class="text-gray-600 mb-4">Professional trimming to shape and maintain your bushes and shrubs.</p>
+          <div class="flex-1">
+            <a href="/bush-shrub-trimming-denver-co" class="text-xl font-bold text-primary hover:underline">Bush &amp; Shrub Trimming</a>
+            <p class="mt-3 leading-relaxed text-muted-foreground">We also handle bush &amp; shrub trimming for properties where overgrown shrubs are blocking windows, crowding walkways, or getting out of shape. The same attention to proper technique applies - we cut for plant health, not just appearance.</p>
+            <a href="/bush-shrub-trimming-denver-co" class="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-primary hover:underline">
+              Learn more about Bush &amp; Shrub Trimming <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"></path></svg>
+            </a>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Denver Specific Section -->
-    <section class="py-12 px-4">
-      <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-        <div>
-          <img src="/assets/hero-climber.jpg" alt="Arborist climbing tree" class="rounded-lg shadow-lg" />
+  <!-- FOR DENVER -->
+  <section class="bg-muted py-16 md:py-24">
+    <div class="container">
+      <div class="mx-auto max-w-4xl">
+        <div class="grid gap-8 md:grid-cols-5">
+          <div class="md:col-span-3">
+            <h2 class="text-2xl font-bold md:text-4xl">Tree Trimming &amp; Pruning for Denver Homes</h2>
+            <p class="mt-6 leading-relaxed text-muted-foreground">
+              Denver's Front Range climate creates specific challenges for tree maintenance. Late spring snowstorms regularly bring heavy, wet snow that loads onto canopies and snaps limbs - especially on trees that haven't been pruned to reduce weight and wind resistance. We see the aftermath every spring across Denver, Aurora, Lakewood, Englewood, and surrounding areas.
+            </p>
+            <p class="mt-4 leading-relaxed text-muted-foreground">
+              High winds off the mountains are a year-round factor. Trees with thick, unpruned canopies act like sails in strong gusts. Reducing crown density through proper pruning dramatically lowers the load on the trunk and root system during wind events.
+            </p>
+            <p class="mt-4 leading-relaxed text-muted-foreground">
+              Drought stress is also a factor in Denver. Trees that are already weakened by dry conditions are more likely to have structural failures. Regular pruning - removing dead wood and reducing crown weight - helps stressed trees manage the load they're carrying. Our arborists work throughout the Denver metro and understand what local trees face season by season.
+            </p>
+          </div>
+          <div class="md:col-span-2 flex flex-col gap-6">
+            <img
+              src="/assets/hero-climber.jpg"
+              alt="Arbor Care arborist climbing and trimming a tree in Denver Colorado"
+              class="w-full rounded-xl object-cover max-h-[400px]"
+              loading="lazy"
+              width="600"
+              height="400"
+            />
+            <div class="rounded-lg border border-border bg-background p-6">
+              <div class="mb-4 flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                <h3 class="font-bold">Service Areas</h3>
+              </div>
+              <ul class="space-y-2">
+                {business.serviceAreas.map((area) => (
+                  <li class="flex items-center gap-2 text-sm text-muted-foreground">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-accent flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><path d="m9 11 3 3L22 4"></path></svg>
+                    {area}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
         </div>
-        <div>
-          <h2 class="text-4xl font-bold mb-4">Denver Tree Trimming Expertise</h2>
-          <p class="text-lg text-gray-700 mb-4">
-            Denver's unique climate and tree species require specialized knowledge. Our ISA-certified arborists understand the specific needs of Denver's trees, including ponderosa pines, Douglas firs, and other local species.
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT TO EXPECT -->
+  <section class="py-16 md:py-24">
+    <div class="container">
+      <h2 class="text-center text-2xl font-bold md:text-4xl">What to Expect</h2>
+      <div class="mx-auto mt-12 max-w-3xl grid gap-6 sm:grid-cols-2">
+        <div class="rounded-lg border border-border bg-card p-6">
+          <div class="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-full bg-accent/15">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><path d="m9 12 2 2 4-4"></path></svg>
+          </div>
+          <h3 class="font-bold mb-2">Free On-Site Estimate</h3>
+          <p class="text-sm leading-relaxed text-muted-foreground">
+            When you call, we'll schedule a free on-site estimate at your property. One of our ISA-certified arborists walks the job with you, looks at the trees in question, and tells you exactly what needs to be done and why. You get a firm price before any work starts - no surprises on the invoice.
           </p>
-          <p class="text-lg text-gray-700">
-            We follow ANSI A300 pruning standards to ensure your trees remain healthy, attractive, and safe for years to come.
+        </div>
+        <div class="rounded-lg border border-border bg-card p-6">
+          <div class="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-full bg-accent/15">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+          </div>
+          <h3 class="font-bold mb-2">Day of Service</h3>
+          <p class="text-sm leading-relaxed text-muted-foreground">
+            Our crew arrives with the right equipment for the job. We prune using proper technique, clean up all debris, and haul everything away before we leave. Most residential trimming jobs are completed in a single visit. If something comes up that changes the scope, we tell you before we proceed.
           </p>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- What to Expect -->
-    <section class="py-12 px-4 max-w-4xl mx-auto">
-      <h2 class="text-4xl font-bold mb-8 text-center">What to Expect From Our Service</h2>
-      <div class="space-y-4">
-        <div class="flex gap-4">
-          <div class="flex-shrink-0 w-8 h-8 bg-green-600 text-white rounded-full flex items-center justify-center font-bold">1</div>
-          <div>
-            <h3 class="text-xl font-bold mb-2">Professional Assessment</h3>
-            <p class="text-gray-700">Our arborists evaluate your tree's health, structure, and specific needs before trimming.</p>
-          </div>
+  <!-- WHY CHOOSE US -->
+  <section class="bg-muted py-16 md:py-24">
+    <div class="container">
+      <h2 class="text-center text-2xl font-bold md:text-4xl">Why Choose Us for Tree Trimming &amp; Pruning</h2>
+      <p class="mx-auto mt-6 max-w-3xl text-center text-muted-foreground leading-relaxed">
+        Arbor Care Tree Solutions is a family-owned company with ISA-certified arborists on staff - that credential matters because it means our pruning decisions are based on tree science, not guesswork. We've earned 100+ five-star Google reviews from Denver homeowners by showing up on time, doing the work right, and charging what we quoted.
+      </p>
+      <div class="mx-auto mt-10 grid max-w-3xl gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div class="flex items-center gap-3 rounded-lg border border-border bg-background p-4">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"></circle><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"></path></svg>
+          <span class="text-sm font-medium">ISA-certified arborists on every job</span>
         </div>
-        <div class="flex gap-4">
-          <div class="flex-shrink-0 w-8 h-8 bg-green-600 text-white rounded-full flex items-center justify-center font-bold">2</div>
-          <div>
-            <h3 class="text-xl font-bold mb-2">Expert Trimming</h3>
-            <p class="text-gray-700">We use proper pruning techniques and equipment to safely trim your trees.</p>
-          </div>
+        <div class="flex items-center gap-3 rounded-lg border border-border bg-background p-4">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+          <span class="text-sm font-medium">Family-owned company</span>
         </div>
-        <div class="flex gap-4">
-          <div class="flex-shrink-0 w-8 h-8 bg-green-600 text-white rounded-full flex items-center justify-center font-bold">3</div>
-          <div>
-            <h3 class="text-xl font-bold mb-2">Cleanup</h3>
-            <p class="text-gray-700">We remove all branches and debris, leaving your property clean.</p>
-          </div>
+        <div class="flex items-center gap-3 rounded-lg border border-border bg-background p-4">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+          <span class="text-sm font-medium">100+ five-star Google reviews</span>
         </div>
-        <div class="flex gap-4">
-          <div class="flex-shrink-0 w-8 h-8 bg-green-600 text-white rounded-full flex items-center justify-center font-bold">4</div>
-          <div>
-            <h3 class="text-xl font-bold mb-2">Maintenance Tips</h3>
-            <p class="text-gray-700">We provide guidance on tree care and maintenance recommendations.</p>
-          </div>
+        <div class="flex items-center gap-3 rounded-lg border border-border bg-background p-4">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path><path d="m9 12 2 2 4-4"></path></svg>
+          <span class="text-sm font-medium">Licensed &amp; insured in Colorado</span>
+        </div>
+        <div class="flex items-center gap-3 rounded-lg border border-border bg-background p-4">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"></path></svg>
+          <span class="text-sm font-medium">Free estimates - no trip charge</span>
+        </div>
+        <div class="flex items-center gap-3 rounded-lg border border-border bg-background p-4">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+          <span class="text-sm font-medium">We answer immediately, 24/7</span>
         </div>
       </div>
-    </section>
+      <p class="mx-auto mt-8 max-w-3xl text-center text-muted-foreground leading-relaxed">
+        Estimates are free with no trip charge. We answer calls immediately, 24 hours a day, so if a storm just came through and you've got a damaged limb situation, you're not leaving a voicemail. We're licensed and insured in Colorado - ask us for proof before any job starts.
+      </p>
+    </div>
+  </section>
 
-    <!-- Why Choose Us -->
-    <section class="py-12 px-4 max-w-4xl mx-auto">
-      <h2 class="text-4xl font-bold mb-8 text-center">Why Choose Arbor Care?</h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div class="text-center">
-          <div class="text-5xl mb-4">🏆</div>
-          <h3 class="text-xl font-bold mb-2">ISA Certified</h3>
-          <p class="text-gray-700">Our arborists are certified by the International Society of Arboriculture.</p>
-        </div>
-        <div class="text-center">
-          <div class="text-5xl mb-4">📋</div>
-          <h3 class="text-xl font-bold mb-2">Licensed & Insured</h3>
-          <p class="text-gray-700">Fully licensed and insured for your peace of mind and protection.</p>
-        </div>
-        <div class="text-center">
-          <div class="text-5xl mb-4">⚡</div>
-          <h3 class="text-xl font-bold mb-2">Quick Response</h3>
-          <p class="text-gray-700">We provide fast, reliable service with availability 24/7.</p>
-        </div>
-        <div class="text-center">
-          <div class="text-5xl mb-4">💰</div>
-          <h3 class="text-xl font-bold mb-2">Free Estimates</h3>
-          <p class="text-gray-700">No obligation, no trip charge for your free estimate.</p>
-        </div>
-        <div class="text-center">
-          <div class="text-5xl mb-4">🎯</div>
-          <h3 class="text-xl font-bold mb-2">Expert Technique</h3>
-          <p class="text-gray-700">We follow ANSI standards for proper and safe tree care.</p>
-        </div>
-        <div class="text-center">
-          <div class="text-5xl mb-4">🏘️</div>
-          <h3 class="text-xl font-bold mb-2">Local Knowledge</h3>
-          <p class="text-gray-700">Deep understanding of Denver's trees and climate.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Related Services -->
-    <section class="py-12 px-4 max-w-4xl mx-auto">
-      <h2 class="text-4xl font-bold mb-8 text-center">Related Services</h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <a href="/tree-removal" class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition text-center">
-          <h3 class="text-xl font-bold mb-2 text-green-600">Tree Removal</h3>
-          <p class="text-gray-600">Safe removal of hazardous or problem trees</p>
-        </a>
-        <a href="/stump-grinding-denver-co" class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition text-center">
-          <h3 class="text-xl font-bold mb-2 text-green-600">Stump Grinding</h3>
-          <p class="text-gray-600">Efficient stump removal and grinding</p>
-        </a>
-        <a href="/arborist-service-denver-co" class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition text-center">
-          <h3 class="text-xl font-bold mb-2 text-green-600">Arborist Services</h3>
-          <p class="text-gray-600">Tree health assessment and expert care</p>
-        </a>
-      </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="bg-green-600 text-white py-12 px-4">
-      <div class="max-w-4xl mx-auto text-center">
-        <h2 class="text-4xl font-bold mb-4">Ready for Professional Tree Trimming?</h2>
-        <p class="text-xl mb-8">Get your free estimate today from Denver's trusted tree service.</p>
-        <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <a href="tel:+13039496818" class="bg-white text-green-600 px-8 py-3 rounded-lg font-bold hover:bg-gray-100 transition flex items-center justify-center gap-2">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-            Call (303) 949-6818
+  <!-- RELATED SERVICES GRID -->
+  <section class="py-16 md:py-24">
+    <div class="container">
+      <h2 class="text-center text-2xl font-bold md:text-4xl mb-12">Related Services</h2>
+      <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        <!-- Crown Reduction -->
+        <div class="group rounded-lg border border-border bg-card p-8 transition-shadow hover:shadow-md">
+          <div class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-accent/15">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m17 14 3 3.3a1 1 0 0 1-.7 1.7H4.7a1 1 0 0 1-.7-1.7L7 14"></path><path d="m17 14V2H7v12"></path><rect x="2" y="18" width="20" height="4" rx="1"></rect></svg>
+          </div>
+          <h3 class="text-xl font-bold">Crown Reduction</h3>
+          <p class="mt-3 text-sm leading-relaxed text-muted-foreground">Selectively reduce the size of an overgrown canopy while maintaining the tree's structure and long-term health.</p>
+          <a href="/crown-reduction-denver-co" class="mt-6 inline-flex items-center gap-1 text-sm font-semibold text-primary hover:underline">
+            Learn More <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"></path></svg>
           </a>
-          <EstimateButton client:load className="bg-white text-green-600 px-8 py-3 rounded-lg font-bold hover:bg-gray-100 transition">
-            Get Free Estimate
-          </EstimateButton>
+        </div>
+        <!-- Deadwooding -->
+        <div class="group rounded-lg border border-border bg-card p-8 transition-shadow hover:shadow-md">
+          <div class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-accent/15">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"></circle><path d="M8.12 8.12 12 12"></path><path d="M20 4 8.12 15.88"></path><circle cx="6" cy="18" r="3"></circle><path d="M14.8 14.8 20 20"></path></svg>
+          </div>
+          <h3 class="text-xl font-bold">Deadwooding</h3>
+          <p class="mt-3 text-sm leading-relaxed text-muted-foreground">Remove dead, dying, or diseased limbs to eliminate fall hazards and stop disease from spreading through the tree.</p>
+          <a href="/deadwooding-denver-co" class="mt-6 inline-flex items-center gap-1 text-sm font-semibold text-primary hover:underline">
+            Learn More <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"></path></svg>
+          </a>
+        </div>
+        <!-- Bush & Shrub Trimming -->
+        <div class="group rounded-lg border border-border bg-card p-8 transition-shadow hover:shadow-md">
+          <div class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-accent/15">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"></circle><path d="M8.12 8.12 12 12"></path><path d="M20 4 8.12 15.88"></path><circle cx="6" cy="18" r="3"></circle><path d="M14.8 14.8 20 20"></path></svg>
+          </div>
+          <h3 class="text-xl font-bold">Bush &amp; Shrub Trimming</h3>
+          <p class="mt-3 text-sm leading-relaxed text-muted-foreground">Shape and maintain overgrown shrubs and hedges using proper technique that promotes healthy regrowth.</p>
+          <a href="/bush-shrub-trimming-denver-co" class="mt-6 inline-flex items-center gap-1 text-sm font-semibold text-primary hover:underline">
+            Learn More <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"></path></svg>
+          </a>
         </div>
       </div>
-    </section>
-  </main>
+    </div>
+  </section>
 
-  <Footer slot="footer" />
-</Layout>
+  <!-- FINAL CTA -->
+  <section class="bg-muted py-16 md:py-24">
+    <div class="container">
+      <div class="mx-auto max-w-2xl rounded-xl border-2 border-accent/30 bg-background p-8 md:p-12 text-center">
+        <h2 class="text-2xl font-bold md:text-3xl">Branches Getting Too Close for Comfort?</h2>
+        <p class="mt-4 text-muted-foreground leading-relaxed">
+          Don't wait for the next wind storm to make the decision for you. Call us for a free estimate - we'll assess the trees, tell you what needs to come off, and get it scheduled fast. We answer immediately, any time of day.
+        </p>
+        <div class="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+          <a href={business.phoneTel} class="inline-flex items-center justify-center gap-2 rounded-md bg-accent px-8 py-4 text-base font-bold text-accent-foreground shadow-lg hover:bg-accent/90 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+            Call {business.phone}
+          </a>
+          <EstimateModal client:load className="inline-flex items-center justify-center gap-2 rounded-md border border-input bg-background px-8 py-4 text-base font-bold text-foreground hover:bg-muted transition-colors">
+            Request Free Estimate
+          </EstimateModal>
+        </div>
+        <p class="mt-6 text-sm text-muted-foreground">
+          Looking for all of our services? Visit our{" "}
+          <a href="/" class="text-primary font-semibold hover:underline">Denver tree service homepage</a>.
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

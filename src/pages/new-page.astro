@@ -1,203 +1,115 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import Header from "../components/Header.tsx";
-import Footer from "../components/Footer.astro";
-import { EstimateButton } from "../components/EstimateModal.tsx";
+import BaseLayout from "../components/layout/BaseLayout.astro";
+import EstimateModal from "../components/ui/EstimateModal";
+import { business } from "../data/business";
+
+const offerings = [
+  "Roofline and gutter light installation",
+  "Tree and shrub wrapping with lights",
+  "Custom holiday décor design and setup",
+  "Takedown and storage after the season",
+  "Maintenance and bulb replacement during the season",
+];
 ---
 
-<Layout title="Holiday Lights Installation Denver CO | Arbor Care" description="Professional holiday light installation in Denver, CO. Let your tree service handle the heights. Book early for the season." canonical="/new-page">
-  <Header slot="header" pathname="/new-page" client:load />
-
-  <main class="min-h-screen">
-    <!-- Hero Section -->
-    <section class="bg-gradient-to-r from-red-600 to-green-600 text-white py-16 px-4">
-      <div class="max-w-4xl mx-auto text-center">
-        <h1 class="text-5xl md:text-6xl font-bold mb-4">
-          <span class="inline-block">✨</span> Holiday Lights Installation <span class="inline-block">✨</span>
+<BaseLayout
+  title="Holiday Lights & Decor | Arbor Care Tree Solutions Denver CO"
+  description="Professional holiday light installation and décor in Denver, CO. Safe, reliable, and beautiful. Free estimates. Call (303) 949-6818."
+>
+  <!-- HERO -->
+  <section class="relative min-h-[500px] md:min-h-[60vh] flex items-center overflow-hidden">
+    <img src="/assets/hero-tree-service.jpg" alt="Holiday lights and décor services in Denver CO" class="absolute inset-0 h-full w-full object-cover" width="1920" height="1080" loading="eager" fetchpriority="high" />
+    <div class="absolute inset-0 bg-black/60"></div>
+    <div class="container relative z-10 py-20 pb-28 md:py-28 text-center">
+      <div class="mx-auto max-w-3xl">
+        <div class="mx-auto mb-6 inline-flex h-16 w-16 items-center justify-center rounded-full bg-accent/20">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/><path d="M5 3v4"/><path d="M19 17v4"/><path d="M3 5h4"/><path d="M17 19h4"/></svg>
+        </div>
+        <h1 class="text-3xl font-bold text-white md:text-5xl leading-tight">
+          Holiday Lights &amp; Decor
+          <span class="block text-accent mt-2 text-xl md:text-2xl">Professional Installation in Denver, CO</span>
         </h1>
-        <p class="text-xl md:text-2xl">Professional Light Installation for Your Denver Home</p>
-      </div>
-    </section>
-
-    <!-- Introduction -->
-    <section class="py-12 px-4 max-w-4xl mx-auto">
-      <div class="prose prose-lg max-w-none">
-        <p class="text-lg text-gray-700 mb-6">
-          Let your professional tree service handle the heights this holiday season. Arbor Care Tree Solutions offers safe, professional holiday light installation for Denver homes. From roof lines to tall trees, we have the expertise and equipment to transform your home into a winter wonderland.
+        <p class="mx-auto mt-6 text-lg text-white/90 max-w-2xl">
+          We handle the ladders, the tangles, and the cold - so you can enjoy a beautifully lit home without the hassle.
         </p>
-      </div>
-    </section>
-
-    <!-- Why Choose Us for Holiday Lights -->
-    <section class="py-12 px-4 max-w-4xl mx-auto">
-      <h2 class="text-4xl font-bold mb-8 text-center">Why Choose Arbor Care for Holiday Lights?</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div class="bg-red-50 p-6 rounded-lg">
-          <h3 class="text-xl font-bold mb-2">Safety First</h3>
-          <p class="text-gray-700">We have the proper equipment and training for safe installation at heights. No DIY accidents.</p>
-        </div>
-        <div class="bg-red-50 p-6 rounded-lg">
-          <h3 class="text-xl font-bold mb-2">Professional Quality</h3>
-          <p class="text-gray-700">Beautiful, evenly spaced installations with attention to detail and proper securing.</p>
-        </div>
-        <div class="bg-red-50 p-6 rounded-lg">
-          <h3 class="text-xl font-bold mb-2">Experienced Team</h3>
-          <p class="text-gray-700">We work at heights safely every day in our tree care business.</p>
-        </div>
-        <div class="bg-red-50 p-6 rounded-lg">
-          <h3 class="text-xl font-bold mb-2">Fully Insured</h3>
-          <p class="text-gray-700">Complete liability insurance protects you and your property.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Services Offered -->
-    <section class="py-12 px-4 max-w-4xl mx-auto">
-      <h2 class="text-4xl font-bold mb-8 text-center">Holiday Light Services</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div class="bg-white rounded-lg shadow-lg p-6">
-          <h3 class="text-2xl font-bold mb-3">Roof & Gutter Installation</h3>
-          <p class="text-gray-700 mb-4">
-            Professional installation of lights along rooflines and gutters with proper securing and safety measures.
-          </p>
-          <ul class="space-y-2 text-gray-700 text-sm">
-            <li>✓ Gutter lights</li>
-            <li>✓ Roof line installation</li>
-            <li>✓ Fascia lighting</li>
-          </ul>
-        </div>
-
-        <div class="bg-white rounded-lg shadow-lg p-6">
-          <h3 class="text-2xl font-bold mb-3">Tree & Shrub Lighting</h3>
-          <p class="text-gray-700 mb-4">
-            Professional light installation in trees and shrubs for stunning landscape lighting effects.
-          </p>
-          <ul class="space-y-2 text-gray-700 text-sm">
-            <li>✓ Tree wrapping</li>
-            <li>✓ Shrub lighting</li>
-            <li>✓ Accent uplighting</li>
-          </ul>
-        </div>
-
-        <div class="bg-white rounded-lg shadow-lg p-6">
-          <h3 class="text-2xl font-bold mb-3">Design & Consultation</h3>
-          <p class="text-gray-700 mb-4">
-            Expert advice on light placement, color schemes, and design for maximum visual impact.
-          </p>
-          <ul class="space-y-2 text-gray-700 text-sm">
-            <li>✓ Design consultation</li>
-            <li>✓ Custom layouts</li>
-            <li>✓ Lighting advice</li>
-          </ul>
-        </div>
-
-        <div class="bg-white rounded-lg shadow-lg p-6">
-          <h3 class="text-2xl font-bold mb-3">Removal & Storage</h3>
-          <p class="text-gray-700 mb-4">
-            Professional removal after the holidays with proper storage of lights and equipment.
-          </p>
-          <ul class="space-y-2 text-gray-700 text-sm">
-            <li>✓ Safe removal</li>
-            <li>✓ Light storage</li>
-            <li>✓ Clean up</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- Safety & Quality -->
-    <section class="py-12 px-4 max-w-4xl mx-auto">
-      <h2 class="text-4xl font-bold mb-8 text-center">Our Safety & Quality Standards</h2>
-      <div class="bg-blue-50 rounded-lg p-8">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div>
-            <h3 class="text-2xl font-bold mb-4">Safety Measures</h3>
-            <ul class="space-y-3 text-gray-700">
-              <li class="flex items-start">
-                <span class="mr-3 text-2xl text-green-600">✓</span>
-                <span>Professional climbing equipment</span>
-              </li>
-              <li class="flex items-start">
-                <span class="mr-3 text-2xl text-green-600">✓</span>
-                <span>Proper harness and safety gear</span>
-              </li>
-              <li class="flex items-start">
-                <span class="mr-3 text-2xl text-green-600">✓</span>
-                <span>Electrical safety standards</span>
-              </li>
-              <li class="flex items-start">
-                <span class="mr-3 text-2xl text-green-600">✓</span>
-                <span>Secure installations that won't blow down</span>
-              </li>
-            </ul>
-          </div>
-          <div>
-            <h3 class="text-2xl font-bold mb-4">Quality Installation</h3>
-            <ul class="space-y-3 text-gray-700">
-              <li class="flex items-start">
-                <span class="mr-3 text-2xl text-green-600">✓</span>
-                <span>Even light spacing and alignment</span>
-              </li>
-              <li class="flex items-start">
-                <span class="mr-3 text-2xl text-green-600">✓</span>
-                <span>Professional-grade materials</span>
-              </li>
-              <li class="flex items-start">
-                <span class="mr-3 text-2xl text-green-600">✓</span>
-                <span>Weatherproof connections</span>
-              </li>
-              <li class="flex items-start">
-                <span class="mr-3 text-2xl text-green-600">✓</span>
-                <span>Year-round lighting options</span>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Booking Information -->
-    <section class="py-12 px-4 max-w-4xl mx-auto">
-      <h2 class="text-4xl font-bold mb-8 text-center">Booking Your Holiday Lights</h2>
-      <div class="bg-yellow-50 border-2 border-yellow-400 rounded-lg p-8">
-        <h3 class="text-2xl font-bold mb-4">Early Booking Recommended</h3>
-        <p class="text-lg text-gray-700 mb-4">
-          The holiday season is our busy time. <strong>Book early to secure your preferred installation date.</strong> We recommend scheduling in October or early November for November/December installation.
-        </p>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div class="bg-white p-4 rounded-lg">
-            <h4 class="font-bold mb-2">October-November</h4>
-            <p class="text-gray-700 text-sm">Peak booking period. Call early for best dates.</p>
-          </div>
-          <div class="bg-white p-4 rounded-lg">
-            <h4 class="font-bold mb-2">November-December</h4>
-            <p class="text-gray-700 text-sm">Holiday season installations. Book ASAP.</p>
-          </div>
-          <div class="bg-white p-4 rounded-lg">
-            <h4 class="font-bold mb-2">January</h4>
-            <p class="text-gray-700 text-sm">Removal and takedown services available.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="bg-green-600 text-white py-12 px-4">
-      <div class="max-w-4xl mx-auto text-center">
-        <h2 class="text-4xl font-bold mb-4">Schedule Your Holiday Light Installation</h2>
-        <p class="text-xl mb-8">Book early for the best dates. Call today or fill out a quote request.</p>
-        <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <a href="tel:+13039496818" class="bg-white text-green-600 px-8 py-3 rounded-lg font-bold hover:bg-gray-100 transition flex items-center justify-center gap-2">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-            Call (303) 949-6818
+        <div class="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+          <a href={business.phoneTel} class="inline-flex items-center justify-center gap-2 rounded-md bg-accent px-8 py-4 text-base font-bold text-accent-foreground shadow-lg hover:bg-accent/90 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            Call {business.phone}
           </a>
-          <EstimateButton client:load className="bg-white text-green-600 px-8 py-3 rounded-lg font-bold hover:bg-gray-100 transition">
-            Get Free Quote
-          </EstimateButton>
+          <EstimateModal client:load className="inline-flex items-center justify-center gap-2 rounded-md bg-white/15 backdrop-blur border border-white/30 px-8 py-4 text-base font-bold text-white hover:bg-white/25 transition-colors">
+            Get Free Estimate
+          </EstimateModal>
         </div>
       </div>
-    </section>
-  </main>
+    </div>
+    <div class="absolute bottom-0 left-0 right-0 bg-primary/95 backdrop-blur-sm">
+      <div class="container flex flex-wrap items-center justify-center gap-x-8 gap-y-2 py-3 text-sm text-primary-foreground">
+        <span class="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <span class="font-medium">100+ Five-Star Reviews</span>
+        </span>
+        <span class="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
+          <span class="font-medium">ISA-Certified Arborists</span>
+        </span>
+        <span class="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></svg>
+          <span class="font-medium">Free Estimates</span>
+        </span>
+        <span class="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          <span class="font-medium">Family Owned</span>
+        </span>
+      </div>
+    </div>
+  </section>
 
-  <Footer slot="footer" />
-</Layout>
+  <!-- CONTENT -->
+  <section class="py-16 md:py-24">
+    <div class="container">
+      <div class="mx-auto max-w-3xl">
+        <h2 class="text-2xl font-bold md:text-4xl mb-6">Let Us Light Up Your Home This Season</h2>
+        <p class="leading-relaxed text-muted-foreground">
+          As tree care professionals, we're already comfortable working at heights with ladders, lifts, and rigging gear. Holiday light installation is a natural extension of what we do — and we do it safely. We install, maintain, and take down holiday lights and décor for residential properties across the Denver metro.
+        </p>
+        <p class="mt-4 leading-relaxed text-muted-foreground">
+          From roofline lighting and tree wraps to custom décor packages, we handle every detail so your home looks its best throughout the holiday season. When the season's over, we come back, take everything down, and store it for you if you'd like.
+        </p>
+
+        <h3 class="text-xl font-bold mt-10 mb-4">What We Offer</h3>
+        <ul class="space-y-2 text-muted-foreground">
+          {offerings.map((item) => (
+            <li class="flex items-start gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-accent mt-1 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/><path d="M5 3v4"/><path d="M19 17v4"/><path d="M3 5h4"/><path d="M17 19h4"/></svg>
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+
+        <h3 class="text-xl font-bold mt-10 mb-4">Why Choose a Tree Service for Lights?</h3>
+        <p class="leading-relaxed text-muted-foreground">
+          Most holiday light injuries happen from falls. Our crews work at height every day with proper safety equipment — bucket trucks, harnesses, and ladders rated for the job. You get a professional installation from people who are genuinely comfortable and safe working on your roof and in your trees.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-16 md:py-24 bg-muted">
+    <div class="container">
+      <div class="mx-auto max-w-2xl rounded-xl border-2 border-accent/30 bg-card p-8 md:p-12 text-center">
+        <h2 class="text-2xl font-bold md:text-3xl">Book Your Holiday Lights Early</h2>
+        <p class="mt-4 text-muted-foreground leading-relaxed">
+          Scheduling fills up fast in the fall. Call now for a free estimate and lock in your installation date.
+        </p>
+        <div class="mt-8">
+          <a href={business.phoneTel} class="inline-flex items-center justify-center gap-2 rounded-md bg-accent px-8 py-4 text-base font-bold text-accent-foreground shadow-lg hover:bg-accent/90 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            {business.phone}
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

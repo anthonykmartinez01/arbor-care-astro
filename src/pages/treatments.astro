@@ -1,236 +1,113 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import Header from "../components/Header.tsx";
-import Footer from "../components/Footer.astro";
-import { EstimateButton } from "../components/EstimateModal.tsx";
+import BaseLayout from "../components/layout/BaseLayout.astro";
+import EstimateModal from "../components/ui/EstimateModal";
+import { business } from "../data/business";
+
+const springServices = [
+  "Storm damage cleanup and broken branch removal",
+  "Deadwood pruning and crown cleaning",
+  "Deep root fertilization to jumpstart growth",
+  "Preventive pest and disease treatments (Emerald Ash Borer, bark beetles, etc.)",
+  "Tree health assessments after winter stress",
+  "Brush chipping and yard debris cleanup",
+];
 ---
 
-<Layout title="Spring Tree Cleanup Denver CO | Arbor Care" description="Spring tree cleanup and treatment services in Denver. Storm damage assessment, pruning, and preventive treatments." canonical="/treatments">
-  <Header slot="header" pathname="/treatments" client:load />
-
-  <main class="min-h-screen">
-    <!-- Hero Section -->
-    <section class="bg-gradient-to-r from-green-600 to-blue-600 text-white py-16 px-4">
-      <div class="max-w-4xl mx-auto text-center">
-        <h1 class="text-5xl md:text-6xl font-bold mb-4">Spring Tree Cleanup & Care</h1>
-        <p class="text-xl md:text-2xl">Prepare Your Trees for the Growing Season</p>
+<BaseLayout
+  title="Spring Cleanup & Treatments | Arbor Care Denver CO"
+  description="Spring cleanup and tree treatments in Denver, CO. Post-winter storm damage cleanup, pruning, fertilization, and pest prevention. Call (303) 949-6818."
+>
+  <!-- HERO -->
+  <section class="relative min-h-[500px] md:min-h-[60vh] flex items-center overflow-hidden">
+    <img src="/assets/hero-services.jpg" alt="Spring cleanup and tree treatment services in Denver CO" class="absolute inset-0 h-full w-full object-cover" width="1920" height="1080" loading="eager" fetchpriority="high" />
+    <div class="absolute inset-0 bg-black/60"></div>
+    <div class="container relative z-10 py-20 pb-28 md:py-28 text-center">
+      <div class="mx-auto max-w-3xl">
+        <div class="mx-auto mb-6 inline-flex h-16 w-16 items-center justify-center rounded-full bg-accent/20">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.9C15.5 4.9 17 3.5 19 2c1 2 2 4.5 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>
+        </div>
+        <h1 class="text-3xl font-bold text-white md:text-5xl leading-tight">
+          Spring Cleanup &amp; Treatments
+          <span class="block text-accent mt-2 text-xl md:text-2xl">Get Your Property Ready for the Season</span>
+        </h1>
+        <p class="mx-auto mt-6 text-lg text-white/90 max-w-2xl">
+          Winter takes a toll on Denver trees. Spring is the time to clean up storm damage, treat emerging pest issues, and set your trees up for a healthy growing season.
+        </p>
+        <div class="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+          <a href={business.phoneTel} class="inline-flex items-center justify-center gap-2 rounded-md bg-accent px-8 py-4 text-base font-bold text-accent-foreground shadow-lg hover:bg-accent/90 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            Call {business.phone}
+          </a>
+          <EstimateModal client:load className="inline-flex items-center justify-center gap-2 rounded-md bg-white/15 backdrop-blur border border-white/30 px-8 py-4 text-base font-bold text-white hover:bg-white/25 transition-colors">
+            Get Free Estimate
+          </EstimateModal>
+        </div>
       </div>
-    </section>
+    </div>
+    <div class="absolute bottom-0 left-0 right-0 bg-primary/95 backdrop-blur-sm">
+      <div class="container flex flex-wrap items-center justify-center gap-x-8 gap-y-2 py-3 text-sm text-primary-foreground">
+        <span class="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <span class="font-medium">100+ Five-Star Reviews</span>
+        </span>
+        <span class="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
+          <span class="font-medium">ISA-Certified Arborists</span>
+        </span>
+        <span class="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></svg>
+          <span class="font-medium">Free Estimates</span>
+        </span>
+        <span class="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          <span class="font-medium">Family Owned</span>
+        </span>
+      </div>
+    </div>
+  </section>
 
-    <!-- Introduction -->
-    <section class="py-12 px-4 max-w-4xl mx-auto">
-      <div class="prose prose-lg max-w-none">
-        <p class="text-lg text-gray-700 mb-6">
-          Spring is the perfect time to assess your trees and prepare them for healthy growth. At Arbor Care Tree Solutions, we offer comprehensive spring cleanup and treatment services to get your Denver trees ready for the season ahead. From storm damage assessment to preventive treatments, we ensure your trees are healthy and safe.
+  <!-- CONTENT -->
+  <section class="py-16 md:py-24">
+    <div class="container">
+      <div class="mx-auto max-w-3xl">
+        <h2 class="text-2xl font-bold md:text-4xl mb-6">Spring Is When Problems Show Up — And When You Can Fix Them</h2>
+        <p class="leading-relaxed text-muted-foreground">
+          After a Denver winter, trees reveal the damage - broken branches from heavy snow, deadwood that wasn't visible before, and pest issues that start ramping up as temperatures rise. Spring is the best window to address all of it before the growing season is underway.
+        </p>
+
+        <h3 class="text-xl font-bold mt-10 mb-4">Our Spring Services</h3>
+        <ul class="space-y-2 text-muted-foreground">
+          {springServices.map((item) => (
+            <li class="flex items-start gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-accent mt-1 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.9C15.5 4.9 17 3.5 19 2c1 2 2 4.5 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+
+        <h3 class="text-xl font-bold mt-10 mb-4">Why Spring Treatments Matter</h3>
+        <p class="leading-relaxed text-muted-foreground">
+          Many pest treatments are most effective when applied preventively in spring — before insects are actively causing damage. Emerald Ash Borer trunk injections, for example, need to be applied before the beetles emerge. Once a tree shows heavy damage from EAB, treatment options narrow significantly. Spring is also the ideal time for deep root fertilization, which gives trees the nutrient boost they need to recover from winter stress and push healthy new growth.
         </p>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Spring Services -->
-    <section class="py-12 px-4 max-w-4xl mx-auto">
-      <h2 class="text-4xl font-bold mb-8 text-center">Spring Tree Services</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div class="bg-white rounded-lg shadow-lg p-6">
-          <h3 class="text-2xl font-bold mb-3">Storm Damage Assessment</h3>
-          <p class="text-gray-700 mb-4">
-            Inspect trees for winter and spring storm damage. We identify broken branches, leaning trees, and hazardous conditions.
-          </p>
-          <ul class="space-y-2 text-gray-700 text-sm">
-            <li>✓ Damage inspection</li>
-            <li>✓ Safety evaluation</li>
-            <li>✓ Repair recommendations</li>
-          </ul>
-        </div>
-
-        <div class="bg-white rounded-lg shadow-lg p-6">
-          <h3 class="text-2xl font-bold mb-3">Dead Branch Removal</h3>
-          <p class="text-gray-700 mb-4">
-            Remove winter-killed and dead branches that have accumulated. Improves tree appearance and health.
-          </p>
-          <ul class="space-y-2 text-gray-700 text-sm">
-            <li>✓ Deadwood removal</li>
-            <li>✓ Hazard pruning</li>
-            <li>✓ Cleanup included</li>
-          </ul>
-        </div>
-
-        <div class="bg-white rounded-lg shadow-lg p-6">
-          <h3 class="text-2xl font-bold mb-3">Spring Pruning</h3>
-          <p class="text-gray-700 mb-4">
-            Professional pruning to encourage healthy spring growth and establish good tree structure.
-          </p>
-          <ul class="space-y-2 text-gray-700 text-sm">
-            <li>✓ Growth pruning</li>
-            <li>✓ Canopy thinning</li>
-            <li>✓ Shape improvement</li>
-          </ul>
-        </div>
-
-        <div class="bg-white rounded-lg shadow-lg p-6">
-          <h3 class="text-2xl font-bold mb-3">Preventive Treatments</h3>
-          <p class="text-gray-700 mb-4">
-            Preventive treatments for common spring pests and diseases that threaten Denver trees.
-          </p>
-          <ul class="space-y-2 text-gray-700 text-sm">
-            <li>✓ Pest prevention</li>
-            <li>✓ Disease treatment</li>
-            <li>✓ Health monitoring</li>
-          </ul>
-        </div>
-
-        <div class="bg-white rounded-lg shadow-lg p-6">
-          <h3 class="text-2xl font-bold mb-3">Mulching & Ground Care</h3>
-          <p class="text-gray-700 mb-4">
-            Fresh mulch improves soil moisture retention and protects tree health as growth season begins.
-          </p>
-          <ul class="space-y-2 text-gray-700 text-sm">
-            <li>✓ Mulch application</li>
-            <li>✓ Soil preparation</li>
-            <li>✓ Weeding</li>
-          </ul>
-        </div>
-
-        <div class="bg-white rounded-lg shadow-lg p-6">
-          <h3 class="text-2xl font-bold mb-3">Health Assessment</h3>
-          <p class="text-gray-700 mb-4">
-            Comprehensive evaluation of tree health to identify any issues and create treatment plans.
-          </p>
-          <ul class="space-y-2 text-gray-700 text-sm">
-            <li>✓ Pest inspection</li>
-            <li>✓ Disease screening</li>
-            <li>✓ Nutrient evaluation</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- Spring Hazards -->
-    <section class="py-12 px-4 max-w-4xl mx-auto">
-      <h2 class="text-4xl font-bold mb-8 text-center">Common Spring Tree Hazards</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div class="bg-blue-50 p-6 rounded-lg">
-          <h3 class="text-xl font-bold mb-2">Winter Storm Damage</h3>
-          <p class="text-gray-700">Heavy snow and wind break branches. Assess and remove dangerous limbs early.</p>
-        </div>
-        <div class="bg-blue-50 p-6 rounded-lg">
-          <h3 class="text-xl font-bold mb-2">Pest Awakening</h3>
-          <p class="text-gray-700">Spring pests like aphids and beetles become active. Preventive treatment helps.</p>
-        </div>
-        <div class="bg-blue-50 p-6 rounded-lg">
-          <h3 class="text-xl font-bold mb-2">Spring Fungal Diseases</h3>
-          <p class="text-gray-700">Wet spring weather promotes fungal disease. Early treatment is crucial.</p>
-        </div>
-        <div class="bg-blue-50 p-6 rounded-lg">
-          <h3 class="text-xl font-bold mb-2">Drought Stress</h3>
-          <p class="text-gray-700">Spring droughts in Denver affect tree health. Proper watering and care help.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Why Spring Service -->
-    <section class="py-12 px-4 max-w-4xl mx-auto">
-      <h2 class="text-4xl font-bold mb-8 text-center">Why Spring is the Best Time</h2>
-      <div class="bg-green-50 rounded-lg p-8">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div class="text-center">
-            <div class="text-4xl mb-3">🌱</div>
-            <h3 class="text-xl font-bold mb-2">Before Growth Starts</h3>
-            <p class="text-gray-700">Work before new growth begins allows trees to grow properly.</p>
-          </div>
-          <div class="text-center">
-            <div class="text-4xl mb-3">🔍</div>
-            <h3 class="text-xl font-bold mb-2">Assess Damage</h3>
-            <p class="text-gray-700">Winter damage is visible and can be addressed before growth.</p>
-          </div>
-          <div class="text-center">
-            <div class="text-4xl mb-3">🛡️</div>
-            <h3 class="text-xl font-bold mb-2">Prevent Problems</h3>
-            <p class="text-gray-700">Early treatment prevents pest and disease issues all season.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Denver Spring Conditions -->
-    <section class="py-12 px-4 max-w-4xl mx-auto">
-      <h2 class="text-4xl font-bold mb-8 text-center">Denver Spring Tree Care</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-        <div>
-          <h3 class="text-2xl font-bold mb-4">Understanding Denver's Spring</h3>
-          <p class="text-lg text-gray-700 mb-4">
-            Denver's spring brings unpredictable weather - from late snow to early heat waves. This stresses trees and creates opportunities for pests and disease.
-          </p>
-          <ul class="space-y-3 text-gray-700 mb-6">
-            <li className="flex items-start">
-              <span className="mr-3 text-2xl text-green-600">•</span>
-              <span><strong>Late spring snows:</strong> Can break branches on leafing trees</span>
-            </li>
-            <li className="flex items-start">
-              <span className="mr-3 text-2xl text-green-600">•</span>
-              <span><strong>Temperature swings:</strong> Damage new growth and stress trees</span>
-            </li>
-            <li className="flex items-start">
-              <span className="mr-3 text-2xl text-green-600">•</span>
-              <span><strong>Dry conditions:</strong> Denver spring is often dry, stressing young growth</span>
-            </li>
-            <li className="flex items-start">
-              <span className="mr-3 text-2xl text-green-600">•</span>
-              <span><strong>High altitude UV:</strong> Intense spring sun can damage leaves</span>
-            </li>
-          </ul>
-          <p class="text-lg text-gray-700">
-            Our spring cleanup and care services address these unique Denver conditions.
-          </p>
-        </div>
-        <div class="bg-white rounded-lg shadow-lg p-6">
-          <h3 class="text-xl font-bold mb-4">Spring Checklist</h3>
-          <ul class="space-y-3 text-gray-700">
-            <li class="flex items-start">
-              <input type="checkbox" checked disabled class="mr-3 mt-1" />
-              <span>Assess winter storm damage</span>
-            </li>
-            <li class="flex items-start">
-              <input type="checkbox" checked disabled class="mr-3 mt-1" />
-              <span>Remove dead or dying branches</span>
-            </li>
-            <li class="flex items-start">
-              <input type="checkbox" checked disabled class="mr-3 mt-1" />
-              <span>Apply preventive pest treatment</span>
-            </li>
-            <li class="flex items-start">
-              <input type="checkbox" checked disabled class="mr-3 mt-1" />
-              <span>Treat early disease issues</span>
-            </li>
-            <li class="flex items-start">
-              <input type="checkbox" checked disabled class="mr-3 mt-1" />
-              <span>Mulch and water as needed</span>
-            </li>
-            <li class="flex items-start">
-              <input type="checkbox" checked disabled class="mr-3 mt-1" />
-              <span>Schedule health assessment</span>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="bg-green-600 text-white py-12 px-4">
-      <div class="max-w-4xl mx-auto text-center">
-        <h2 class="text-4xl font-bold mb-4">Get Your Spring Cleanup Started</h2>
-        <p class="text-xl mb-8">Schedule your spring tree assessment and cleanup today.</p>
-        <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <a href="tel:+13039496818" class="bg-white text-green-600 px-8 py-3 rounded-lg font-bold hover:bg-gray-100 transition flex items-center justify-center gap-2">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-            Call (303) 949-6818
+  <!-- CTA -->
+  <section class="py-16 md:py-24 bg-muted">
+    <div class="container">
+      <div class="mx-auto max-w-2xl rounded-xl border-2 border-accent/30 bg-card p-8 md:p-12 text-center">
+        <h2 class="text-2xl font-bold md:text-3xl">Schedule Your Spring Cleanup</h2>
+        <p class="mt-4 text-muted-foreground leading-relaxed">
+          Call for a free assessment. We'll walk your property, identify what needs attention, and give you a firm quote.
+        </p>
+        <div class="mt-8">
+          <a href={business.phoneTel} class="inline-flex items-center justify-center gap-2 rounded-md bg-accent px-8 py-4 text-base font-bold text-accent-foreground shadow-lg hover:bg-accent/90 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            {business.phone}
           </a>
-          <EstimateButton client:load className="bg-white text-green-600 px-8 py-3 rounded-lg font-bold hover:bg-gray-100 transition">
-            Get Free Assessment
-          </EstimateButton>
         </div>
       </div>
-    </section>
-  </main>
-
-  <Footer slot="footer" />
-</Layout>
+    </div>
+  </section>
+</BaseLayout>
