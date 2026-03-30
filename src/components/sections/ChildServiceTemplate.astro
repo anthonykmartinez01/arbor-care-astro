@@ -1,6 +1,6 @@
 ---
 import BaseLayout from "../layout/BaseLayout.astro";
-import EstimateModal from "../ui/EstimateModal";
+import EstimateModalNative from "../ui/EstimateModalNative.astro";
 import { business } from "../../data/business";
 import type { ChildServiceData } from "../../data/childServices";
 
@@ -26,14 +26,19 @@ const whyChooseBadges = [
 
   <!-- HERO -->
   <section class="relative min-h-[500px] md:min-h-[60vh] flex items-center overflow-hidden">
-    <img
-      src="/assets/hero-tree-service.webp"
-      alt={data.h1}
-      class="absolute inset-0 h-full w-full object-cover"
-      width="1920"
-      height="1080"
-      loading="eager"
-    />
+    <picture>
+      <source media="(max-width: 767px)" srcset="/assets/hero-tree-service-mobile.webp" width="800" height="450" />
+      <img
+        src="/assets/hero-tree-service.webp"
+        alt={data.h1}
+        class="absolute inset-0 h-full w-full object-cover"
+        width="1920"
+        height="1080"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+      />
+    </picture>
     <div class="absolute inset-0 bg-black/60"></div>
     <div class="container relative z-10 py-20 pb-28 md:py-28 text-center">
       <div class="mx-auto max-w-3xl">
@@ -57,9 +62,9 @@ const whyChooseBadges = [
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
             Call {business.phone}
           </a>
-          <EstimateModal client:load className="inline-flex items-center justify-center gap-2 rounded-md bg-white/15 backdrop-blur border border-white/30 px-8 py-4 text-base font-bold text-white hover:bg-white/25 transition-colors">
+          <EstimateModalNative className="inline-flex items-center justify-center gap-2 rounded-md bg-white/15 backdrop-blur border border-white/30 px-8 py-4 text-base font-bold text-white hover:bg-white/25 transition-colors">
             Get Free Estimate
-          </EstimateModal>
+          </EstimateModalNative>
         </div>
       </div>
     </div>
@@ -144,9 +149,9 @@ const whyChooseBadges = [
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
             {business.phone}
           </a>
-          <EstimateModal client:load className="inline-flex items-center justify-center gap-2 rounded-md border border-input bg-background px-8 py-4 text-base font-bold text-foreground hover:bg-muted transition-colors">
+          <EstimateModalNative className="inline-flex items-center justify-center gap-2 rounded-md border border-input bg-background px-8 py-4 text-base font-bold text-foreground hover:bg-muted transition-colors">
             Request Free Estimate
-          </EstimateModal>
+          </EstimateModalNative>
         </div>
         <p class="mt-6 text-sm text-muted-foreground">
           <a href={homePath} class="text-primary font-semibold hover:underline inline-flex items-center gap-1">

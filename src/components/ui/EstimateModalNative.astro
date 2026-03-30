@@ -1,0 +1,48 @@
+---
+interface Props {
+  className?: string;
+  label?: string;
+}
+
+const { className, label = "Get Free Estimate" } = Astro.props;
+const dialogId = `estimate-dialog-${Math.random().toString(36).slice(2, 8)}`;
+---
+
+<button class={className} data-open-dialog={dialogId}>
+  <slot>{label}</slot>
+</button>
+
+<dialog id={dialogId} class="m-auto w-full max-w-lg rounded-xl bg-background p-6 shadow-xl backdrop:bg-black/50 max-h-[90vh] overflow-y-auto">
+  <div class="flex items-center justify-between mb-4">
+    <h2 class="text-xl font-bold">Get Your Free Estimate</h2>
+    <button data-close-dialog={dialogId} class="rounded-full p-1 text-foreground hover:bg-muted" aria-label="Close">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
+    </button>
+  </div>
+  <iframe
+    src="https://go.kailenflow.com/widget/form/XjWxHG1n0SQeIqxhg944"
+    style="width: 100%; border: none; overflow: hidden; min-height: 600px;"
+    title="Free Estimate Form"
+    loading="lazy"
+  ></iframe>
+</dialog>
+
+<script>
+  document.querySelectorAll<HTMLButtonElement>("[data-open-dialog]").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const id = btn.getAttribute("data-open-dialog")!;
+      document.getElementById(id)?.showModal();
+    });
+  });
+  document.querySelectorAll<HTMLButtonElement>("[data-close-dialog]").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const id = btn.getAttribute("data-close-dialog")!;
+      (document.getElementById(id) as HTMLDialogElement)?.close();
+    });
+  });
+  document.querySelectorAll<HTMLDialogElement>("dialog").forEach((d) => {
+    d.addEventListener("click", (e) => {
+      if (e.target === d) d.close();
+    });
+  });
+</script>

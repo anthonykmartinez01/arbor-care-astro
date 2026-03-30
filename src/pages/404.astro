@@ -1,6 +1,6 @@
 ---
 import BaseLayout from "../components/layout/BaseLayout.astro";
-import EstimateModal from "../components/ui/EstimateModal";
+import EstimateModalNative from "../components/ui/EstimateModalNative.astro";
 import { business } from "../data/business";
 ---
 
@@ -50,9 +50,9 @@ import { business } from "../data/business";
         </div>
 
         <div class="mt-6">
-          <EstimateModal client:load className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:underline">
+          <EstimateModalNative className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:underline">
             Or request a free estimate →
-          </EstimateModal>
+          </EstimateModalNative>
         </div>
       </div>
     </div>

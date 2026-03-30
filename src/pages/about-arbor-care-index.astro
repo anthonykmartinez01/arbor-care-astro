@@ -67,7 +67,19 @@ const aboutSchema = {
 
   <!-- HERO -->
   <section class="relative min-h-[500px] md:min-h-[60vh] flex items-center overflow-hidden">
-    <img src="/assets/about-hero.webp" alt="Arbor Care Tree Solutions crew working on a tree in Denver Colorado" class="absolute inset-0 h-full w-full object-cover" width="1920" height="1080" loading="eager" fetchpriority="high" />
+    <picture>
+      <source media="(max-width: 767px)" srcset="/assets/about-hero-mobile.webp" width="800" height="450" />
+      <img
+        src="/assets/about-hero.webp"
+        alt="Arbor Care Tree Solutions crew working on a tree in Denver Colorado"
+        class="absolute inset-0 h-full w-full object-cover"
+        width="1920"
+        height="1080"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+      />
+    </picture>
     <div class="absolute inset-0 bg-black/60"></div>
     <div class="container relative z-10 py-20 pb-28 md:py-28 text-center">
       <div class="mx-auto max-w-3xl">
