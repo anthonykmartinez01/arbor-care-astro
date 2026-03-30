@@ -1,0 +1,86 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.tsx";
+import Footer from "../components/Footer.astro";
+---
+
+<Layout title="Page Not Found | Arbor Care Tree Solutions" description="Page not found." canonical="/404">
+  <Header slot="header" pathname="/404" client:load />
+
+  <main class="min-h-screen flex flex-col">
+    <!-- Hero Section -->
+    <section class="flex-1 flex items-center justify-center px-4 py-12">
+      <div class="max-w-4xl mx-auto text-center">
+        <div class="text-8xl font-bold text-gray-200 mb-4">404</div>
+        <h1 class="text-5xl md:text-6xl font-bold mb-4 text-gray-800">Page Not Found</h1>
+        <p class="text-xl text-gray-600 mb-8">
+          Sorry, we couldn't find the page you're looking for. It might have been moved or deleted.
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl mx-auto">
+          <a href="/" class="bg-green-600 text-white px-8 py-3 rounded-lg font-bold hover:bg-green-700 transition inline-block">
+            Go to Homepage
+          </a>
+          <a href="/tree-services" class="bg-blue-600 text-white px-8 py-3 rounded-lg font-bold hover:bg-blue-700 transition inline-block">
+            View Our Services
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Helpful Links -->
+    <section class="bg-gray-50 py-12 px-4">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl font-bold mb-8 text-center">Helpful Links</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          <a href="/" class="bg-white rounded-lg shadow p-4 text-center hover:shadow-lg transition">
+            <div class="text-2xl mb-2">🏠</div>
+            <div class="font-bold text-gray-800">Home</div>
+          </a>
+          <a href="/tree-services" class="bg-white rounded-lg shadow p-4 text-center hover:shadow-lg transition">
+            <div class="text-2xl mb-2">🌳</div>
+            <div class="font-bold text-gray-800">Services</div>
+          </a>
+          <a href="/contact-us" class="bg-white rounded-lg shadow p-4 text-center hover:shadow-lg transition">
+            <div class="text-2xl mb-2">📞</div>
+            <div class="font-bold text-gray-800">Contact</div>
+          </a>
+          <a href="/about-arbor-care-index" class="bg-white rounded-lg shadow p-4 text-center hover:shadow-lg transition">
+            <div class="text-2xl mb-2">👥</div>
+            <div class="font-bold text-gray-800">About Us</div>
+          </a>
+          <a href="/our-work" class="bg-white rounded-lg shadow p-4 text-center hover:shadow-lg transition">
+            <div class="text-2xl mb-2">📸</div>
+            <div class="font-bold text-gray-800">Our Work</div>
+          </a>
+          <a href="/testimonials" class="bg-white rounded-lg shadow p-4 text-center hover:shadow-lg transition">
+            <div class="text-2xl mb-2">⭐</div>
+            <div class="font-bold text-gray-800">Reviews</div>
+          </a>
+          <a href="/new-index-2" class="bg-white rounded-lg shadow p-4 text-center hover:shadow-lg transition">
+            <div class="text-2xl mb-2">✓</div>
+            <div class="font-bold text-gray-800">Free Estimate</div>
+          </a>
+          <a href="/sitemap" class="bg-white rounded-lg shadow p-4 text-center hover:shadow-lg transition">
+            <div class="text-2xl mb-2">🗺️</div>
+            <div class="font-bold text-gray-800">Sitemap</div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="bg-green-600 text-white py-12 px-4">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-4xl font-bold mb-4">Need Help?</h2>
+        <p class="text-xl mb-8">Contact Arbor Care Tree Solutions directly for assistance.</p>
+        <a href="tel:+13039496818" class="bg-white text-green-600 px-8 py-3 rounded-lg font-bold hover:bg-gray-100 transition inline-flex items-center justify-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+          Call (303) 949-6818
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <Footer slot="footer" />
+</Layout>

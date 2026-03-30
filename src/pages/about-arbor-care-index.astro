@@ -1,0 +1,242 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.tsx";
+import Footer from "../components/Footer.astro";
+import { EstimateButton } from "../components/EstimateModal.tsx";
+---
+
+<Layout title="About Arbor Care Tree Solutions | Denver Tree Service" description="Family-owned tree service in Denver, CO. Led by Thomas Fraser with 30+ years of experience. ISA-certified, licensed, insured. Meet our team." canonical="/about-arbor-care-index">
+  <Header slot="header" pathname="/about-arbor-care-index" client:load />
+
+  <main class="min-h-screen">
+    <!-- Hero Section -->
+    <section
+      class="relative h-96 bg-cover bg-center flex items-center justify-center"
+      style="background-image: url('/assets/about-hero.jpg');"
+    >
+      <div class="absolute inset-0 bg-black/40"></div>
+      <div class="relative z-10 text-center text-white px-4">
+        <h1 class="text-5xl md:text-6xl font-bold mb-4">About Arbor Care</h1>
+        <p class="text-xl md:text-2xl">Denver's Trusted Tree Service Since 1994</p>
+      </div>
+    </section>
+
+    <!-- Built on Experience -->
+    <section class="py-12 px-4 max-w-4xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+        <div>
+          <h2 class="text-4xl font-bold mb-4">Built on Experience</h2>
+          <p class="text-lg text-gray-700 mb-4">
+            Arbor Care Tree Solutions was founded on a commitment to providing exceptional tree care services to the Denver community. With decades of combined experience, our team brings expertise, dedication, and professionalism to every job.
+          </p>
+          <p class="text-lg text-gray-700 mb-4">
+            We believe that proper tree care is an investment in your property, safety, and the environment. Every tree deserves professional attention, and that's what we deliver.
+          </p>
+          <p class="text-lg text-gray-700">
+            From small residential properties to large commercial projects, we handle all aspects of professional tree care with integrity and excellence.
+          </p>
+        </div>
+        <div>
+          <img src="/assets/crew-truck.jpg" alt="Arbor Care crew truck" class="rounded-lg shadow-lg" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Meet Thomas Fraser -->
+    <section class="py-12 px-4 max-w-4xl mx-auto">
+      <h2 class="text-4xl font-bold mb-8 text-center">Meet Our Founder</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+        <div>
+          <img src="/assets/thomas-fraser.png" alt="Thomas Fraser, Founder" class="rounded-lg shadow-lg" />
+        </div>
+        <div>
+          <h3 class="text-3xl font-bold mb-4">Thomas Fraser</h3>
+          <p class="text-lg text-gray-700 mb-6">
+            Thomas Fraser founded Arbor Care Tree Solutions with a passion for trees and a commitment to exceptional service. His leadership and expertise have made Arbor Care the trusted choice for Denver homeowners and businesses.
+          </p>
+
+          <div class="space-y-4">
+            <div class="bg-green-50 p-4 rounded-lg">
+              <div class="text-2xl font-bold text-green-600 mb-1">30+</div>
+              <div class="text-gray-700">Years of Tree Care Experience</div>
+            </div>
+            <div class="bg-green-50 p-4 rounded-lg">
+              <div class="text-2xl font-bold text-green-600 mb-1">20+</div>
+              <div class="text-gray-700">Years of Professional Training</div>
+            </div>
+            <div class="bg-green-50 p-4 rounded-lg">
+              <div class="text-2xl font-bold text-green-600 mb-1">15+</div>
+              <div class="text-gray-700">Years of Business Leadership</div>
+            </div>
+          </div>
+
+          <p class="text-lg text-gray-700 mt-6">
+            Thomas's commitment to continuing education, safety, and customer satisfaction drives everything we do at Arbor Care.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Our Team -->
+    <section class="py-12 px-4 max-w-4xl mx-auto">
+      <h2 class="text-4xl font-bold mb-8 text-center">Meet Our Team</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+        <div>
+          <img src="/assets/crew-action.jpg" alt="Arbor Care team in action" class="rounded-lg shadow-lg" />
+        </div>
+        <div>
+          <h3 class="text-3xl font-bold mb-4">Skilled Professionals</h3>
+          <p class="text-lg text-gray-700 mb-4">
+            Our team consists of highly trained and certified tree care professionals. Each team member brings expertise, dedication, and a commitment to excellence.
+          </p>
+          <p class="text-lg text-gray-700 mb-4">
+            We invest in continuous training and education to stay current with the latest tree care techniques and safety standards.
+          </p>
+          <ul class="space-y-3 text-gray-700 mb-6">
+            <li class="flex items-start">
+              <span class="mr-3 text-2xl text-green-600">✓</span>
+              <span><strong>ISA-Certified Arborists:</strong> Professional credentials and expertise</span>
+            </li>
+            <li class="flex items-start">
+              <span class="mr-3 text-2xl text-green-600">✓</span>
+              <span><strong>Safety Training:</strong> OSHA certification and climbing credentials</span>
+            </li>
+            <li class="flex items-start">
+              <span class="mr-3 text-2xl text-green-600">✓</span>
+              <span><strong>Equipment Expertise:</strong> Skilled operation of specialized equipment</span>
+            </li>
+            <li class="flex items-start">
+              <span class="mr-3 text-2xl text-green-600">✓</span>
+              <span><strong>Customer Service:</strong> Professional and courteous with every client</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Service Areas -->
+    <section class="py-12 px-4 max-w-4xl mx-auto">
+      <h2 class="text-4xl font-bold mb-8 text-center">Service Areas</h2>
+      <p class="text-lg text-gray-700 mb-8 text-center">
+        We proudly serve Denver and the surrounding metro area with professional tree care services.
+      </p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="bg-blue-50 p-6 rounded-lg">
+          <h3 class="text-xl font-bold mb-4">Denver Metro</h3>
+          <ul class="space-y-2 text-gray-700">
+            <li>• Denver</li>
+            <li>• Aurora</li>
+            <li>• Littleton</li>
+            <li>• Englewood</li>
+            <li>• Highlands Ranch</li>
+            <li>• Castle Rock</li>
+          </ul>
+        </div>
+        <div class="bg-blue-50 p-6 rounded-lg">
+          <h3 class="text-xl font-bold mb-4">Surrounding Areas</h3>
+          <ul class="space-y-2 text-gray-700">
+            <li>• Westminster</li>
+            <li>• Boulder</li>
+            <li>• Broomfield</li>
+            <li>• Thornton</li>
+            <li>• Arvada</li>
+            <li>• And more...</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Credentials -->
+    <section class="py-12 px-4 max-w-4xl mx-auto">
+      <h2 class="text-4xl font-bold mb-8 text-center">Our Credentials</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="bg-white rounded-lg shadow-lg p-6 text-center">
+          <div class="text-5xl mb-4">🏆</div>
+          <h3 class="text-xl font-bold mb-2">ISA Certified Arborists</h3>
+          <p class="text-gray-700">Certified by the International Society of Arboriculture with ongoing education</p>
+        </div>
+        <div class="bg-white rounded-lg shadow-lg p-6 text-center">
+          <div class="text-5xl mb-4">📋</div>
+          <h3 class="text-xl font-bold mb-2">Licensed & Insured</h3>
+          <p class="text-gray-700">Colorado licensed, fully insured with liability and workers' compensation</p>
+        </div>
+        <div class="bg-white rounded-lg shadow-lg p-6 text-center">
+          <div class="text-5xl mb-4">⚡</div>
+          <h3 class="text-xl font-bold mb-2">Safety Standards</h3>
+          <p class="text-gray-700">OSHA trained and committed to highest safety standards</p>
+        </div>
+        <div class="bg-white rounded-lg shadow-lg p-6 text-center">
+          <div class="text-5xl mb-4">⭐</div>
+          <h3 class="text-xl font-bold mb-2">Award Winning</h3>
+          <p class="text-gray-700">100+ five-star reviews from satisfied Denver customers</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Google Maps -->
+    <section class="py-12 px-4 max-w-4xl mx-auto">
+      <h2 class="text-4xl font-bold mb-8 text-center">Located in Denver</h2>
+      <div class="rounded-lg overflow-hidden shadow-lg" style="height: 400px;">
+        <iframe
+          width="100%"
+          height="400"
+          style="border:0"
+          loading="lazy"
+          allowfullscreen=""
+          referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3069.3814234572647!2d-104.90819!3d39.680453!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x876b8df79e9ce9f9%3A0x4b4f8c8d8c8d8c8d!2sArbor%20Care%20Tree%20Solutions!5e0!3m2!1sen!2sus!4v1234567890"
+        ></iframe>
+      </div>
+      <div class="mt-6 bg-gray-50 p-6 rounded-lg">
+        <h3 class="text-xl font-bold mb-2">Arbor Care Tree Solutions</h3>
+        <p class="text-gray-700 mb-2">
+          <strong>Address:</strong> 1130 S Santa Fe Dr, Denver, CO 80223
+        </p>
+        <p class="text-gray-700 mb-2">
+          <strong>Phone:</strong> <a href="tel:+13039496818" class="text-green-600 hover:text-green-700">(303) 949-6818</a>
+        </p>
+        <p class="text-gray-700">
+          <strong>Hours:</strong> Available 24/7 for emergency services
+        </p>
+      </div>
+    </section>
+
+    <!-- Social Links -->
+    <section class="py-12 px-4 max-w-4xl mx-auto">
+      <h2 class="text-4xl font-bold mb-8 text-center">Connect With Us</h2>
+      <div class="text-center">
+        <p class="text-lg text-gray-700 mb-6">Follow us on social media for tips, updates, and to see our latest work.</p>
+        <div class="flex gap-4 justify-center">
+          <a href="#" class="bg-blue-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-blue-700 transition">
+            Facebook
+          </a>
+          <a href="#" class="bg-pink-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-pink-700 transition">
+            Instagram
+          </a>
+          <a href="#" class="bg-blue-400 text-white px-6 py-3 rounded-lg font-bold hover:bg-blue-500 transition">
+            Twitter
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="bg-green-600 text-white py-12 px-4">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-4xl font-bold mb-4">Ready to Experience the Difference?</h2>
+        <p class="text-xl mb-8">Get your free estimate from Denver's most trusted tree service.</p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="tel:+13039496818" class="bg-white text-green-600 px-8 py-3 rounded-lg font-bold hover:bg-gray-100 transition flex items-center justify-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+            Call (303) 949-6818
+          </a>
+          <EstimateButton client:load className="bg-white text-green-600 px-8 py-3 rounded-lg font-bold hover:bg-gray-100 transition">
+            Get Free Estimate
+          </EstimateButton>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer slot="footer" />
+</Layout>

@@ -1,0 +1,154 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.tsx";
+import Footer from "../components/Footer.astro";
+---
+
+<Layout title="Tree Services Denver CO | Full Service Tree Care | Arbor Care" description="Complete tree services in Denver, CO. Trimming, removal, stump grinding, arborist services & firewood. ISA-certified. Free estimates. Call (303) 949-6818." canonical="/tree-services">
+  <Header slot="header" pathname="/tree-services" client:load />
+
+  <main class="min-h-screen">
+    <!-- Hero Section -->
+    <section
+      class="relative h-96 bg-cover bg-center flex items-center justify-center"
+      style="background-image: url('/assets/hero-services.jpg');"
+    >
+      <div class="absolute inset-0 bg-black/40"></div>
+      <div class="relative z-10 text-center text-white px-4">
+        <h1 class="text-5xl md:text-6xl font-bold mb-4">Tree Services Denver</h1>
+        <p class="text-xl md:text-2xl">Complete Professional Tree Care Solutions</p>
+      </div>
+    </section>
+
+    <!-- Introduction -->
+    <section class="py-12 px-4 max-w-6xl mx-auto">
+      <div class="text-center mb-12">
+        <h2 class="text-4xl font-bold mb-4">Our Services</h2>
+        <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+          From tree trimming and removal to stump grinding and arborist services, Arbor Care Tree Solutions offers comprehensive tree care for Denver homeowners and businesses.
+        </p>
+      </div>
+
+      <!-- Service Categories Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <!-- Tree Trimming & Pruning -->
+        <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+          <div class="bg-green-600 h-32 flex items-center justify-center">
+            <span class="text-white text-4xl">✂️</span>
+          </div>
+          <div class="p-6">
+            <h3 class="text-2xl font-bold mb-2">Tree Trimming & Pruning</h3>
+            <p class="text-gray-600 mb-4">Expert trimming and pruning services to keep your trees healthy and beautiful.</p>
+            <a href="/tree-trimming" class="text-green-600 font-semibold hover:text-green-700">Learn More →</a>
+            <ul class="mt-4 space-y-2 text-sm text-gray-600">
+              <li>• <a href="/bush-shrub-trimming-denver-co" class="hover:text-green-600">Bush & Shrub Trimming</a></li>
+              <li>• <a href="/crown-reduction-denver-co" class="hover:text-green-600">Crown Reduction</a></li>
+              <li>• <a href="/deadwooding-denver-co" class="hover:text-green-600">Deadwooding</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Tree Removal -->
+        <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+          <div class="bg-orange-600 h-32 flex items-center justify-center">
+            <span class="text-white text-4xl">🌳</span>
+          </div>
+          <div class="p-6">
+            <h3 class="text-2xl font-bold mb-2">Tree Removal</h3>
+            <p class="text-gray-600 mb-4">Safe and professional tree removal services for hazardous and problem trees.</p>
+            <a href="/tree-removal" class="text-green-600 font-semibold hover:text-green-700">Learn More →</a>
+            <ul class="mt-4 space-y-2 text-sm text-gray-600">
+              <li>• <a href="/emergency-tree-removal-denver-co" class="hover:text-green-600">Emergency Removal</a></li>
+              <li>• <a href="/hazardous-tree-removal-denver-co" class="hover:text-green-600">Hazardous Removal</a></li>
+              <li>• <a href="/bush-shrub-removal-denver-co" class="hover:text-green-600">Bush & Shrub Removal</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Stump Grinding -->
+        <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+          <div class="bg-amber-700 h-32 flex items-center justify-center">
+            <span class="text-white text-4xl">⚙️</span>
+          </div>
+          <div class="p-6">
+            <h3 class="text-2xl font-bold mb-2">Stump Grinding</h3>
+            <p class="text-gray-600 mb-4">Efficient stump grinding and removal to reclaim your landscape.</p>
+            <a href="/stump-grinding-denver-co" class="text-green-600 font-semibold hover:text-green-700">Learn More →</a>
+            <ul class="mt-4 space-y-2 text-sm text-gray-600">
+              <li>• <a href="/stump-removal-denver-co" class="hover:text-green-600">Stump Removal</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Arborist Services -->
+        <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+          <div class="bg-blue-600 h-32 flex items-center justify-center">
+            <span class="text-white text-4xl">🔍</span>
+          </div>
+          <div class="p-6">
+            <h3 class="text-2xl font-bold mb-2">Arborist Services</h3>
+            <p class="text-gray-600 mb-4">ISA-certified arborist services for tree health and expert care.</p>
+            <a href="/arborist-service-denver-co" class="text-green-600 font-semibold hover:text-green-700">Learn More →</a>
+            <ul class="mt-4 space-y-2 text-sm text-gray-600">
+              <li>• <a href="/tree-health-assessment-denver-co" class="hover:text-green-600">Health Assessment</a></li>
+              <li>• <a href="/tree-treatment-denver-co" class="hover:text-green-600">Tree Treatment</a></li>
+              <li>• <a href="/tree-planting-denver-co" class="hover:text-green-600">Tree Planting</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Firewood Supply -->
+        <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+          <div class="bg-red-600 h-32 flex items-center justify-center">
+            <span class="text-white text-4xl">🔥</span>
+          </div>
+          <div class="p-6">
+            <h3 class="text-2xl font-bold mb-2">Firewood Supply</h3>
+            <p class="text-gray-600 mb-4">Premium seasoned firewood for your fireplace or outdoor fire pit.</p>
+            <a href="/other-services" class="text-green-600 font-semibold hover:text-green-700">Learn More →</a>
+            <ul class="mt-4 space-y-2 text-sm text-gray-600">
+              <li>• <a href="/seasoned-firewood-denver-co" class="hover:text-green-600">Seasoned Firewood</a></li>
+              <li>• <a href="/firewood-delivery-denver-co" class="hover:text-green-600">Firewood Delivery</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Additional Services -->
+        <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+          <div class="bg-gray-600 h-32 flex items-center justify-center">
+            <span class="text-white text-4xl">🌿</span>
+          </div>
+          <div class="p-6">
+            <h3 class="text-2xl font-bold mb-2">Additional Services</h3>
+            <p class="text-gray-600 mb-4">Brush chipping, land clearing, and more specialized tree care.</p>
+            <button class="text-green-600 font-semibold hover:text-green-700">Learn More →</button>
+            <ul class="mt-4 space-y-2 text-sm text-gray-600">
+              <li>• Brush Chipping</li>
+              <li>• Land Clearing</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="bg-green-600 text-white py-12 px-4">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-4xl font-bold mb-4">Ready to Care for Your Trees?</h2>
+        <p class="text-xl mb-8">Get a free estimate from our ISA-certified arborists today.</p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="tel:+13039496818" class="bg-white text-green-600 px-8 py-3 rounded-lg font-bold hover:bg-gray-100 transition flex items-center justify-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+            Call (303) 949-6818
+          </a>
+          <a href="/contact-us" class="bg-white text-green-600 px-8 py-3 rounded-lg font-bold hover:bg-gray-100 transition">
+            Contact Us
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer slot="footer" />
+</Layout>

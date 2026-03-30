@@ -1,0 +1,233 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.tsx";
+import Footer from "../components/Footer.astro";
+import EstimateEmbed from "../components/EstimateEmbed.tsx";
+import { EstimateButton } from "../components/EstimateModal.tsx";
+---
+
+<Layout title="Free Estimates | Arbor Care Tree Solutions Denver" description="Get a free, no-obligation tree service estimate in Denver. No trip charge. We answer 24/7. Call (303) 949-6818." canonical="/new-index-2">
+  <Header slot="header" pathname="/new-index-2" client:load />
+
+  <main class="min-h-screen">
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-r from-green-600 to-green-800 text-white py-16 px-4">
+      <div class="max-w-4xl mx-auto text-center">
+        <h1 class="text-5xl md:text-6xl font-bold mb-4">Free Tree Service Estimates</h1>
+        <p class="text-xl md:text-2xl">No Obligation. No Trip Charge. Professional Assessment.</p>
+      </div>
+    </section>
+
+    <!-- Introduction -->
+    <section class="py-12 px-4 max-w-4xl mx-auto">
+      <div class="text-center mb-12">
+        <h2 class="text-4xl font-bold mb-4">Get Your Free Estimate Today</h2>
+        <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+          Arbor Care Tree Solutions provides free, no-obligation estimates for all our services. Our professional arborists will assess your needs and provide detailed recommendations. There's no trip charge and no pressure to book.
+        </p>
+      </div>
+    </section>
+
+    <!-- Our Estimate Process -->
+    <section class="py-12 px-4 max-w-4xl mx-auto">
+      <h2 class="text-4xl font-bold mb-8 text-center">Our Estimate Process</h2>
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+        <div class="bg-white rounded-lg shadow-lg p-6">
+          <div class="bg-green-600 text-white rounded-full w-12 h-12 flex items-center justify-center text-2xl font-bold mb-4 mx-auto">1</div>
+          <h3 class="text-xl font-bold mb-3 text-center">Schedule</h3>
+          <p class="text-gray-700 text-center">
+            Contact us by phone or submit our online form. We'll schedule a time convenient for you.
+          </p>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-lg p-6">
+          <div class="bg-green-600 text-white rounded-full w-12 h-12 flex items-center justify-center text-2xl font-bold mb-4 mx-auto">2</div>
+          <h3 class="text-xl font-bold mb-3 text-center">On-Site Assessment</h3>
+          <p class="text-gray-700 text-center">
+            Our arborist visits your property to evaluate the work and discuss your goals.
+          </p>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-lg p-6">
+          <div class="bg-green-600 text-white rounded-full w-12 h-12 flex items-center justify-center text-2xl font-bold mb-4 mx-auto">3</div>
+          <h3 class="text-xl font-bold mb-3 text-center">Detailed Estimate</h3>
+          <p class="text-gray-700 text-center">
+            You'll receive a professional, itemized estimate with all project details and pricing.
+          </p>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-lg p-6">
+          <div class="bg-green-600 text-white rounded-full w-12 h-12 flex items-center justify-center text-2xl font-bold mb-4 mx-auto">4</div>
+          <h3 class="text-xl font-bold mb-3 text-center">No Obligation</h3>
+          <p class="text-gray-700 text-center">
+            Take your time to decide. No pressure, no trip charge, completely free.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- What's Included -->
+    <section class="py-12 px-4 max-w-4xl mx-auto">
+      <h2 class="text-4xl font-bold mb-8 text-center">What's Included in Your Estimate</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="bg-blue-50 p-6 rounded-lg">
+          <h3 class="text-xl font-bold mb-4">Professional Assessment</h3>
+          <ul class="space-y-3 text-gray-700">
+            <li class="flex items-start">
+              <span class="mr-3 text-2xl text-green-600">✓</span>
+              <span>Tree evaluation and health assessment</span>
+            </li>
+            <li class="flex items-start">
+              <span class="mr-3 text-2xl text-green-600">✓</span>
+              <span>Identification of hazards or concerns</span>
+            </li>
+            <li class="flex items-start">
+              <span class="mr-3 text-2xl text-green-600">✓</span>
+              <span>Discussion of options and recommendations</span>
+            </li>
+            <li class="flex items-start">
+              <span class="mr-3 text-2xl text-green-600">✓</span>
+              <span>Expert advice based on tree health</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="bg-blue-50 p-6 rounded-lg">
+          <h3 class="text-xl font-bold mb-4">Detailed Pricing</h3>
+          <ul class="space-y-3 text-gray-700">
+            <li class="flex items-start">
+              <span class="mr-3 text-2xl text-green-600">✓</span>
+              <span>Itemized project breakdown</span>
+            </li>
+            <li class="flex items-start">
+              <span class="mr-3 text-2xl text-green-600">✓</span>
+              <span>Transparent pricing with no surprises</span>
+            </li>
+            <li class="flex items-start">
+              <span class="mr-3 text-2xl text-green-600">✓</span>
+              <span>Multiple options when applicable</span>
+            </li>
+            <li class="flex items-start">
+              <span class="mr-3 text-2xl text-green-600">✓</span>
+              <span>Timeline for project completion</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Free Estimates -->
+    <section class="py-12 px-4 max-w-4xl mx-auto">
+      <h2 class="text-4xl font-bold mb-8 text-center">Why We Offer Free Estimates</h2>
+      <div class="bg-green-50 rounded-lg p-8">
+        <p class="text-lg text-gray-700 mb-6">
+          We believe in building relationships with our customers. A free estimate gives you the opportunity to meet our team, understand our approach, and make an informed decision.
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="text-center">
+            <div class="text-4xl mb-3">🤝</div>
+            <h3 class="text-xl font-bold mb-2">Build Trust</h3>
+            <p class="text-gray-700">Get to know our team before committing to any work.</p>
+          </div>
+          <div class="text-center">
+            <div class="text-4xl mb-3">💡</div>
+            <h3 class="text-xl font-bold mb-2">Make Informed Decisions</h3>
+            <p class="text-gray-700">Understand your options and pricing before deciding.</p>
+          </div>
+          <div class="text-center">
+            <div class="text-4xl mb-3">✅</div>
+            <h3 class="text-xl font-bold mb-2">No Pressure</h3>
+            <p class="text-gray-700">Take your time. We want you to feel confident in your choice.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Estimate Form -->
+    <section class="py-12 px-4 max-w-4xl mx-auto">
+      <h2 class="text-4xl font-bold mb-8 text-center">Request Your Free Estimate Online</h2>
+      <div class="bg-white rounded-lg shadow-lg p-8">
+        <EstimateEmbed client:visible />
+      </div>
+    </section>
+
+    <!-- Contact Options -->
+    <section class="py-12 px-4 max-w-4xl mx-auto">
+      <h2 class="text-4xl font-bold mb-8 text-center">Other Ways to Contact Us</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="bg-white rounded-lg shadow-lg p-6 text-center">
+          <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-green-600 mx-auto mb-4"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+          <h3 class="text-xl font-bold mb-2">Call Us</h3>
+          <a href="tel:+13039496818" class="text-green-600 hover:text-green-700 font-semibold text-lg">
+            (303) 949-6818
+          </a>
+          <p class="text-gray-600 text-sm mt-2">Available 24/7</p>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-lg p-6 text-center">
+          <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-green-600 mx-auto mb-4"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
+          <h3 class="text-xl font-bold mb-2">Email Us</h3>
+          <a href="mailto:ArborCareTreeSolutions@gmail.com" class="text-green-600 hover:text-green-700 font-semibold break-all">
+            ArborCareTreeSolutions@gmail.com
+          </a>
+          <p class="text-gray-600 text-sm mt-2">We'll respond quickly</p>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-lg p-6 text-center">
+          <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-green-600 mx-auto mb-4"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+          <h3 class="text-xl font-bold mb-2">Visit Us</h3>
+          <p class="text-gray-700 font-semibold">
+            1130 S Santa Fe Dr<br />
+            Denver, CO 80223
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="py-12 px-4 max-w-4xl mx-auto">
+      <h2 class="text-4xl font-bold mb-8 text-center">Estimate FAQ</h2>
+      <div class="space-y-6">
+        <div class="bg-gray-50 rounded-lg p-6">
+          <h3 class="text-xl font-bold mb-3">Is there a trip charge for the estimate?</h3>
+          <p class="text-gray-700">No! Our estimates are completely free with no trip charge. You have no obligation to hire us.</p>
+        </div>
+        <div class="bg-gray-50 rounded-lg p-6">
+          <h3 class="text-xl font-bold mb-3">How long does an estimate take?</h3>
+          <p class="text-gray-700">Most estimates take 15-30 minutes depending on the scope of work. We'll discuss options and answer all your questions.</p>
+        </div>
+        <div class="bg-gray-50 rounded-lg p-6">
+          <h3 class="text-xl font-bold mb-3">When can you come out for an estimate?</h3>
+          <p class="text-gray-700">We're available throughout the week. For most requests, we can schedule within 1-2 days. Emergency situations are available 24/7.</p>
+        </div>
+        <div class="bg-gray-50 rounded-lg p-6">
+          <h3 class="text-xl font-bold mb-3">Will you provide a written estimate?</h3>
+          <p class="text-gray-700">Yes, we provide detailed written estimates that break down all costs and project details clearly.</p>
+        </div>
+        <div class="bg-gray-50 rounded-lg p-6">
+          <h3 class="text-xl font-bold mb-3">How long is your estimate valid?</h3>
+          <p class="text-gray-700">Our estimates are typically valid for 30 days. This gives you time to make your decision.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="bg-green-600 text-white py-12 px-4">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-4xl font-bold mb-4">Ready to Get Started?</h2>
+        <p class="text-xl mb-8">Schedule your free estimate today. No obligation, no trip charge.</p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="tel:+13039496818" class="bg-white text-green-600 px-8 py-3 rounded-lg font-bold hover:bg-gray-100 transition flex items-center justify-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+            Call (303) 949-6818
+          </a>
+          <EstimateButton client:load className="bg-white text-green-600 px-8 py-3 rounded-lg font-bold hover:bg-gray-100 transition">
+            Request Estimate Online
+          </EstimateButton>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer slot="footer" />
+</Layout>

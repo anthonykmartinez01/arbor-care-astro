@@ -1,0 +1,285 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.tsx";
+import Footer from "../components/Footer.astro";
+import HeroVideo from "../components/HeroVideo.tsx";
+import EstimateEmbed from "../components/EstimateEmbed.tsx";
+import { EstimateButton } from "../components/EstimateModal.tsx";
+
+const PHONE = "(303) 949-6818";
+const PHONE_TEL = "tel:+13039496818";
+
+const faqItems = [
+  { q: "How much does tree trimming cost in Denver?", a: "It depends on the tree's size, height, and complexity. A small ornamental might run $200-$400, while a large cottonwood over a structure can be $800-$2,000+. We give you a firm price in a free on-site estimate before any work starts." },
+  { q: "Do you offer emergency tree removal?", a: "Yes. We answer immediately 24/7 and dispatch crews based on urgency. If a tree is on your roof or blocking your driveway, call us now." },
+  { q: "Are you licensed and insured?", a: "Fully licensed and insured in Colorado. Our arborists hold ISA certification. We carry general liability and workers' compensation coverage." },
+  { q: "How do I know if a tree needs to be removed?", a: "Signs include significant trunk decay, a sudden lean, large dead sections in the canopy, root heaving, and cracks in structural wood. If you're unsure, call us for a free assessment. We'll give you a straight answer." },
+  { q: "Do you grind stumps after tree removal?", a: "Stump grinding is a separate service but we can include it in your quote. Most homeowners add it on since we're already on site with equipment." },
+  { q: "What areas do you serve?", a: "We serve Denver and the surrounding metro including Aurora, Lakewood, Englewood, Littleton, Centennial, Highlands Ranch, Arvada, Westminster, and Thornton." },
+];
+
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  name: "Arbor Care Tree Solutions",
+  image: "https://arborcaretreesolutions.com/og-image.jpg",
+  telephone: "(303) 949-6818",
+  email: "ArborCareTreeSolutions@gmail.com",
+  address: { "@type": "PostalAddress", streetAddress: "1130 S Santa Fe Dr", addressLocality: "Denver", addressRegion: "CO", postalCode: "80223", addressCountry: "US" },
+  url: "https://arborcaretreesolutions.com",
+  priceRange: "$$",
+  openingHoursSpecification: { "@type": "OpeningHoursSpecification", dayOfWeek: ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"], opens: "00:00", closes: "23:59" },
+  areaServed: [
+    { "@type": "City", name: "Denver" }, { "@type": "City", name: "Aurora" }, { "@type": "City", name: "Lakewood" },
+    { "@type": "City", name: "Englewood" }, { "@type": "City", name: "Littleton" }, { "@type": "City", name: "Centennial" },
+    { "@type": "City", name: "Highlands Ranch" }, { "@type": "City", name: "Arvada" }, { "@type": "City", name: "Westminster" },
+    { "@type": "City", name: "Thornton" },
+  ],
+  aggregateRating: { "@type": "AggregateRating", ratingValue: "5.0", reviewCount: "100" },
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqItems.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
+};
+
+const whyChooseUs = [
+  { icon: "star", title: "100+ Five-Star Reviews", desc: "Denver homeowners trust us. Read what they say." },
+  { icon: "award", title: "ISA-Certified Arborists", desc: "Trained professionals who know trees, not just chainsaws." },
+  { icon: "shield", title: "Licensed & Fully Insured", desc: "General liability + workers' comp. You're covered." },
+  { icon: "users", title: "Family Owned & Operated", desc: "Local roots, not a franchise. We answer our own phone." },
+];
+
+const coreServices = [
+  { title: "Tree Trimming & Pruning", path: "/tree-trimming", desc: "Crown shaping, deadwooding, and structural pruning by ISA-certified arborists.", img: "/assets/hero-tree-trimming.jpg" },
+  { title: "Tree Removal", path: "/tree-removal", desc: "Safe, efficient removal of hazardous, dead, and unwanted trees.", img: "/assets/hero-tree-removal.jpg" },
+  { title: "Stump Grinding", path: "/stump-grinding-denver-co", desc: "Below-grade grinding that eliminates the stump and lets you reclaim the space.", img: "/assets/hero-stump-grinding.jpg" },
+];
+
+const secondaryServices = [
+  { title: "Arborist Services", path: "/arborist-service-denver-co", desc: "Tree health assessments, treatment plans, and expert planting guidance.", img: "/assets/hero-arborist-services.jpg" },
+  { title: "Firewood Supply", path: "/other-services", desc: "Seasoned, split hardwood for sale and delivery across the Denver metro.", img: "/assets/hero-firewood-supply.jpg" },
+];
+---
+
+<Layout
+  title="Tree Service Denver CO | Arbor Care Tree Solutions"
+  description="Denver's trusted tree service. ISA-certified arborists, 100+ five-star reviews. Tree trimming, removal, stump grinding & more. Free estimates. Call (303) 949-6818."
+  canonical="/"
+  schemaJson={[localBusinessSchema, faqSchema]}
+>
+  <Header slot="header" pathname="/" client:load />
+
+  <!-- HERO -->
+  <section class="relative min-h-[600px] md:min-h-[80vh] flex items-center overflow-hidden">
+    <HeroVideo client:load />
+    <div class="absolute inset-0 bg-black/50"></div>
+    <div class="container relative z-10 py-20 text-center">
+      <div class="mx-auto max-w-3xl">
+        <h1 class="text-4xl font-bold text-white md:text-6xl leading-tight">
+          Denver's Most Trusted<br />
+          <span class="text-accent">Tree Service</span>
+        </h1>
+        <p class="mx-auto mt-6 max-w-2xl text-lg text-white/90">
+          ISA-certified arborists. 100+ five-star reviews. Family owned and operated. We answer immediately 24/7.
+        </p>
+        <div class="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+          <a
+            href={PHONE_TEL}
+            class="inline-flex items-center justify-center gap-2 rounded-md bg-accent px-8 py-4 text-lg font-bold text-accent-foreground shadow-lg hover:bg-accent/90 transition-colors"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+            Call {PHONE}
+          </a>
+          <EstimateButton
+            client:load
+            className="inline-flex items-center justify-center gap-2 rounded-md bg-white/15 backdrop-blur border border-white/30 px-8 py-4 text-lg font-bold text-white hover:bg-white/25 transition-colors"
+          >
+            Get Free Estimate
+          </EstimateButton>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY CHOOSE US -->
+  <section class="py-16 md:py-24">
+    <div class="container">
+      <h2 class="text-center text-3xl font-bold md:text-4xl">
+        Why Denver Homeowners Choose <span class="text-accent">Arbor Care</span>
+      </h2>
+      <div class="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+        {whyChooseUs.map((item) => (
+          <div class="rounded-xl border border-border bg-card p-6 text-center">
+            <div class="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-accent/10">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="hsl(var(--accent))" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            </div>
+            <h3 class="text-lg font-bold">{item.title}</h3>
+            <p class="mt-2 text-sm text-muted-foreground">{item.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- GOOGLE REVIEWS -->
+  <section class="bg-muted py-16 md:py-24">
+    <div class="container">
+      <h2 class="text-center text-3xl font-bold md:text-4xl">What Our Customers Say</h2>
+      <div class="mt-8 overflow-hidden rounded-xl">
+        <iframe
+          src="https://reputationhub.site/reputation/widgets/reviews_combined/BLCxrXNsCJTFCvSiZSee"
+          style="width: 100%; min-height: 500px; border: none;"
+          loading="lazy"
+          title="Arbor Care Tree Solutions Google Reviews"
+        ></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- ESTIMATE FORM -->
+  <section class="py-16 md:py-24">
+    <div class="container">
+      <div class="mx-auto max-w-2xl text-center">
+        <h2 class="text-3xl font-bold md:text-4xl">Get Your Free Estimate</h2>
+        <p class="mt-4 text-muted-foreground">Fill out the form below and we'll get back to you promptly with a free, no-obligation quote.</p>
+      </div>
+      <div class="mx-auto mt-8 max-w-lg">
+        <EstimateEmbed client:visible />
+      </div>
+    </div>
+  </section>
+
+  <!-- SECONDARY SERVICES -->
+  <section class="bg-muted py-16 md:py-24">
+    <div class="container">
+      <h2 class="text-center text-3xl font-bold md:text-4xl">Additional Services</h2>
+      <div class="mt-12 grid gap-8 md:grid-cols-2">
+        {secondaryServices.map((svc) => (
+          <a href={svc.path} class="group relative overflow-hidden rounded-xl">
+            <img src={svc.img} alt={svc.title} class="h-64 w-full object-cover transition-transform duration-300 group-hover:scale-105" loading="lazy" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
+            <div class="absolute bottom-0 left-0 right-0 p-6">
+              <h3 class="text-xl font-bold text-white">{svc.title}</h3>
+              <p class="mt-1 text-sm text-white/80">{svc.desc}</p>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CORE SERVICES -->
+  <section class="py-16 md:py-24">
+    <div class="container">
+      <h2 class="text-center text-3xl font-bold md:text-4xl">Our Core Services</h2>
+      <div class="mt-12 grid gap-8 md:grid-cols-3">
+        {coreServices.map((svc) => (
+          <a href={svc.path} class="group relative overflow-hidden rounded-xl">
+            <img src={svc.img} alt={svc.title} class="h-64 w-full object-cover transition-transform duration-300 group-hover:scale-105" loading="lazy" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
+            <div class="absolute bottom-0 left-0 right-0 p-6">
+              <h3 class="text-xl font-bold text-white">{svc.title}</h3>
+              <p class="mt-1 text-sm text-white/80">{svc.desc}</p>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICE AREA -->
+  <section class="bg-muted py-16 md:py-24">
+    <div class="container">
+      <div class="grid gap-8 lg:grid-cols-2 items-center">
+        <div>
+          <h2 class="text-3xl font-bold md:text-4xl">Serving the Denver Metro</h2>
+          <p class="mt-4 text-muted-foreground">We provide tree services across Denver and the surrounding communities.</p>
+          <ul class="mt-6 grid grid-cols-2 gap-2 text-sm">
+            {["Denver CO","Aurora CO","Lakewood CO","Englewood CO","Littleton CO","Centennial CO","Highlands Ranch CO","Arvada CO","Westminster CO","Thornton CO"].map((area) => (
+              <li class="flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="hsl(var(--accent))" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                {area}
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div class="overflow-hidden rounded-xl">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d392520.2564172813!2d-105.05578864316406!3d39.76440015!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x876c7e5d18b32c4b%3A0x4ddf28b1b90e8a4b!2sArbor%20Care%20Tree%20Solutions!5e0!3m2!1sen!2sus!4v1&zoom=10"
+            style="border:0; width:100%; height:350px;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Arbor Care Tree Solutions Service Area"
+          ></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT PREVIEW -->
+  <section class="py-16 md:py-24">
+    <div class="container">
+      <div class="grid gap-8 lg:grid-cols-2 items-center">
+        <img src="/assets/crew-photo.png" alt="Arbor Care Tree Solutions crew" class="rounded-xl" loading="lazy" />
+        <div>
+          <h2 class="text-3xl font-bold md:text-4xl">A Family Business That<br /><span class="text-accent">Knows Trees</span></h2>
+          <p class="mt-4 text-muted-foreground">Led by Thomas Fraser with over 30 years in the tree industry, Arbor Care Tree Solutions brings real experience and ISA certification to every job. We're not a franchise and we don't subcontract your work.</p>
+          <a href="/about-arbor-care-index" class="mt-6 inline-flex items-center gap-2 text-primary font-semibold hover:underline">
+            Learn more about our team
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="bg-muted py-16 md:py-24">
+    <div class="container">
+      <h2 class="text-center text-3xl font-bold md:text-4xl">Frequently Asked Questions</h2>
+      <div class="mx-auto mt-8 max-w-3xl space-y-3">
+        {faqItems.map((faq, i) => (
+          <details class="group rounded-lg border border-border bg-card overflow-hidden">
+            <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-left font-medium">
+              <span>{faq.q}</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 ml-4 transition-transform group-open:rotate-180"><polyline points="6 9 12 15 18 9"/></svg>
+            </summary>
+            <div class="px-6 pb-4 text-muted-foreground">{faq.a}</div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="py-16 md:py-24">
+    <div class="container text-center">
+      <h2 class="text-3xl font-bold md:text-4xl">Ready to Get Started?</h2>
+      <p class="mx-auto mt-4 max-w-xl text-muted-foreground">Call us now for a free estimate. We answer immediately, 24/7.</p>
+      <div class="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+        <a
+          href={PHONE_TEL}
+          class="inline-flex items-center justify-center gap-2 rounded-md bg-accent px-8 py-4 text-lg font-bold text-accent-foreground shadow-lg hover:bg-accent/90 transition-colors"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+          Call {PHONE}
+        </a>
+        <EstimateButton
+          client:visible
+          className="inline-flex items-center justify-center gap-2 rounded-md border border-input bg-background px-8 py-4 text-lg font-bold text-foreground hover:bg-muted transition-colors"
+        >
+          Request Free Estimate
+        </EstimateButton>
+      </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</Layout>

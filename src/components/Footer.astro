@@ -1,0 +1,120 @@
+---
+const BUSINESS = {
+  name: "Arbor Care Tree Solutions",
+  phone: "(303) 949-6818",
+  phoneTel: "tel:+13039496818",
+  email: "ArborCareTreeSolutions@gmail.com",
+  city: "Denver",
+  stateAbbr: "CO",
+  zip: "80223",
+  serviceAreas: [
+    "Denver CO", "Aurora CO", "Lakewood CO", "Englewood CO", "Littleton CO",
+    "Centennial CO", "Highlands Ranch CO", "Arvada CO", "Westminster CO", "Thornton CO",
+  ],
+};
+
+const quickLinks = [
+  { label: "Home", to: "/" },
+  { label: "Tree Services", to: "/tree-services" },
+  { label: "Our Work", to: "/our-work" },
+  { label: "Testimonials", to: "/testimonials" },
+  { label: "About Us", to: "/about-arbor-care-index" },
+  { label: "Contact", to: "/contact-us" },
+  { label: "Free Estimates", to: "/new-index-2" },
+];
+
+const serviceLinks = [
+  { label: "Tree Trimming & Pruning", to: "/tree-trimming" },
+  { label: "Tree Removal", to: "/tree-removal" },
+  { label: "Stump Grinding", to: "/stump-grinding-denver-co" },
+  { label: "Arborist Services", to: "/arborist-service-denver-co" },
+  { label: "Firewood Sales", to: "/other-services" },
+  { label: "Holiday Lights", to: "/new-page" },
+  { label: "Spring Cleanup", to: "/treatments" },
+  { label: "Brush Chipping", to: "/brush-chipping-denver-co" },
+];
+
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="bg-primary text-primary-foreground">
+  <div class="container py-12">
+    <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+      <!-- Brand -->
+      <div>
+        <a href="/" class="flex items-center gap-2 mb-4">
+          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 14a4 4 0 0 0-8 0"/><path d="M12 2v1"/><path d="m4.6 19.4 5.4-5.4"/><path d="m14 14 5.4 5.4"/><path d="M17 3a4 4 0 0 0 0 8"/><path d="M7 3a4 4 0 0 1 0 8"/><path d="M12 22v-8"/></svg>
+          <div class="leading-tight">
+            <span class="block text-lg font-bold font-[Merriweather,serif]">Arbor Care</span>
+            <span class="block text-xs tracking-wide opacity-80">Tree Solutions</span>
+          </div>
+        </a>
+        <div class="space-y-2 text-sm opacity-90">
+          <a href={BUSINESS.phoneTel} class="flex items-center gap-2 hover:underline">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+            {BUSINESS.phone}
+          </a>
+          <a href={`mailto:${BUSINESS.email}`} class="flex items-center gap-2 hover:underline">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            {BUSINESS.email}
+          </a>
+          <p class="flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            {BUSINESS.city}, {BUSINESS.stateAbbr} {BUSINESS.zip}
+          </p>
+        </div>
+        <div class="mt-4 flex gap-3">
+          <a href="https://www.facebook.com/arborcaretreesolutions1/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="rounded-full bg-primary-foreground/10 p-2 hover:bg-primary-foreground/20 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          </a>
+          <a href="https://www.instagram.com/arborcaretreesolutions1/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="rounded-full bg-primary-foreground/10 p-2 hover:bg-primary-foreground/20 transition-colors">
+            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+          </a>
+          <a href="https://maps.app.goo.gl/sGyGey42dC9G7hyv7" target="_blank" rel="noopener noreferrer" aria-label="Google Business Profile" class="rounded-full bg-primary-foreground/10 p-2 hover:bg-primary-foreground/20 transition-colors">
+            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Quick Links -->
+      <div>
+        <h3 class="mb-4 text-sm font-bold uppercase tracking-wider opacity-70">Quick Links</h3>
+        <ul class="space-y-2 text-sm">
+          {quickLinks.map((l) => (
+            <li><a href={l.to} class="opacity-90 hover:opacity-100 hover:underline">{l.label}</a></li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Services -->
+      <div>
+        <h3 class="mb-4 text-sm font-bold uppercase tracking-wider opacity-70">Services</h3>
+        <ul class="space-y-2 text-sm">
+          {serviceLinks.map((l) => (
+            <li><a href={l.to} class="opacity-90 hover:opacity-100 hover:underline">{l.label}</a></li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Service Areas -->
+      <div>
+        <h3 class="mb-4 text-sm font-bold uppercase tracking-wider opacity-70">Service Areas</h3>
+        <ul class="grid grid-cols-2 gap-x-4 gap-y-1 text-sm">
+          {BUSINESS.serviceAreas.map((a) => (
+            <li class="opacity-90">{a}</li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="border-t border-primary-foreground/20">
+    <div class="container flex flex-col items-center justify-between gap-2 py-4 text-xs opacity-70 sm:flex-row">
+      <p>&copy; {currentYear} {BUSINESS.name}. All rights reserved.</p>
+      <div class="flex gap-4">
+        <a href="/privacy-policy" class="hover:underline">Privacy Policy</a>
+        <a href="/sitemap" class="hover:underline">Sitemap</a>
+      </div>
+    </div>
+  </div>
+</footer>

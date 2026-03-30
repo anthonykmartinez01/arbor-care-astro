@@ -1,0 +1,38 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[[redirects]]
+  from = "/tree-service-denver-co"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/services"
+  to = "/tree-services"
+  status = 301
+
+[[redirects]]
+  from = "/about"
+  to = "/about-arbor-care-index"
+  status = 301
+
+[[redirects]]
+  from = "/contact"
+  to = "/contact-us"
+  status = 301
+
+[[redirects]]
+  from = "/tree-trimming-pruning-denver-co"
+  to = "/tree-trimming"
+  status = 301
+
+[[redirects]]
+  from = "/tree-removal-denver-co"
+  to = "/tree-removal"
+  status = 301
+
+[[redirects]]
+  from = "/firewood-supplier-denver-co"
+  to = "/other-services"
+  status = 301

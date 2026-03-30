@@ -1,0 +1,220 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.tsx";
+import Footer from "../components/Footer.astro";
+import OurWorkGallery from "../components/OurWorkGallery.tsx";
+import { EstimateButton } from "../components/EstimateModal.tsx";
+---
+
+<Layout title="Our Work | Arbor Care Tree Solutions Denver" description="See examples of our tree trimming, removal, and stump grinding work across Denver. Before and after photos from real jobs." canonical="/our-work">
+  <Header slot="header" pathname="/our-work" client:load />
+
+  <main class="min-h-screen">
+    <!-- Hero Section -->
+    <section
+      class="relative h-96 bg-cover bg-center flex items-center justify-center"
+      style="background-image: url('/assets/work-hero.jpg');"
+    >
+      <div class="absolute inset-0 bg-black/40"></div>
+      <div class="relative z-10 text-center text-white px-4">
+        <h1 class="text-5xl md:text-6xl font-bold mb-4">Our Work</h1>
+        <p class="text-xl md:text-2xl">See Examples of Our Professional Tree Care</p>
+      </div>
+    </section>
+
+    <!-- Introduction -->
+    <section class="py-12 px-4 max-w-4xl mx-auto">
+      <div class="text-center mb-12">
+        <h2 class="text-4xl font-bold mb-4">Portfolio of Professional Work</h2>
+        <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+          Browse our gallery of completed projects. These before and after photos showcase our expertise in tree trimming, removal, stump grinding, and other tree care services across Denver.
+        </p>
+      </div>
+    </section>
+
+    <!-- Gallery -->
+    <section class="py-12 px-4 max-w-6xl mx-auto">
+      <OurWorkGallery
+        client:load
+        images={[
+          '/assets/work-1.png',
+          '/assets/work-2.png',
+          '/assets/work-3.png',
+          '/assets/work-4.png',
+          '/assets/work-5.png',
+          '/assets/work-6.png'
+        ]}
+      />
+    </section>
+
+    <!-- Service Highlights -->
+    <section class="py-12 px-4 max-w-4xl mx-auto">
+      <h2 class="text-4xl font-bold mb-8 text-center">Services Shown in Our Portfolio</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="bg-green-50 p-6 rounded-lg">
+          <h3 class="text-2xl font-bold mb-3 text-green-600">Tree Trimming & Pruning</h3>
+          <p class="text-gray-700">
+            Professional trimming and pruning to maintain tree health, improve appearance, and enhance safety. We follow ANSI standards for proper pruning techniques.
+          </p>
+        </div>
+        <div class="bg-green-50 p-6 rounded-lg">
+          <h3 class="text-2xl font-bold mb-3 text-green-600">Tree Removal</h3>
+          <p class="text-gray-700">
+            Safe and efficient removal of dead, diseased, or hazardous trees. We use professional rigging and equipment to protect your property.
+          </p>
+        </div>
+        <div class="bg-green-50 p-6 rounded-lg">
+          <h3 class="text-2xl font-bold mb-3 text-green-600">Stump Grinding</h3>
+          <p class="text-gray-700">
+            Complete stump removal with grinding below grade level. We leave your landscape clean and ready for new plantings.
+          </p>
+        </div>
+        <div class="bg-green-50 p-6 rounded-lg">
+          <h3 class="text-2xl font-bold mb-3 text-green-600">Emergency Response</h3>
+          <p class="text-gray-700">
+            24/7 emergency service for storm damage and hazardous situations. We respond quickly to protect your property and safety.
+          </p>
+        </div>
+        <div class="bg-green-50 p-6 rounded-lg">
+          <h3 class="text-2xl font-bold mb-3 text-green-600">Hazard Assessment</h3>
+          <p class="text-gray-700">
+            Professional evaluation of tree health and structural integrity to identify hazards before they become dangerous.
+          </p>
+        </div>
+        <div class="bg-green-50 p-6 rounded-lg">
+          <h3 class="text-2xl font-bold mb-3 text-green-600">Site Cleanup</h3>
+          <p class="text-gray-700">
+            Complete cleanup and debris removal after any tree service. We leave your property spotless.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="py-12 px-4 max-w-4xl mx-auto">
+      <h2 class="text-4xl font-bold mb-8 text-center">Why Denver Trusts Arbor Care</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="text-center">
+          <div class="text-5xl mb-4">⭐</div>
+          <h3 class="text-xl font-bold mb-2">100+ 5-Star Reviews</h3>
+          <p class="text-gray-700">Consistently rated excellent by Denver homeowners</p>
+        </div>
+        <div class="text-center">
+          <div class="text-5xl mb-4">🏆</div>
+          <h3 class="text-xl font-bold mb-2">ISA Certified</h3>
+          <p class="text-gray-700">Professional credentials and expertise</p>
+        </div>
+        <div class="text-center">
+          <div class="text-5xl mb-4">🛡️</div>
+          <h3 class="text-xl font-bold mb-2">Fully Insured</h3>
+          <p class="text-gray-700">Complete liability and workers' compensation</p>
+        </div>
+        <div class="text-center">
+          <div class="text-5xl mb-4">📸</div>
+          <h3 class="text-xl font-bold mb-2">Before & After</h3>
+          <p class="text-gray-700">Real photos of our completed projects</p>
+        </div>
+        <div class="text-center">
+          <div class="text-5xl mb-4">💯</div>
+          <h3 class="text-xl font-bold mb-2">Quality Guaranteed</h3>
+          <p class="text-gray-700">Professional work with attention to detail</p>
+        </div>
+        <div class="text-center">
+          <div class="text-5xl mb-4">🔧</div>
+          <h3 class="text-xl font-bold mb-2">Expert Equipment</h3>
+          <p class="text-gray-700">Modern equipment and proven techniques</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Customer Testimonials -->
+    <section class="py-12 px-4 max-w-4xl mx-auto">
+      <h2 class="text-4xl font-bold mb-8 text-center">What Our Customers Say</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="bg-white rounded-lg shadow-lg p-6">
+          <div class="flex gap-1 mb-4">
+            <span class="text-yellow-400">★★★★★</span>
+          </div>
+          <p class="text-gray-700 mb-4">
+            "Arbor Care did amazing work on our trees. The team was professional, clean, and efficient. Highly recommend!"
+          </p>
+          <p class="font-bold text-gray-800">- Denver Homeowner</p>
+        </div>
+        <div class="bg-white rounded-lg shadow-lg p-6">
+          <div class="flex gap-1 mb-4">
+            <span class="text-yellow-400">★★★★★</span>
+          </div>
+          <p class="text-gray-700 mb-4">
+            "Emergency response was incredible. They came out same day during a storm and handled everything perfectly."
+          </p>
+          <p class="font-bold text-gray-800">- Colorado Springs Customer</p>
+        </div>
+        <div class="bg-white rounded-lg shadow-lg p-6">
+          <div class="flex gap-1 mb-4">
+            <span class="text-yellow-400">★★★★★</span>
+          </div>
+          <p class="text-gray-700 mb-4">
+            "Best tree service in Denver. Knowledgeable, fair pricing, and they actually care about the trees."
+          </p>
+          <p class="font-bold text-gray-800">- Aurora Resident</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Service Areas -->
+    <section class="py-12 px-4 max-w-4xl mx-auto">
+      <h2 class="text-4xl font-bold mb-8 text-center">Service Areas</h2>
+      <p class="text-lg text-gray-700 mb-8 text-center">
+        We serve Denver and the surrounding metro area. Browse our portfolio of work from throughout the region.
+      </p>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="bg-blue-50 p-6 rounded-lg">
+          <h3 class="text-xl font-bold mb-4">Denver Metro</h3>
+          <ul class="space-y-2 text-gray-700 text-sm">
+            <li>• Denver</li>
+            <li>• Aurora</li>
+            <li>• Littleton</li>
+            <li>• Englewood</li>
+          </ul>
+        </div>
+        <div class="bg-blue-50 p-6 rounded-lg">
+          <h3 class="text-xl font-bold mb-4">North/Northwest</h3>
+          <ul class="space-y-2 text-gray-700 text-sm">
+            <li>• Westminster</li>
+            <li>• Broomfield</li>
+            <li>• Thornton</li>
+            <li>• Arvada</li>
+          </ul>
+        </div>
+        <div class="bg-blue-50 p-6 rounded-lg">
+          <h3 class="text-xl font-bold mb-4">South/Southwest</h3>
+          <ul class="space-y-2 text-gray-700 text-sm">
+            <li>• Castle Rock</li>
+            <li>• Highlands Ranch</li>
+            <li>• Boulder Area</li>
+            <li>• And More...</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="bg-green-600 text-white py-12 px-4">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-4xl font-bold mb-4">Ready to See Similar Results?</h2>
+        <p class="text-xl mb-8">Contact us for your free estimate and consultation.</p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="tel:+13039496818" class="bg-white text-green-600 px-8 py-3 rounded-lg font-bold hover:bg-gray-100 transition flex items-center justify-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+            Call (303) 949-6818
+          </a>
+          <EstimateButton client:load className="bg-white text-green-600 px-8 py-3 rounded-lg font-bold hover:bg-gray-100 transition">
+            Get Free Estimate
+          </EstimateButton>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer slot="footer" />
+</Layout>
