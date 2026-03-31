@@ -12,8 +12,7 @@ const { className, label = "Get Free Estimate" } = Astro.props;
 </button>
 
 <dialog id="estimate-dialog" class="fixed inset-0 z-50 m-auto w-full max-w-lg rounded-xl bg-background p-6 shadow-xl backdrop:bg-black/50 max-h-[90vh] overflow-y-auto">
-  <div class="flex items-center justify-between mb-4">
-    <h2 class="text-xl font-bold">Get Your Free Estimate</h2>
+  <div class="flex items-center justify-end mb-2">
     <button data-estimate-close class="rounded-full p-1 text-foreground hover:bg-muted" aria-label="Close">
       <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
     </button>
