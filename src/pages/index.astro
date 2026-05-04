@@ -54,19 +54,6 @@ const coreServicesCopy = [
   },
 ];
 
-const secondaryCategoriesCopy = [
-  {
-    title: "Arborist Services",
-    path: "/arborist-service-denver-co",
-    text: "Denver's Front Range climate is hard on trees — Emerald Ash Borer, drought stress, bark beetles, and heavy wet snow can silently compromise a tree long before it becomes a visible hazard. Our ISA-certified arborists identify problems early, build treatment plans that work, and help you protect the trees on your property for the long term. If your trees look off, don't guess — get a professional assessment.",
-  },
-  {
-    title: "Firewood Supply",
-    path: "/other-services",
-    text: "We supply seasoned, split hardwood that's ready to burn — no green wood, no guesswork. Whether you need a full cord for the season or a smaller load to get through the next cold snap, we deliver throughout the Denver metro area. Local wood, delivered by the same family-owned team that handles your tree care.",
-  },
-];
-
 const faqs = [
   {
     q: "How quickly can you respond to emergency tree removal in Denver?",
@@ -213,29 +200,6 @@ const faqs = [
     <div class="container">
       <div class="mx-auto max-w-2xl rounded-xl border-2 border-accent/30 bg-card shadow-lg overflow-hidden">
         <EstimateEmbedNative />
-      </div>
-    </div>
-  </section>
-
-  <!-- SECONDARY CATEGORY CARDS -->
-  <section class="bg-muted py-16 md:py-24">
-    <div class="container">
-      <h2 class="text-center text-2xl font-bold md:text-4xl">Specialized Tree Care Services</h2>
-      <div class="mt-12 grid gap-8 md:grid-cols-2">
-        {secondaryCategoriesCopy.map((cat) => (
-          <div class="group rounded-lg border border-border bg-background p-8 transition-shadow hover:shadow-md">
-            <div class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-accent/15">
-              {cat.title === "Arborist Services" && <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15.477 12.89 1.515 8.526a.5.5 0 0 1-.81.47l-3.58-2.687a1 1 0 0 0-1.197 0l-3.586 2.686a.5.5 0 0 1-.81-.469l1.514-8.526"></path><circle cx="12" cy="8" r="6"></circle></svg>}
-              {cat.title === "Firewood Supply" && <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"></path></svg>}
-            </div>
-            <h3 class="text-xl font-bold">{cat.title}</h3>
-            <p class="mt-3 text-sm leading-relaxed text-muted-foreground">{cat.text}</p>
-            <a href={cat.path} class="mt-6 inline-flex items-center gap-1 text-sm font-semibold text-primary hover:underline">
-              Learn More
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"></path></svg>
-            </a>
-          </div>
-        ))}
       </div>
     </div>
   </section>
