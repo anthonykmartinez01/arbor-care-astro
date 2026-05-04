@@ -1,47 +1,43 @@
 ---
-import { business } from "../../data/business";
-
 const schema = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
-  additionalType: "https://schema.org/TreeService",
-  "@id": `${business.siteUrl}/#business`,
-  name: business.name,
-  description: "Professional tree trimming, tree removal, stump grinding, and arborist services in Denver, CO and surrounding areas.",
-  url: business.siteUrl,
-  telephone: business.phone,
-  email: business.email,
-  image: `${business.siteUrl}/og-image.jpg`,
+  name: "Arbor Care Tree Solutions",
+  description:
+    "Professional tree services in Denver, CO including tree removal, emergency tree removal, tree trimming and pruning, tree planting, stump removal, and comprehensive tree care by ISA Certified Arborists.",
+  url: "https://arborcaretreesolutions.com",
+  telephone: "(303) 949-6818",
   address: {
     "@type": "PostalAddress",
-    streetAddress: business.address.street,
-    addressLocality: business.address.city,
-    addressRegion: business.address.state,
-    postalCode: business.address.zip,
-    addressCountry: business.address.country,
+    streetAddress: "1130 S Santa Fe Dr",
+    addressLocality: "Denver",
+    addressRegion: "CO",
+    postalCode: "80223",
   },
   geo: {
     "@type": "GeoCoordinates",
-    latitude: business.geo.lat,
-    longitude: business.geo.lng,
+    latitude: 39.7392,
+    longitude: -104.9903,
   },
-  areaServed: business.serviceAreas.map((area) => ({
+  openingHours: ["Mo-Fr 07:00-18:00", "Sa 08:00-16:00"],
+  areaServed: {
     "@type": "City",
-    name: area,
-  })),
-  sameAs: [
-    business.socialProfiles.facebook,
-    business.socialProfiles.instagram,
-    business.socialProfiles.google,
-  ],
-  priceRange: "$$",
-  aggregateRating: {
-    "@type": "AggregateRating",
-    ratingValue: "5.0",
-    bestRating: "5",
-    worstRating: "1",
-    ratingCount: "100",
+    name: "Denver, CO and surrounding areas",
   },
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    itemListElement: [
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Tree removal" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Emergency Tree Removal Service" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Tree trimming & pruning" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Tree planting" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Tree Stump Removal & Grinding" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Tree Risk Assessment" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Storm Damage Tree Removal" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Bush & Shrub Trimming & Removal" } },
+    ],
+  },
+  priceRange: "$$",
 };
 ---
 
