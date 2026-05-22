@@ -708,4 +708,54 @@ export const childServicesData: Record<string, ChildServiceData> = {
     },
     schema: { "@context": "https://schema.org", "@type": "Service", serviceType: "Land Clearing", name: "Land Clearing Denver CO", provider: { "@type": "LocalBusiness", name: "Arbor Care Tree Solutions", telephone: "(303) 949-6818", address: { "@type": "PostalAddress", streetAddress: "1130 S Santa Fe Dr", addressLocality: "Denver", addressRegion: "CO", postalCode: "80223" } }, areaServed: { "@type": "City", name: "Denver" } },
   },
+
+  "/debris-removal-service-denver-co": {
+    path: "/debris-removal-service-denver-co",
+    parentPath: "/",
+    parentTitle: "Home",
+    titleTag: "Debris Removal Service Denver CO | Arbor Care Tree Solutions",
+    metaDescription: "Tree debris removal in Denver, CO. Storm cleanup, post-tree-work hauling, complete site cleanup by ISA-certified arborists. Free estimates. Call (303) 949-6818.",
+    h1: "Debris Removal Service in Denver, CO",
+    h1Accent: "Complete Cleanup After Every Job",
+    subheadline: "Branches, brush, stumps, and storm debris hauled off your property — fast, fully insured, and we leave the site cleaner than we found it.",
+    openingParagraphs: [
+      "After a storm rolls through Denver, after a tree comes down, or after a major pruning job, you're left with the part nobody warns you about: a yard full of branches, broken limbs, splintered wood, and shredded leaves. Bagging it for trash pickup isn't practical, and most haulers won't touch tree debris. The longer it sits, the more it becomes a hazard — tripping risk, pests, and blocked access for cars, kids, and pets.",
+      "Arbor Care Tree Solutions handles complete tree debris removal in Denver for homeowners, property managers, and businesses. We bring the trucks, the crew, and the equipment, clear everything down to bare ground, and haul it away — same day whenever possible.",
+    ],
+    sections: [
+      {
+        heading: "When You Need Debris Removal in Denver",
+        paragraphs: [
+          "The most common reasons Denver homeowners call us for debris removal: storm cleanup after high winds or heavy spring snow has dropped limbs across the yard, post-tree-work cleanup when another company left a pile behind, lot clearing for a remodel or new landscaping project, and seasonal cleanup of accumulated brush that's too much for standard yard waste service.",
+          "Front Range weather is hard on trees. A single wet snowstorm or 60 mph wind event can leave a property with more debris than a homeowner can move on their own. We're set up to handle the volume — we don't tap out at half a pickup load.",
+        ],
+      },
+      {
+        heading: "What's Included in Our Debris Removal Service",
+        paragraphs: [
+          "Every job includes complete collection of branches, limbs, brush, leaves, and wood debris from anywhere on your property. We rake, sweep, and clear the area before we leave — driveways, lawns, walkways, and flower beds all get attention. Stump chips and sawdust from previous tree work are raked out or hauled, your call.",
+          "Our trucks, chippers, and grapple equipment let us move large volumes quickly without tearing up your yard. The crew is fully licensed, insured, and trained — meaning your property is protected throughout the job. Everything we haul off gets recycled or composted at proper facilities whenever possible.",
+        ],
+      },
+      {
+        heading: "Debris Removal Cost in Denver",
+        paragraphs: [
+          "Pricing is based on the volume of debris, access to the site, and how far we have to haul it. A few branches from a single tree is a very different scope than clearing a back lot full of accumulated brush. We give you a firm written quote in advance — no estimates that creep upward once the truck arrives.",
+          "Estimates are free and there's no trip charge. If we come look at your property and you decide not to proceed, you owe us nothing.",
+        ],
+      },
+      {
+        heading: "Why Choose Arbor Care for Debris Removal",
+        paragraphs: [
+          "Arbor Care Tree Solutions is a family-owned company with ISA-certified arborists, 100+ five-star Google reviews, and a reputation across the Denver metro for showing up when we said we would and leaving properties cleaner than we found them. We're fully licensed and insured in Colorado. Free estimates with no trip charge. We answer calls immediately, 24/7 — if you have a yard full of storm debris and need it gone, call us and we'll figure out the fastest path.",
+        ],
+      },
+    ],
+    finalCta: {
+      headline: "Need Debris Removed Today?",
+      body: "Call us for a free estimate — we'll come look at the property, give you a firm quote, and most jobs can be scheduled within days.",
+      parentLinkText: "Visit our Denver tree service homepage.",
+    },
+    schema: { "@context": "https://schema.org", "@type": "Service", serviceType: "Debris Removal", name: "Debris Removal Service Denver CO", provider: { "@type": "LocalBusiness", name: "Arbor Care Tree Solutions", telephone: "(303) 949-6818", address: { "@type": "PostalAddress", streetAddress: "1130 S Santa Fe Dr", addressLocality: "Denver", addressRegion: "CO", postalCode: "80223" } }, areaServed: { "@type": "City", name: "Denver" } },
+  },
 };
