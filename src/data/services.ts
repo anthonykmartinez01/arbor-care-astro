@@ -51,10 +51,10 @@ export const secondaryCategories: ServiceCategory[] = [
   },
   {
     title: "Firewood Supply",
-    path: "/other-services",
+    path: "/firewood-supplier-denver-co",
     children: [
-      { title: "Seasoned Firewood for Sale", path: "/seasoned-firewood-denver-co", parentPath: "/other-services", parentTitle: "Firewood Supply" },
-      { title: "Firewood Delivery", path: "/firewood-delivery-denver-co", parentPath: "/other-services", parentTitle: "Firewood Supply" },
+      { title: "Seasoned Firewood for Sale", path: "/seasoned-firewood-denver-co", parentPath: "/firewood-supplier-denver-co", parentTitle: "Firewood Supply" },
+      { title: "Firewood Delivery", path: "/firewood-delivery-denver-co", parentPath: "/firewood-supplier-denver-co", parentTitle: "Firewood Supply" },
     ],
   },
 ];

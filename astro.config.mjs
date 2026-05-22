@@ -22,6 +22,6 @@ export default defineConfig({
     '/contact': '/contact-us',
     '/tree-trimming-pruning-denver-co': '/tree-trimming',
     '/tree-removal-denver-co': '/tree-removal',
-    '/firewood-supplier-denver-co': '/other-services',
+    '/other-services': '/firewood-supplier-denver-co',
   },
 });

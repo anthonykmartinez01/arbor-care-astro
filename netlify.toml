@@ -55,7 +55,7 @@
   force = true
 
 [[redirects]]
-  from = "/firewood-supplier-denver-co"
-  to = "/other-services"
+  from = "/other-services"
+  to = "/firewood-supplier-denver-co"
   status = 301
   force = true

@@ -171,7 +171,7 @@ export const childServicesData: Record<string, ChildServiceData> = {
 
   "/seasoned-firewood-denver-co": {
     path: "/seasoned-firewood-denver-co",
-    parentPath: "/other-services",
+    parentPath: "/firewood-supplier-denver-co",
     parentTitle: "Firewood Supply",
     titleTag: "Seasoned Firewood Denver CO | Ready to Burn Hardwood",
     metaDescription: "Seasoned, split hardwood for sale in Denver, CO. Cord & face cord available. Burns hot and clean. Family owned. Call (303) 949-6818.",
@@ -220,7 +220,7 @@ export const childServicesData: Record<string, ChildServiceData> = {
 
   "/firewood-delivery-denver-co": {
     path: "/firewood-delivery-denver-co",
-    parentPath: "/other-services",
+    parentPath: "/firewood-supplier-denver-co",
     parentTitle: "Firewood Supply",
     titleTag: "Firewood Delivery Denver CO | Fast, Professional Service",
     metaDescription: "Firewood delivery in Denver, CO and surrounding metro. Seasoned hardwood delivered and stacked. Family owned. Call (303) 949-6818 to schedule.",
