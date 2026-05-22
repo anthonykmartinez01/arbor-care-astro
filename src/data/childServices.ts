@@ -789,90 +789,12 @@ export const childServicesData: Record<string, ChildServiceData> = {
     ],
     sections: [
       {
-        heading: "Tree Removal",
-        paragraphs: [
-          "Some trees can't be saved. Dead roots, heavy lean, or trunk rot all point to one answer. The tree needs to come down.",
-          "Tree removal is the service we handle most often across Denver. Homes near Wash Park and Park Hill have older trees that eventually reach the end of their life. When a big cottonwood or elm starts dropping limbs, it's not just ugly. It's a real risk to your roof, your fence, and your family.",
-          "Here's what usually tells you it's time:",
-        ],
-        bullets: [
-          "Large dead branches in the upper crown",
-          "Mushrooms or fungal growth at the base",
-          "Visible cracks running down the trunk",
-          "The tree leans more than it used to",
-        ],
-        image: {
-          src: "/assets/landscaper-denver-section-1.webp",
-          alt: "Tree care hand tools including pruning saw, loppers, and a bark knife arranged on a weathered wooden surface.",
-          title: "tree-care-pruning-tools-loppers-saw-denver",
-          align: "left",
-        },
-      },
-      {
-        heading: "Tree Trimming and Pruning",
-        paragraphs: [
-          "Most Denver homeowners don't think about trimming until a branch falls. By then, the damage is done. Regular pruning keeps your trees healthy and your yard safer through every season.",
-          "Timing matters here. The best window for most deciduous trees like ash, elm, and maple is late winter dormancy, roughly late January through early March. You can see the branch structure clearly, and the tree handles cuts better before new growth starts. Spring-flowering trees like lilacs get pruned right after they bloom. Evergreens like Colorado blue spruce are best trimmed in late spring when new growth has partially extended.",
-          "Denver's late-season snowstorms are brutal on trees that haven't been maintained. Heavy wet snow in March or April loads up weak branches fast. The storms in 2019 and 2021 snapped limbs across Capitol Hill and Park Hill neighborhoods. A good pruning job removes those problem branches before the snow arrives.",
-          "There are a few techniques we use depending on what the tree needs. Crown thinning opens up the canopy so air and light get through. Crown raising clears lower branches over driveways and walkways. Crown reduction brings the overall size down without wrecking the tree's natural shape. We never top trees. It's harmful and unnecessary.",
-          "Emerald ash borer is already confirmed in Boulder County and moving toward the Denver metro. Ash trees that are well-maintained and properly pruned hold up better under pest pressure. We watch for early warning signs every time we're on a property.",
-          "Well-pruned trees also add real value. Studies from arboricultural groups put the property value bump at 10 to 15 percent in competitive markets like Bonnie Brae and Green Valley Ranch. That's not nothing.",
-        ],
-      },
-      {
-        heading: "Emergency Tree Removal Service in Denver",
-        paragraphs: [
-          "Storms don't wait. A tree crashes down at 2 a.m., blocks your driveway, or sits on your roof. You need someone there fast.",
-          "We run emergency tree removal calls across Denver every week. Big cottonwoods in Park Hill. Old elms near Sloan's Lake. The species changes, the urgency doesn't. A fallen tree is dangerous. It can pull down power lines or crush a fence in seconds.",
-          "Here's what happens when you call us for an emergency:",
-        ],
-        bullets: [
-          "We respond the same day, often within hours",
-          "Our crew secures the area around the downed tree",
-          "We remove the tree in sections to protect your property",
-          "All debris gets hauled away before we leave",
-        ],
-      },
-      {
-        heading: "Tree Stump Removal and Grinding",
-        paragraphs: [
-          "Old stumps attract pests and create trip hazards. Kids run through the yard and don't see them until it's too late. Grinding takes care of the problem fast.",
-          "We grind stumps below grade so your Denver yard is clear and ready for whatever comes next. Sod, a garden bed, a new tree. The space is yours again once we're done.",
-          "Stumps left in place also sprout new growth. Some species like cottonwood and elm send up shoots for years after the tree is gone. Grinding stops that cycle. We go deep enough that regrowth isn't an issue.",
-          "Yards in Hilltop and Congress Park often have multiple old stumps from trees removed years ago. We can knock out several in a single visit.",
-        ],
-      },
-      {
         heading: "Bush and Shrub Trimming and Removal",
         paragraphs: [
           "Overgrown shrubs block windows, crowd walkways, and make a yard feel smaller than it is. A good trim changes the whole look of a property.",
           "We shape shrubs back to a clean line or remove them entirely if they've outgrown the space. Older neighborhoods in Sunnyside and Berkeley have yards full of mature junipers and lilacs that haven't been touched in years. We handle those too.",
           "Timing matters for flowering shrubs. Cut them at the wrong time and you lose next season's blooms. We know which species need post-bloom pruning and which ones can be shaped any time of year.",
           "Removal is sometimes the better call. A shrub that's crowding a foundation or blocking a sightline isn't doing your yard any favors. We pull it out clean and haul everything away.",
-        ],
-      },
-      {
-        heading: "Ash Tree Removal",
-        paragraphs: [
-          "Denver's ash trees are in trouble. Emerald ash borer has already reached the Front Range, and dead ash trees don't give much warning before they fall.",
-          "An ash that dies from EAB becomes brittle fast. Within a year or two, the wood gets unpredictable. Branches drop without wind. Whole trunks can fail during a mild storm. Neighborhoods like Stapleton and Montbello have large ash populations that are already showing signs of decline.",
-          "We remove ash trees before they become a hazard. Early removal is safer and usually less expensive than waiting until the tree is fully dead and the wood has degraded. We also grind the stump and can help you choose a replacement species that holds up in Denver's climate.",
-          "If you have ash trees on your property and aren't sure of their condition, get them looked at soon.",
-        ],
-        image: {
-          src: "/assets/landscaper-denver-section-2.webp",
-          alt: "Well-maintained Denver bungalow with trimmed shrubs, a young maple tree, and a clean mulched front yard.",
-          title: "landscaped-denver-bungalow-trimmed-yard-curb-appeal",
-          align: "right",
-        },
-      },
-      {
-        heading: "Tree Disease Treatment",
-        paragraphs: [
-          "Sick trees show signs early if you know where to look. Yellowing leaves, bark that's cracking in unusual patterns, or dieback at the branch tips all point to something worth checking.",
-          "We treat fungal infections, cankers, and blight across Denver before they spread to neighboring trees. Cytospora canker hits spruce trees hard in this region. Fire blight takes out crabapples and ornamental pears. Both are manageable if caught early.",
-          "Homes in Washington Park and Platt Park have dense tree canopies that hold moisture and create conditions where fungal disease spreads quickly. We've seen entire rows of spruce decline because one tree went untreated for a season.",
-          "Treatment isn't always a spray. Sometimes it's targeted pruning to remove infected wood. Sometimes it's a soil injection to boost the tree's defenses. We match the treatment to the disease and the tree.",
         ],
       },
       {
@@ -888,15 +810,6 @@ export const childServicesData: Record<string, ChildServiceData> = {
           "Mature canopy size relative to your property lines",
           "Denver's semi-arid climate and water needs",
           "Proximity to power lines or foundations",
-        ],
-      },
-      {
-        heading: "Storm Damage Tree Removal",
-        paragraphs: [
-          "Denver storms hit fast and leave a mess. Cracked limbs, split trunks, and uprooted trees can't sit for days while you figure out next steps.",
-          "We clear storm damage safely so your property recovers quickly. Whether a limb came down on your fence or a full tree uprooted in your backyard near Green Valley Ranch, we assess the situation and get to work the same day when possible.",
-          "Storm-damaged trees are unpredictable. A trunk that looks stable can shift when you start cutting. We work in sections and keep the area clear until everything is down and hauled away.",
-          "After the debris is gone, we'll also check nearby trees for hidden damage. A storm that drops one tree often weakens others nearby. Catching those issues early prevents the next emergency.",
         ],
       },
       {
