@@ -26,6 +26,13 @@ export interface ChildServiceData {
   // Optional visible FAQ accordion block, rendered below sections and above
   // the final CTA. Uses the same <details> pattern as the homepage FAQ.
   faqs?: { q: string; a: string }[];
+  // Optional hero image override. If omitted, the template falls back to the
+  // default tree-service hero (/assets/hero-tree-service[-mobile].webp).
+  heroImage?: {
+    src: string;
+    mobileSrc?: string;
+    alt?: string;
+  };
   finalCta: {
     headline: string;
     body: string;
@@ -781,6 +788,11 @@ export const childServicesData: Record<string, ChildServiceData> = {
     metaDescription: "Arbor Care Tree Solutions provides landscaper services in Denver: tree removal, trimming, pruning, stump grinding, shrub trimming, and emergency tree removal. Call (303) 949-6818.",
     h1: "Landscaper in Denver, CO",
     h1Accent: "Comprehensive Tree Care from ISA-Certified Arborists",
+    heroImage: {
+      src: "/assets/hero-landscaper-denver.webp",
+      mobileSrc: "/assets/hero-landscaper-denver-mobile.webp",
+      alt: "Landscaper services in Denver, Colorado",
+    },
     subheadline:
       "Tree removal, trimming, pruning, stump grinding, shrub work, and emergency response. A full range of tree services for Denver homeowners and businesses.",
     openingParagraphs: [
@@ -796,6 +808,11 @@ export const childServicesData: Record<string, ChildServiceData> = {
           "Timing matters for flowering shrubs. Cut them at the wrong time and you lose next season's blooms. We know which species need post-bloom pruning and which ones can be shaped any time of year.",
           "Removal is sometimes the better call. A shrub that's crowding a foundation or blocking a sightline isn't doing your yard any favors. We pull it out clean and haul everything away.",
         ],
+        image: {
+          src: "/assets/landscaper-bush-and-shrub-trimming-and-removal.webp",
+          alt: "Bush and shrub trimming and removal service in Denver, Colorado",
+          align: "left",
+        },
       },
       {
         heading: "Tree Planting",
@@ -811,6 +828,11 @@ export const childServicesData: Record<string, ChildServiceData> = {
           "Denver's semi-arid climate and water needs",
           "Proximity to power lines or foundations",
         ],
+        image: {
+          src: "/assets/landscaper-tree-planting.webp",
+          alt: "Tree planting service in Denver, Colorado",
+          align: "right",
+        },
       },
       {
         heading: "Holiday Lights and Decor",
@@ -823,9 +845,8 @@ export const childServicesData: Record<string, ChildServiceData> = {
           "Pricing for a single-family home in neighborhoods like Highlands or Central Park typically runs between $500 and $2,500 depending on the size of the display. Larger properties with more complex setups run higher. We offer tiered packages so you can start simple and add to it each year.",
         ],
         image: {
-          src: "/assets/landscaper-denver-section-3.webp",
-          alt: "Denver tree-lined residential street in autumn with a landscaping truck and wood chipper parked mid-block.",
-          title: "denver-tree-service-neighborhood-street-autumn-chipper",
+          src: "/assets/landscaper-holiday-lights-and-decor.webp",
+          alt: "Holiday lights and decor installation service in Denver, Colorado",
           align: "left",
         },
       },

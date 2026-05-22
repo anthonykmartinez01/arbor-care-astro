@@ -11,6 +11,12 @@ interface Props {
 const { data } = Astro.props;
 const homePath = data.parentPath === "/" ? "/tree-service-denver-co" : data.parentPath;
 
+// Hero image with optional per-page override (falls back to the default
+// tree-service hero used everywhere else).
+const heroDesktop = data.heroImage?.src ?? "/assets/hero-tree-service.webp";
+const heroMobile = data.heroImage?.mobileSrc ?? "/assets/hero-tree-service-mobile.webp";
+const heroAlt = data.heroImage?.alt ?? data.h1;
+
 const whyChooseBadges = [
   "ISA-certified arborists",
   "Family-owned company",
@@ -27,10 +33,10 @@ const whyChooseBadges = [
   <!-- HERO -->
   <section class="relative min-h-[500px] md:min-h-[60vh] flex items-center overflow-hidden">
     <picture>
-      <source media="(max-width: 767px)" srcset="/assets/hero-tree-service-mobile.webp" width="800" height="450" />
+      <source media="(max-width: 767px)" srcset={heroMobile} width="800" height="450" />
       <img
-        src="/assets/hero-tree-service.webp"
-        alt={data.h1}
+        src={heroDesktop}
+        alt={heroAlt}
         class="absolute inset-0 h-full w-full object-cover"
         width="1920"
         height="1080"
