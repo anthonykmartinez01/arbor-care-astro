@@ -886,6 +886,8 @@ export const childServicesData: Record<string, ChildServiceData> = {
             "@type": "OfferCatalog",
             itemListElement: [
               { "@type": "Offer", itemOffered: { name: "Shrub Trimming", "@type": "Service", areaServed: { name: "Denver", "@type": "City" } } },
+              { "@type": "Offer", itemOffered: { name: "Tree Planting", "@type": "Service", areaServed: { name: "Denver", "@type": "City" } } },
+              { "@type": "Offer", itemOffered: { name: "Holiday Lights and Decor", "@type": "Service", areaServed: { name: "Denver", "@type": "City" } } },
             ],
           },
         },
