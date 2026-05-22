@@ -117,23 +117,74 @@ const whyChooseBadges = [
       <div class="container">
         <div class="mx-auto max-w-3xl">
           <h2 class="text-2xl font-bold md:text-3xl">{section.heading}</h2>
+          {section.image && (
+            <figure
+              class:list={[
+                "my-6 md:my-0 md:max-w-[300px]",
+                section.image.align === "right"
+                  ? "md:float-right md:ml-6 md:mb-4"
+                  : "md:float-left md:mr-6 md:mb-4",
+              ]}
+            >
+              <img
+                src={section.image.src}
+                alt={section.image.alt}
+                title={section.image.title}
+                width={section.image.width ?? 480}
+                height={section.image.height ?? 320}
+                loading="lazy"
+                class="w-full rounded-lg"
+              />
+            </figure>
+          )}
           {section.paragraphs.map((p) => (
             <p class="mt-6 leading-relaxed text-muted-foreground">{p}</p>
           ))}
-          {idx === data.sections.length - 1 && (
-            <div class="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-              {whyChooseBadges.map((text) => (
-                <div class="flex items-center gap-3 rounded-lg border border-border bg-card p-3">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><path d="m9 11 3 3L22 4"></path></svg>
-                  <span class="text-sm font-medium">{text}</span>
-                </div>
-              ))}
-            </div>
+          {section.bullets && section.bullets.length > 0 && (
+            <ul class="mt-4 ml-6 list-disc space-y-2 text-muted-foreground">
+              {section.bullets.map((b) => <li>{b}</li>)}
+            </ul>
           )}
+          {idx === data.sections.length - 1 && (
+            <>
+              <div class="clear-both"></div>
+              <div class="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                {whyChooseBadges.map((text) => (
+                  <div class="flex items-center gap-3 rounded-lg border border-border bg-card p-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><path d="m9 11 3 3L22 4"></path></svg>
+                    <span class="text-sm font-medium">{text}</span>
+                  </div>
+                ))}
+              </div>
+            </>
+          )}
+          {section.image && <div class="clear-both"></div>}
         </div>
       </div>
     </section>
   ))}
+
+  <!-- OPTIONAL FAQ SECTION -->
+  {data.faqs && data.faqs.length > 0 && (
+    <section class="bg-muted py-16 md:py-24">
+      <div class="container">
+        <div class="mx-auto max-w-3xl">
+          <h2 class="text-center text-2xl font-bold md:text-4xl">Frequently Asked Questions</h2>
+          <div class="mt-10 space-y-3">
+            {data.faqs.map((faq) => (
+              <details class="rounded-lg border border-border bg-card px-6 group">
+                <summary class="cursor-pointer py-4 text-left font-bold text-base list-none flex items-center justify-between">
+                  <h3 class="font-bold inline">{faq.q}</h3>
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 shrink-0 transition-transform group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"></path></svg>
+                </summary>
+                <p class="text-sm leading-relaxed text-muted-foreground pb-4">{faq.a}</p>
+              </details>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  )}
 
   <!-- FINAL CTA -->
   <section class="py-16 md:py-24">

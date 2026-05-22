@@ -11,7 +11,21 @@ export interface ChildServiceData {
   sections: {
     heading: string;
     paragraphs: string[];
+    // Optional bullet list rendered after the paragraphs in this section.
+    bullets?: string[];
+    // Optional inline image floated left or right (md+ only).
+    image?: {
+      src: string;
+      alt: string;
+      title?: string;
+      align?: "left" | "right";
+      width?: number;
+      height?: number;
+    };
   }[];
+  // Optional visible FAQ accordion block, rendered below sections and above
+  // the final CTA. Uses the same <details> pattern as the homepage FAQ.
+  faqs?: { q: string; a: string }[];
   finalCta: {
     headline: string;
     body: string;
@@ -757,5 +771,209 @@ export const childServicesData: Record<string, ChildServiceData> = {
       parentLinkText: "Visit our Denver tree service homepage.",
     },
     schema: { "@context": "https://schema.org", "@type": "Service", serviceType: "Debris Removal", name: "Debris Removal Service Denver CO", provider: { "@type": "LocalBusiness", name: "Arbor Care Tree Solutions", telephone: "(303) 949-6818", address: { "@type": "PostalAddress", streetAddress: "1130 S Santa Fe Dr", addressLocality: "Denver", addressRegion: "CO", postalCode: "80223" } }, areaServed: { "@type": "City", name: "Denver" } },
+  },
+
+  "/landscaper-denver-co": {
+    path: "/landscaper-denver-co",
+    parentPath: "/",
+    parentTitle: "Home",
+    titleTag: "Landscaper Denver CO | Tree Care & Landscape Services",
+    metaDescription: "Arbor Care Tree Solutions provides landscaper services in Denver — tree removal, trimming, pruning, stump grinding, shrub trimming, and emergency tree removal. Call (303) 949-6818.",
+    h1: "Landscaper in Denver",
+    h1Accent: "Comprehensive Tree Care from ISA-Certified Arborists",
+    subheadline:
+      "Tree removal, trimming, pruning, stump grinding, shrub work, and emergency response — a full range of tree services for Denver homeowners and businesses.",
+    openingParagraphs: [
+      "Trees are the most valuable feature on most Denver properties. They add shade, curb appeal, and real dollar value — but they also need real attention. Storms, drought, pests, and age all create issues that don't fix themselves. Letting them slide costs more later than handling them now.",
+      "Arbor Care Tree Solutions handles the full range of landscaper services across the Denver metro — tree removal, trimming, stump grinding, shrub work, emergency response after storms, ash tree removal, disease treatment, planting, and seasonal lighting. ISA-certified arborists, 100+ five-star Google reviews, fully licensed and insured. Below is the full scope of what we do.",
+    ],
+    sections: [
+      {
+        heading: "Tree Removal",
+        paragraphs: [
+          "Some trees can't be saved. Dead roots, heavy lean, or trunk rot all point to one answer. The tree needs to come down.",
+          "Tree removal is the service we handle most often across Denver. Homes near Wash Park and Park Hill have older trees that eventually reach the end of their life. When a big cottonwood or elm starts dropping limbs, it's not just ugly. It's a real risk to your roof, your fence, and your family.",
+          "Here's what usually tells you it's time:",
+        ],
+        bullets: [
+          "Large dead branches in the upper crown",
+          "Mushrooms or fungal growth at the base",
+          "Visible cracks running down the trunk",
+          "The tree leans more than it used to",
+        ],
+        image: {
+          src: "/assets/landscaper-denver-section-1.webp",
+          alt: "Tree care hand tools including pruning saw, loppers, and a bark knife arranged on a weathered wooden surface.",
+          title: "tree-care-pruning-tools-loppers-saw-denver",
+          align: "left",
+        },
+      },
+      {
+        heading: "Tree Trimming and Pruning",
+        paragraphs: [
+          "Most Denver homeowners don't think about trimming until a branch falls. By then, the damage is done. Regular pruning keeps your trees healthy and your yard safer through every season.",
+          "Timing matters here. The best window for most deciduous trees like ash, elm, and maple is late winter dormancy, roughly late January through early March. You can see the branch structure clearly, and the tree handles cuts better before new growth starts. Spring-flowering trees like lilacs get pruned right after they bloom. Evergreens like Colorado blue spruce are best trimmed in late spring when new growth has partially extended.",
+          "Denver's late-season snowstorms are brutal on trees that haven't been maintained. Heavy wet snow in March or April loads up weak branches fast. The storms in 2019 and 2021 snapped limbs across Capitol Hill and Park Hill neighborhoods. A good pruning job removes those problem branches before the snow arrives.",
+          "There are a few techniques we use depending on what the tree needs. Crown thinning opens up the canopy so air and light get through. Crown raising clears lower branches over driveways and walkways. Crown reduction brings the overall size down without wrecking the tree's natural shape. We never top trees. It's harmful and unnecessary.",
+          "Emerald ash borer is already confirmed in Boulder County and moving toward the Denver metro. Ash trees that are well-maintained and properly pruned hold up better under pest pressure. We watch for early warning signs every time we're on a property.",
+          "Well-pruned trees also add real value. Studies from arboricultural groups put the property value bump at 10 to 15 percent in competitive markets like Bonnie Brae and Green Valley Ranch. That's not nothing.",
+        ],
+      },
+      {
+        heading: "Emergency Tree Removal Service in Denver",
+        paragraphs: [
+          "Storms don't wait. A tree crashes down at 2 a.m., blocks your driveway, or sits on your roof. You need someone there fast.",
+          "We run emergency tree removal calls across Denver every week. Big cottonwoods in Park Hill. Old elms near Sloan's Lake. The species changes, the urgency doesn't. A fallen tree is dangerous. It can pull down power lines or crush a fence in seconds.",
+          "Here's what happens when you call us for an emergency:",
+        ],
+        bullets: [
+          "We respond the same day, often within hours",
+          "Our crew secures the area around the downed tree",
+          "We remove the tree in sections to protect your property",
+          "All debris gets hauled away before we leave",
+        ],
+      },
+      {
+        heading: "Tree Stump Removal and Grinding",
+        paragraphs: [
+          "Old stumps attract pests and create trip hazards. Kids run through the yard and don't see them until it's too late. Grinding takes care of the problem fast.",
+          "We grind stumps below grade so your Denver yard is clear and ready for whatever comes next. Sod, a garden bed, a new tree. The space is yours again once we're done.",
+          "Stumps left in place also sprout new growth. Some species like cottonwood and elm send up shoots for years after the tree is gone. Grinding stops that cycle. We go deep enough that regrowth isn't an issue.",
+          "Yards in Hilltop and Congress Park often have multiple old stumps from trees removed years ago. We can knock out several in a single visit.",
+        ],
+      },
+      {
+        heading: "Bush and Shrub Trimming and Removal",
+        paragraphs: [
+          "Overgrown shrubs block windows, crowd walkways, and make a yard feel smaller than it is. A good trim changes the whole look of a property.",
+          "We shape shrubs back to a clean line or remove them entirely if they've outgrown the space. Older neighborhoods in Sunnyside and Berkeley have yards full of mature junipers and lilacs that haven't been touched in years. We handle those too.",
+          "Timing matters for flowering shrubs. Cut them at the wrong time and you lose next season's blooms. We know which species need post-bloom pruning and which ones can be shaped any time of year.",
+          "Removal is sometimes the better call. A shrub that's crowding a foundation or blocking a sightline isn't doing your yard any favors. We pull it out clean and haul everything away.",
+        ],
+      },
+      {
+        heading: "Ash Tree Removal",
+        paragraphs: [
+          "Denver's ash trees are in trouble. Emerald ash borer has already reached the Front Range, and dead ash trees don't give much warning before they fall.",
+          "An ash that dies from EAB becomes brittle fast. Within a year or two, the wood gets unpredictable. Branches drop without wind. Whole trunks can fail during a mild storm. Neighborhoods like Stapleton and Montbello have large ash populations that are already showing signs of decline.",
+          "We remove ash trees before they become a hazard. Early removal is safer and usually less expensive than waiting until the tree is fully dead and the wood has degraded. We also grind the stump and can help you choose a replacement species that holds up in Denver's climate.",
+          "If you have ash trees on your property and aren't sure of their condition, get them looked at soon.",
+        ],
+        image: {
+          src: "/assets/landscaper-denver-section-2.webp",
+          alt: "Well-maintained Denver bungalow with trimmed shrubs, a young maple tree, and a clean mulched front yard.",
+          title: "landscaped-denver-bungalow-trimmed-yard-curb-appeal",
+          align: "right",
+        },
+      },
+      {
+        heading: "Tree Disease Treatment",
+        paragraphs: [
+          "Sick trees show signs early if you know where to look. Yellowing leaves, bark that's cracking in unusual patterns, or dieback at the branch tips all point to something worth checking.",
+          "We treat fungal infections, cankers, and blight across Denver before they spread to neighboring trees. Cytospora canker hits spruce trees hard in this region. Fire blight takes out crabapples and ornamental pears. Both are manageable if caught early.",
+          "Homes in Washington Park and Platt Park have dense tree canopies that hold moisture and create conditions where fungal disease spreads quickly. We've seen entire rows of spruce decline because one tree went untreated for a season.",
+          "Treatment isn't always a spray. Sometimes it's targeted pruning to remove infected wood. Sometimes it's a soil injection to boost the tree's defenses. We match the treatment to the disease and the tree.",
+        ],
+      },
+      {
+        heading: "Tree Planting",
+        paragraphs: [
+          "Picking the right tree for your Denver yard matters more than most people think. Soil type, sun exposure, and altitude all play a role. We help you choose a species that'll actually thrive here, not just survive one season.",
+          "Neighborhoods like Hilltop and Sunnyside have different soil conditions. A tree that does great near Sloan's Lake might struggle in your Stapleton backyard. We look at your specific lot before we plant anything.",
+          "Tree planting isn't just digging a hole. Root depth, spacing from structures, and irrigation setup all affect long-term growth. Get it wrong and you're calling us back in five years for a removal instead.",
+          "Here's what we consider before every tree planting job:",
+        ],
+        bullets: [
+          "Existing root systems and underground utilities",
+          "Mature canopy size relative to your property lines",
+          "Denver's semi-arid climate and water needs",
+          "Proximity to power lines or foundations",
+        ],
+      },
+      {
+        heading: "Storm Damage Tree Removal",
+        paragraphs: [
+          "Denver storms hit fast and leave a mess. Cracked limbs, split trunks, and uprooted trees can't sit for days while you figure out next steps.",
+          "We clear storm damage safely so your property recovers quickly. Whether a limb came down on your fence or a full tree uprooted in your backyard near Green Valley Ranch, we assess the situation and get to work the same day when possible.",
+          "Storm-damaged trees are unpredictable. A trunk that looks stable can shift when you start cutting. We work in sections and keep the area clear until everything is down and hauled away.",
+          "After the debris is gone, we'll also check nearby trees for hidden damage. A storm that drops one tree often weakens others nearby. Catching those issues early prevents the next emergency.",
+        ],
+      },
+      {
+        heading: "Holiday Lights and Decor",
+        paragraphs: [
+          "Getting holiday lights up in Denver isn't as simple as it looks. Steep roof pitches, unpredictable early snowfall, and temperature swings that drop 40 degrees in a day make it a job worth handing off.",
+          "We install holiday lighting across Denver neighborhoods from late October through mid-November. That window matters. Getting ahead of the first heavy snowfall means the crew works in safer conditions and your display is ready when you want it lit.",
+          "A typical installation includes roofline outlining, net lighting over shrubs, and spiral wrapping on tree trunks. Homes with Colorado blue spruce in the front yard look great with uplighting. We walk the property with you first and plan the layout based on your architecture and what's already in the landscape.",
+          "Safety is a real reason to hire this out. Falls from ladders are the most common holiday decorating injury in Colorado. Older homes in Congress Park and Bonnie Brae have steep two-story rooflines that are especially risky when there's ice or snow on the surface. Our crews use commercial ladders and proper safety equipment on every job.",
+          "We also handle takedown and storage in January. No tangled cords left in a box until next year. Everything comes down clean and gets stored properly so it's ready to go the following season.",
+          "Pricing for a single-family home in neighborhoods like Highlands or Central Park typically runs between $500 and $2,500 depending on the size of the display. Larger properties with more complex setups run higher. We offer tiered packages so you can start simple and add to it each year.",
+        ],
+        image: {
+          src: "/assets/landscaper-denver-section-3.webp",
+          alt: "Denver tree-lined residential street in autumn with a landscaping truck and wood chipper parked mid-block.",
+          title: "denver-tree-service-neighborhood-street-autumn-chipper",
+          align: "left",
+        },
+      },
+    ],
+    faqs: [
+      { q: "How do I know if I need tree removal or just trimming?", a: "If the tree has dead branches in the upper crown, trunk cracks, or fungal growth at the base, removal is likely the right call. Trimming works when the tree is structurally sound but overgrown or unbalanced. A quick on-site look tells us which direction to go. We never recommend removal unless the tree is genuinely past saving." },
+      { q: "When is the best time to prune trees in Denver?", a: "Late January through early March is the sweet spot for most deciduous trees in Denver. You can see the branch structure clearly before new growth starts. Spring-flowering trees like lilacs get pruned right after they bloom. Denver's late-season snowstorms hit hard, so getting pruning done before March protects your trees from heavy wet snow damage." },
+      { q: "Do you handle emergency tree calls across Denver?", a: "Yes, we respond to emergency tree removal calls across Denver the same day, often within hours. Storms snap limbs and topple whole trees without warning here. Whether it's a cottonwood in Park Hill or an elm near Sloan's Lake, we secure the area, remove the tree in sections, and haul all debris before we leave." },
+      { q: "Should I grind the stump or just leave it after a tree comes down?", a: "Grinding is the better choice. Old stumps attract pests, create trip hazards, and sprout new shoots for years — especially cottonwood and elm. Grinding stops that cycle fast. Once it's done, the space is clear for sod, a garden bed, or a new tree. Leaving a stump just creates more problems down the road." },
+      { q: "How do I choose a landscaper in Denver for tree work specifically?", a: "Look for someone who evaluates the tree on-site before quoting anything. Denver's clay soil and dry summers stress trees differently than other climates. A good crew checks what's around the tree — power lines, structures, neighboring trees — before any work starts. Ask if they watch for emerald ash borer signs too, since it's already confirmed in nearby Boulder County." },
+      { q: "Does trimming shrubs at the wrong time of year actually cause damage?", a: "Yes, cutting flowering shrubs at the wrong time means you lose next season's blooms entirely. Lilacs and similar species need post-bloom pruning. Trim them too early and the flower buds are gone. Other shrubs can be shaped any time of year without issue. Knowing which is which makes a real difference, especially in older Denver yards full of mature plantings." },
+    ],
+    finalCta: {
+      headline: "Ready to Get Started?",
+      body: "Call now for a free estimate. Call (303) 949-6818 today.",
+      parentLinkText: "Visit our Denver tree service homepage.",
+    },
+    // Full @graph schema provided in the source HTML, preserved verbatim.
+    schema: {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@id": "https://www.arborcaretreesolutions.com//#business",
+          geo: { "@type": "GeoCoordinates", latitude: 39.6951136, longitude: -104.9923784 },
+          url: "https://www.arborcaretreesolutions.com/",
+          logo: "",
+          name: "Arbor Care Tree Solutions",
+          "@type": "LocalBusiness",
+          image: "",
+          sameAs: [],
+          address: { "@type": "PostalAddress", postalCode: "80223", addressRegion: "CO", streetAddress: "1130 S Santa Fe Dr", addressCountry: "US", addressLocality: "Denver" },
+          telephone: "+13039496818",
+          areaServed: { name: "Denver", "@type": "City" },
+          description: "Arbor Care Tree Solutions provides a comprehensive range of landscaper services in Denver — including tree removal, tree trimming, pruning, stump grinding, shrub trimming, and emergency tree removal — serving residential and commercial properties across the city with locally informed expertise.",
+          hasOfferCatalog: {
+            name: "Landscaper Services",
+            "@type": "OfferCatalog",
+            itemListElement: [
+              { "@type": "Offer", itemOffered: { name: "Tree Removal", "@type": "Service", areaServed: { name: "Denver", "@type": "City" } } },
+              { "@type": "Offer", itemOffered: { name: "Tree Trimming", "@type": "Service", areaServed: { name: "Denver", "@type": "City" } } },
+              { "@type": "Offer", itemOffered: { name: "Tree Pruning", "@type": "Service", areaServed: { name: "Denver", "@type": "City" } } },
+              { "@type": "Offer", itemOffered: { name: "Stump Grinding", "@type": "Service", areaServed: { name: "Denver", "@type": "City" } } },
+              { "@type": "Offer", itemOffered: { name: "Shrub Trimming", "@type": "Service", areaServed: { name: "Denver", "@type": "City" } } },
+              { "@type": "Offer", itemOffered: { name: "Emergency Tree Removal", "@type": "Service", areaServed: { name: "Denver", "@type": "City" } } },
+            ],
+          },
+        },
+        { "@id": "https://www.arborcaretreesolutions.com//#website", url: "https://www.arborcaretreesolutions.com/", name: "Arbor Care Tree Solutions", "@type": "WebSite", publisher: { "@id": "https://www.arborcaretreesolutions.com//#business" } },
+        { "@id": "https://www.arborcaretreesolutions.com//#author", name: "Arbor Care Tree Solutions Team", "@type": "Person", description: "The Arbor Care Tree Solutions team brings hands-on expertise across the full range of landscaper services in Denver, from routine tree trimming and shrub care to emergency removals and stump grinding throughout the city." },
+        {
+          "@type": "FAQPage",
+          mainEntity: [
+            { name: "How do I know if I need tree removal or just trimming?", "@type": "Question", acceptedAnswer: { text: "If the tree has dead branches in the upper crown, trunk cracks, or fungal growth at the base, removal is likely the right call. Trimming works when the tree is structurally sound but overgrown or unbalanced. A quick on-site look tells us which direction to go. We never recommend removal unless the tree is genuinely past saving.", "@type": "Answer" } },
+            { name: "When is the best time to prune trees in Denver?", "@type": "Question", acceptedAnswer: { text: "Late January through early March is the sweet spot for most deciduous trees in Denver. You can see the branch structure clearly before new growth starts. Spring-flowering trees like lilacs get pruned right after they bloom. Denver's late-season snowstorms hit hard, so getting pruning done before March protects your trees from heavy wet snow damage.", "@type": "Answer" } },
+            { name: "Do you handle emergency tree calls across Denver?", "@type": "Question", acceptedAnswer: { text: "Yes, we respond to emergency tree removal calls across Denver the same day, often within hours. Storms snap limbs and topple whole trees without warning here. Whether it's a cottonwood in Park Hill or an elm near Sloan's Lake, we secure the area, remove the tree in sections, and haul all debris before we leave.", "@type": "Answer" } },
+            { name: "Should I grind the stump or just leave it after a tree comes down?", "@type": "Question", acceptedAnswer: { text: "Grinding is the better choice. Old stumps attract pests, create trip hazards, and sprout new shoots for years — especially cottonwood and elm. Grinding stops that cycle fast. Once it's done, the space is clear for sod, a garden bed, or a new tree. Leaving a stump just creates more problems down the road.", "@type": "Answer" } },
+            { name: "How do I choose a landscaper in Denver for tree work specifically?", "@type": "Question", acceptedAnswer: { text: "Look for someone who evaluates the tree on-site before quoting anything. Denver's clay soil and dry summers stress trees differently than other climates. A good crew checks what's around the tree — power lines, structures, neighboring trees — before any work starts. Ask if they watch for emerald ash borer signs too, since it's already confirmed in nearby Boulder County.", "@type": "Answer" } },
+            { name: "Does trimming shrubs at the wrong time of year actually cause damage?", "@type": "Question", acceptedAnswer: { text: "Yes, cutting flowering shrubs at the wrong time means you lose next season's blooms entirely. Lilacs and similar species need post-bloom pruning. Trim them too early and the flower buds are gone. Other shrubs can be shaped any time of year without issue. Knowing which is which makes a real difference, especially in older Denver yards full of mature plantings.", "@type": "Answer" } },
+          ],
+        },
+      ],
+    },
   },
 };
