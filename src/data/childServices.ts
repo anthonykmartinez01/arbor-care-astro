@@ -864,12 +864,7 @@ export const childServicesData: Record<string, ChildServiceData> = {
             name: "Landscaper Services",
             "@type": "OfferCatalog",
             itemListElement: [
-              { "@type": "Offer", itemOffered: { name: "Tree Removal", "@type": "Service", areaServed: { name: "Denver", "@type": "City" } } },
-              { "@type": "Offer", itemOffered: { name: "Tree Trimming", "@type": "Service", areaServed: { name: "Denver", "@type": "City" } } },
-              { "@type": "Offer", itemOffered: { name: "Tree Pruning", "@type": "Service", areaServed: { name: "Denver", "@type": "City" } } },
-              { "@type": "Offer", itemOffered: { name: "Stump Grinding", "@type": "Service", areaServed: { name: "Denver", "@type": "City" } } },
               { "@type": "Offer", itemOffered: { name: "Shrub Trimming", "@type": "Service", areaServed: { name: "Denver", "@type": "City" } } },
-              { "@type": "Offer", itemOffered: { name: "Emergency Tree Removal", "@type": "Service", areaServed: { name: "Denver", "@type": "City" } } },
             ],
           },
         },
