@@ -1,0 +1,55 @@
+---
+interface SectionImage {
+  src: string;
+  alt: string;
+  title?: string;
+  align?: "left" | "right";
+  width?: number;
+  height?: number;
+}
+
+interface Props {
+  id: string;
+  heading: string;
+  image?: SectionImage;
+  /** Muted background for visual rhythm between sections. */
+  alt?: boolean;
+}
+
+const { id, heading, image, alt = false } = Astro.props;
+const floatClass =
+  image?.align === "right"
+    ? "md:float-right md:ml-6 md:mb-4"
+    : "md:float-left md:mr-6 md:mb-4";
+---
+
+<section id={id} class:list={["scroll-mt-24 py-12 md:py-16", alt && "bg-muted"]}>
+  <div class="container">
+    <div class="mx-auto max-w-3xl">
+      <h2 class="text-2xl font-bold md:text-3xl">{heading}</h2>
+
+      {image && (
+        <figure class:list={["my-6 md:my-0 md:max-w-[300px]", floatClass]}>
+          <img
+            src={image.src}
+            alt={image.alt}
+            title={image.title}
+            width={image.width ?? 480}
+            height={image.height ?? 480}
+            loading="lazy"
+            decoding="async"
+            class="w-full rounded-lg"
+          />
+        </figure>
+      )}
+
+      <div
+        class="mt-4 [&_a]:font-medium [&_a]:text-primary [&_a]:underline [&_li]:leading-relaxed [&_p]:mt-4 [&_p]:leading-relaxed [&_p]:text-muted-foreground [&_ul]:mt-4 [&_ul]:ml-6 [&_ul]:list-disc [&_ul]:space-y-2 [&_ul]:text-muted-foreground"
+      >
+        <slot />
+      </div>
+
+      <div class="clear-both"></div>
+    </div>
+  </div>
+</section>

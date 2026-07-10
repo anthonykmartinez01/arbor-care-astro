@@ -3,6 +3,8 @@ import { business } from "../../data/business";
 import Header from "./Header.astro";
 import Footer from "./Footer.astro";
 import OrganizationSchema from "../schema/OrganizationSchema.astro";
+import WebSiteSchema from "../schema/WebSiteSchema.astro";
+import BreadcrumbSchema from "../schema/BreadcrumbSchema.astro";
 import "../../styles/global.css";
 
 interface Props {
@@ -10,13 +12,35 @@ interface Props {
   description: string;
   canonical?: string;
   ogImage?: string;
+  /** Exclude from search index (utility/thin pages). */
+  noindex?: boolean;
+  /** Desktop LCP/hero image to preload (>=768px viewports). */
+  preloadImage?: string;
+  /** Mobile LCP/hero image to preload (<768px viewports). */
+  preloadImageMobile?: string;
+  /** Short label for the breadcrumb trail; defaults to the title before "|". */
+  breadcrumbLabel?: string;
 }
 
-const { title, description, canonical, ogImage = "/og-image.jpg" } = Astro.props;
-const canonicalUrl = canonical
-  ? new URL(canonical, business.siteUrl).href
-  : new URL(Astro.url.pathname, business.siteUrl).href;
+const {
+  title,
+  description,
+  canonical,
+  ogImage = "/og-image.jpg",
+  noindex = false,
+  preloadImage,
+  preloadImageMobile,
+  breadcrumbLabel,
+} = Astro.props;
+
+// Canonical URLs use a single, consistent trailing-slash form site-wide.
+const rawPath = canonical ?? Astro.url.pathname;
+const canonicalPath =
+  rawPath === "/" ? "/" : rawPath.endsWith("/") ? rawPath : `${rawPath}/`;
+const canonicalUrl = new URL(canonicalPath, business.siteUrl).href;
 const ogImageUrl = new URL(ogImage, business.siteUrl).href;
+
+const isHome = canonicalPath === "/";
 ---
 
 <!doctype html>
@@ -27,6 +51,7 @@ const ogImageUrl = new URL(ogImage, business.siteUrl).href;
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalUrl} />
+    {noindex && <meta name="robots" content="noindex, follow" />}
 
     <!-- Open Graph -->
     <meta property="og:title" content={title} />
@@ -41,28 +66,48 @@ const ogImageUrl = new URL(ogImage, business.siteUrl).href;
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImageUrl} />
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <!-- Favicon set -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="theme-color" content="#5a6f2f" />
 
     <!-- Fonts — only preload bold (headings render first) -->
     <link rel="preload" href="/fonts/merriweather-v33-latin-700.woff2" as="font" type="font/woff2" crossorigin />
+
+    <!-- Preload the LCP hero image (per page, responsive) -->
+    {preloadImage && (
+      <link rel="preload" as="image" href={preloadImage} media="(min-width: 768px)" fetchpriority="high" />
+    )}
+    {preloadImageMobile && (
+      <link rel="preload" as="image" href={preloadImageMobile} media="(max-width: 767px)" fetchpriority="high" />
+    )}
 
     <!-- Preconnects for third-party embeds -->
     <link rel="preconnect" href="https://reputationhub.site" />
     <link rel="preconnect" href="https://go.kailenflow.com" />
 
     <OrganizationSchema />
+    <WebSiteSchema />
+    {!isHome && <BreadcrumbSchema label={breadcrumbLabel ?? title.split("|")[0].trim()} />}
 
     <slot name="head" />
 
-    <!-- Google Analytics -->
+    <!-- Google Analytics (Partytown). Raw-injected with set:html so the build
+         does not tree-shake the gtag() init calls out of the bundle. -->
     <script type="text/partytown" src={`https://www.googletagmanager.com/gtag/js?id=${business.analyticsId}`}></script>
-    <script type="text/partytown" define:vars={{ analyticsId: business.analyticsId }}>
+    <script
+      type="text/partytown"
+      set:html={`
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-      gtag('config', analyticsId);
-    </script>
+      gtag('config', '${business.analyticsId}');
+    `}
+    />
   </head>
   <body>
     <Header />

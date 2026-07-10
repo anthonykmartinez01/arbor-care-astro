@@ -9,11 +9,13 @@ const schema = {
   url: business.siteUrl,
   telephone: business.phone,
   email: business.email,
+  // Ties the org node to the LocalBusiness node so the graph is connected.
+  subOrganization: { "@id": `${business.siteUrl}/#business` },
   address: {
     "@type": "PostalAddress",
     streetAddress: business.address.street,
     addressLocality: business.address.city,
-    addressRegion: business.address.state,
+    addressRegion: business.address.stateAbbr,
     postalCode: business.address.zip,
     addressCountry: business.address.country,
   },

@@ -1,0 +1,82 @@
+---
+import BaseLayout from "../components/layout/BaseLayout.astro";
+import { business } from "../data/business";
+---
+
+<BaseLayout
+  title="Terms of Service | Arbor Care Tree Solutions"
+  description="Terms of Service for Arbor Care Tree Solutions. The terms and conditions that govern use of our website and tree care services in Denver, CO."
+>
+  <div class="py-16 md:py-24">
+    <div class="container">
+      <div class="mx-auto max-w-3xl prose prose-sm sm:prose-base">
+        <h1 class="text-3xl font-bold md:text-4xl mb-2">Terms of Service</h1>
+        <p class="text-muted-foreground mb-8">Last updated: July 8, 2026</p>
+
+        <p class="leading-relaxed text-muted-foreground">
+          These Terms of Service ("Terms") govern your use of the website and services provided by Arbor Care Tree Solutions ("we," "us," or "our"). By accessing our website or requesting our services, you agree to these Terms. If you do not agree, please do not use our website or services.
+        </p>
+
+        <h2 class="text-xl font-bold mt-10 mb-4">Services</h2>
+        <p class="leading-relaxed text-muted-foreground">
+          We provide tree care services including, but not limited to, tree removal, emergency tree removal, tree trimming and pruning, stump grinding and removal, arborist and tree-health services, firewood sales and delivery, and related landscaping services throughout Denver, CO and surrounding areas. All work is performed by or under the supervision of qualified personnel.
+        </p>
+
+        <h2 class="text-xl font-bold mt-10 mb-4">Estimates and Quotes</h2>
+        <p class="leading-relaxed text-muted-foreground">
+          Free estimates are provided based on an on-site or described assessment of the work requested. Estimates are valid for the period stated on the quote and may be subject to change if site conditions, scope, or access differ materially from what was assessed. A quote becomes a binding agreement only once accepted by you and confirmed by us.
+        </p>
+
+        <h2 class="text-xl font-bold mt-10 mb-4">Scheduling and Access</h2>
+        <p class="leading-relaxed text-muted-foreground">
+          You are responsible for providing safe and reasonable access to the work area and for identifying any known underground utilities, irrigation lines, septic systems, or other hazards prior to the start of work. Weather, safety conditions, and emergencies may require us to reschedule work; we will make reasonable efforts to notify you in advance.
+        </p>
+
+        <h2 class="text-xl font-bold mt-10 mb-4">Payment</h2>
+        <p class="leading-relaxed text-muted-foreground">
+          Payment is due upon completion of the work unless otherwise agreed in writing. Prices quoted reflect the scope described at the time of the estimate. Additional work discovered or requested during the job may incur additional charges, which we will communicate before proceeding where practical.
+        </p>
+
+        <h2 class="text-xl font-bold mt-10 mb-4">Licensing and Insurance</h2>
+        <p class="leading-relaxed text-muted-foreground">
+          We are licensed and insured to perform tree care services in Colorado. Proof of insurance is available upon request. Our liability is limited to the scope of the services performed and the terms of our insurance coverage.
+        </p>
+
+        <h2 class="text-xl font-bold mt-10 mb-4">Limitation of Liability</h2>
+        <p class="leading-relaxed text-muted-foreground">
+          To the fullest extent permitted by law, Arbor Care Tree Solutions is not liable for indirect, incidental, or consequential damages arising from the use of our website or services. Tree work carries inherent risks; while we take reasonable precautions, we are not responsible for pre-existing conditions, unforeseen structural failures, or damage resulting from conditions beyond our reasonable control.
+        </p>
+
+        <h2 class="text-xl font-bold mt-10 mb-4">Website Use</h2>
+        <p class="leading-relaxed text-muted-foreground">
+          The content on this website is provided for general informational purposes only and does not constitute a professional arboricultural assessment of your specific trees or property. You may not copy, reproduce, or redistribute content from this website without our permission.
+        </p>
+
+        <h2 class="text-xl font-bold mt-10 mb-4">Changes to These Terms</h2>
+        <p class="leading-relaxed text-muted-foreground">
+          We may update these Terms from time to time. Any changes will be posted on this page with an updated "Last updated" date. Continued use of our website or services after changes are posted constitutes acceptance of the revised Terms.
+        </p>
+
+        <h2 class="text-xl font-bold mt-10 mb-4">Governing Law</h2>
+        <p class="leading-relaxed text-muted-foreground">
+          These Terms are governed by the laws of the State of Colorado, without regard to its conflict-of-law provisions.
+        </p>
+
+        <h2 class="text-xl font-bold mt-10 mb-4">Contact Us</h2>
+        <p class="leading-relaxed text-muted-foreground">
+          If you have questions about these Terms, please contact us:
+        </p>
+        <div class="mt-4 rounded-lg border border-border bg-card p-6 not-prose">
+          <p class="font-bold text-lg">{business.name}</p>
+          <p class="mt-2 text-sm text-muted-foreground">1130 S Santa Fe Dr, Denver, CO 80223</p>
+          <p class="mt-1 text-sm">
+            <a href={business.phoneTel} class="text-primary font-semibold hover:underline">{business.phone}</a>
+          </p>
+          <p class="mt-1 text-sm">
+            <a href={`mailto:${business.email}`} class="text-primary font-semibold hover:underline">{business.email}</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</BaseLayout>

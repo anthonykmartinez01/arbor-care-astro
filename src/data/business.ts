@@ -12,9 +12,19 @@ export const business = {
     country: "US",
   },
   geo: {
-    lat: "39.7042",
-    lng: "-104.9903",
+    lat: "39.6951136",
+    lng: "-104.9923784",
   },
+  hours: [
+    { day: "Monday", opens: "07:00", closes: "18:00" },
+    { day: "Tuesday", opens: "07:00", closes: "18:00" },
+    { day: "Wednesday", opens: "07:00", closes: "18:00" },
+    { day: "Thursday", opens: "07:00", closes: "18:00" },
+    { day: "Friday", opens: "07:00", closes: "18:00" },
+    { day: "Saturday", opens: "08:00", closes: "16:00" },
+  ],
+  // Schema.org openingHours short form, derived from `hours` above.
+  openingHours: ["Mo-Fr 07:00-18:00", "Sa 08:00-16:00"],
   serviceAreas: [
     "Denver CO",
     "Aurora CO",

@@ -1,6 +1,28 @@
+# Arbor Care Tree Solutions — robots.txt
+
 User-agent: *
 Allow: /
-Disallow: /admin/
-Disallow: /api/
 
-Sitemap: https://arborcaretreesolutions.com/sitemap.xml
+# --- AI crawlers: deliberately ALLOWED (we want to be cited by AI assistants) ---
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+Sitemap: https://arborcaretreesolutions.com/sitemap-index.xml

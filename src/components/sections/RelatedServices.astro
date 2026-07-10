@@ -1,0 +1,33 @@
+---
+import { treeServiceCluster } from "../../data/treeServiceCluster";
+
+interface Props {
+  /** Slug of the page this block renders on — excluded from the list. */
+  currentSlug: string;
+  heading?: string;
+}
+
+const { currentSlug, heading = "Other Tree Services" } = Astro.props;
+const links = treeServiceCluster.filter((p) => p.slug !== currentSlug);
+---
+
+<section class="py-16 md:py-20">
+  <div class="container">
+    <div class="mx-auto max-w-3xl">
+      <h2 class="text-center text-2xl font-bold md:text-3xl">{heading}</h2>
+      <ul class="mt-8 grid gap-4 sm:grid-cols-2">
+        {links.map((page) => (
+          <li>
+            <a
+              href={page.slug}
+              class="group flex items-center justify-between rounded-lg border border-border bg-card p-5 transition-all hover:border-accent/40 hover:shadow-md"
+            >
+              <span class="font-semibold text-primary">{page.title}</span>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 shrink-0 text-primary transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</section>

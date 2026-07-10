@@ -3,23 +3,26 @@ import { business } from "../../data/business";
 
 const quickLinks = [
   { label: "Home", to: "/" },
-  { label: "Tree Services", to: "/tree-services" },
-  { label: "Our Work", to: "/our-work" },
-  { label: "Testimonials", to: "/testimonials" },
-  { label: "About Us", to: "/about-arbor-care-index" },
-  { label: "Contact", to: "/contact-us" },
-  { label: "Free Estimates", to: "/new-index-2" },
+  { label: "Tree Services", to: "/tree-services/" },
+  { label: "Our Work", to: "/our-work/" },
+  { label: "Testimonials", to: "/testimonials/" },
+  { label: "About Us", to: "/about-arbor-care-index/" },
+  { label: "Contact", to: "/contact-us/" },
+  { label: "Free Estimates", to: "/free-estimates/" },
 ];
 
 const serviceLinks = [
-  { label: "Tree Trimming & Pruning", to: "/tree-trimming" },
-  { label: "Tree Removal", to: "/tree-removal" },
-  { label: "Stump Grinding", to: "/stump-grinding-denver-co" },
-  { label: "Arborist Services", to: "/arborist-service-denver-co" },
-  { label: "Firewood Sales", to: "/firewood-supplier-denver-co" },
-  { label: "Holiday Lights", to: "/new-page" },
-  { label: "Spring Cleanup", to: "/treatments" },
-  { label: "Brush Chipping", to: "/brush-chipping-denver-co" },
+  { label: "Tree Trimming & Pruning", to: "/tree-trimming/" },
+  { label: "Tree Removal", to: "/tree-removal/" },
+  { label: "Stump Grinding", to: "/stump-grinding-denver-co/" },
+  { label: "Arborist Services", to: "/arborist-service-denver-co/" },
+  { label: "Tree Planting", to: "/tree-planting-denver-co/" },
+  { label: "Bush & Shrub Removal", to: "/bush-shrub-removal-denver-co/" },
+  { label: "Land Clearing", to: "/land-clearing-denver-co/" },
+  { label: "Firewood Sales", to: "/firewood-supplier-denver-co/" },
+  { label: "Holiday Lights", to: "/holiday-lights-denver-co/" },
+  { label: "Spring Cleanup", to: "/treatments/" },
+  { label: "Brush Chipping", to: "/brush-chipping-denver-co/" },
 ];
 
 const year = new Date().getFullYear();
@@ -66,7 +69,7 @@ const year = new Date().getFullYear();
 
       <!-- Quick Links -->
       <div>
-        <h3 class="mb-4 text-sm font-bold uppercase tracking-wider opacity-70">Quick Links</h3>
+        <p class="mb-4 text-sm font-bold uppercase tracking-wider opacity-70">Quick Links</p>
         <ul class="space-y-2 text-sm">
           {quickLinks.map((l) => (
             <li><a href={l.to} class="opacity-90 hover:opacity-100 hover:underline">{l.label}</a></li>
@@ -76,7 +79,7 @@ const year = new Date().getFullYear();
 
       <!-- Services -->
       <div>
-        <h3 class="mb-4 text-sm font-bold uppercase tracking-wider opacity-70">Services</h3>
+        <p class="mb-4 text-sm font-bold uppercase tracking-wider opacity-70">Services</p>
         <ul class="space-y-2 text-sm">
           {serviceLinks.map((l) => (
             <li><a href={l.to} class="opacity-90 hover:opacity-100 hover:underline">{l.label}</a></li>
@@ -86,7 +89,7 @@ const year = new Date().getFullYear();
 
       <!-- Service Areas -->
       <div>
-        <h3 class="mb-4 text-sm font-bold uppercase tracking-wider opacity-70">Service Areas</h3>
+        <p class="mb-4 text-sm font-bold uppercase tracking-wider opacity-70">Service Areas</p>
         <ul class="grid grid-cols-2 gap-x-4 gap-y-1 text-sm">
           {business.serviceAreas.map((a) => (
             <li class="opacity-90">{a}</li>
@@ -100,8 +103,9 @@ const year = new Date().getFullYear();
     <div class="container flex flex-col items-center justify-between gap-2 py-4 text-xs opacity-70 sm:flex-row">
       <p>&copy; {year} {business.name}. All rights reserved.</p>
       <div class="flex gap-4">
-        <a href="/privacy-policy" class="hover:underline">Privacy Policy</a>
-        <a href="/sitemap" class="hover:underline">Sitemap</a>
+        <a href="/privacy-policy/" class="hover:underline">Privacy Policy</a>
+        <a href="/terms-of-service/" class="hover:underline">Terms of Service</a>
+        <a href="/sitemap/" class="hover:underline">Sitemap</a>
       </div>
     </div>
   </div>

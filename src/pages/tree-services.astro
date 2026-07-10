@@ -1,100 +1,99 @@
 ---
 import BaseLayout from "../components/layout/BaseLayout.astro";
+import ServiceSchema from "../components/schema/ServiceSchema.astro";
+import FAQSchema from "../components/schema/FAQSchema.astro";
+import PageContents from "../components/sections/PageContents.astro";
+import CtaBanner from "../components/sections/CtaBanner.astro";
+import ContentSection from "../components/sections/ContentSection.astro";
+import FaqAccordion from "../components/sections/FaqAccordion.astro";
+import RelatedServices from "../components/sections/RelatedServices.astro";
+import { treeServiceHub } from "../data/treeServiceCluster";
 import { business } from "../data/business";
 
-const serviceSections = [
+const serviceDescription =
+  "Arbor Care Tree Solutions provides emergency tree removal, storm damage cleanup, tree trimming, stump grinding, and hazard tree assessments across Denver neighborhoods including Washington Park, Sloan's Lake, and Cherry Creek.";
+
+const faqs = [
   {
-    title: "Tree Trimming & Pruning",
-    path: "/tree-trimming",
-    cards: [
-      { title: "Bush & Shrub Trimming", description: "Shape and maintain overgrown shrubs using proper technique that promotes healthy regrowth.", path: "/bush-shrub-trimming-denver-co" },
-      { title: "Crown Reduction", description: "Reduce the size of an overgrown canopy while preserving the tree's structure and health.", path: "/crown-reduction-denver-co" },
-      { title: "Deadwooding", description: "Remove dead, dying, or diseased limbs to eliminate fall hazards and prevent disease spread.", path: "/deadwooding-denver-co" },
-    ],
+    q: "How do I know if I need emergency tree removal or if it can wait?",
+    a: "Call it an emergency if a tree is leaning on your house, blocking your driveway, or resting on power lines. Cracked trunks that could drop any minute also count. If you're not sure, call us anyway. We'll look at the situation and tell you straight whether it needs action now or can wait for a regular appointment.",
   },
   {
-    title: "Tree Removal",
-    path: "/tree-removal",
-    cards: [
-      { title: "Emergency Tree Removal", description: "Tree down on your property? We answer 24/7 and dispatch fast.", path: "/emergency-tree-removal-denver-co" },
-      { title: "Hazardous Tree Removal", description: "Safe removal of structurally compromised or dangerously positioned trees.", path: "/hazardous-tree-removal-denver-co" },
-      { title: "Bush & Shrub Removal", description: "Full removal of overgrown or unwanted shrubs, including root ball extraction.", path: "/bush-shrub-removal-denver-co" },
-    ],
+    q: "Do you cover all Denver neighborhoods, and how fast can you respond?",
+    a: "Yes, we work across Denver, from Washington Park to Sloan's Lake to Cherry Creek. Response time depends on the situation. A tree down on your house or car gets a same-day crew. Routine removals and assessments get scheduled within a few days, depending on the season.",
   },
   {
-    title: "Stump Grinding",
-    path: "/stump-grinding-denver-co",
-    cards: [
-      { title: "Stump Removal", description: "Full root ball excavation for situations where grinding alone won't solve the problem.", path: "/stump-removal-denver-co" },
-    ],
+    q: "My tree got hit in a storm but still looks fine. Do I need an assessment?",
+    a: "Yes, get it checked even if it looks okay. Storms can cause hidden cracks near the trunk or torn bark that isn't visible from your porch. We've seen trees hold steady for weeks after a storm, then fail during the next round of wind. A quick assessment tells you if it's stable or a risk.",
   },
   {
-    title: "Arborist Services",
-    path: "/arborist-service-denver-co",
-    cards: [
-      { title: "Tree Treatment", description: "Targeted treatments for insect infestations, disease, and nutrient deficiencies.", path: "/tree-treatment-denver-co" },
-      { title: "Tree Health Assessment", description: "A full evaluation of your tree's structure, health, and risk level by an ISA-certified arborist.", path: "/tree-health-assessment-denver-co" },
-      { title: "Tree Planting", description: "Species selection, proper planting technique, and soil prep for new trees.", path: "/tree-planting-denver-co" },
-    ],
+    q: "How can I tell if a tree on my property is actually hazardous?",
+    a: "Look for cracked trunk sections, large dead limbs over your roof or driveway, and roots lifting near the base. Leaning that's gotten worse over the past year is another warning sign. Some hazardous trees look green and healthy on top while the base is hollow, so a trained eye catches problems homeowners often miss.",
   },
   {
-    title: "Firewood Supply",
-    path: "/firewood-supplier-denver-co",
-    cards: [
-      { title: "Seasoned Firewood for Sale", description: "Properly dried, split hardwood by the cord or face cord — ready to burn.", path: "/seasoned-firewood-denver-co" },
-      { title: "Firewood Delivery", description: "We deliver and stack seasoned hardwood throughout the Denver metro.", path: "/firewood-delivery-denver-co" },
-    ],
+    q: "My ash tree looks stressed. Could it be emerald ash borer?",
+    a: "It's worth checking, since emerald ash borer has been spreading through Colorado and hits Denver ash trees hard. This bug can kill a healthy ash tree in two to four years, and outward signs often show up after the damage is already done inside. Getting it looked at early gives you more options.",
   },
   {
-    title: "General Tree Services",
-    path: "",
-    cards: [
-      { title: "Brush Chipping", description: "On-site chipping of branches and brush into mulch — fast cleanup for large volumes of debris.", path: "/brush-chipping-denver-co" },
-      { title: "Land Clearing", description: "Full clearing of trees, brush, and stumps for construction, landscaping, or fire mitigation.", path: "/land-clearing-denver-co" },
-    ],
+    q: "Should I clean up storm debris myself or call for a professional assessment?",
+    a: "Call for an assessment if any limbs, trunks, or root areas look questionable. Clearing surface debris yourself is fine, but hidden cracks or stressed root balls need a trained eye. We check for hazards you can't see from the ground, then handle debris removal and documentation for insurance if needed.",
   },
 ];
+
+const contentToc = [
+  { label: "Tree Removal in Denver", href: "#tree-removal-in-denver" },
+  { label: "Emergency Tree Removal When Storms Hit", href: "#emergency-tree-removal-when-storms-hit" },
+  { label: "Storm Damage Cleanup and Assessment", href: "#storm-damage-cleanup-and-assessment" },
+  { label: "Fallen Tree Removal After High Winds", href: "#fallen-tree-removal-after-high-winds" },
+  { label: "Hazardous Tree Assessment and Risk Removal", href: "#hazardous-tree-assessment-and-risk-removal" },
+  { label: "Ash Tree Removal for Emerald Ash Borer", href: "#ash-tree-removal-for-emerald-ash-borer" },
+  { label: "Snow Damage Tree Repair After Spring Storms", href: "#snow-damage-tree-repair-after-spring-storms" },
+  { label: "Tree Damage Diagnosis and Cleanup", href: "#tree-damage-diagnosis-and-cleanup" },
+];
+const toc = [...contentToc, ...faqs.map((f, i) => ({ label: f.q, href: `#faq-${i}` }))];
 ---
 
 <BaseLayout
-  title="Tree Service Services Denver CO | Complete Service List"
-  description="Full list of tree services in Denver CO. Tree removal, trimming, stump grinding, arborist care & firewood. Licensed professionals, 24-hour emergency service."
+  title="Tree Service Denver CO | Removal, Storm Cleanup & Trimming"
+  description="Tree service in Denver, CO — emergency removal, storm cleanup, hazardous tree assessment, trimming & stump grinding. Licensed & insured, 24/7. Call (303) 949-6818."
+  preloadImage="/assets/tree-service-removal-bucket-truck-denver.webp"
+  preloadImageMobile="/assets/tree-service-removal-bucket-truck-denver-mobile.webp"
 >
+  <ServiceSchema slot="head" name="Tree Service" description={serviceDescription} url="/tree-services/" />
+  <FAQSchema slot="head" faqs={faqs} />
+
   <!-- HERO -->
-  <section class="relative min-h-[500px] md:min-h-[60vh] flex items-center overflow-hidden">
+  <section class="relative flex min-h-[500px] items-center overflow-hidden md:min-h-[60vh]">
     <picture>
-      <source media="(max-width: 767px)" srcset="/assets/hero-services-mobile.webp" width="800" height="450" />
+      <source media="(max-width: 767px)" srcset="/assets/tree-service-removal-bucket-truck-denver-mobile.webp" width="800" height="800" />
       <img
-        src="/assets/hero-services.webp"
-        alt="Professional tree services in Denver Colorado"
+        src="/assets/tree-service-removal-bucket-truck-denver.webp"
+        alt="Arbor Care Tree Solutions bucket truck performing tree removal in Denver, CO"
         class="absolute inset-0 h-full w-full object-cover"
-        width="1920"
-        height="1080"
+        width="1024"
+        height="1024"
         loading="eager"
         fetchpriority="high"
         decoding="async"
       />
     </picture>
     <div class="absolute inset-0 bg-black/60"></div>
-    <div class="container relative z-10 py-20 pb-28 md:py-28 text-center">
+    <div class="container relative z-10 py-20 pb-28 text-center md:py-28">
       <div class="mx-auto max-w-3xl">
-        <div class="mx-auto mb-6 inline-flex h-16 w-16 items-center justify-center rounded-full bg-accent/20">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 14V2"/><path d="M9 18.12 10 14H4.17a2 2 0 0 1-1.92-2.56l2.33-8A2 2 0 0 1 6.5 2H20a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-2.76"/><path d="m14 8-2 4h-3l-2.5 6.78a1 1 0 0 0 .91 1.22H12"/></svg>
-        </div>
-        <h1 class="text-3xl font-bold text-white md:text-5xl leading-tight">
-          Tree Services in Denver, CO
-          <span class="block text-accent mt-2 text-xl md:text-2xl">Full-Service Tree Care for Every Job</span>
+        <h1 class="text-3xl font-bold leading-tight text-white md:text-5xl">
+          Tree Service in Denver
+          <span class="mt-2 block text-xl text-accent md:text-2xl">Removal, Storm Cleanup, Trimming & Hazard Assessments</span>
         </h1>
         <p class="mx-auto mt-4 text-lg text-white/80">
-          Find the service you need or call us — we'll figure it out together.
+          Licensed, fully insured, and on call 24/7 for all of Denver and the surrounding areas.
         </p>
         <div class="mt-8">
           <a
             href={business.phoneTel}
-            class="inline-flex items-center justify-center gap-2 rounded-md bg-accent px-8 py-4 text-base font-bold text-accent-foreground shadow-lg hover:bg-accent/90 transition-colors"
+            class="inline-flex items-center justify-center gap-2 rounded-md bg-accent px-8 py-4 text-base font-bold text-accent-foreground shadow-lg transition-colors hover:bg-accent/90"
           >
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-            Call {business.phone}
+            Call Now {business.phone}
           </a>
         </div>
       </div>
@@ -102,88 +101,188 @@ const serviceSections = [
     <div class="absolute bottom-0 left-0 right-0 bg-primary/95 backdrop-blur-sm">
       <div class="container flex flex-wrap items-center justify-center gap-x-8 gap-y-2 py-3 text-sm text-primary-foreground">
         <span class="flex items-center gap-2">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          <span class="font-medium">100+ Five-Star Reviews</span>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg>
+          <span class="font-medium">Licensed & Fully Insured</span>
         </span>
         <span class="flex items-center gap-2">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
           <span class="font-medium">ISA-Certified Arborists</span>
         </span>
         <span class="flex items-center gap-2">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></svg>
-          <span class="font-medium">Free Estimates</span>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          <span class="font-medium">Serves All of Denver</span>
         </span>
         <span class="flex items-center gap-2">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
           <span class="font-medium">Available 24/7</span>
         </span>
       </div>
     </div>
   </section>
 
-  <!-- OPENING -->
-  <section class="py-12 md:py-16">
-    <div class="container">
-      <div class="mx-auto max-w-3xl text-center">
-        <p class="text-lg leading-relaxed text-muted-foreground">
-          If you know what you need, find it below and click through for details. If you're not sure — maybe a tree looks off, something came down in a storm, or you just want someone to take a look — call us at <a href={business.phoneTel} class="text-primary font-semibold hover:underline">{business.phone}</a>. We answer immediately and can help you figure out the right next step. Arbor Care Tree Solutions handles everything from routine trimming to emergency removals throughout Denver and the surrounding metro, 24 hours a day.
-        </p>
-      </div>
-    </div>
-  </section>
+  <!-- TABLE OF CONTENTS -->
+  <PageContents items={toc} />
 
-  <!-- SERVICE SECTIONS -->
-  {serviceSections.map((section, idx) => {
-    const isAlt = idx % 2 === 0;
-    const gridClass = section.cards.length === 1 ? "max-w-md" : section.cards.length === 2 ? "sm:grid-cols-2" : "sm:grid-cols-2 lg:grid-cols-3";
-    return (
-      <section class={`py-12 md:py-16 ${isAlt ? "bg-muted" : ""}`}>
-        <div class="container">
-          <div class="flex items-center gap-3 mb-8">
-            <h2 class="text-2xl font-bold md:text-3xl">{section.title}</h2>
-            {section.path && (
-              <a
-                href={section.path}
-                class="inline-flex items-center gap-1 text-sm font-semibold text-primary hover:underline whitespace-nowrap"
-              >
-                View All <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
-              </a>
-            )}
-          </div>
-          <div class={`grid gap-6 ${gridClass}`}>
-            {section.cards.map((card) => (
-              <a
-                href={card.path}
-                class="group rounded-lg border border-border bg-background p-6 transition-all hover:shadow-md hover:border-accent/40"
-              >
-                <h3 class="text-lg font-bold group-hover:text-primary transition-colors">{card.title}</h3>
-                <p class="mt-2 text-sm leading-relaxed text-muted-foreground">{card.description}</p>
-                <span class="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-primary">
-                  Learn More <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
-                </span>
-              </a>
-            ))}
-          </div>
-        </div>
-      </section>
-    );
-  })}
+  <CtaBanner heading="Need Tree Service?" />
 
-  <!-- FINAL CTA -->
+  <!-- CONTENT SECTIONS -->
+  <ContentSection
+    id="tree-removal-in-denver"
+    heading="Tree Removal in Denver"
+    image={{ src: "/assets/tree-service-tools-chainsaw-rope-denver.webp", alt: "Chainsaw, climbing rope, and wedges used in Denver tree service removal work", title: "tree-service-tools-chainsaw-rope-denver", align: "left" }}
+  >
+    <p>Twenty-five years cutting down trees across Denver has taught me one thing: no two removals are the same. A dead silver maple in Washington Park sits different than a leaning cottonwood squeezed between two houses in Sloan's Lake. And that difference changes everything about how we plan the job.</p>
+    <p>We remove trees that are dead, dying, or just in the wrong spot. Maybe a tree's roots are cracking your foundation. Maybe you're finishing a remodel and a tree sits right where the new addition needs to go. Tree removal isn't always about a sick tree, sometimes it's just about space.</p>
+    <p>Here's what we look at before any cutting starts:</p>
+    <ul>
+      <li>Tree size, lean, and how close it sits to structures</li>
+      <li>Root condition and soil stability</li>
+      <li>Power lines or fences in the drop zone</li>
+      <li>Whether we need a crane or can rig it down by hand</li>
+    </ul>
+    <p>This is probably our busiest service, and for good reason. Denver's older neighborhoods have mature trees that are decades past their prime. So getting a trained eye on your tree before it becomes a problem saves you money and stress down the road. Full details live on our dedicated <a href="/tree-removal/">tree removal page</a>.</p>
+  </ContentSection>
+
+  <ContentSection
+    id="emergency-tree-removal-when-storms-hit"
+    heading="Emergency Tree Removal When Storms Hit"
+    alt={true}
+    image={{ src: "/assets/tree-service-healthy-yard-result-denver.webp", alt: "Healthy pruned tree and cleared yard after Denver tree service maintenance", title: "tree-service-healthy-yard-result-denver", align: "right" }}
+  >
+    <p>Denver weather turns fast. A calm afternoon can flip into hail, wind gusts over 60 mph, and a tree down across your driveway before dinner. That's what our <a href="/emergency-tree-removal-denver-co/">emergency tree removal service</a> is built for.</p>
+    <p>We answer the phone day or night. This is probably our busiest service between May and September, when Front Range storms roll in without much warning.</p>
+    <p>Here's what usually triggers the call:</p>
+    <ul>
+      <li>A tree leaning on the house or power lines</li>
+      <li>Branches blocking your only way out of the driveway</li>
+      <li>Cracked trunks that could go down any minute</li>
+      <li>A tree already resting on a fence, car, or roof</li>
+    </ul>
+    <p>We show up with the right gear, not just a chainsaw and a truck. Rigging, cranes when needed, and crews trained to work around live power lines. Safety comes first, always.</p>
+    <p>Every crew lead has years of hands-on experience reading how a stressed or damaged tree will move once we start cutting. That matters more than speed.</p>
+    <p>You don't need to figure out if it's an emergency. Call us and we'll tell you straight, then get moving if it can't wait.</p>
+  </ContentSection>
+
+  <ContentSection id="storm-damage-cleanup-and-assessment" heading="Storm Damage Cleanup and Assessment">
+    <p>Denver storms move fast. One minute it's clear, the next you've got hail, straight-line wind, or a summer downburst snapping branches across your yard. After the wind dies down, you need someone who can look at the damage and tell you what's safe.</p>
+    <p>We've walked hundreds of properties after storms roll through neighborhoods like Washington Park and Cherry Creek. Split leaders, torn bark, cracked unions near the trunk, we check all of it. A tree can look fine from your porch and still have a hidden fracture that lets go next week.</p>
+    <p>Our cleanup and assessment covers:</p>
+    <ul>
+      <li>Checking limbs and trunks for cracks, splits, or hanging breaks</li>
+      <li>Clearing debris off roofs, driveways, and fence lines</li>
+      <li>Flagging trees that need removal versus ones that can be saved</li>
+      <li>Documenting damage for insurance purposes</li>
+    </ul>
+    <p>Some damage is obvious. Some isn't.</p>
+    <p>That's the part homeowners miss most. A tree with internal cracking can hold steady for weeks then fail during the next gust. So we don't just clear the mess, we tell you what's coming next. This is one of our busiest calls every spring, right after the first big hailstorm hits. Our team is licensed and insured, and a professional tree health assessment is worth a look before your next big weather event.</p>
+  </ContentSection>
+
+  <CtaBanner heading="Not sure what your tree service project needs? Ask us." note="Call now for a free estimate. Arbor Care Tree Solutions is ready to help." />
+
+  <ContentSection id="fallen-tree-removal-after-high-winds" heading="Fallen Tree Removal After High Winds" alt={true}>
+    <p>Denver's wind events can hit 60 or 70 miles per hour with almost no warning. One gust off the foothills and a tree that stood for decades is flat on your lawn, your fence, or worse, your roof. We get calls like this all the time, usually right after a front blows through Cherry Creek or the older, tree-lined blocks near Washington Park.</p>
+    <p>A fallen tree isn't just an eyesore. It's a hazard. Downed limbs can hide broken power lines, and root balls torn from the ground leave unstable holes and shifting soil.</p>
+    <p>Here's what we handle once your tree is down:</p>
+    <ul>
+      <li>Cutting and clearing the trunk and limbs from structures, driveways, and vehicles</li>
+      <li>Removing the stump and root ball if it uprooted</li>
+      <li>Checking nearby trees for wind stress that might cause a second fall</li>
+      <li>Hauling debris off your property, not just piling it in the yard</li>
+    </ul>
+  </ContentSection>
+
+  <ContentSection
+    id="hazardous-tree-assessment-and-risk-removal"
+    heading="Hazardous Tree Assessment and Risk Removal"
+    image={{ src: "/assets/tree-service-storm-damage-street-denver.webp", alt: "Storm-damaged tree limb blocking driveway on Denver residential street", title: "tree-service-storm-damage-street-denver", align: "left" }}
+  >
+    <p>I've walked hundreds of Denver yards where a homeowner had no idea their big cottonwood was one storm away from coming down. That's the thing about hazardous trees, they don't always look dangerous. A tree can be green on top and hollow at the base. So we look past the leaves and check the parts most people never think about.</p>
+    <p>Here's what usually flags a tree as high risk:</p>
+    <ul>
+      <li>Cracked or split trunk sections</li>
+      <li>Large dead limbs hanging over a roof or driveway</li>
+      <li>Roots lifting near the base, a sign of poor anchoring</li>
+      <li>Fungus or soft, spongy bark near the trunk</li>
+      <li>Leaning that's gotten worse over the past year</li>
+    </ul>
+    <p>In older Denver neighborhoods like Washington Park, we see a lot of aging silver maples with weak branch unions. They look fine until wind hits them wrong.</p>
+    <p>Our assessment isn't a quick glance from the sidewalk. We check root flare, bark condition, canopy balance, and any past storm damage. The International Society of Arboriculture sets <a href="https://www.isa-arbor.com/for-the-public/find-an-arborist" target="_blank" rel="noopener">certification standards for arborists</a> doing this kind of work. If a tree's structurally sound, we'll tell you straight, no need to remove it. If it's not, we'll walk you through why and what removal involves. See how we handle <a href="/hazardous-tree-removal-denver-co/">hazardous tree removal</a> on your property.</p>
+  </ContentSection>
+
+  <ContentSection
+    id="ash-tree-removal-for-emerald-ash-borer"
+    heading="Ash Tree Removal for Emerald Ash Borer"
+    alt={true}
+    image={{ src: "/assets/tree-service-snow-damage-assessment-denver.webp", alt: "Worker assessing snow-damaged cottonwood trunk crack in Denver yard", title: "tree-service-snow-damage-assessment-denver", align: "right" }}
+  >
+    <p>Emerald ash borer showed up in Colorado a few years back, and Denver's ash trees have been in trouble ever since. This bug doesn't play around. It kills a healthy ash tree in two to four years, and by the time you see the damage on the outside, the inside is already wrecked.</p>
+    <p>So what should you watch for? A few signs tell us a lot before we even bring out the equipment:</p>
+    <ul>
+      <li>Thinning leaves at the top of the canopy</li>
+      <li>Bark splitting in small vertical cracks</li>
+      <li>D-shaped exit holes about the size of a pencil eraser</li>
+      <li>Woodpecker damage, since birds go after the larvae underneath</li>
+      <li>Sprouts growing low on the trunk, a sign the tree is stressed</li>
+    </ul>
+    <p>I've walked properties in Washington Park and Berkeley where half the block's ash trees are dead or dying, and the owners had no idea until a limb came down. That's the problem with this pest. It works from the inside out.</p>
+    <p>Once an ash tree is infested past a certain point, removal is the safer call. A dead or dying ash gets brittle fast, and brittle wood near a house, fence, or power line isn't something to wait on. We've removed hundreds of ash trees across Denver — our <a href="/tree-removal/">tree removal process</a> covers what the whole job looks like from start to finish. Caught early, targeted tree treatment may save a tree that isn't too far gone.</p>
+  </ContentSection>
+
+  <CtaBanner heading="Ready when you are — get in touch today." note="Call now for a free estimate. Arbor Care Tree Solutions is ready to help." />
+
+  <ContentSection id="snow-damage-tree-repair-after-spring-storms" heading="Snow Damage Tree Repair After Spring Storms">
+    <p>Denver's spring snowstorms catch trees at the worst time. Leaves are already out, branches are heavy with new growth, and then six inches of wet snow piles on top. That weight snaps limbs that would've bent in a dry winter snow. We see this every April and May, all over Denver from Washington Park to Stapleton.</p>
+    <p>Wet spring snow is denser than the dry powder we get in January. So the damage looks different, too. You'll often see split trunks instead of clean breaks, and torn bark where a limb pulled away instead of snapping cleanly.</p>
+    <p>Signs your tree needs attention after a spring storm:</p>
+    <ul>
+      <li>Branches bent low but not fully broken</li>
+      <li>Bark splitting along the trunk or major limbs</li>
+      <li>Leaning that wasn't there before the storm</li>
+      <li>Cracked crotches where big branches meet the trunk</li>
+    </ul>
+  </ContentSection>
+
+  <ContentSection
+    id="tree-damage-diagnosis-and-cleanup"
+    heading="Tree Damage Diagnosis and Cleanup"
+    alt={true}
+    image={{ src: "/assets/tree-service-ash-borer-inspection-denver.webp", alt: "Worker inspecting ash tree bark for emerald ash borer damage in Denver", title: "tree-service-ash-borer-inspection-denver", align: "left" }}
+  >
+    <p>Not all tree damage is obvious. A crack in the trunk might sit hidden behind bark. A root system can weaken underground for years before anything looks wrong up top. I've walked properties in Washington Park where a tree looked fine from the street, but half the root plate had already rotted out.</p>
+    <p>Tree damage shows up in different ways, and each one tells a different story:</p>
+    <ul>
+      <li>Split or cracked trunks from wind stress</li>
+      <li>Broken limbs hanging in the canopy</li>
+      <li>Leaning trees after saturated soil</li>
+      <li>Bark damage from equipment or vehicles</li>
+      <li>Dead sections mixed with healthy growth</li>
+    </ul>
+    <p>Our job is to figure out what's structural and what's cosmetic. That distinction matters, because it decides whether a tree needs a trim or needs to come down entirely.</p>
+    <p>Denver's freeze-thaw cycles make this worse. Ice expands inside existing cracks, then everything thaws, then it refreezes. So damage that looked minor in November can become a real hazard by February.</p>
+    <p>We inspect the crown, the trunk, and the root flare before we ever touch a chainsaw. Cleanup follows the diagnosis, not the other way around. If you're unsure whether that leaning maple in your backyard needs attention, give us a call and we'll take a look.</p>
+  </ContentSection>
+
+  <!-- FAQ -->
+  <FaqAccordion faqs={faqs} subheading="Common questions about tree service in Denver" />
+
+  <!-- CLUSTER: HUB -> SPOKES -->
+  <RelatedServices currentSlug={treeServiceHub.slug} heading="Our Tree Services" />
+
+  <!-- BOTTOM CTA -->
   <section class="py-16 md:py-24">
     <div class="container">
-      <div class="mx-auto max-w-2xl rounded-xl border-2 border-accent/30 bg-card p-8 md:p-12 text-center">
-        <h2 class="text-2xl font-bold md:text-3xl">Not Sure What You Need?</h2>
-        <p class="mt-4 text-muted-foreground leading-relaxed">
-          Call us at <a href={business.phoneTel} class="text-primary font-semibold hover:underline">{business.phone}</a> - we'll ask a few questions, figure out what's going on, and point you to the right solution. We answer immediately, any time of day.
+      <div class="mx-auto max-w-2xl rounded-xl border-2 border-accent/30 bg-card p-8 text-center md:p-12">
+        <h2 class="text-2xl font-bold md:text-3xl">Ready to Get Started?</h2>
+        <p class="mt-4 leading-relaxed text-muted-foreground">
+          Call <a href={business.phoneTel} class="font-semibold text-primary hover:underline">{business.phone}</a> now for a free estimate. We answer immediately, any time of day.
         </p>
         <div class="mt-8">
           <a
             href={business.phoneTel}
-            class="inline-flex items-center justify-center gap-2 rounded-md bg-accent px-8 py-4 text-base font-bold text-accent-foreground shadow-lg hover:bg-accent/90 transition-colors"
+            class="inline-flex items-center justify-center gap-2 rounded-md bg-accent px-8 py-4 text-base font-bold text-accent-foreground shadow-lg transition-colors hover:bg-accent/90"
           >
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-            Call Now
+            Call {business.phone}
           </a>
         </div>
       </div>

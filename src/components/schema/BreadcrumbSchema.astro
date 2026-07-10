@@ -1,0 +1,48 @@
+---
+import { business } from "../../data/business";
+
+interface Crumb {
+  name: string;
+  path: string;
+}
+
+interface Props {
+  /**
+   * Optional explicit trail. When omitted, a two-level trail
+   * (Home > current page) is derived from the current URL + label.
+   */
+  items?: Crumb[];
+  /** Label for the current page when auto-deriving (e.g. the page's short name). */
+  label?: string;
+}
+
+const { items, label } = Astro.props;
+
+const abs = (p: string) => new URL(p, business.siteUrl).href;
+
+// Normalize the current path to a single trailing slash so breadcrumb URLs
+// match the site's canonical URL form.
+const currentPath = Astro.url.pathname.endsWith("/")
+  ? Astro.url.pathname
+  : `${Astro.url.pathname}/`;
+
+const crumbs: Crumb[] =
+  items ??
+  [
+    { name: "Home", path: "/" },
+    { name: label ?? "", path: currentPath },
+  ];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: crumbs.map((c, i) => ({
+    "@type": "ListItem",
+    position: i + 1,
+    name: c.name,
+    item: abs(c.path),
+  })),
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

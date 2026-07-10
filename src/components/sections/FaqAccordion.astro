@@ -1,0 +1,43 @@
+---
+interface Faq {
+  q: string;
+  a: string;
+}
+
+interface Props {
+  faqs: Faq[];
+  heading?: string;
+  subheading?: string;
+  /** Prefix for each item's anchor id (e.g. "faq" -> #faq-0). */
+  idPrefix?: string;
+}
+
+const {
+  faqs,
+  heading = "Frequently Asked Questions",
+  subheading,
+  idPrefix = "faq",
+} = Astro.props;
+---
+
+<section class="bg-muted py-16 md:py-24">
+  <div class="container">
+    <div class="mx-auto max-w-3xl">
+      <h2 class="text-center text-2xl font-bold md:text-4xl">{heading}</h2>
+      {subheading && (
+        <p class="mt-3 text-center text-muted-foreground">{subheading}</p>
+      )}
+      <div class="mt-10 space-y-3">
+        {faqs.map((faq, i) => (
+          <details id={`${idPrefix}-${i}`} class="group scroll-mt-24 rounded-lg border border-border bg-card px-6">
+            <summary class="flex cursor-pointer list-none items-center justify-between py-4 text-left text-base font-bold">
+              <h3 class="inline font-bold">{faq.q}</h3>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 shrink-0 transition-transform group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+            </summary>
+            <p class="pb-4 text-sm leading-relaxed text-muted-foreground">{faq.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

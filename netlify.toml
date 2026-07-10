@@ -18,6 +18,21 @@
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
+# Security headers on every response (HSTS enforces HTTPS-only)
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+# Canonical host: 301 www -> non-www
+[[redirects]]
+  from = "https://www.arborcaretreesolutions.com/*"
+  to = "https://arborcaretreesolutions.com/:splat"
+  status = 301
+  force = true
+
 [[redirects]]
   from = "/tree-service-denver-co"
   to = "/"
@@ -57,5 +72,18 @@
 [[redirects]]
   from = "/other-services"
   to = "/firewood-supplier-denver-co"
+  status = 301
+  force = true
+
+# Renamed pages (descriptive slugs)
+[[redirects]]
+  from = "/new-index-2"
+  to = "/free-estimates"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/new-page"
+  to = "/holiday-lights-denver-co"
   status = 301
   force = true

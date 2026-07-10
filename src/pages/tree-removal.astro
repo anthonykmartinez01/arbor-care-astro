@@ -2,13 +2,15 @@
 import BaseLayout from "../components/layout/BaseLayout.astro";
 import ServiceSchema from "../components/schema/ServiceSchema.astro";
 import EstimateModalNative from "../components/ui/EstimateModalNative.astro";
+import RelatedServices from "../components/sections/RelatedServices.astro";
 import { business } from "../data/business";
 ---
 
 <BaseLayout
   title="Tree Removal Denver CO | 24-Hour Emergency Service"
   description="Professional tree removal in Denver, CO. Emergency, hazardous & standard removal. ISA-certified, fully insured. Free estimates. Call (303) 949-6818."
-  canonical="/tree-removal"
+  preloadImage="/assets/hero-tree-removal.webp"
+  preloadImageMobile="/assets/hero-tree-removal-mobile.webp"
 >
   <ServiceSchema
     slot="head"
@@ -154,9 +156,9 @@ import { business } from "../data/business";
             </div>
           </div>
           <div class="flex-1">
-            <a href="/emergency-tree-removal-denver-co" class="text-xl font-bold text-primary hover:underline">Emergency Tree Removal</a>
+            <a href="/emergency-tree-removal-denver-co/" class="text-xl font-bold text-primary hover:underline">Emergency Tree Removal</a>
             <p class="mt-3 leading-relaxed text-muted-foreground">For trees that have already failed, fallen, or pose an immediate threat to a structure, we offer emergency tree removal. We answer calls immediately 24 hours a day and dispatch crews as fast as possible — because a tree on your roof or blocking your driveway at 11pm can't wait until the next business day.</p>
-            <a href="/emergency-tree-removal-denver-co" class="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-primary hover:underline">
+            <a href="/emergency-tree-removal-denver-co/" class="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-primary hover:underline">
               Learn more about Emergency Tree Removal <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"></path></svg>
             </a>
           </div>
@@ -169,9 +171,9 @@ import { business } from "../data/business";
             </div>
           </div>
           <div class="flex-1">
-            <a href="/hazardous-tree-removal-denver-co" class="text-xl font-bold text-primary hover:underline">Hazardous Tree Removal</a>
+            <a href="/hazardous-tree-removal-denver-co/" class="text-xl font-bold text-primary hover:underline">Hazardous Tree Removal</a>
             <p class="mt-3 leading-relaxed text-muted-foreground">For trees that are structurally compromised, heavily diseased, or positioned near power lines and structures in a way that makes failure a real risk, we handle hazardous tree removal. These jobs require careful rigging, the right equipment, and experienced crew members who know how to bring down a large or awkward tree without damaging what's around it.</p>
-            <a href="/hazardous-tree-removal-denver-co" class="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-primary hover:underline">
+            <a href="/hazardous-tree-removal-denver-co/" class="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-primary hover:underline">
               Learn more about Hazardous Tree Removal <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"></path></svg>
             </a>
           </div>
@@ -184,11 +186,8 @@ import { business } from "../data/business";
             </div>
           </div>
           <div class="flex-1">
-            <a href="/bush-shrub-removal-denver-co" class="text-xl font-bold text-primary hover:underline">Bush &amp; Shrub Removal</a>
+            <h3 class="text-xl font-bold">Bush &amp; Shrub Removal</h3>
             <p class="mt-3 leading-relaxed text-muted-foreground">We also remove bush &amp; shrub removal for properties where overgrown shrubs have become unmanageable, are damaging foundations or irrigation, or are simply taking up space that needs to be reclaimed.</p>
-            <a href="/bush-shrub-removal-denver-co" class="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-primary hover:underline">
-              Learn more about Bush &amp; Shrub Removal <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"></path></svg>
-            </a>
           </div>
         </div>
       </div>
@@ -299,47 +298,8 @@ import { business } from "../data/business";
     </div>
   </section>
 
-  <!-- RELATED SERVICES GRID -->
-  <section class="py-16 md:py-24">
-    <div class="container">
-      <h2 class="text-center text-2xl font-bold md:text-4xl mb-12">Related Services</h2>
-      <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-        <!-- Emergency Tree Removal -->
-        <div class="group rounded-lg border border-border bg-card p-8 transition-shadow hover:shadow-md">
-          <div class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-accent/15">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"></path></svg>
-          </div>
-          <h3 class="text-xl font-bold">Emergency Tree Removal</h3>
-          <p class="mt-3 text-sm leading-relaxed text-muted-foreground">A tree down on your property can't wait. We answer immediately 24/7 and dispatch crews fast across the Denver metro.</p>
-          <a href="/emergency-tree-removal-denver-co" class="mt-6 inline-flex items-center gap-1 text-sm font-semibold text-primary hover:underline">
-            Learn More <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"></path></svg>
-          </a>
-        </div>
-        <!-- Hazardous Tree Removal -->
-        <div class="group rounded-lg border border-border bg-card p-8 transition-shadow hover:shadow-md">
-          <div class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-accent/15">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"></path><path d="M12 9v4"></path><path d="M12 17h.01"></path></svg>
-          </div>
-          <h3 class="text-xl font-bold">Hazardous Tree Removal</h3>
-          <p class="mt-3 text-sm leading-relaxed text-muted-foreground">Compromised, leaning, or structurally failing trees removed safely with proper rigging and experienced crew.</p>
-          <a href="/hazardous-tree-removal-denver-co" class="mt-6 inline-flex items-center gap-1 text-sm font-semibold text-primary hover:underline">
-            Learn More <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"></path></svg>
-          </a>
-        </div>
-        <!-- Bush & Shrub Removal -->
-        <div class="group rounded-lg border border-border bg-card p-8 transition-shadow hover:shadow-md">
-          <div class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-accent/15">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 22v-5l5-5 5 5-5 5z"></path><path d="M9.5 14.5 16 8"></path><path d="m17 2 5 5-.5.5a3.53 3.53 0 0 1-5 0s0 0 0 0a3.53 3.53 0 0 1 0-5L17 2"></path></svg>
-          </div>
-          <h3 class="text-xl font-bold">Bush &amp; Shrub Removal</h3>
-          <p class="mt-3 text-sm leading-relaxed text-muted-foreground">Overgrown or unwanted shrubs removed cleanly, including root ball extraction when needed.</p>
-          <a href="/bush-shrub-removal-denver-co" class="mt-6 inline-flex items-center gap-1 text-sm font-semibold text-primary hover:underline">
-            Learn More <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"></path></svg>
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
+  <!-- CLUSTER RELATED SERVICES -->
+  <RelatedServices currentSlug="/tree-removal/" />
 
   <!-- FINAL CTA -->
   <section class="bg-muted py-16 md:py-24">
@@ -360,7 +320,7 @@ import { business } from "../data/business";
         </div>
         <p class="mt-6 text-sm text-muted-foreground">
           Looking for all of our services? Visit our{" "}
-          <a href="/" class="text-primary font-semibold hover:underline">Denver tree service homepage</a>.
+          <a href="/tree-services/" class="text-primary font-semibold hover:underline">Tree Service</a> page.
         </p>
       </div>
     </div>

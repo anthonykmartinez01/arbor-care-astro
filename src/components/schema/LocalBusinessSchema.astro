@@ -1,29 +1,31 @@
 ---
+import { business } from "../../data/business";
+
 const schema = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
-  name: "Arbor Care Tree Solutions",
+  "@id": `${business.siteUrl}/#business`,
+  name: business.name,
   description:
     "Professional tree services in Denver, CO including tree removal, emergency tree removal, tree trimming and pruning, tree planting, stump removal, and comprehensive tree care by ISA Certified Arborists.",
-  url: "https://arborcaretreesolutions.com",
-  telephone: "(303) 949-6818",
+  url: business.siteUrl,
+  telephone: business.phone,
+  email: business.email,
   address: {
     "@type": "PostalAddress",
-    streetAddress: "1130 S Santa Fe Dr",
-    addressLocality: "Denver",
-    addressRegion: "CO",
-    postalCode: "80223",
+    streetAddress: business.address.street,
+    addressLocality: business.address.city,
+    addressRegion: business.address.stateAbbr,
+    postalCode: business.address.zip,
+    addressCountry: business.address.country,
   },
   geo: {
     "@type": "GeoCoordinates",
-    latitude: 39.7392,
-    longitude: -104.9903,
+    latitude: Number(business.geo.lat),
+    longitude: Number(business.geo.lng),
   },
-  openingHours: ["Mo-Fr 07:00-18:00", "Sa 08:00-16:00"],
-  areaServed: {
-    "@type": "City",
-    name: "Denver, CO and surrounding areas",
-  },
+  openingHours: business.openingHours,
+  areaServed: business.serviceAreas.map((name) => ({ "@type": "City", name })),
   hasOfferCatalog: {
     "@type": "OfferCatalog",
     itemListElement: [
@@ -37,6 +39,11 @@ const schema = {
       { "@type": "Offer", itemOffered: { "@type": "Service", name: "Bush & Shrub Trimming & Removal" } },
     ],
   },
+  sameAs: [
+    business.socialProfiles.facebook,
+    business.socialProfiles.instagram,
+    business.socialProfiles.google,
+  ],
   priceRange: "$$",
 };
 ---

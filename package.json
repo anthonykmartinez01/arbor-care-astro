@@ -5,7 +5,9 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro build",
+    "build": "astro build && node scripts/validate-build.mjs",
+    "validate": "node scripts/validate-build.mjs",
+    "deploy": "netlify deploy --prod --build && node scripts/indexnow-ping.mjs",
     "preview": "astro preview",
     "astro": "astro"
   },

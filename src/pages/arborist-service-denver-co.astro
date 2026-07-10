@@ -1,384 +1,270 @@
 ---
 import BaseLayout from "../components/layout/BaseLayout.astro";
 import ServiceSchema from "../components/schema/ServiceSchema.astro";
-import EstimateModalNative from "../components/ui/EstimateModalNative.astro";
+import FAQSchema from "../components/schema/FAQSchema.astro";
+import PageContents from "../components/sections/PageContents.astro";
+import CtaBanner from "../components/sections/CtaBanner.astro";
+import ContentSection from "../components/sections/ContentSection.astro";
+import FaqAccordion from "../components/sections/FaqAccordion.astro";
 import { business } from "../data/business";
+
+const serviceDescription =
+  "Arbor Care Tree Solutions provides full-service arborist care across Denver, including tree trimming, crown reduction, disease diagnosis, and storm damage assessment for residential properties from Washington Park to surrounding neighborhoods.";
+
+const faqs = [
+  {
+    q: "Do you serve all of Denver, including neighborhoods like Washington Park?",
+    a: "Yes, we work across all of Denver, from Washington Park to the surrounding neighborhoods. We climb trees on residential lots, near driveways, and along property lines throughout the city. Response times can vary based on storm activity, since severe weather often brings a rush of calls. If a tree looks unstable, call us right away so we can get you on the schedule fast.",
+  },
+  {
+    q: "What should I do if a tree is growing into power lines?",
+    a: "Call an arborist instead of trimming it yourself. Trees near power lines are common in older Denver neighborhoods with narrow sidewalk strips and mature canopies. Cutting branches near live wires is dangerous and can also damage the tree if it's done wrong. We handle this kind of trimming safely and can tell you if the growth pattern will keep causing problems.",
+  },
+  {
+    q: "How do I know if my tree needs trimming or a crown reduction?",
+    a: "Trimming fixes small problems like low branches or minor overgrowth. Crown reduction is for trees that have outgrown their space, with branches hanging over a roof or leaning heavy after storms. If your tree feels top-heavy or you're worried about weight over your house, ask for a crown reduction assessment instead of a standard trim.",
+  },
+  {
+    q: "Should I get my tree checked after a storm even if it looks fine?",
+    a: "Yes, hidden damage doesn't always show from the ground. Denver storms bring hail, wind, and heavy snow that can crack a trunk or loosen roots without visible signs. We check the base, root flare, and upper canopy for cracks or splits you can't see. Waiting weeks to have it looked at raises the risk of a limb or whole tree coming down.",
+  },
+  {
+    q: "How do I know if my ash or elm tree is sick?",
+    a: "Watch for thinning leaves, bark splitting in strips, or small D-shaped holes in the trunk. Ash and elm trees make up a large share of Denver's older neighborhoods, and both face serious disease pressure right now. Early treatment works better than waiting, so get it checked as soon as you notice any of these signs on your tree.",
+  },
+  {
+    q: "When should I call an arborist instead of handling a tree issue myself?",
+    a: "Call an arborist any time a tree is near a structure, power line, or shows signs of disease or damage. Denver's clay soil and storm patterns make tree problems harder to judge than they look. A quick assessment tells you exactly what's wrong and what treatment or trimming actually fixes it, instead of guessing and risking bigger damage later.",
+  },
+];
+
+const contentToc = [
+  { label: "Tree Trimming and Pruning for Denver Yards", href: "#tree-trimming-and-pruning-for-denver-yards" },
+  { label: "Tree Risk Assessment After Storms", href: "#tree-risk-assessment-after-storms" },
+  { label: "Tree Disease Treatment for Ash and Elm Trees", href: "#tree-disease-treatment-for-ash-and-elm-trees" },
+  { label: "Tree Health Maintenance for Long-Term Canopy Care", href: "#tree-health-maintenance-for-longterm-canopy-care" },
+  { label: "Crown Reduction for Oversized Canopies", href: "#crown-reduction-for-oversized-canopies" },
+  { label: "Crown Thinning for Dense Canopies", href: "#crown-thinning-for-dense-canopies" },
+  { label: "Deadwooding for Safety and Storm Prep", href: "#deadwooding-for-safety-and-storm-prep" },
+];
+const toc = [...contentToc, ...faqs.map((f, i) => ({ label: f.q, href: `#faq-${i}` }))];
 ---
 
 <BaseLayout
   title="Arborist Service Denver CO | ISA-Certified Tree Care Experts"
   description="ISA-certified arborist services in Denver, CO. Tree health assessments, disease treatment & professional tree care. Free estimates. Call (303) 949-6818."
-  canonical="/arborist-service-denver-co"
+  preloadImage="/assets/arborist-service-tree-trimming-bucket-truck-denver.webp"
+  preloadImageMobile="/assets/arborist-service-tree-trimming-bucket-truck-denver-mobile.webp"
 >
-  <ServiceSchema
-    slot="head"
-    name="Arborist Services Denver CO"
-    description="ISA-certified arborist services in Denver, Colorado including tree health assessments, tree treatment, and tree planting."
-    url="/arborist-service-denver-co"
-  />
+  <ServiceSchema slot="head" name="Arborist Service" description={serviceDescription} url="/arborist-service-denver-co/" />
+  <FAQSchema slot="head" faqs={faqs} />
 
   <!-- HERO -->
-  <section class="relative min-h-[500px] md:min-h-[60vh] flex items-center overflow-hidden">
+  <section class="relative flex min-h-[500px] items-center overflow-hidden md:min-h-[60vh]">
     <picture>
-      <source media="(max-width: 767px)" srcset="/assets/hero-arborist-services-mobile.webp" width="800" height="450" />
+      <source media="(max-width: 767px)" srcset="/assets/arborist-service-tree-trimming-bucket-truck-denver-mobile.webp" width="800" height="800" />
       <img
-        src="/assets/hero-arborist-services.webp"
-        alt="ISA certified arborist inspecting a tree in Denver Colorado"
+        src="/assets/arborist-service-tree-trimming-bucket-truck-denver.webp"
+        alt="Arborist trimming a mature tree from a bucket truck in Denver, CO"
         class="absolute inset-0 h-full w-full object-cover"
-        width="1920"
-        height="1080"
+        width="1024"
+        height="1024"
         loading="eager"
         fetchpriority="high"
         decoding="async"
       />
     </picture>
     <div class="absolute inset-0 bg-black/60"></div>
-    <div class="container relative z-10 py-20 pb-28 md:py-28 text-center">
+    <div class="container relative z-10 py-20 pb-28 text-center md:py-28">
       <div class="mx-auto max-w-3xl">
-        <h1 class="text-3xl font-bold text-white md:text-5xl lg:text-6xl leading-tight">
-          Arborist Service in Denver, CO
-          <span class="block text-accent mt-2">Protecting Your Trees for Life</span>
+        <h1 class="text-3xl font-bold leading-tight text-white md:text-5xl">
+          Arborist Service in Denver
+          <span class="mt-2 block text-xl text-accent md:text-2xl">Trimming, Crown Care, Disease Treatment & Storm Assessments</span>
         </h1>
-        <p class="mx-auto mt-6 text-lg text-white/90 md:text-xl max-w-2xl">
-          Denver's trees face real threats - drought, disease, bark beetles, and brutal
-          Front Range storms. Our ISA-certified arborists assess, treat, and care for your
-          trees so problems are caught before they become emergencies. Available 24/7. Free
-          estimates. Call{" "}
-          <a href={business.phoneTel} class="underline font-semibold text-accent hover:text-accent/80">{business.phone}</a>.
+        <p class="mx-auto mt-4 text-lg text-white/80">
+          Licensed, fully insured, and serving all of Denver and the surrounding areas.
         </p>
-        <div class="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-          <a href={business.phoneTel} class="inline-flex items-center justify-center gap-2 rounded-md bg-accent px-8 py-4 text-base font-bold text-accent-foreground shadow-lg hover:bg-accent/90 transition-colors">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-            Call {business.phone}
+        <div class="mt-8">
+          <a
+            href={business.phoneTel}
+            class="inline-flex items-center justify-center gap-2 rounded-md bg-accent px-8 py-4 text-base font-bold text-accent-foreground shadow-lg transition-colors hover:bg-accent/90"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            Call Now {business.phone}
           </a>
-          <EstimateModalNative className="inline-flex items-center justify-center gap-2 rounded-md bg-white/15 backdrop-blur border border-white/30 px-8 py-4 text-base font-bold text-white hover:bg-white/25 transition-colors">
-            Get Free Estimate
-          </EstimateModalNative>
         </div>
       </div>
     </div>
     <div class="absolute bottom-0 left-0 right-0 bg-primary/95 backdrop-blur-sm">
       <div class="container flex flex-wrap items-center justify-center gap-x-8 gap-y-2 py-3 text-sm text-primary-foreground">
         <span class="flex items-center gap-2">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-          <span class="font-medium">100+ Five-Star Reviews</span>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg>
+          <span class="font-medium">Licensed & Fully Insured</span>
         </span>
         <span class="flex items-center gap-2">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"></circle><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"></path></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
           <span class="font-medium">ISA-Certified Arborists</span>
         </span>
         <span class="flex items-center gap-2">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"></path></svg>
-          <span class="font-medium">No Trip Charge</span>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          <span class="font-medium">Serves All of Denver</span>
         </span>
         <span class="flex items-center gap-2">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
-          <span class="font-medium">Family Owned</span>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <span class="font-medium">Available 24/7</span>
         </span>
       </div>
     </div>
   </section>
 
-  <!-- OPENING -->
+  <!-- TABLE OF CONTENTS -->
+  <PageContents items={toc} />
+
+  <CtaBanner heading="Need Arborist Service?" />
+
+  <!-- CONTENT SECTIONS -->
+  <ContentSection
+    id="tree-trimming-and-pruning-for-denver-yards"
+    heading="Tree Trimming and Pruning for Denver Yards"
+    image={{ src: "/assets/arborist-service-pruning-tools-equipment-denver.webp", alt: "Close-up of arborist pruning tools and rope in Denver", title: "arborist-service-pruning-tools-equipment-denver", align: "left" }}
+  >
+    <p>This is probably our busiest service, and there's a reason for it. Denver's dry summers and heavy spring snow put real stress on branches. Untrimmed trees drop limbs during those wet April storms, sometimes right onto a fence or a roof. Regular pruning keeps that from happening.</p>
+    <p>We trim for a few reasons. Sometimes a tree's grown into power lines near the sidewalk. Sometimes low branches are blocking a driveway in Washington Park or scraping a second-story window. And sometimes it's just about shape, an overgrown tree that's shading out the whole yard.</p>
+    <p>Good pruning cuts do more than clean things up. They:</p>
+    <ul>
+      <li>Remove weak or crossing branches before they fail</li>
+      <li>Open up the canopy so air and light get through</li>
+      <li>Reduce weight on limbs that snow tends to collect on</li>
+      <li>Encourage stronger growth the following season</li>
+    </ul>
+    <p>Timing matters here. Late winter works for most species in Denver, before buds break. But some trees need summer trims instead, it depends on the species and what you're trying to fix.</p>
+    <p>We've been climbing Denver trees for over 20 years, and every yard's a little different. The dedicated <a href="/tree-trimming/">trimming page</a> walks through our process and what a typical visit looks like.</p>
+  </ContentSection>
+
+  <ContentSection
+    id="tree-risk-assessment-after-storms"
+    heading="Tree Risk Assessment After Storms"
+    alt={true}
+    image={{ src: "/assets/arborist-service-healthy-tree-result-denver.webp", alt: "Healthy pruned tree with homeowner and arborist in Denver yard", title: "arborist-service-healthy-tree-result-denver", align: "right" }}
+  >
+    <p>Denver storms hit fast. One minute it's calm, the next you've got hail, straight-line winds, or heavy wet snow bending branches you thought were solid. After weather like that, we get calls from folks who aren't sure if their tree is fine or one bad gust from coming down.</p>
+    <p>A <a href="/tree-health-assessment-denver-co/">risk assessment</a> is us walking your property and checking the tree from the roots up. We look at the trunk for cracks, check root flare for heaving or soil lift, and study the canopy for hanging limbs or splits you can't see from the ground. And we've caught plenty of hidden problems this way, decay pockets and weak unions that looked fine until we got up close.</p>
+    <p>Watch for these signs after any big storm:</p>
+    <ul>
+      <li>Leaning that wasn't there before</li>
+      <li>Cracked or split bark near the base</li>
+      <li>Broken limbs stuck in the upper canopy</li>
+      <li>Soil lifting on one side of the trunk</li>
+    </ul>
+    <p>This isn't guesswork. We've assessed storm damage across Denver for over twenty years, and which trees recover and which ones become a liability. If you're unsure who to call, Denver's city forester keeps a list of <a href="https://www.denvergov.org/Government/Agencies-Departments-Offices/Agencies-Departments-Offices-Directory/Parks-Recreation/Trees-Natural-Resources/Office-of-the-City-Forester/Tree-Service-Contractor-Resources" target="_blank" rel="noopener">licensed arborist contractor resources</a> for property owners. If a tree fails on your property, it can take out a fence, a roof, or worse. So don't wait weeks to have it checked.</p>
+  </ContentSection>
+
+  <ContentSection id="tree-disease-treatment-for-ash-and-elm-trees" heading="Tree Disease Treatment for Ash and Elm Trees">
+    <p>Ash and elm trees make up a huge chunk of Denver's urban canopy. That's a problem, because both species face serious disease pressure right now. Dutch elm disease has been working through older neighborhoods for years. Emerald ash borer showed up in Colorado back in 2013 and hasn't slowed down since.</p>
+    <p>We get more calls about this than anything else in late spring and early summer, when leaf-out reveals which trees made it through winter healthy and which didn't.</p>
+    <p>Signs your ash or elm needs attention:</p>
+    <ul>
+      <li>Thinning canopy or dead branches near the top</li>
+      <li>Bark splitting in vertical strips</li>
+      <li>D-shaped exit holes in the trunk</li>
+      <li>Wilting leaves that curl before fall</li>
+      <li>Sucker growth at the base</li>
+    </ul>
+    <p><a href="/tree-treatment-denver-co/">Treatment</a> options depend on how far the disease has progressed. Early cases often respond to trunk injections or soil treatments. Advanced cases might need pruning to remove infected limbs before the problem spreads to healthy wood.</p>
+    <p>Homes near Washington Park have some of the oldest elms in Denver, and we treat several every season. Waiting rarely helps here. But a quick assessment can tell you exactly where your tree stands and what treatment makes sense for it.</p>
+  </ContentSection>
+
+  <CtaBanner heading="Not sure what your arborist service project needs? Ask us." note="Call now for a free estimate. Arbor Care Tree Solutions is ready to help." />
+
+  <ContentSection id="tree-health-maintenance-for-longterm-canopy-care" heading="Tree Health Maintenance for Long-Term Canopy Care" alt={true}>
+    <p>Denver's soil is tough on trees. Clay-heavy, alkaline, and stingy with water unless you're irrigating year-round. So trees here need more than a once-and-done trim. They need ongoing care that matches what our climate does to root systems and canopy over time.</p>
+    <p>Tree health maintenance is the long game. It's not one visit, it's a plan built around your tree's species, age, and site conditions.</p>
+    <ul>
+      <li>Soil testing and amendment for our alkaline clay soils</li>
+      <li>Deep root fertilization timed to Denver's growing season</li>
+      <li>Mulching to hold moisture during dry summer stretches</li>
+      <li>Pest and stress monitoring before problems take hold</li>
+      <li>Watering schedules built around our low humidity</li>
+    </ul>
+    <p>I've walked properties in Washington Park where a single maple was struggling for three straight seasons, and it wasn't disease. It was compacted soil choking the roots. A maintenance plan caught it before we lost the tree.</p>
+  </ContentSection>
+
+  <ContentSection
+    id="crown-reduction-for-oversized-canopies"
+    heading="Crown Reduction for Oversized Canopies"
+    image={{ src: "/assets/arborist-service-denver-neighborhood-street-trees.webp", alt: "Denver street with mature trees and arborist service truck", title: "arborist-service-denver-neighborhood-street-trees", align: "left" }}
+  >
+    <p>Some trees just outgrow their spot. A silver maple in a Washington Park backyard can push branches over the roofline in ten years flat. That's where crown reduction comes in. We cut back the outer branches to shrink the whole canopy, without hacking off the top or leaving stubs.</p>
+    <p>This isn't the same as topping a tree. Topping is a bad shortcut that weakens the structure and invites disease. Crown reduction works with the tree's natural shape, cutting at proper lateral points so it heals clean and keeps growing right.</p>
+    <p>You'll want this service if:</p>
+    <ul>
+      <li>Branches hang over your roof, deck, or power lines</li>
+      <li>The tree feels top-heavy or lopsided after storms</li>
+      <li>You're trying to keep a big tree from shading out your whole yard</li>
+      <li>A recent Denver windstorm left you nervous about what's overhead</li>
+    </ul>
+    <p>I've walked plenty of yards in Denver where a crown reduction saved a tree that homeowners assumed had to come down. Cutting size down doesn't mean cutting corners, either. We size every cut to the branch's diameter and the tree's species, because a reduction done wrong stresses the tree more than doing nothing at all.</p>
+    <p>The dedicated <a href="/crown-reduction-denver-co/">crown reduction page</a> walks through how we decide how much to take off and why timing matters more than most people think.</p>
+  </ContentSection>
+
+  <ContentSection
+    id="crown-thinning-for-dense-canopies"
+    heading="Crown Thinning for Dense Canopies"
+    alt={true}
+    image={{ src: "/assets/tree-risk-assessment-storm-damage-elm-denver.webp", alt: "Arborist inspects storm-damaged elm tree trunk in Denver", title: "tree-risk-assessment-storm-damage-elm-denver", align: "right" }}
+  >
+    <p>Crown thinning removes select branches throughout the canopy to let air and light pass through. It's different from crown reduction. We're not making the tree smaller, we're making it less crowded inside.</p>
+    <p>Denver's older neighborhoods like Park Hill and Washington Park have a lot of mature silver maples and elms with thick, layered growth. Dense canopies catch wind like a sail. And that's a real problem during our spring windstorms, when gusts off the Front Range hit 50 or 60 miles an hour. A thinned crown lets wind move through instead of pushing against it.</p>
+    <p>Here's what usually pushes homeowners to call us for this:</p>
+    <ul>
+      <li>Branches rubbing or crossing inside the canopy</li>
+      <li>Grass or garden beds struggling under heavy shade</li>
+      <li>A tree that feels "top heavy" or leans after storms</li>
+      <li>Interior deadwood building up from lack of sunlight</li>
+    </ul>
+    <p>I've climbed enough Denver trees to know a poorly thinned crown does more harm than good. Over-thinning stresses the tree and invites sunscald on thin bark species. We remove branches in a pattern that keeps the tree balanced, not stripped. This work takes an eye trained on how each species responds, not just a saw and a ladder.</p>
+  </ContentSection>
+
+  <CtaBanner heading="Ready when you are — get in touch today." note="Call now for a free estimate. Arbor Care Tree Solutions is ready to help." />
+
+  <ContentSection
+    id="deadwooding-for-safety-and-storm-prep"
+    heading="Deadwooding for Safety and Storm Prep"
+    image={{ src: "/assets/tree-disease-treatment-ash-elm-bark-sample-denver.webp", alt: "Arborist examines diseased ash tree bark in Denver yard", title: "tree-disease-treatment-ash-elm-bark-sample-denver", align: "left" }}
+  >
+    <p>Dead branches don't creak and warn you before they drop. They just let go. And in Denver, that's a real problem, our freeze-thaw cycles crack limbs from the inside out long before you ever see it on the outside.</p>
+    <p><a href="/deadwooding-denver-co/">Deadwooding</a> means we go through your tree and cut out the dead, dying, or diseased wood. Nothing else gets touched. This is different from crown thinning, we're not shaping the tree here, we're removing hazards.</p>
+    <p>Here's when we get called for this most:</p>
+    <ul>
+      <li>After a spring hailstorm rolls through Washington Park and snaps small branches loose</li>
+      <li>Before a big wind event, since dead limbs are the first thing to fail</li>
+      <li>When you notice bark falling off in patches or branches with no leaves in summer</li>
+      <li>Ahead of selling a home, since inspectors flag dead wood over walkways</li>
+    </ul>
+    <p>I've climbed trees in Cherry Creek where the dead wood was invisible from the ground but obvious once you're up in the canopy. That's the value of having someone trained look closely.</p>
+    <p>Leaving dead branches up is asking for a call to your insurance company. Get it cleared out before the next storm, not after.</p>
+  </ContentSection>
+
+  <!-- FAQ -->
+  <FaqAccordion faqs={faqs} subheading="Common questions about arborist service in Denver" />
+
+  <!-- BOTTOM CTA -->
   <section class="py-16 md:py-24">
     <div class="container">
-      <div class="mx-auto max-w-3xl text-center">
-        <p class="text-lg leading-relaxed text-muted-foreground">
-          You've noticed something off about your trees - maybe a dead limb you can't ignore,
-          unusual bark discoloration, or branches that came down after the last wind storm.
-          You're not sure if it's serious or something that will work itself out. The problem
-          is, most tree issues that look minor on the surface are already much worse underneath.
-          By the time a tree looks visibly sick or damaged, you're often past the point where
-          easy fixes apply.
+      <div class="mx-auto max-w-2xl rounded-xl border-2 border-accent/30 bg-card p-8 text-center md:p-12">
+        <h2 class="text-2xl font-bold md:text-3xl">Ready to Get Started?</h2>
+        <p class="mt-4 leading-relaxed text-muted-foreground">
+          Call <a href={business.phoneTel} class="font-semibold text-primary hover:underline">{business.phone}</a> now for a free estimate. We answer immediately, any time of day.
         </p>
-        <p class="mt-6 text-lg leading-relaxed text-foreground font-medium">
-          You're in the right place. Arbor Care Tree Solutions serves Denver homeowners with
-          ISA-certified arborist services — which means every assessment, treatment, and tree
-          care decision is made by someone with the training and credentials to actually know
-          what they're looking at. We don't guess. We diagnose.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- WHAT PROBLEMS -->
-  <section class="bg-muted py-16 md:py-24">
-    <div class="container">
-      <h2 class="text-center text-2xl font-bold md:text-4xl">
-        What Arborist Problems Are You Dealing With?
-      </h2>
-      <p class="mx-auto mt-6 max-w-3xl text-center text-muted-foreground leading-relaxed">
-        Most Denver homeowners contact us after noticing something they can't explain:
-        yellowing leaves in summer, bark that's peeling or weeping, a trunk that seems to
-        be leaning more than it used to, or large sections of canopy that didn't leaf out
-        this spring. These are warning signs - not cosmetic issues.
-      </p>
-      <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-        <!-- EAB -->
-        <div class="rounded-lg border border-border bg-background p-6 text-center">
-          <div class="mx-auto mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-destructive/10">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-destructive" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m8 2 1.88 1.88"></path><path d="M14.12 3.88 16 2"></path><path d="M9 7.13v-1a3.003 3.003 0 1 1 6 0v1"></path><path d="M12 20c-3.3 0-6-2.7-6-6v-3a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v3c0 3.3-2.7 6-6 6"></path><path d="M12 20v-9"></path><path d="M6.53 9C4.6 8.8 3 7.1 3 5"></path><path d="M6 13H2"></path><path d="M3 21c0-2.1 1.7-3.9 3.8-4"></path><path d="M20.97 5c0 2.1-1.6 3.8-3.5 4"></path><path d="M22 13h-4"></path><path d="M17.2 17c2.1.1 3.8 1.9 3.8 4"></path></svg>
-          </div>
-          <p class="text-sm leading-relaxed text-muted-foreground">Emerald Ash Borer silently killing ash trees across the Denver metro</p>
-        </div>
-        <!-- Bark beetle -->
-        <div class="rounded-lg border border-border bg-background p-6 text-center">
-          <div class="mx-auto mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-destructive/10">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-destructive" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"></path><path d="M12 9v4"></path><path d="M12 17h.01"></path></svg>
-          </div>
-          <p class="text-sm leading-relaxed text-muted-foreground">Bark beetle infestations stressing pine and spruce before visible decline</p>
-        </div>
-        <!-- Drought -->
-        <div class="rounded-lg border border-border bg-background p-6 text-center">
-          <div class="mx-auto mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-destructive/10">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-destructive" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 16.3c2.2 0 4-1.83 4-4.05 0-1.16-.57-2.26-1.71-3.19S7.29 6.75 7 5.3c-.29 1.45-1.14 2.84-2.29 3.76S3 11.1 3 12.25c0 2.22 1.8 4.05 4 4.05z"></path><path d="M12.56 6.6A10.97 10.97 0 0 0 14 3.02c.5 2.5 2 4.9 4 6.5s3 3.5 3 5.5a6.98 6.98 0 0 1-11.91 4.97"></path></svg>
-          </div>
-          <p class="text-sm leading-relaxed text-muted-foreground">Drought weakening root systems over multiple seasons</p>
-        </div>
-        <!-- Heavy snow -->
-        <div class="rounded-lg border border-border bg-background p-6 text-center">
-          <div class="mx-auto mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-destructive/10">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-destructive" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="2" x2="22" y1="12" y2="12"></line><line x1="12" x2="12" y1="2" y2="22"></line><path d="m20 16-4-4 4-4"></path><path d="m4 8 4 4-4 4"></path><path d="m16 4-4 4-4-4"></path><path d="m8 20 4-4 4 4"></path></svg>
-          </div>
-          <p class="text-sm leading-relaxed text-muted-foreground">Heavy wet spring snow snapping branches and splitting trunks</p>
-        </div>
-      </div>
-      <p class="mx-auto mt-10 max-w-3xl text-center text-muted-foreground leading-relaxed">
-        DIY treatments rarely work because tree diseases and infestations require the right
-        diagnosis before any treatment can help. Applying the wrong product wastes time and
-        money, and delays proper care while the problem gets worse. A certified arborist
-        identifies exactly what's happening and prescribes a solution that actually addresses it.
-      </p>
-    </div>
-  </section>
-
-  <!-- OUR SERVICES -->
-  <section class="py-16 md:py-24">
-    <div class="container">
-      <h2 class="text-center text-2xl font-bold md:text-4xl">
-        Our Arborist Services in Denver
-      </h2>
-      <p class="mx-auto mt-4 max-w-2xl text-center text-muted-foreground">
-        Our arborist work covers three core areas that address the full lifecycle of tree health.
-      </p>
-      <div class="mt-12 space-y-8">
-        <!-- Tree Health Assessment -->
-        <div class="flex flex-col gap-6 rounded-xl border border-border bg-card p-8 md:flex-row md:items-start">
-          <div class="flex-shrink-0">
-            <div class="inline-flex h-16 w-16 items-center justify-center rounded-full bg-accent/15">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg>
-            </div>
-          </div>
-          <div class="flex-1">
-            <a href="/tree-health-assessment-denver-co" class="text-xl font-bold text-primary hover:underline">Tree Health Assessment</a>
-            <p class="mt-3 leading-relaxed text-muted-foreground">We begin with a thorough tree health assessment, where one of our ISA-certified arborists examines the tree's structure, root zone, bark condition, and canopy health. This gives us a clear picture of what the tree is dealing with - whether that's pest damage, disease, environmental stress, or structural issues that pose a risk to your property. The assessment is the foundation for everything else we recommend.</p>
-            <a href="/tree-health-assessment-denver-co" class="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-primary hover:underline">
-              Learn more about Tree Health Assessment <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"></path></svg>
-            </a>
-          </div>
-        </div>
-        <!-- Tree Treatment -->
-        <div class="flex flex-col gap-6 rounded-xl border border-border bg-card p-8 md:flex-row md:items-start md:flex-row-reverse">
-          <div class="flex-shrink-0">
-            <div class="inline-flex h-16 w-16 items-center justify-center rounded-full bg-accent/15">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.8 2.3A.3.3 0 1 0 5 2H4a2 2 0 0 0-2 2v5a6 6 0 0 0 6 6v0a6 6 0 0 0 6-6V4a2 2 0 0 0-2-2h-1a.2.2 0 1 0 .3.3"></path><path d="M8 15v1a6 6 0 0 0 6 6v0a6 6 0 0 0 6-6v-4"></path><circle cx="20" cy="10" r="2"></circle></svg>
-            </div>
-          </div>
-          <div class="flex-1">
-            <a href="/tree-treatment-denver-co" class="text-xl font-bold text-primary hover:underline">Tree Treatment</a>
-            <p class="mt-3 leading-relaxed text-muted-foreground">If a tree is treatable, we move into tree treatment. This includes targeted pesticide and fungicide applications for known infestations and infections, deep root fertilization to help stressed trees rebuild their strength, and soil improvement for trees showing signs of drought or compaction damage. We use treatment methods appropriate for the species, the specific problem, and the surrounding environment.</p>
-            <a href="/tree-treatment-denver-co" class="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-primary hover:underline">
-              Learn more about Tree Treatment <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"></path></svg>
-            </a>
-          </div>
-        </div>
-        <!-- Tree Planting -->
-        <div class="flex flex-col gap-6 rounded-xl border border-border bg-card p-8 md:flex-row md:items-start">
-          <div class="flex-shrink-0">
-            <div class="inline-flex h-16 w-16 items-center justify-center rounded-full bg-accent/15">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 20h10"></path><path d="M10 20c5.5-2.5.8-6.4 3-10"></path><path d="M9.5 9.4c1.1.8 1.8 2.2 2.3 3.7-2 .4-3.5.4-4.8-.3-1.2-.6-2.3-1.9-3-4.2 2.8-.5 4.4 0 5.5.8z"></path><path d="M14.1 6a7 7 0 0 0-1.1 4c1.9-.1 3.3-.6 4.3-1.4 1-1 1.6-2.3 1.7-4.6-2.7.1-4 1-4.9 2z"></path></svg>
-            </div>
-          </div>
-          <div class="flex-1">
-            <a href="/tree-planting-denver-co" class="text-xl font-bold text-primary hover:underline">Tree Planting</a>
-            <p class="mt-3 leading-relaxed text-muted-foreground">We also handle tree planting for homeowners looking to replace a lost tree or add new ones to their landscape. Proper planting — the right species for the site, correct depth, adequate soil prep — is what determines whether a new tree thrives or struggles for years. We guide you through species selection based on your soil type, sun exposure, and the conditions specific to your neighborhood in Denver.</p>
-            <a href="/tree-planting-denver-co" class="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-primary hover:underline">
-              Learn more about Tree Planting <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"></path></svg>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FOR DENVER HOMES -->
-  <section class="bg-muted py-16 md:py-24">
-    <div class="container">
-      <div class="mx-auto max-w-4xl">
-        <div class="grid gap-8 md:grid-cols-5">
-          <div class="md:col-span-3">
-            <h2 class="text-2xl font-bold md:text-4xl">
-              Arborist Services for Denver Homes
-            </h2>
-            <p class="mt-6 leading-relaxed text-muted-foreground">
-              Tree care in Denver isn't the same as tree care in a wetter or milder climate. The
-              combination of high altitude, intense UV exposure, clay-heavy soils in many
-              neighborhoods, and extreme temperature swings creates a specific set of stressors
-              that trees here have to constantly manage. Our arborists work in Denver's neighborhoods
-              every day and they know what's common in each area.
-            </p>
-            <p class="mt-4 leading-relaxed text-muted-foreground">
-              Ash trees in established Denver neighborhoods are at high risk for Emerald Ash Borer.
-              Pine and spruce trees in areas bordering open space are more susceptible to bark beetle
-              pressure. Older cottonwoods along drainage corridors have specific structural
-              vulnerabilities after years of growth. Local expertise isn't just a selling point —
-              it's the difference between a treatment plan that works and one that misses the actual
-              problem.
-            </p>
-            <p class="mt-4 leading-relaxed text-muted-foreground">
-              We're also familiar with Denver's municipal requirements around tree removal near
-              parkways and city-owned trees, and we can help you navigate those rules when they
-              apply to your situation.
-            </p>
-          </div>
-          <div class="md:col-span-2">
-            <div class="rounded-lg border border-border bg-background p-6">
-              <div class="mb-4 flex items-center gap-2">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-                <h3 class="font-bold">Service Areas</h3>
-              </div>
-              <ul class="space-y-2">
-                {business.serviceAreas.map((area) => (
-                  <li class="flex items-center gap-2 text-sm text-muted-foreground">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-accent flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><path d="m9 11 3 3L22 4"></path></svg>
-                    {area}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- WHY CHOOSE US -->
-  <section class="py-16 md:py-24">
-    <div class="container">
-      <h2 class="text-center text-2xl font-bold md:text-4xl">
-        Why Choose Us for Arborist Services
-      </h2>
-      <p class="mx-auto mt-6 max-w-3xl text-center text-muted-foreground leading-relaxed">
-        Arbor Care Tree Solutions is a family-owned company serving Denver with ISA-certified
-        arborists on staff. We're members of the Tree Care Industry Association (TCIA), fully
-        licensed and insured in Colorado, and have earned 100+ five-star Google reviews from
-        Denver homeowners.
-      </p>
-      <div class="mx-auto mt-10 grid max-w-3xl gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        <div class="flex items-center gap-3 rounded-lg border border-border bg-card p-4">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"></circle><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"></path></svg>
-          <span class="text-sm font-medium">ISA-certified arborists on staff</span>
-        </div>
-        <div class="flex items-center gap-3 rounded-lg border border-border bg-card p-4">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
-          <span class="text-sm font-medium">Family-owned, TCIA member</span>
-        </div>
-        <div class="flex items-center gap-3 rounded-lg border border-border bg-card p-4">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path><path d="m9 12 2 2 4-4"></path></svg>
-          <span class="text-sm font-medium">Fully licensed &amp; insured in Colorado</span>
-        </div>
-        <div class="flex items-center gap-3 rounded-lg border border-border bg-card p-4">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-          <span class="text-sm font-medium">100+ five-star Google reviews</span>
-        </div>
-        <div class="flex items-center gap-3 rounded-lg border border-border bg-card p-4">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"></path></svg>
-          <span class="text-sm font-medium">Free estimates - no trip charge</span>
-        </div>
-        <div class="flex items-center gap-3 rounded-lg border border-border bg-card p-4">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-          <span class="text-sm font-medium">We answer immediately, 24/7</span>
-        </div>
-      </div>
-      <p class="mx-auto mt-8 max-w-3xl text-center text-muted-foreground leading-relaxed">
-        Estimates are free. There's no trip charge to come out and assess your trees. We answer
-        calls immediately, 24 hours a day, 7 days a week — so if something urgent comes up
-        after a storm or a tree looks like it's failing, you're not waiting until Monday morning
-        to find out what to do. We tell you what's wrong, what your options are, and what it
-        costs before any work starts.
-      </p>
-    </div>
-  </section>
-
-  <!-- SERVICES GRID -->
-  <section class="bg-muted py-16 md:py-24">
-    <div class="container">
-      <h2 class="text-center text-2xl font-bold md:text-4xl mb-12">
-        Our Arborist Services
-      </h2>
-      <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-        <!-- Tree Health Assessment -->
-        <div class="group rounded-lg border border-border bg-background p-8 transition-shadow hover:shadow-md">
-          <div class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-accent/15">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg>
-          </div>
-          <h3 class="text-xl font-bold">Tree Health Assessment</h3>
-          <p class="mt-3 text-sm leading-relaxed text-muted-foreground">A full evaluation of your tree's structural integrity, disease status, and risk level - performed by an ISA-certified arborist.</p>
-          <a href="/tree-health-assessment-denver-co" class="mt-6 inline-flex items-center gap-1 text-sm font-semibold text-primary hover:underline">
-            Learn More <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"></path></svg>
-          </a>
-        </div>
-        <!-- Tree Treatment -->
-        <div class="group rounded-lg border border-border bg-background p-8 transition-shadow hover:shadow-md">
-          <div class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-accent/15">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.8 2.3A.3.3 0 1 0 5 2H4a2 2 0 0 0-2 2v5a6 6 0 0 0 6 6v0a6 6 0 0 0 6-6V4a2 2 0 0 0-2-2h-1a.2.2 0 1 0 .3.3"></path><path d="M8 15v1a6 6 0 0 0 6 6v0a6 6 0 0 0 6-6v-4"></path><circle cx="20" cy="10" r="2"></circle></svg>
-          </div>
-          <h3 class="text-xl font-bold">Tree Treatment</h3>
-          <p class="mt-3 text-sm leading-relaxed text-muted-foreground">Targeted treatments for insect infestations, fungal disease, and nutrient deficiencies — matched to your tree's specific diagnosis.</p>
-          <a href="/tree-treatment-denver-co" class="mt-6 inline-flex items-center gap-1 text-sm font-semibold text-primary hover:underline">
-            Learn More <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"></path></svg>
-          </a>
-        </div>
-        <!-- Tree Planting -->
-        <div class="group rounded-lg border border-border bg-background p-8 transition-shadow hover:shadow-md">
-          <div class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-accent/15">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 20h10"></path><path d="M10 20c5.5-2.5.8-6.4 3-10"></path><path d="M9.5 9.4c1.1.8 1.8 2.2 2.3 3.7-2 .4-3.5.4-4.8-.3-1.2-.6-2.3-1.9-3-4.2 2.8-.5 4.4 0 5.5.8z"></path><path d="M14.1 6a7 7 0 0 0-1.1 4c1.9-.1 3.3-.6 4.3-1.4 1-1 1.6-2.3 1.7-4.6-2.7.1-4 1-4.9 2z"></path></svg>
-          </div>
-          <h3 class="text-xl font-bold">Tree Planting</h3>
-          <p class="mt-3 text-sm leading-relaxed text-muted-foreground">Species selection, proper planting depth, soil prep, and early care guidance to give new trees the best start possible.</p>
-          <a href="/tree-planting-denver-co" class="mt-6 inline-flex items-center gap-1 text-sm font-semibold text-primary hover:underline">
-            Learn More <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"></path></svg>
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FINAL CTA -->
-  <section class="py-16 md:py-24">
-    <div class="container">
-      <div class="mx-auto max-w-2xl rounded-xl border-2 border-accent/30 bg-card p-8 md:p-12 text-center">
-        <h2 class="text-2xl font-bold md:text-3xl">
-          Concerned About a Tree? Let's Find Out What's Going On.
-        </h2>
-        <p class="mt-4 text-muted-foreground leading-relaxed">
-          Don't wait for a small problem to become a dangerous one. Our ISA-certified arborists
-          will assess your trees, tell you exactly what they're dealing with, and give you a
-          straight answer about what to do next - at no charge.
-        </p>
-        <div class="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-          <a href={business.phoneTel} class="inline-flex items-center justify-center gap-2 rounded-md bg-accent px-8 py-4 text-base font-bold text-accent-foreground shadow-lg hover:bg-accent/90 transition-colors">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+        <div class="mt-8">
+          <a
+            href={business.phoneTel}
+            class="inline-flex items-center justify-center gap-2 rounded-md bg-accent px-8 py-4 text-base font-bold text-accent-foreground shadow-lg transition-colors hover:bg-accent/90"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
             Call {business.phone}
           </a>
-          <EstimateModalNative className="inline-flex items-center justify-center gap-2 rounded-md border border-input bg-background px-8 py-4 text-base font-bold text-foreground hover:bg-muted transition-colors">
-            Request Free Estimate
-          </EstimateModalNative>
         </div>
-        <p class="mt-6 text-sm text-muted-foreground">
-          Looking for all of our services? Visit our{" "}
-          <a href="/" class="text-primary font-semibold hover:underline">Denver tree service homepage</a>.
-        </p>
       </div>
     </div>
   </section>

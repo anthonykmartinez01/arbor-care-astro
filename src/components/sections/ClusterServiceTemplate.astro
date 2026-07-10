@@ -1,14 +1,21 @@
 ---
+// Variant of ChildServiceTemplate used ONLY by pages in the Tree Service
+// hub-and-spoke linking cluster (see src/data/treeServiceCluster.ts).
+// Identical markup, plus an "Other Tree Services" block near the bottom.
+// Kept separate so the shared ChildServiceTemplate (14 pages) is untouched.
 import BaseLayout from "../layout/BaseLayout.astro";
 import EstimateModalNative from "../ui/EstimateModalNative.astro";
+import RelatedServices from "./RelatedServices.astro";
 import { business } from "../../data/business";
 import type { ChildServiceData } from "../../data/childServices";
 
 interface Props {
   data: ChildServiceData;
+  /** This page's cluster slug (trailing-slash form), for self-exclusion. */
+  clusterSlug: string;
 }
 
-const { data } = Astro.props;
+const { data, clusterSlug } = Astro.props;
 const homePath = data.parentPath === "/" ? "/tree-service-denver-co" : data.parentPath;
 
 // Hero image with optional per-page override (falls back to the default
@@ -197,6 +204,9 @@ const whyChooseBadges = [
       </div>
     </section>
   )}
+
+  <!-- CLUSTER RELATED SERVICES -->
+  <RelatedServices currentSlug={clusterSlug} />
 
   <!-- FINAL CTA -->
   <section class="py-16 md:py-24">

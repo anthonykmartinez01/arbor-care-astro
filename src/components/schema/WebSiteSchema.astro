@@ -1,0 +1,15 @@
+---
+import { business } from "../../data/business";
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": `${business.siteUrl}/#website`,
+  url: `${business.siteUrl}/`,
+  name: business.name,
+  publisher: { "@id": `${business.siteUrl}/#business` },
+  inLanguage: "en-US",
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

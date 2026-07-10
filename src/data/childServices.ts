@@ -869,9 +869,9 @@ export const childServicesData: Record<string, ChildServiceData> = {
       "@context": "https://schema.org",
       "@graph": [
         {
-          "@id": "https://www.arborcaretreesolutions.com//#business",
+          "@id": "https://arborcaretreesolutions.com/#business",
           geo: { "@type": "GeoCoordinates", latitude: 39.6951136, longitude: -104.9923784 },
-          url: "https://www.arborcaretreesolutions.com/",
+          url: "https://arborcaretreesolutions.com/",
           logo: "",
           name: "Arbor Care Tree Solutions",
           "@type": "LocalBusiness",
@@ -891,8 +891,8 @@ export const childServicesData: Record<string, ChildServiceData> = {
             ],
           },
         },
-        { "@id": "https://www.arborcaretreesolutions.com//#website", url: "https://www.arborcaretreesolutions.com/", name: "Arbor Care Tree Solutions", "@type": "WebSite", publisher: { "@id": "https://www.arborcaretreesolutions.com//#business" } },
-        { "@id": "https://www.arborcaretreesolutions.com//#author", name: "Arbor Care Tree Solutions Team", "@type": "Person", description: "The Arbor Care Tree Solutions team brings hands-on expertise across the full range of landscaper services in Denver, from routine tree trimming and shrub care to emergency removals and stump grinding throughout the city." },
+        { "@id": "https://arborcaretreesolutions.com/#website", url: "https://arborcaretreesolutions.com/", name: "Arbor Care Tree Solutions", "@type": "WebSite", publisher: { "@id": "https://arborcaretreesolutions.com/#business" } },
+        { "@id": "https://arborcaretreesolutions.com/#author", name: "Arbor Care Tree Solutions Team", "@type": "Person", description: "The Arbor Care Tree Solutions team brings hands-on expertise across the full range of landscaper services in Denver, from routine tree trimming and shrub care to emergency removals and stump grinding throughout the city." },
         {
           "@type": "FAQPage",
           mainEntity: [
