@@ -47,7 +47,9 @@ jobs:
         run: npm run build
 
       - name: Deploy prebuilt dist to Netlify (production)
-        run: npx netlify-cli@17 deploy --prod --no-build --dir=dist --site "$NETLIFY_SITE_ID"
+        # No --build flag: netlify-cli deploys the prebuilt --dir as-is
+        # (build is opt-in). We already built above, so this just uploads.
+        run: npx netlify-cli@17 deploy --prod --dir=dist --site "$NETLIFY_SITE_ID"
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
 
