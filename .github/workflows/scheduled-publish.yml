@@ -1,0 +1,55 @@
+name: Scheduled publish (daily rebuild)
+
+# Rebuilds and redeploys the site daily so pages registered in
+# src/lib/schedule.ts go live automatically on their publish date.
+#
+# This Netlify site is NOT Git-linked (deploys happen via netlify-cli),
+# so this workflow replicates the local `npm run deploy` flow exactly:
+# build (which includes the SEO validation gate) -> deploy prebuilt dist
+# -> IndexNow ping.
+#
+# Required repo secret: NETLIFY_AUTH_TOKEN (Netlify personal access token).
+# The site ID is not a secret, so it is hardcoded below.
+
+on:
+  schedule:
+    - cron: "0 12 * * *" # daily at 12:00 UTC
+  workflow_dispatch: {} # allow manual runs from the Actions tab
+
+concurrency:
+  group: scheduled-publish
+  cancel-in-progress: false
+
+env:
+  NETLIFY_SITE_ID: e9f3047b-c6a5-4801-b0d7-afd9027ddccb
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node (matches local v24)
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      # The build needs no env vars today (verified: no import.meta.env /
+      # process.env in src, config, or scripts). If that ever changes, write
+      # them to .env here from repo secrets BEFORE the build step.
+
+      - name: Build (includes SEO validation gate)
+        run: npm run build
+
+      - name: Deploy prebuilt dist to Netlify (production)
+        run: npx netlify-cli@17 deploy --prod --no-build --dir=dist --site "$NETLIFY_SITE_ID"
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+
+      - name: IndexNow ping (notify search engines)
+        run: node scripts/indexnow-ping.mjs

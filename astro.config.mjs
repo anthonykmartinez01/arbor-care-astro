@@ -2,6 +2,7 @@ import { defineConfig } from 'astro/config';
 import tailwind from '@astrojs/tailwind';
 import sitemap from '@astrojs/sitemap';
 import partytown from '@astrojs/partytown';
+import { isScheduledFuture } from './src/lib/schedule';
 
 // Utility/thin pages that should never appear in the XML sitemap.
 const SITEMAP_EXCLUDE = ['/thank-you/', '/were-hiring/'];
@@ -19,8 +20,14 @@ export default defineConfig({
   integrations: [
     tailwind(),
     sitemap({
-      filter: (page) =>
-        !SITEMAP_EXCLUDE.some((path) => new URL(page).pathname === path),
+      // Exclude utility pages AND any scheduled page whose publish date
+      // hasn't arrived yet (see src/lib/schedule.ts).
+      filter: (page) => {
+        const pathname = new URL(page).pathname;
+        if (SITEMAP_EXCLUDE.includes(pathname)) return false;
+        if (isScheduledFuture(pathname)) return false;
+        return true;
+      },
     }),
     partytown({
       config: {
