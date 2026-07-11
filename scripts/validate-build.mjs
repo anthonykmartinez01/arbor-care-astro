@@ -18,9 +18,7 @@ const DIST = "dist";
 // call — internal linking pending). They stay indexable and in the sitemap
 // (discoverable via the sitemap). Exempt from the orphan check only; remove
 // an entry once the page is linked from the site.
-const ORPHAN_ALLOWLIST = new Set([
-  "/storm-damage-tree-removal-denver-co/",
-]);
+const ORPHAN_ALLOWLIST = new Set([]);
 
 const errors = [];
 const warnings = [];
