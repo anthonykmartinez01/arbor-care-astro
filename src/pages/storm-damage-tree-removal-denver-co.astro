@@ -5,6 +5,8 @@ import FAQSchema from "../components/schema/FAQSchema.astro";
 import PageContents from "../components/sections/PageContents.astro";
 import CtaBanner from "../components/sections/CtaBanner.astro";
 import ContentSection from "../components/sections/ContentSection.astro";
+import RelatedTreeServices from "../components/sections/RelatedTreeServices.astro";
+import { isScheduledFuture } from "../lib/schedule";
 import FaqAccordion from "../components/sections/FaqAccordion.astro";
 import { business } from "../data/business";
 
@@ -132,6 +134,9 @@ const toc = [...contentToc, ...faqs.map((f, i) => ({ label: f.q, href: `#faq-${i
     <p>Cottonwoods and Siberian elms are especially bad about this. Both grow fast, both have weak wood, and both are all over older Denver neighborhoods with mature tree canopy. A May snowstorm on a fully leafed cottonwood adds serious weight fast, more than the branch structure was built to hold.</p>
     <p>Root damage is the other sneaky one. Wind doesn't have to snap a trunk to hurt a tree. It can rock the root ball just enough to <a href="https://www.treesaregood.org/Portals/0/TreesAreGood_Storm%20Related%20Tree%20Damage_0721.pdf" target="_blank" rel="noopener">tear roots underground</a> while the tree stays upright. Weeks later, that tree leans or drops without warning.</p>
     <p>This is why we never call a storm-damaged tree "fine" just because it's still standing. Standing and safe aren't the same thing.</p>
+    {!isScheduledFuture("/fallen-tree-removal-denver-co/") && (
+      <p>And when a storm does bring one all the way down, our <a href="/fallen-tree-removal-denver-co/">fallen tree removal</a> crew clears it fast.</p>
+    )}
   </ContentSection>
 
   <ContentSection
@@ -214,6 +219,8 @@ const toc = [...contentToc, ...faqs.map((f, i) => ({ label: f.q, href: `#faq-${i
 
   <!-- FAQ -->
   <FaqAccordion faqs={faqs} subheading="Common questions about storm damage tree removal in Denver" />
+
+  <RelatedTreeServices currentSlug="/storm-damage-tree-removal-denver-co/" />
 
   <!-- BOTTOM CTA -->
   <section class="py-16 md:py-24">

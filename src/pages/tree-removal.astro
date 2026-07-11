@@ -2,7 +2,7 @@
 import BaseLayout from "../components/layout/BaseLayout.astro";
 import ServiceSchema from "../components/schema/ServiceSchema.astro";
 import EstimateModalNative from "../components/ui/EstimateModalNative.astro";
-import RelatedServices from "../components/sections/RelatedServices.astro";
+import RelatedTreeServices from "../components/sections/RelatedTreeServices.astro";
 import { business } from "../data/business";
 ---
 
@@ -205,7 +205,7 @@ import { business } from "../data/business";
               Denver's tree canopy is full of mature trees — cottonwoods, ash, elms, and large ornamentals that have been growing for decades. These trees add real value to a property, but when they fail or die, they're substantial removal jobs. Size, proximity to structures, and access all factor into how a removal gets planned and executed.
             </p>
             <p class="mt-4 leading-relaxed text-muted-foreground">
-              The Front Range storm season - late spring snowstorms especially - regularly causes tree failures across Denver, Aurora, Lakewood, Englewood, Littleton, and surrounding areas. We handle post-storm removals regularly throughout the Denver metro. If a storm just came through and you've got a tree situation, call us - we answer immediately and can assess the urgency.
+              The Front Range storm season - late spring snowstorms especially - regularly causes tree failures across Denver, Aurora, Lakewood, Englewood, Littleton, and surrounding areas. We handle <a href="/storm-damage-tree-removal-denver-co/" class="text-primary font-semibold hover:underline">storm damage tree removal</a> regularly throughout the Denver metro. If a storm just came through and you've got a tree situation, call us - we answer immediately and can assess the urgency.
             </p>
             <p class="mt-4 leading-relaxed text-muted-foreground">
               Emerald Ash Borer has also killed a significant number of ash trees across Denver's neighborhoods. Dead ash trees become removal jobs quickly — once an ash tree dies from EAB, it deteriorates fast and becomes a hazard within one to two seasons.
@@ -299,7 +299,7 @@ import { business } from "../data/business";
   </section>
 
   <!-- CLUSTER RELATED SERVICES -->
-  <RelatedServices currentSlug="/tree-removal/" />
+  <RelatedTreeServices currentSlug="/tree-removal/" />
 
   <!-- FINAL CTA -->
   <section class="bg-muted py-16 md:py-24">

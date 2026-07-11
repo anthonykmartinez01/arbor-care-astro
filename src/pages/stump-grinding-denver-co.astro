@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../components/layout/BaseLayout.astro";
+import RelatedTreeServices from "../components/sections/RelatedTreeServices.astro";
 import ServiceSchema from "../components/schema/ServiceSchema.astro";
 import EstimateModalNative from "../components/ui/EstimateModalNative.astro";
 import { business } from "../data/business";
@@ -153,7 +154,7 @@ import { business } from "../data/business";
           </div>
           <div class="flex-1">
             <a href="/stump-removal-denver-co" class="text-xl font-bold text-primary hover:underline">Stump Removal</a>
-            <p class="mt-3 leading-relaxed text-muted-foreground">For situations where the entire root system needs to be eliminated - such as replanting in the same spot, building a structure nearby, or dealing with a species that aggressively re-sprouts from roots - we offer stump removal. This is a more extensive process that involves excavating the root ball rather than just grinding the stump above ground, and it's the right choice when grinding alone won't fully solve the problem.</p>
+            <p class="mt-3 leading-relaxed text-muted-foreground">For situations where the entire root system needs to be eliminated - such as replanting in the same spot, building a structure nearby, or dealing with a species that aggressively re-sprouts from roots - we offer <a href="/stump-removal-denver-co/" class="text-primary font-semibold hover:underline">stump removal</a>. This is a more extensive process that involves excavating the root ball rather than just grinding the stump above ground, and it's the right choice when grinding alone won't fully solve the problem.</p>
             <a href="/stump-removal-denver-co" class="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-primary hover:underline">
               Learn more about Stump Removal <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"></path></svg>
             </a>
@@ -267,25 +268,7 @@ import { business } from "../data/business";
     </div>
   </section>
 
-  <!-- RELATED SERVICES GRID -->
-  <section class="py-16 md:py-24">
-    <div class="container">
-      <h2 class="text-center text-2xl font-bold md:text-4xl mb-12">Related Services</h2>
-      <div class="mx-auto max-w-md">
-        <!-- Stump Removal -->
-        <div class="group rounded-lg border border-border bg-card p-8 transition-shadow hover:shadow-md">
-          <div class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-accent/15">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path><path d="M2 12h20"></path></svg>
-          </div>
-          <h3 class="text-xl font-bold">Stump Removal</h3>
-          <p class="mt-3 text-sm leading-relaxed text-muted-foreground">Full root ball excavation for situations where grinding alone won't do - replanting, construction, or aggressive re-sprouting species.</p>
-          <a href="/stump-removal-denver-co" class="mt-6 inline-flex items-center gap-1 text-sm font-semibold text-primary hover:underline">
-            Learn more about Stump Removal <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"></path></svg>
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
+  <RelatedTreeServices currentSlug="/stump-grinding-denver-co/" />
 
   <!-- FINAL CTA -->
   <section class="bg-muted py-16 md:py-24">

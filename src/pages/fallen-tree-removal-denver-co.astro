@@ -4,7 +4,12 @@ import ServiceSchema from "../components/schema/ServiceSchema.astro";
 import PageContents from "../components/sections/PageContents.astro";
 import CtaBanner from "../components/sections/CtaBanner.astro";
 import ContentSection from "../components/sections/ContentSection.astro";
+import RelatedTreeServices from "../components/sections/RelatedTreeServices.astro";
+import { scheduleGuard, isScheduledFuture } from "../lib/schedule";
 import { business } from "../data/business";
+
+const guard = scheduleGuard(Astro);
+if (guard) return guard;
 
 const serviceDescription =
   "Arbor Care Tree Solutions provides fast fallen tree removal across Denver after storms and high winds, with emergency response, safe rigging, full debris cleanup, and free in-person estimates from an ISA Certified Arborist.";
@@ -106,6 +111,9 @@ const toc = [
     </ul>
     <p>We get calls where someone heard a crack at 2 AM, looked out, and saw a limb hanging over their kid's bedroom window. That's an emergency. We also get calls about a tree that's been lying in the side yard for three days, totally settled, nobody in a hurry. That's not.</p>
     <p>Ash trees are a specific worry here. Denver has lost a lot of them to emerald ash borer, and a dead or dying ash can fail without warning, no storm required.</p>
+    {!isScheduledFuture("/ash-tree-removal-denver-co/") && (
+      <p>If yours is an ash that's already dying, our <a href="/ash-tree-removal-denver-co/">ash tree removal</a> service is built for exactly that.</p>
+    )}
     <p>If you're standing there staring at a tree and genuinely can't tell which category you're in, that uncertainty itself is a reason to call. Our team offers free in-person estimates with no trip charge, so getting a professional read on it costs you nothing but a phone call.</p>
   </ContentSection>
 
@@ -168,10 +176,12 @@ const toc = [
     <p>Let's talk cost, because everyone wants to know before they call. Fallen tree removal pricing isn't one flat number. It depends on a handful of real factors, and once you know them, the whole thing makes more sense.</p>
     <p>Size and weight matter most. A fallen maple limb blocking a driveway is nothing like a full-grown cottonwood down across a fence line. Access matters too. Can a truck pull right up, or does the tree land in a backyard with no gate wide enough for equipment? We see this every single week here in Denver, where older neighborhoods often have narrow side yards and mature trees planted way too close to the house.</p>
     <p>Location on the property changes things, a tree resting against a roof needs careful rigging, one lying flat in an open yard doesn't.</p>
-    <p>Then there's what's involved in the job. Does the tree need to be cut into sections? Is there a stump left behind that needs grinding? Is there brush and debris to haul off, or just the trunk? Emergency timing plays a role, too. A tree down at 2 a.m. blocking your only exit is a different situation than one that's been sitting in the yard for a week.</p>
+    <p>Then there's what's involved in the job. Does the tree need to be cut into sections? Is there a stump left behind that needs <a href="/stump-grinding-denver-co/">grinding</a>? Is there brush and debris to haul off, or just the trunk? Emergency timing plays a role, too. A tree down at 2 a.m. blocking your only exit is a different situation than one that's been sitting in the yard for a week.</p>
     <p>Before you hire anyone, ask a few direct questions: Will they give you a written estimate in person, not just a guess over the phone? Is cleanup included, or is that a separate cost? Are they licensed and insured, so you're covered if something goes wrong during removal? These questions tell you more about a company than any price quote ever will.</p>
     <p>We offer free in-person estimates with no trip charge, because we think you should see the tree, meet the crew, and know exactly what you're paying for before anything gets cut.</p>
   </ContentSection>
+
+  <RelatedTreeServices currentSlug="/fallen-tree-removal-denver-co/" />
 
   <!-- BOTTOM CTA -->
   <section class="py-16 md:py-24">

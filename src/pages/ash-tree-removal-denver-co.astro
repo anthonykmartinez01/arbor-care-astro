@@ -6,7 +6,12 @@ import PageContents from "../components/sections/PageContents.astro";
 import CtaBanner from "../components/sections/CtaBanner.astro";
 import ContentSection from "../components/sections/ContentSection.astro";
 import FaqAccordion from "../components/sections/FaqAccordion.astro";
+import RelatedTreeServices from "../components/sections/RelatedTreeServices.astro";
+import { scheduleGuard } from "../lib/schedule";
 import { business } from "../data/business";
+
+const guard = scheduleGuard(Astro);
+if (guard) return guard;
 
 const serviceDescription =
   "Arbor Care Tree Solutions removes emerald ash borer-infested and structurally compromised ash trees throughout Denver's older neighborhoods, where an ISA Certified Arborist inspects canopy dieback, trunk condition, and root stability before recommending removal over treatment.";
@@ -136,7 +141,7 @@ const toc = [...contentToc, ...faqs.map((f, i) => ({ label: f.q, href: `#faq-${i
       <li>Dead branches in the upper crown that snap off in wind instead of bending</li>
     </ul>
     <p>We see this every single week. A homeowner in an older part of Denver, where ash trees were planted decades ago as street trees, calls us because half the canopy died back over one winter and they figure it's drought stress. It's not drought. It's the borer, and by the time the damage is visible from the ground, the tree's already lost a big chunk of its structural wood.</p>
-    <p>That's the disqualifying question too, though. Not every stressed ash needs to come down. A tree with minor dieback and no exit holes might just need pruning and monitoring. But a tree that's lost more than half its canopy, or one leaning near a house, driveway, or power line, is past the point where treatment makes sense. Waiting on a dead ash near your roofline is how a calm Tuesday turns into an emergency call after a windstorm.</p>
+    <p>That's the disqualifying question too, though. Not every stressed ash needs to come down. A tree with minor dieback and no exit holes might just need pruning and monitoring. But a tree that's lost more than half its canopy, or one leaning near a house, driveway, or power line, is past the point where treatment makes sense. Waiting on a dead ash near your roofline is how a calm Tuesday turns into an <a href="/emergency-tree-removal-denver-co/">emergency call</a> after a windstorm.</p>
   </ContentSection>
 
   <ContentSection
@@ -189,7 +194,7 @@ const toc = [...contentToc, ...faqs.map((f, i) => ({ label: f.q, href: `#faq-${i
       <li>Our crew removes limbs in sections, lowering each one instead of letting it drop.</li>
       <li>The trunk comes down in controlled cuts, working top to bottom.</li>
       <li>We clear the wood and brush off your property the same day.</li>
-      <li>If you want, we handle stump removal or stump grinding right after.</li>
+      <li>If you want, we handle <a href="/stump-removal-denver-co/">stump removal</a> or <a href="/stump-grinding-denver-co/">stump grinding</a> right after.</li>
     </ol>
     <p>Emerald ash borer changes this process a bit. Infested wood is brittle in ways healthy wood isn't, so a limb that looks solid can snap without warning. That's why crews rig more, climb less, and lean on equipment instead of guessing. Denver's older neighborhoods with big mature ash canopies over driveways and detached garages make this part non-negotiable.</p>
     <p>Cleanup matters just as much as the cut. We're licensed and insured, and every job wraps with debris removal so you're not left staring at a pile of brush for a week. That's not a small thing when the tree came down over a fence or garden bed.</p>
@@ -198,6 +203,8 @@ const toc = [...contentToc, ...faqs.map((f, i) => ({ label: f.q, href: `#faq-${i
 
   <!-- FAQ -->
   <FaqAccordion faqs={faqs} subheading="Common questions about ash tree removal in Denver" />
+
+  <RelatedTreeServices currentSlug="/ash-tree-removal-denver-co/" />
 
   <!-- BOTTOM CTA -->
   <section class="py-16 md:py-24">

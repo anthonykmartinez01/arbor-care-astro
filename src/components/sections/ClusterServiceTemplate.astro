@@ -5,7 +5,7 @@
 // Kept separate so the shared ChildServiceTemplate (14 pages) is untouched.
 import BaseLayout from "../layout/BaseLayout.astro";
 import EstimateModalNative from "../ui/EstimateModalNative.astro";
-import RelatedServices from "./RelatedServices.astro";
+import RelatedTreeServices from "./RelatedTreeServices.astro";
 import { business } from "../../data/business";
 import type { ChildServiceData } from "../../data/childServices";
 
@@ -206,7 +206,7 @@ const whyChooseBadges = [
   )}
 
   <!-- CLUSTER RELATED SERVICES -->
-  <RelatedServices currentSlug={clusterSlug} />
+  <RelatedTreeServices currentSlug={clusterSlug} />
 
   <!-- FINAL CTA -->
   <section class="py-16 md:py-24">

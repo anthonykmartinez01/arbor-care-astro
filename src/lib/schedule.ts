@@ -27,6 +27,8 @@
 /** Page path -> publish date (YYYY-MM-DD, interpreted as 00:00 UTC). */
 export const SCHEDULED_PAGES: Record<string, string> = {
   // "/example-future-page": "2026-08-15",
+  "/fallen-tree-removal-denver-co/": "2026-07-12",
+  "/ash-tree-removal-denver-co/": "2026-07-13",
 };
 
 /** Normalize to the site's canonical trailing-slash form. */
