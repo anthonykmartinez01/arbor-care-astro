@@ -4,8 +4,8 @@ import sitemap from '@astrojs/sitemap';
 import partytown from '@astrojs/partytown';
 import { isScheduledFuture } from './src/lib/schedule';
 
-// Utility/thin pages that should never appear in the XML sitemap.
-const SITEMAP_EXCLUDE = ['/thank-you/', '/were-hiring/'];
+// Utility/thin + noindex pages that should never appear in the XML sitemap.
+const SITEMAP_EXCLUDE = ['/thank-you/', '/were-hiring/', '/debris-removal-service-denver-co/'];
 
 export default defineConfig({
   site: 'https://arborcaretreesolutions.com',
