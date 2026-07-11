@@ -1,0 +1,238 @@
+---
+import BaseLayout from "../components/layout/BaseLayout.astro";
+import ServiceSchema from "../components/schema/ServiceSchema.astro";
+import FAQSchema from "../components/schema/FAQSchema.astro";
+import PageContents from "../components/sections/PageContents.astro";
+import CtaBanner from "../components/sections/CtaBanner.astro";
+import ContentSection from "../components/sections/ContentSection.astro";
+import FaqAccordion from "../components/sections/FaqAccordion.astro";
+import { business } from "../data/business";
+
+const serviceDescription =
+  "Arbor Care Tree Solutions provides priority storm damage tree removal in Denver, using a risk-based assessment process that checks root movement and trunk stability before any cutting begins on Front Range windstorm and spring blizzard damage.";
+
+const faqs = [
+  {
+    q: "How fast can you get to my house after a Denver storm?",
+    a: "We treat storm calls as priority, especially when a tree is on a roof, blocking a driveway, or resting on power lines. Tell us exactly what you're seeing when you call, that detail changes how fast we move and what gear we bring. Our crew does a visual risk assessment first, checking for hanging limbs and root movement before anyone starts cutting. Front Range windstorms and spring blizzards don't wait for business hours, and neither do we.",
+  },
+  {
+    q: "What happens when your crew shows up after a storm?",
+    a: "Our crew starts with a safety walkaround, not a chainsaw. We check for tension in broken wood, limbs still hanging overhead, and whether the root ball has lifted the soil. That last sign means the whole tree could still shift. Once the site is safe, we rope off unstable areas, remove pressure points first, then section the trunk in controlled cuts. Every step follows the risk assessment, so nothing gets cut until we know how the tree will move.",
+  },
+  {
+    q: "Why do cottonwoods and Siberian elms fail so often in Denver storms?",
+    a: "Both trees grow fast and have weak wood, which makes them common storm failures in older Denver neighborhoods with mature canopy. A May snowstorm on a fully leafed cottonwood adds weight the branch structure was never built to hold. Our clay-heavy soil makes it worse, since it holds water after a downpour then goes rock hard, keeping roots shallow. That combination means these species crack internally in places you can't see from the ground.",
+  },
+  {
+    q: "Can a tree look fine after a storm and still be dangerous?",
+    a: "Yes, a tree can look completely stable and still have a crack running two feet into the heartwood. Wind can also rock the root ball enough to tear roots underground while the trunk stays upright. That tree may lean or drop weeks later without warning. We never call a storm-damaged tree \"fine\" just because it's still standing. A root and trunk check is the only way to know for sure.",
+  },
+  {
+    q: "How do you decide if my storm-damaged tree needs to come down or just get pruned?",
+    a: "We look at how much crown is gone, where the damage sits on the trunk, and what species it is. A tree with less than 25 to 30 percent crown loss, intact bark, and no lean usually just needs pruning. A split running through the main trunk, a new lean, or lifted roots at the base usually means removal. About half the storm calls we run end with a prune instead of a cut-down.",
+  },
+  {
+    q: "Is my storm-damaged ash tree worth saving?",
+    a: "Often not, since Denver's ash trees are already stressed from years of emerald ash borer pressure. A storm-damaged ash with a weak canopy usually isn't worth saving structurally or financially, even if the trunk looks intact. We still check the trunk, root flare, and crown before making that call, since every tree deserves a real look. If the wood is sound, we'll say so instead of pushing removal.",
+  },
+];
+
+const contentToc = [
+  { label: "Why Denver Storms Leave Hidden Damage in Trees", href: "#why-denver-storms-leave-hidden-damage-in-trees" },
+  { label: "Save, Prune, or Remove: Making the Right Call After a Storm", href: "#save-prune-or-remove-making-the-right-call-after-a-storm" },
+  { label: "When Storm Damage Doesn't Require Full Tree Removal", href: "#when-storm-damage-doesnt-require-full-tree-removal" },
+  { label: "What to Expect During Emergency Storm Tree Removal", href: "#what-to-expect-during-emergency-storm-tree-removal" },
+  { label: "Insurance, Permits, and Cost Factors After Storm Damage", href: "#insurance-permits-and-cost-factors-after-storm-damage" },
+];
+const toc = [...contentToc, ...faqs.map((f, i) => ({ label: f.q, href: `#faq-${i}` }))];
+---
+
+<BaseLayout
+  title="Denver Storm Damage Tree Removal | Arbor Care Tree Solutions"
+  description="Priority storm damage tree removal in Denver, CO. Risk-based assessment, 24/7 emergency response, and insurance guidance. Licensed & insured. Call (303) 949-6818."
+  preloadImage="/assets/storm-damage-tree-removal-cracked-trunk-denver.webp"
+  preloadImageMobile="/assets/storm-damage-tree-removal-cracked-trunk-denver-mobile.webp"
+>
+  <ServiceSchema slot="head" name="Storm Damage Tree Removal" description={serviceDescription} url="/storm-damage-tree-removal-denver-co/" />
+  <FAQSchema slot="head" faqs={faqs} />
+
+  <!-- HERO -->
+  <section class="relative flex min-h-[500px] items-center overflow-hidden md:min-h-[60vh]">
+    <picture>
+      <source media="(max-width: 767px)" srcset="/assets/storm-damage-tree-removal-cracked-trunk-denver-mobile.webp" width="800" height="800" />
+      <img
+        src="/assets/storm-damage-tree-removal-cracked-trunk-denver.webp"
+        alt="Storm-damaged tree with a cracked trunk in a Denver, CO yard"
+        class="absolute inset-0 h-full w-full object-cover"
+        width="1024"
+        height="1024"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+      />
+    </picture>
+    <div class="absolute inset-0 bg-black/60"></div>
+    <div class="container relative z-10 py-20 pb-28 text-center md:py-28">
+      <div class="mx-auto max-w-3xl">
+        <h1 class="text-3xl font-bold leading-tight text-white md:text-5xl">
+          Storm Damage Tree Removal in Denver
+          <span class="mt-2 block text-xl text-accent md:text-2xl">What to Do When Trees Go Down</span>
+        </h1>
+        <p class="mx-auto mt-4 text-lg text-white/80">
+          Licensed, fully insured, and serving all of Denver and the surrounding areas.
+        </p>
+        <div class="mt-8">
+          <a
+            href={business.phoneTel}
+            class="inline-flex items-center justify-center gap-2 rounded-md bg-accent px-8 py-4 text-base font-bold text-accent-foreground shadow-lg transition-colors hover:bg-accent/90"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            Call Now {business.phone}
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="absolute bottom-0 left-0 right-0 bg-primary/95 backdrop-blur-sm">
+      <div class="container flex flex-wrap items-center justify-center gap-x-8 gap-y-2 py-3 text-sm text-primary-foreground">
+        <span class="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg>
+          <span class="font-medium">Licensed & Fully Insured</span>
+        </span>
+        <span class="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
+          <span class="font-medium">ISA-Certified Arborists</span>
+        </span>
+        <span class="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          <span class="font-medium">Serves All of Denver</span>
+        </span>
+        <span class="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <span class="font-medium">24/7 Storm Response</span>
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <!-- TABLE OF CONTENTS -->
+  <PageContents items={toc} />
+
+  <CtaBanner heading="Need Storm Damage Tree Removal?" />
+
+  <!-- CONTENT SECTIONS -->
+  <ContentSection
+    id="why-denver-storms-leave-hidden-damage-in-trees"
+    heading="Why Denver Storms Leave Hidden Damage in Trees"
+    image={{ src: "/assets/hidden-storm-damage-tree-branch-crack-denver.webp", alt: "Close-up of hidden internal rot inside a cracked storm-damaged tree branch", title: "hidden-storm-damage-tree-branch-crack-denver", align: "left" }}
+  >
+    <p>A tree can look fine after a storm and still be a hazard. That's the part most homeowners don't expect.</p>
+    <p>Denver gets a strange mix of weather. Hail one week, heavy wet snow on leafed-out branches the next, then wind gusts pushing off the foothills that snap limbs nobody saw coming. Our clay-heavy soil doesn't help either. It holds water after a downpour, then goes rock hard in dry spells. Roots stay shallow because of it. So when a storm hits, the tree doesn't always fail where you'd think.</p>
+    <p>Here's the thing about internal cracks. You won't see them from the ground. A large branch can split partway through the trunk and just hang there, held by a few fibers of wood. Looks stable. Isn't. We've climbed trees that seemed untouched and found cracks running two feet down into the heartwood, invisible from below.</p>
+    <p>Cottonwoods and Siberian elms are especially bad about this. Both grow fast, both have weak wood, and both are all over older Denver neighborhoods with mature tree canopy. A May snowstorm on a fully leafed cottonwood adds serious weight fast, more than the branch structure was built to hold.</p>
+    <p>Root damage is the other sneaky one. Wind doesn't have to snap a trunk to hurt a tree. It can rock the root ball just enough to <a href="https://www.treesaregood.org/Portals/0/TreesAreGood_Storm%20Related%20Tree%20Damage_0721.pdf" target="_blank" rel="noopener">tear roots underground</a> while the tree stays upright. Weeks later, that tree leans or drops without warning.</p>
+    <p>This is why we never call a storm-damaged tree "fine" just because it's still standing. Standing and safe aren't the same thing.</p>
+  </ContentSection>
+
+  <ContentSection
+    id="save-prune-or-remove-making-the-right-call-after-a-storm"
+    heading="Save, Prune, or Remove: Making the Right Call After a Storm"
+    alt={true}
+    image={{ src: "/assets/save-prune-remove-decision-spruce-tree-denver.webp", alt: "Worker assessing a damaged spruce limb to decide save, prune, or remove in Denver", title: "save-prune-remove-decision-spruce-tree-denver", align: "right" }}
+  >
+    <p>Not every storm-damaged tree needs to come down. That surprises people. A tree can lose a third of its crown and still be perfectly fine long term, as long as the wound is clean and the structure underneath is sound.</p>
+    <p>Here's how we think through it on site. We look at three things: how much of the crown is gone, where the damage sits on the trunk, and what species we're dealing with. A silver maple that's split down the main leader is a different animal than an oak with one broken limb near the top. Species matters more than people expect.</p>
+    <p>Some signs point toward saving the tree with pruning:</p>
+    <ul>
+      <li>Damage limited to smaller branches, not the main trunk or leader</li>
+      <li>Less than 25 to 30 percent of the crown affected</li>
+      <li>Bark still intact and attached around the wound</li>
+      <li>No visible lean or root plate movement at the base</li>
+    </ul>
+    <p>And here's when we tell homeowners it's time to remove, not repair:</p>
+    <ul>
+      <li>A split running down through the main trunk</li>
+      <li>A visible lean that wasn't there before the storm</li>
+      <li>Major limbs gone from more than one side of the crown</li>
+      <li>Cracked or lifted roots at the base of the tree</li>
+    </ul>
+    <p>Ash trees get extra scrutiny here. Denver's ash population is already stressed from years of emerald ash borer pressure, so a storm-damaged ash with a weak canopy is often not worth saving, structurally or financially.</p>
+    <p>Root damage is the one that trips people up. The tree can look fine above ground and still be unstable underneath. That's not something you guess at from the driveway.</p>
+    <p>We won't push removal just because it's the bigger job. Half the calls we run end with a prune, not a cut-down - and we'll tell you straight which one your tree needs.</p>
+  </ContentSection>
+
+  <ContentSection
+    id="when-storm-damage-doesnt-require-full-tree-removal"
+    heading="When Storm Damage Doesn't Require Full Tree Removal"
+    image={{ src: "/assets/pruned-tree-storm-damage-repair-result-denver.webp", alt: "Pruned spruce tree with a clean cut branch after storm damage repair in Denver", title: "pruned-tree-storm-damage-repair-result-denver", align: "left" }}
+  >
+    <p>Not every storm-bent tree needs to come down. That surprises people. A tree can look rough after a windstorm and still be perfectly savable.</p>
+    <p>Here's the honest truth: a split leader, some broken branches, or a lean caused by saturated soil doesn't automatically mean removal. Thomas Fraser, our ISA-Certified Arborist, has spent 30 years telling homeowners exactly this, sometimes talking them out of a removal they were sure they needed. If the trunk is intact and the root system held, a tree can often recover with crown reduction or deadwooding to clear out the broken and hanging limbs. Tree health maintenance afterward helps it heal and handle the next storm better.</p>
+    <p>So how do you know the difference? Look at the trunk first. A few cracked branches up top is a pruning job. A split running down into the main trunk is a different story entirely. Root movement matters too, if the ground is heaved up on one side and the tree shifted, that's a structural problem no amount of trimming fixes.</p>
+    <p>We get calls all the time from folks who saw a few downed limbs after a Front Range windstorm and assumed the whole tree was a goner. It's not. A tree risk assessment settles it fast, our team looks at the crown, the trunk, and the root flare, then tells you straight whether it's a trim-and-monitor situation or something more serious.</p>
+    <p>We'd rather save a tree than cut one down for no reason. That's not the sales pitch, that's just how we do the job. If your tree can be pruned back into shape and kept healthy, we'll say so. Removal is for trees that are unsafe, not for every tree that took a hit in a storm.</p>
+  </ContentSection>
+
+  <CtaBanner heading="Proudly serving Denver — reach out anytime." note="Call now for a free estimate. Arbor Care Tree Solutions is ready to help." />
+
+  <ContentSection
+    id="what-to-expect-during-emergency-storm-tree-removal"
+    heading="What to Expect During Emergency Storm Tree Removal"
+    alt={true}
+    image={{ src: "/assets/homeowner-fallen-tree-backyard-storm-damage-denver.webp", alt: "Homeowner looking at a fallen tree in a backyard through a kitchen window in Denver", title: "homeowner-fallen-tree-backyard-storm-damage-denver", align: "right" }}
+  >
+    <p>A downed tree after a Denver hailstorm or a spring blizzard doesn't wait for business hours. The first call matters most, tell us exactly what you're seeing. Is the tree resting on a roof, blocking a driveway, or leaning on power lines? That detail changes how we approach the job from the first minute.</p>
+    <p>Our team responds and does a visual risk assessment before anyone touches a chainsaw. We're checking for tension in the wood, broken limbs still hanging overhead, and whether the root ball has lifted the soil, a sign the whole tree could shift again. Thomas Fraser, our ISA Certified Arborist, has run this kind of assessment for over 30 years. That matters because a tree that looks stable can still be under enough pressure to snap loose without warning.</p>
+    <p>Once the site's safe, here's roughly how the work unfolds:</p>
+    <ol>
+      <li>Secure the area and rope off anything unstable</li>
+      <li>Remove pressure points first, the limbs and sections holding tension</li>
+      <li>Cut down and section the main trunk in controlled pieces</li>
+      <li>Clear debris from your roof, gutters, fence, or driveway</li>
+      <li>Haul away the wood and brush so your yard's usable again</li>
+    </ol>
+    <p>We're licensed and insured, so if something unexpected comes up mid job, you're not the one holding the risk. The biggest surprise isn't the tree itself, it's what's hiding underneath it. A cracked sprinkler line. A fence post that took the impact. We flag it before we leave.</p>
+    <p>Cleanup is part of the job, not an upsell. We're not walking away from a pile of branches and calling it done. And we won't leave a half-cut trunk balanced against your garage just because the crew ran out of daylight.</p>
+    <p>Every storm job ends with a walk through, so you can see the site before we ask you to sign off on anything.</p>
+  </ContentSection>
+
+  <ContentSection
+    id="insurance-permits-and-cost-factors-after-storm-damage"
+    heading="Insurance, Permits, and Cost Factors After Storm Damage"
+    image={{ src: "/assets/emergency-storm-tree-removal-bucket-truck-denver.webp", alt: "Worker in a bucket truck removing a storm-damaged cottonwood tree near a Denver home", title: "emergency-storm-tree-removal-bucket-truck-denver", align: "left" }}
+  >
+    <p>Most homeowners policies cover storm damage tree removal when a tree falls on your house, your garage, or your fence. Here's the part people don't expect, though. If that same tree falls in your yard and misses everything, your insurance company often won't pay a dime toward removal. It's frustrating. Call your agent before you call anyone else, get clear on what's covered, and ask if they need photos before the tree comes down.</p>
+    <p>Denver homeowners near mature street trees should also know the city has rules about work done near the public right of way, so check with the city before cutting anything close to the sidewalk or curb strip.</p>
+    <p>So what drives the cost up or down on a storm job? A few things, every time.</p>
+    <ul>
+      <li>How the tree is positioned. Leaning on a structure costs more to manage than one lying flat in the open.</li>
+      <li>Access. A tree blocking your driveway is a different job than one wedged between two houses.</li>
+      <li>Size and species. A big cottonwood takes more time and more equipment than a smaller ornamental.</li>
+      <li>Whether it's tangled in power lines. That changes the whole approach and who needs to be called first.</li>
+    </ul>
+  </ContentSection>
+
+  <!-- FAQ -->
+  <FaqAccordion faqs={faqs} subheading="Common questions about storm damage tree removal in Denver" />
+
+  <!-- BOTTOM CTA -->
+  <section class="py-16 md:py-24">
+    <div class="container">
+      <div class="mx-auto max-w-2xl rounded-xl border-2 border-accent/30 bg-card p-8 text-center md:p-12">
+        <h2 class="text-2xl font-bold md:text-3xl">Ready to Get Started?</h2>
+        <p class="mt-4 leading-relaxed text-muted-foreground">
+          Call <a href={business.phoneTel} class="font-semibold text-primary hover:underline">{business.phone}</a> now for a free estimate. We answer immediately, any time of day.
+        </p>
+        <div class="mt-8">
+          <a
+            href={business.phoneTel}
+            class="inline-flex items-center justify-center gap-2 rounded-md bg-accent px-8 py-4 text-base font-bold text-accent-foreground shadow-lg transition-colors hover:bg-accent/90"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            Call {business.phone}
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
