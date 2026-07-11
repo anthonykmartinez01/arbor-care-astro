@@ -55,3 +55,7 @@ jobs:
 
       - name: IndexNow ping (notify search engines)
         run: node scripts/indexnow-ping.mjs
+      - name: Submit newly-due pages for indexing (KailenFlow)
+        env:
+          KAILENFLOW_INDEXING_KEY: ${{ secrets.KAILENFLOW_INDEXING_KEY }}
+        run: node scripts/kailenflow-indexing-ping.mjs
