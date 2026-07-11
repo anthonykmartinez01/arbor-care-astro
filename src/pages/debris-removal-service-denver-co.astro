@@ -1,7 +1,195 @@
 ---
-import ChildServiceTemplate from "../components/sections/ChildServiceTemplate.astro";
-import { childServicesData } from "../data/childServices";
-const data = childServicesData["/debris-removal-service-denver-co"];
+import BaseLayout from "../components/layout/BaseLayout.astro";
+import ServiceSchema from "../components/schema/ServiceSchema.astro";
+import FAQSchema from "../components/schema/FAQSchema.astro";
+import PageContents from "../components/sections/PageContents.astro";
+import CtaBanner from "../components/sections/CtaBanner.astro";
+import ContentSection from "../components/sections/ContentSection.astro";
+import FaqAccordion from "../components/sections/FaqAccordion.astro";
+import { business } from "../data/business";
+
+const serviceDescription =
+  "Arbor Care Tree Solutions provides full-range debris removal service in Denver, including stump grinding, storm debris cleanup, and yard debris hauling for homeowners across neighborhoods from Washington Park to Green Valley Ranch.";
+
+const faqs = [
+  {
+    q: "Do you handle debris removal all over Denver, or just certain neighborhoods?",
+    a: "We cover all of Denver, from tight backyards near Washington Park to bigger lots out toward Green Valley Ranch. Our crews are used to working around fences, patios, and tight side yards common in older neighborhoods. No matter where your property sits in the city, we can get equipment in and get the job done cleanly.",
+  },
+  {
+    q: "Should I grind my stump or have the whole root ball removed?",
+    a: "Grinding is the right call if you just want the stump gone and plan to leave the spot as lawn. Full root ball removal is better if you're planting a new tree in that exact spot or roots are pushing up a walkway. Grinding is faster and less disruptive, so most homeowners choose it unless they have a specific replanting plan.",
+  },
+  {
+    q: "How do Denver's clay soil and old cottonwoods affect stump removal?",
+    a: "Clay soil holds root systems tight, so full removal takes more digging and heavier equipment than in sandy soil. Old cottonwoods common around Denver often leave stumps three feet across with roots spread wide. That combination means removal jobs here usually take longer than a quick grind-and-go on a smaller tree.",
+  },
+  {
+    q: "A storm just snapped a tree on my property. When should I call for stump cleanup?",
+    a: "Call as soon as it's safe to get near the tree, before roots and splintered wood settle further into your yard. Storm-snapped stumps are jagged and unpredictable, and the root system underneath is often still partly alive. Waiting lets debris pile up and turns a simple job into a bigger mess.",
+  },
+  {
+    q: "Can you remove multiple stumps or a dead row of trees at once?",
+    a: "Yes, we handle multiple stumps on one property regularly, including whole dead rows left from old landscaping. Grouping stumps together on one visit is more efficient than scheduling separate trips. If you've got several old stumps scattered around your yard, one call can clear the whole batch.",
+  },
+  {
+    q: "What should I do about a stump that keeps growing suckers or fungus?",
+    a: "Grinding below grade usually stops suckers and fungus for good, since the living tissue that feeds new growth gets removed. Leaving a stump untreated just gives it more time to spread roots or invite rot into your yard. If you're seeing new sprouts or mushrooms near an old stump, it's time to have it ground out.",
+  },
+];
+
+const contentToc = [
+  { label: "Tree Stump Grinding", href: "#tree-stump-grinding" },
+  { label: "Full Stump and Root Ball Removal", href: "#full-stump-and-root-ball-removal" },
+  { label: "Storm-Damaged Stump Cleanup", href: "#stormdamaged-stump-cleanup" },
+];
+const toc = [...contentToc, ...faqs.map((f, i) => ({ label: f.q, href: `#faq-${i}` }))];
 ---
 
-<ChildServiceTemplate data={data} />
+<BaseLayout
+  title="Debris Removal Service Denver CO | Arbor Care Tree Solutions"
+  description="Tree debris removal in Denver, CO. Storm cleanup, post-tree-work hauling, complete site cleanup by ISA-certified arborists. Free estimates. Call (303) 949-6818."
+  preloadImage="/assets/debris-removal-service-overview-denver-backyard-crew.webp"
+  preloadImageMobile="/assets/debris-removal-service-overview-denver-backyard-crew-mobile.webp"
+>
+  <ServiceSchema slot="head" name="Debris Removal Service" description={serviceDescription} url="/debris-removal-service-denver-co/" />
+  <FAQSchema slot="head" faqs={faqs} />
+
+  <!-- HERO -->
+  <section class="relative flex min-h-[500px] items-center overflow-hidden md:min-h-[60vh]">
+    <picture>
+      <source media="(max-width: 767px)" srcset="/assets/debris-removal-service-overview-denver-backyard-crew-mobile.webp" width="800" height="800" />
+      <img
+        src="/assets/debris-removal-service-overview-denver-backyard-crew.webp"
+        alt="Arbor Care Tree Solutions crew clearing yard debris in a Denver, CO backyard"
+        class="absolute inset-0 h-full w-full object-cover"
+        width="1024"
+        height="1024"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+      />
+    </picture>
+    <div class="absolute inset-0 bg-black/60"></div>
+    <div class="container relative z-10 py-20 pb-28 text-center md:py-28">
+      <div class="mx-auto max-w-3xl">
+        <h1 class="text-3xl font-bold leading-tight text-white md:text-5xl">
+          Debris Removal Service in Denver
+          <span class="mt-2 block text-xl text-accent md:text-2xl">Stump Grinding, Root Ball Removal & Storm Cleanup</span>
+        </h1>
+        <p class="mx-auto mt-4 text-lg text-white/80">
+          Licensed, fully insured, and serving all of Denver and the surrounding areas.
+        </p>
+        <div class="mt-8">
+          <a
+            href={business.phoneTel}
+            class="inline-flex items-center justify-center gap-2 rounded-md bg-accent px-8 py-4 text-base font-bold text-accent-foreground shadow-lg transition-colors hover:bg-accent/90"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            Call Now {business.phone}
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="absolute bottom-0 left-0 right-0 bg-primary/95 backdrop-blur-sm">
+      <div class="container flex flex-wrap items-center justify-center gap-x-8 gap-y-2 py-3 text-sm text-primary-foreground">
+        <span class="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg>
+          <span class="font-medium">Licensed & Fully Insured</span>
+        </span>
+        <span class="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
+          <span class="font-medium">ISA-Certified Arborists</span>
+        </span>
+        <span class="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          <span class="font-medium">Serves All of Denver</span>
+        </span>
+        <span class="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <span class="font-medium">Available 24/7</span>
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <!-- TABLE OF CONTENTS -->
+  <PageContents items={toc} />
+
+  <CtaBanner heading="Need Debris Removal Service?" />
+
+  <!-- CONTENT SECTIONS -->
+  <ContentSection
+    id="tree-stump-grinding"
+    heading="Tree Stump Grinding"
+    image={{ src: "/assets/tree-stump-grinding-equipment-detail-denver.webp", alt: "Stump grinder teeth cutting into tree stump in Denver yard", title: "tree-stump-grinding-equipment-detail-denver", align: "left" }}
+  >
+    <p>That stump in your yard isn't just ugly. It's a tripping hazard, a mower-blade killer, and a magnet for new sprouts trying to grow right back. We grind stumps down below grade so you get a clean, level spot instead of a chunk of dead wood in the middle of your lawn.</p>
+    <p>Our crews have handled stumps all over Denver, from tight backyards near Washington Park to open lots out toward Green Valley Ranch. Every property's different. Root systems spread wide in clay soil, and old cottonwoods often leave stumps three feet across.</p>
+    <p>Here's what we typically deal with on a grinding job:</p>
+    <ul>
+      <li>Stumps left behind after our own tree removal work</li>
+      <li>Old stumps from trees taken down years ago by someone else</li>
+      <li>Multiple stumps on one property, sometimes a whole dead row</li>
+      <li>Stumps growing suckers or fungus that keep coming back</li>
+    </ul>
+    <p>We run this service almost every week, it's one of the most requested jobs we get once a removal wraps up. The grinder chews the wood into mulch-like chips, and we can grind deep enough to plant grass or a new tree right over the spot. Give us a call and we'll walk your yard with you before we start.</p>
+  </ContentSection>
+
+  <ContentSection
+    id="full-stump-and-root-ball-removal"
+    heading="Full Stump and Root Ball Removal"
+    alt={true}
+    image={{ src: "/assets/full-stump-root-ball-removal-excavation-denver.webp", alt: "Excavator removing full root ball from Denver yard excavation", title: "full-stump-root-ball-removal-excavation-denver", align: "right" }}
+  >
+    <p>Grinding takes the stump down below grade, but the root ball stays in the ground. Full removal pulls the whole thing out, roots and all. We use this when you're planning to plant something new in that exact spot, or when roots are heaving a patio or sidewalk near your Washington Park home.</p>
+    <p>This is heavier work than grinding. It takes excavation equipment, sometimes a mini excavator, sometimes hand digging if the roots are tangled with a fence line or septic system. And it leaves a hole that needs backfilling and grading before your yard looks normal again.</p>
+    <p>I've pulled root balls in Denver clay soil for over a decade, this stuff doesn't let go easy.</p>
+    <p>You'll want full removal if:</p>
+  </ContentSection>
+
+  <ContentSection
+    id="stormdamaged-stump-cleanup"
+    heading="Storm-Damaged Stump Cleanup"
+    image={{ src: "/assets/storm-damaged-stump-cleanup-denver-yard.webp", alt: "Storm-damaged tree stump cleanup after Denver windstorm debris", title: "storm-damaged-stump-cleanup-denver-yard", align: "left" }}
+  >
+    <p>Denver storms don't mess around. A microburst or a heavy spring snow can snap a tree clean off, and what's left behind is a jagged, splintered stump sitting in your yard. That's a different job than removing an old stump that died slowly over years. Storm-snapped wood is unpredictable, the break point is rough, and the root system underneath is often still fighting for life.</p>
+    <p>We handle this kind of cleanup often, especially after the wind events that roll through the Front Range every year. Fresh storm damage brings its own set of problems:</p>
+    <ul>
+      <li>Splintered wood that's sharp and unstable to grind</li>
+      <li>Root systems still partially alive, which changes how the grinder cuts</li>
+      <li>Debris and broken limbs mixed into the stump area</li>
+      <li>Soil that's often torn up or waterlogged from the storm itself</li>
+    </ul>
+    <p>Colorado State Forest Service documents include guidance on <a href="https://csfs.colostate.edu/forest-management/restoration-rehabilitation/channel-treatments/" target="_blank" rel="noopener">channel debris removal treatments</a> for storm-damaged areas.</p>
+    <p>Our crews assess the break before we ever start the grinder. A clean cut and a jagged storm break need different approaches, and rushing it can chew up equipment or leave a mess in your lawn.</p>
+    <p>If a storm just took down a tree on your property, don't let that stump sit there as a tripping hazard or eyesore. Give us a call and we'll walk you through what cleanup looks like for your yard.</p>
+  </ContentSection>
+
+  <!-- FAQ -->
+  <FaqAccordion faqs={faqs} subheading="Common questions about debris removal service in Denver" />
+
+  <!-- BOTTOM CTA -->
+  <section class="py-16 md:py-24">
+    <div class="container">
+      <div class="mx-auto max-w-2xl rounded-xl border-2 border-accent/30 bg-card p-8 text-center md:p-12">
+        <h2 class="text-2xl font-bold md:text-3xl">Ready to Get Started?</h2>
+        <p class="mt-4 leading-relaxed text-muted-foreground">
+          Call <a href={business.phoneTel} class="font-semibold text-primary hover:underline">{business.phone}</a> now for a free estimate. We answer immediately, any time of day.
+        </p>
+        <div class="mt-8">
+          <a
+            href={business.phoneTel}
+            class="inline-flex items-center justify-center gap-2 rounded-md bg-accent px-8 py-4 text-base font-bold text-accent-foreground shadow-lg transition-colors hover:bg-accent/90"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            Call {business.phone}
+          </a>
+        </div>
+        <p class="mt-6 text-sm text-muted-foreground">
+          <a href="/" class="font-semibold text-primary hover:underline">Back to Arbor Care Tree Solutions home</a>
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
