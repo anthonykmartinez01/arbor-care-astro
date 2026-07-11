@@ -1,0 +1,196 @@
+---
+import BaseLayout from "../components/layout/BaseLayout.astro";
+import ServiceSchema from "../components/schema/ServiceSchema.astro";
+import PageContents from "../components/sections/PageContents.astro";
+import CtaBanner from "../components/sections/CtaBanner.astro";
+import ContentSection from "../components/sections/ContentSection.astro";
+import { business } from "../data/business";
+
+const serviceDescription =
+  "Arbor Care Tree Solutions provides fast fallen tree removal across Denver after storms and high winds, with emergency response, safe rigging, full debris cleanup, and free in-person estimates from an ISA Certified Arborist.";
+
+const toc = [
+  { label: "Signs a Fallen Tree Needs Emergency Removal", href: "#signs-a-fallen-tree-needs-emergency-removal" },
+  { label: "Tree Responsibility: Private Yards vs. Denver's Right-of-Way Rule", href: "#tree-responsibility-private-yards-vs-denvers-rightofway-rule" },
+  { label: "When a Fallen Branch Doesn't Need a Removal Crew", href: "#when-a-fallen-branch-doesnt-need-a-removal-crew" },
+  { label: "What Happens During a Fallen Tree Removal Visit", href: "#what-happens-during-a-fallen-tree-removal-visit" },
+  { label: "How Fallen Tree Removal Pricing Works", href: "#how-fallen-tree-removal-pricing-works" },
+];
+---
+
+<BaseLayout
+  title="Fallen Tree Removal Denver CO | Arbor Care Tree Solutions"
+  description="Fast fallen tree removal in Denver, CO after storms and high winds. Emergency response, safe rigging, and free in-person estimates. Licensed & insured. Call (303) 949-6818."
+  preloadImage="/assets/fallen-tree-removal-denver-hero.webp"
+  preloadImageMobile="/assets/fallen-tree-removal-denver-hero-mobile.webp"
+>
+  <ServiceSchema slot="head" name="Fallen Tree Removal" description={serviceDescription} url="/fallen-tree-removal-denver-co/" />
+
+  <!-- HERO -->
+  <section class="relative flex min-h-[500px] items-center overflow-hidden md:min-h-[60vh]">
+    <picture>
+      <source media="(max-width: 767px)" srcset="/assets/fallen-tree-removal-denver-hero-mobile.webp" width="800" height="800" />
+      <img
+        src="/assets/fallen-tree-removal-denver-hero.webp"
+        alt="Large storm-felled tree down in a Denver, CO neighborhood awaiting removal"
+        class="absolute inset-0 h-full w-full object-cover"
+        width="1024"
+        height="1024"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+      />
+    </picture>
+    <div class="absolute inset-0 bg-black/60"></div>
+    <div class="container relative z-10 py-20 pb-28 text-center md:py-28">
+      <div class="mx-auto max-w-3xl">
+        <h1 class="text-3xl font-bold leading-tight text-white md:text-5xl">
+          Fallen Tree Removal in Denver
+          <span class="mt-2 block text-xl text-accent md:text-2xl">Fast Response When Storms Strike</span>
+        </h1>
+        <p class="mx-auto mt-4 text-lg text-white/80">
+          Licensed, fully insured, and serving all of Denver and the surrounding areas.
+        </p>
+        <div class="mt-8">
+          <a
+            href={business.phoneTel}
+            class="inline-flex items-center justify-center gap-2 rounded-md bg-accent px-8 py-4 text-base font-bold text-accent-foreground shadow-lg transition-colors hover:bg-accent/90"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            Call Now {business.phone}
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="absolute bottom-0 left-0 right-0 bg-primary/95 backdrop-blur-sm">
+      <div class="container flex flex-wrap items-center justify-center gap-x-8 gap-y-2 py-3 text-sm text-primary-foreground">
+        <span class="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg>
+          <span class="font-medium">Licensed & Fully Insured</span>
+        </span>
+        <span class="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
+          <span class="font-medium">ISA-Certified Arborists</span>
+        </span>
+        <span class="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          <span class="font-medium">Serves All of Denver</span>
+        </span>
+        <span class="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <span class="font-medium">24/7 Storm Response</span>
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <!-- TABLE OF CONTENTS -->
+  <PageContents items={toc} />
+
+  <CtaBanner heading="Need Fallen Tree Removal?" />
+
+  <!-- CONTENT SECTIONS -->
+  <ContentSection
+    id="signs-a-fallen-tree-needs-emergency-removal"
+    heading="Signs a Fallen Tree Needs Emergency Removal"
+    image={{ src: "/assets/fallen-tree-removal-denver-section-1.webp", alt: "Tree service crew removing a large fallen tree tangled in power lines with the Denver skyline behind", title: "fallen-tree-removal-emergency-power-lines-denver", align: "left" }}
+  >
+    <p>Not every downed tree is an emergency. But some are, and knowing the difference matters. A tree resting flat in your backyard with nothing under it can usually wait until morning. A tree leaning on your roof cannot.</p>
+    <p>Here's what tells us this is a call-now situation, not a call-tomorrow one:</p>
+    <ul>
+      <li>The tree is touching or tangled in power lines. Denver's older neighborhoods still run overhead service lines through mature tree canopy, and a downed line means real electrocution risk.</li>
+      <li>It's leaning against the house, garage, or fence, even partially. Weight shifts overnight. What looks stable at 6 PM can punch through by midnight.</li>
+      <li>It's blocking your only driveway or a shared alley. Not urgent for safety, but urgent for getting anyone in or out.</li>
+      <li>Roots are pulled up and the trunk is still swaying in wind. That root ball is basically a hinge, and the tree can move again.</li>
+      <li>It came down during or right after a hailstorm or high-wind event, which we see plenty of along the Front Range in late spring and early summer.</li>
+    </ul>
+    <p>We get calls where someone heard a crack at 2 AM, looked out, and saw a limb hanging over their kid's bedroom window. That's an emergency. We also get calls about a tree that's been lying in the side yard for three days, totally settled, nobody in a hurry. That's not.</p>
+    <p>Ash trees are a specific worry here. Denver has lost a lot of them to emerald ash borer, and a dead or dying ash can fail without warning, no storm required.</p>
+    <p>If you're standing there staring at a tree and genuinely can't tell which category you're in, that uncertainty itself is a reason to call. Our team offers free in-person estimates with no trip charge, so getting a professional read on it costs you nothing but a phone call.</p>
+  </ContentSection>
+
+  <ContentSection
+    id="tree-responsibility-private-yards-vs-denvers-rightofway-rule"
+    heading="Tree Responsibility: Private Yards vs. Denver's Right-of-Way Rule"
+    alt={true}
+    image={{ src: "/assets/fallen-tree-removal-denver-section-2.webp", alt: "Crane lifting a large tree that fell onto a backyard shed during a Denver removal", title: "fallen-tree-onto-shed-crane-removal-denver", align: "right" }}
+  >
+    <p>Here's the question we get asked more than almost any other: "Is this my tree?" Fair question. A fallen tree doesn't come with a deed attached, and Denver's mix of older lots and city-planted street trees makes this genuinely confusing for a lot of homeowners.</p>
+    <p>The general rule is simple. If the tree stood on your property, it's your responsibility, roots, trunk, and whatever's left of it after it comes down. That includes trees that fell from your yard onto a neighbor's fence or shed, too. Ownership follows the trunk's original location, not where the debris ends up.</p>
+    <p>Where it gets murkier is the strip between the sidewalk and the street, the narrow patch of grass you mow but technically don't own outright. Denver treats a lot of those trees as part of the public right-of-way, and the city's forestry program has a hand in managing them. We see this constantly in older neighborhoods like Washington Park and Congress Park, where mature silver maples and cottonwoods were planted decades ago right along that strip. Those trees get big, they get brittle with age, and they're exactly the kind that come down hard in a spring snowstorm.</p>
+    <p>So what should you do when one's on the ground?</p>
+    <ul>
+      <li>Tree fell entirely within your yard: it's yours to clear, plain and simple</li>
+      <li>Tree fell from the right-of-way strip onto your property: give the city a call first, don't assume</li>
+      <li>Tree straddles a property line or the strip: this one needs an actual look, not a guess</li>
+    </ul>
+  </ContentSection>
+
+  <ContentSection
+    id="when-a-fallen-branch-doesnt-need-a-removal-crew"
+    heading="When a Fallen Branch Doesn't Need a Removal Crew"
+    image={{ src: "/assets/fallen-tree-removal-denver-section-3.webp", alt: "Crew clearing a large uprooted tree fallen across a Denver front yard", title: "uprooted-tree-front-yard-cleanup-denver", align: "left" }}
+  >
+    <p>Not every branch on your lawn is an emergency. Most aren't.</p>
+    <p>If a branch is under four inches thick and it's just sitting on the grass, not hung up in another tree, not resting on a fence or a roofline, you can probably handle that one yourself. Cut it into sections, bag the smaller stuff, and you're done in an hour. We see this every single week after a windstorm rolls through Denver. Homeowners call us worried about a branch that turned out to be a simple weekend cleanup job.</p>
+    <p>Here's the test we tell people to use. Can you move it without straining? Is it clear of power lines, your roof, and your neighbor's fence? Is the tree it fell from still standing solid, with no cracks or splits near the trunk? If you answered yes to all three, grab some gloves and a hand saw and get after it.</p>
+    <p>So when does it stop being a DIY job? Once a branch is tangled up in the canopy above it, or it's leaning against your house, or it's thicker than your arm and heavy enough that moving it wrong could pull down more debris, that's a different situation. And if it landed anywhere near a power line, don't touch it. Not worth the risk.</p>
+    <p>The branches that need a crew are the ones still partly attached, hanging by a strip of bark, swaying every time the wind picks up. Those are dangerous in a way that's easy to underestimate from the ground.</p>
+    <p>We'd rather tell you to handle the small stuff yourself than send someone out for a job that doesn't need us. That's just being straight with you.</p>
+  </ContentSection>
+
+  <CtaBanner heading="Thinking about fallen tree removal in Denver? Let's talk." note="Call now for a free estimate. Arbor Care Tree Solutions is ready to help." />
+
+  <ContentSection
+    id="what-happens-during-a-fallen-tree-removal-visit"
+    heading="What Happens During a Fallen Tree Removal Visit"
+    alt={true}
+    image={{ src: "/assets/fallen-tree-removal-denver-section-4.webp", alt: "Crew using a crane to lower a large storm-broken tree limb near downtown Denver", title: "crane-lowering-storm-broken-limb-denver", align: "right" }}
+  >
+    <p>You call, we ask a few quick questions, then we get a truck out to you. Simple as that. No sales pitch on the phone, just enough info to know what crew and equipment to bring.</p>
+    <p>Here's how the actual visit usually goes:</p>
+    <ol>
+      <li><strong>We look at the tree first.</strong> Is it fully down, or hung up in another tree's canopy? Hung-up trees are trickier and more dangerous, they need a different approach than one that's flat on the ground.</li>
+      <li><strong>We check what it's touching.</strong> Fence, shed, power line, another tree still standing - each one changes the plan. A trunk resting on a fence isn't the same job as one blocking your driveway after a wind event.</li>
+      <li><strong>We section it down.</strong> Cutting starts from the top and works back toward the root ball, releasing tension safely instead of guessing where it'll shift.</li>
+      <li><strong>We clear debris and haul it out.</strong> Logs, limbs, brush, all of it goes. Your yard shouldn't look like a job site when we leave.</li>
+      <li><strong>We do a quick walk-through with you.</strong> Anything else on the property that looks like a future problem gets pointed out.</li>
+    </ol>
+    <p>Denver's clay-heavy soil doesn't grip roots the way sandier soil does, so downed trees here often pull up a chunk of lawn or sidewalk with them. That changes cleanup, not just the cut.</p>
+    <p>Some visits take forty minutes. Some take most of the day. Depends on the tree, the access, and what it landed on. We don't rush the assessment part, that's where mistakes happen if you skip it.</p>
+  </ContentSection>
+
+  <ContentSection
+    id="how-fallen-tree-removal-pricing-works"
+    heading="How Fallen Tree Removal Pricing Works"
+    image={{ src: "/assets/fallen-tree-removal-denver-section-5.webp", alt: "Crew cutting up a large uprooted tree with an exposed root ball in a Denver yard", title: "sectioning-uprooted-tree-root-ball-denver", align: "left" }}
+  >
+    <p>Let's talk cost, because everyone wants to know before they call. Fallen tree removal pricing isn't one flat number. It depends on a handful of real factors, and once you know them, the whole thing makes more sense.</p>
+    <p>Size and weight matter most. A fallen maple limb blocking a driveway is nothing like a full-grown cottonwood down across a fence line. Access matters too. Can a truck pull right up, or does the tree land in a backyard with no gate wide enough for equipment? We see this every single week here in Denver, where older neighborhoods often have narrow side yards and mature trees planted way too close to the house.</p>
+    <p>Location on the property changes things, a tree resting against a roof needs careful rigging, one lying flat in an open yard doesn't.</p>
+    <p>Then there's what's involved in the job. Does the tree need to be cut into sections? Is there a stump left behind that needs grinding? Is there brush and debris to haul off, or just the trunk? Emergency timing plays a role, too. A tree down at 2 a.m. blocking your only exit is a different situation than one that's been sitting in the yard for a week.</p>
+    <p>Before you hire anyone, ask a few direct questions: Will they give you a written estimate in person, not just a guess over the phone? Is cleanup included, or is that a separate cost? Are they licensed and insured, so you're covered if something goes wrong during removal? These questions tell you more about a company than any price quote ever will.</p>
+    <p>We offer free in-person estimates with no trip charge, because we think you should see the tree, meet the crew, and know exactly what you're paying for before anything gets cut.</p>
+  </ContentSection>
+
+  <!-- BOTTOM CTA -->
+  <section class="py-16 md:py-24">
+    <div class="container">
+      <div class="mx-auto max-w-2xl rounded-xl border-2 border-accent/30 bg-card p-8 text-center md:p-12">
+        <h2 class="text-2xl font-bold md:text-3xl">Ready to Get Started?</h2>
+        <p class="mt-4 leading-relaxed text-muted-foreground">
+          Call <a href={business.phoneTel} class="font-semibold text-primary hover:underline">{business.phone}</a> now for a free estimate. We answer immediately, any time of day.
+        </p>
+        <div class="mt-8">
+          <a
+            href={business.phoneTel}
+            class="inline-flex items-center justify-center gap-2 rounded-md bg-accent px-8 py-4 text-base font-bold text-accent-foreground shadow-lg transition-colors hover:bg-accent/90"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            Call {business.phone}
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

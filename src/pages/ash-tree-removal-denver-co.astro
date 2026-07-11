@@ -1,0 +1,222 @@
+---
+import BaseLayout from "../components/layout/BaseLayout.astro";
+import ServiceSchema from "../components/schema/ServiceSchema.astro";
+import FAQSchema from "../components/schema/FAQSchema.astro";
+import PageContents from "../components/sections/PageContents.astro";
+import CtaBanner from "../components/sections/CtaBanner.astro";
+import ContentSection from "../components/sections/ContentSection.astro";
+import FaqAccordion from "../components/sections/FaqAccordion.astro";
+import { business } from "../data/business";
+
+const serviceDescription =
+  "Arbor Care Tree Solutions removes emerald ash borer-infested and structurally compromised ash trees throughout Denver's older neighborhoods, where an ISA Certified Arborist inspects canopy dieback, trunk condition, and root stability before recommending removal over treatment.";
+
+const faqs = [
+  {
+    q: "What are the first signs my ash tree is dying from emerald ash borer?",
+    a: "The biggest signs are D-shaped exit holes the size of a rice grain and a thinning canopy in mid-summer. You might also notice bark splitting vertically, woodpecker damage, or new sprouts shooting out near the base. That sprouting is the tree panicking, trying to survive. We see this most in older Denver neighborhoods where ash trees were planted as street trees decades ago. If your canopy thinned out over one winter, it's rarely just drought. Call us for a look before you assume it's stress.",
+  },
+  {
+    q: "Should I treat my ash tree or have it removed?",
+    a: "It depends on how much canopy you've already lost. If less than 30 percent of the canopy shows dieback, treatment can still buy the tree several more years. Once you're past that point, treatment stops making sense and removal becomes the safer call. We check the canopy, bark, and trunk base before we give you an answer either way. Most calls we get are already past the treatment window, but every tree gets a real look before we tell you it needs to come down.",
+  },
+  {
+    q: "Do I need a permit to remove an ash tree in Denver?",
+    a: "It depends on where the tree is planted. A tree in your own yard is yours to remove without a permit, on your own timeline. But if it's growing in the tree lawn between the sidewalk and the street, it usually falls under city forestry oversight, and you'll need approval first. Many older Denver blocks were planted with ash as street trees decades ago, so this comes up a lot. We can walk your property with you and tell you which category your tree falls under.",
+  },
+  {
+    q: "What happens when your crew comes out to look at my ash tree?",
+    a: "Our team walks the whole property with you first, before any cutting starts. We check the tree's lean, the roots, nearby power lines, fences, and structures that could turn into a problem mid-removal. Our ISA Certified Arborist has spent decades reading trees this way, so he can spot risks most homeowners miss. You'll get a straight answer about whether the tree needs to come down or can be saved, based on what we actually see, not a guess from the curb.",
+  },
+  {
+    q: "How long does it take to remove a mature ash tree?",
+    a: "Most mature ash removals take a few hours to a full day, depending on the tree's size, lean, and how close it sits to structures or power lines. A tree in an open yard usually goes faster than one leaning near a driveway or roofline. Trees in the city right-of-way can take longer because of permit timing. We'll walk you through the plan during your inspection so you know what to expect before crews show up.",
+  },
+  {
+    q: "Is it okay to wait until winter to remove a dying ash tree?",
+    a: "Waiting is risky if the tree has already lost more than half its canopy or leans toward your house. Dead branches in the upper crown tend to snap in wind instead of bending, and Denver windstorms can turn a stable-looking tree into an emergency overnight. If your ash shows major dieback or sits near your roofline, it's safer to schedule removal now instead of hoping it holds through another season.",
+  },
+];
+
+const contentToc = [
+  { label: "Signs Your Ash Tree Needs Removal", href: "#signs-your-ash-tree-needs-removal" },
+  { label: "Emerald Ash Borer in Denver: Treat or Remove", href: "#emerald-ash-borer-in-denver-treat-or-remove" },
+  { label: "When Your Ash Tree Doesn't Need Removal", href: "#when-your-ash-tree-doesnt-need-removal" },
+  { label: "Private Yard Trees vs. City Right-of-Way Rules", href: "#private-yard-trees-vs-city-rightofway-rules" },
+  { label: "What Happens During Professional Ash Tree Removal", href: "#what-happens-during-professional-ash-tree-removal" },
+];
+const toc = [...contentToc, ...faqs.map((f, i) => ({ label: f.q, href: `#faq-${i}` }))];
+---
+
+<BaseLayout
+  title="Ash Tree Removal Denver CO | Arbor Care Tree Solutions"
+  description="Ash tree removal in Denver, CO for emerald ash borer and storm-damaged trees. ISA-Certified inspection and honest treat-or-remove guidance. Call (303) 949-6818."
+  preloadImage="/assets/ash-tree-removal-worker-cutting-trunk-denver.webp"
+  preloadImageMobile="/assets/ash-tree-removal-worker-cutting-trunk-denver-mobile.webp"
+>
+  <ServiceSchema slot="head" name="Ash Tree Removal" description={serviceDescription} url="/ash-tree-removal-denver-co/" />
+  <FAQSchema slot="head" faqs={faqs} />
+
+  <!-- HERO -->
+  <section class="relative flex min-h-[500px] items-center overflow-hidden md:min-h-[60vh]">
+    <picture>
+      <source media="(max-width: 767px)" srcset="/assets/ash-tree-removal-worker-cutting-trunk-denver-mobile.webp" width="800" height="800" />
+      <img
+        src="/assets/ash-tree-removal-worker-cutting-trunk-denver.webp"
+        alt="ISA-Certified arborist cutting down a dying ash tree in Denver, CO"
+        class="absolute inset-0 h-full w-full object-cover"
+        width="1024"
+        height="1024"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+      />
+    </picture>
+    <div class="absolute inset-0 bg-black/60"></div>
+    <div class="container relative z-10 py-20 pb-28 text-center md:py-28">
+      <div class="mx-auto max-w-3xl">
+        <h1 class="text-3xl font-bold leading-tight text-white md:text-5xl">
+          Ash Tree Removal in Denver
+          <span class="mt-2 block text-xl text-accent md:text-2xl">Clear Answers for Dying or EAB-Infested Trees</span>
+        </h1>
+        <p class="mx-auto mt-4 text-lg text-white/80">
+          Licensed, fully insured, and serving all of Denver and the surrounding areas.
+        </p>
+        <div class="mt-8">
+          <a
+            href={business.phoneTel}
+            class="inline-flex items-center justify-center gap-2 rounded-md bg-accent px-8 py-4 text-base font-bold text-accent-foreground shadow-lg transition-colors hover:bg-accent/90"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            Call Now {business.phone}
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="absolute bottom-0 left-0 right-0 bg-primary/95 backdrop-blur-sm">
+      <div class="container flex flex-wrap items-center justify-center gap-x-8 gap-y-2 py-3 text-sm text-primary-foreground">
+        <span class="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg>
+          <span class="font-medium">Licensed & Fully Insured</span>
+        </span>
+        <span class="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
+          <span class="font-medium">ISA-Certified Arborists</span>
+        </span>
+        <span class="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          <span class="font-medium">Serves All of Denver</span>
+        </span>
+        <span class="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <span class="font-medium">Free Estimates</span>
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <!-- TABLE OF CONTENTS -->
+  <PageContents items={toc} />
+
+  <CtaBanner heading="Need Ash Tree Removal?" />
+
+  <!-- CONTENT SECTIONS -->
+  <ContentSection
+    id="signs-your-ash-tree-needs-removal"
+    heading="Signs Your Ash Tree Needs Removal"
+    image={{ src: "/assets/emerald-ash-borer-damage-bark-inspection-denver.webp", alt: "Close-up of emerald ash borer damage on ash tree bark in Denver", title: "emerald-ash-borer-damage-bark-inspection-denver", align: "left" }}
+  >
+    <p>Here's the hard truth about ash trees in Denver right now. Emerald ash borer showed up in our state a few years back, and it's been working its way through our urban canopy ever since. Once a tree's infested, removal usually isn't a matter of if. It's a matter of when.</p>
+    <p>So what do you look for? A few things stand out fast once you know what you're seeing:</p>
+    <ul>
+      <li>Thinning canopy at the top of the tree, even in the middle of summer when it should be full</li>
+      <li>D-shaped exit holes in the bark, about the size of a grain of rice</li>
+      <li>Bark splitting vertically, sometimes with woodpecker damage right below it</li>
+      <li>Sprouting at the base or trunk, called epicormic growth, which is the tree panicking</li>
+      <li>Dead branches in the upper crown that snap off in wind instead of bending</li>
+    </ul>
+    <p>We see this every single week. A homeowner in an older part of Denver, where ash trees were planted decades ago as street trees, calls us because half the canopy died back over one winter and they figure it's drought stress. It's not drought. It's the borer, and by the time the damage is visible from the ground, the tree's already lost a big chunk of its structural wood.</p>
+    <p>That's the disqualifying question too, though. Not every stressed ash needs to come down. A tree with minor dieback and no exit holes might just need pruning and monitoring. But a tree that's lost more than half its canopy, or one leaning near a house, driveway, or power line, is past the point where treatment makes sense. Waiting on a dead ash near your roofline is how a calm Tuesday turns into an emergency call after a windstorm.</p>
+  </ContentSection>
+
+  <ContentSection
+    id="emerald-ash-borer-in-denver-treat-or-remove"
+    heading="Emerald Ash Borer in Denver: Treat or Remove"
+    alt={true}
+    image={{ src: "/assets/ash-tree-treatment-injection-healthy-tree-denver.webp", alt: "Technician treating a healthy ash tree instead of removal in a Denver yard", title: "ash-tree-treatment-injection-healthy-tree-denver", align: "right" }}
+  >
+    <p>Here's the question we get asked more than any other. Your ash tree has the tell-tale D-shaped exit holes, or a neighbor down the block just lost theirs, and now you want to know if yours can be saved. Fair question. The honest answer depends on how far the infestation's gone, not on what you'd prefer to hear.</p>
+    <p><a href="https://ag.colorado.gov/plants/emerald-ash-borer" target="_blank" rel="noopener">Emerald ash borer has been working</a> its way through the Front Range for years now, and Denver's older neighborhoods got hit hard because so many streets were planted with ash decades ago as a fast-growing shade tree. That planting choice is exactly why one pest can wipe out entire blocks of canopy in a few seasons.</p>
+    <p>Treatment can work, but only under the right conditions. If less than 30 percent of the canopy shows dieback, a systemic insecticide treatment might buy the tree several more years. We've seen it work well on healthy trees caught early. But once canopy loss climbs past that point, treatment is throwing good money after a tree that's already dying from the inside out.</p>
+    <p>By the time a homeowner calls us, the tree's usually past the point where treatment makes sense.</p>
+  </ContentSection>
+
+  <ContentSection
+    id="when-your-ash-tree-doesnt-need-removal"
+    heading="When Your Ash Tree Doesn't Need Removal"
+    image={{ src: "/assets/homeowner-observing-ash-tree-kitchen-window-denver.webp", alt: "Homeowner observing an ash tree through a kitchen window in Denver", title: "homeowner-observing-ash-tree-kitchen-window-denver", align: "left" }}
+  >
+    <p>Not every ash tree needs to come down. We say that as an ISA Certified Arborist company, not as a sales pitch. Thomas Fraser has spent 30 years telling people the truth about their trees, and sometimes the truth is "leave it alone."</p>
+    <p>A healthy ash tree with no structural damage and no confirmed emerald ash borer infestation can often be saved. Early signs of stress, like thinning at the top or a few dead branches, don't automatically mean removal. They mean it's time for a real look. We offer tree health maintenance and tree disease treatment for exactly this reason, so you're not stuck choosing between "do nothing" and "cut it down."</p>
+    <p>Here's a scenario we run into a lot. Someone calls us worried because their ash tree dropped more leaves than usual in August. Often it's drought stress, not borer damage, especially after a dry Denver summer. A quick look at the canopy and bark tells us which one it is.</p>
+    <p>Some of Denver's older neighborhoods, Park Hill and Congress Park among them, still have mature ash trees planted decades back as street shade trees. Many of these are structurally sound and just need regular pruning, not removal. Age alone isn't a red flag.</p>
+    <p>So how do you know if yours is one of the lucky ones? A tree risk assessment settles it. We check the canopy, the bark, the base of the trunk, and look for the telltale signs of emerald ash borer versus ordinary stress. If the tree's salvageable, we'll tell you that. If it needs to come down for safety, we'll tell you that too.</p>
+  </ContentSection>
+
+  <CtaBanner heading="Proudly serving Denver — reach out anytime." note="Call now for a free estimate. Arbor Care Tree Solutions is ready to help." />
+
+  <ContentSection
+    id="private-yard-trees-vs-city-rightofway-rules"
+    heading="Private Yard Trees vs. City Right-of-Way Rules"
+    alt={true}
+    image={{ src: "/assets/ash-tree-right-of-way-versus-private-yard-denver.webp", alt: "Ash tree in a Denver city right-of-way strip beside a private yard tree", title: "ash-tree-right-of-way-versus-private-yard-denver", align: "right" }}
+  >
+    <p>Here's the first question we ask on every ash tree job: is that tree in your yard, or is it standing in the strip between the sidewalk and the street? That answer changes everything about how the job gets done.</p>
+    <p>A tree in your own yard is yours to manage. You can call us, get a free in-person estimate, and we'll schedule the removal around your timeline. No permit hoops, no city inspector, no waiting weeks for approval. If it's rooted on your property and it's not protected by a specific local ordinance, the decision is yours.</p>
+    <p>The tree lawn is a different story. Denver, like a lot of older cities, planted street trees decades ago in that narrow strip between the curb and the sidewalk, and a huge number of those plantings were ash trees. Neighborhoods built up through the mid-1900s often have mature ash lining entire blocks in that public right-of-way. Legally, that tree usually falls under city forestry oversight, not homeowner discretion. You typically need a permit before anything comes down out there, even if the tree is dying or dropping limbs onto your driveway.</p>
+    <p>We handle both situations regularly, and most homeowners don't know which category their tree falls into until we walk the property with them.</p>
+  </ContentSection>
+
+  <ContentSection
+    id="what-happens-during-professional-ash-tree-removal"
+    heading="What Happens During Professional Ash Tree Removal"
+    image={{ src: "/assets/ash-tree-removal-wood-chipper-process-denver.webp", alt: "Worker feeding ash tree limbs into a wood chipper during a Denver removal", title: "ash-tree-removal-wood-chipper-process-denver", align: "left" }}
+  >
+    <p>Here's what happens once you call us out for ash tree removal. First, our team walks the property with you. We look at lean, root heave, nearby structures, power lines, fences - anything that could turn into a problem mid-cut. Thomas Fraser, our ISA-Certified Arborist, has spent 30 years reading trees like this. He can tell you within minutes whether the tree needs a full ground-up removal or a more controlled piece-by-piece takedown.</p>
+    <p>Once the plan is set, the actual work follows a pretty consistent sequence:</p>
+    <ol>
+      <li>We rig ropes and set anchor points if the tree sits near a house, garage, or fence line.</li>
+      <li>Our crew removes limbs in sections, lowering each one instead of letting it drop.</li>
+      <li>The trunk comes down in controlled cuts, working top to bottom.</li>
+      <li>We clear the wood and brush off your property the same day.</li>
+      <li>If you want, we handle stump removal or stump grinding right after.</li>
+    </ol>
+    <p>Emerald ash borer changes this process a bit. Infested wood is brittle in ways healthy wood isn't, so a limb that looks solid can snap without warning. That's why crews rig more, climb less, and lean on equipment instead of guessing. Denver's older neighborhoods with big mature ash canopies over driveways and detached garages make this part non-negotiable.</p>
+    <p>Cleanup matters just as much as the cut. We're licensed and insured, and every job wraps with debris removal so you're not left staring at a pile of brush for a week. That's not a small thing when the tree came down over a fence or garden bed.</p>
+    <p>Is this the same as what a neighbor with a chainsaw and a rented lift can do? Not really. The difference shows up in the parts nobody sees until something goes wrong.</p>
+  </ContentSection>
+
+  <!-- FAQ -->
+  <FaqAccordion faqs={faqs} subheading="Common questions about ash tree removal in Denver" />
+
+  <!-- BOTTOM CTA -->
+  <section class="py-16 md:py-24">
+    <div class="container">
+      <div class="mx-auto max-w-2xl rounded-xl border-2 border-accent/30 bg-card p-8 text-center md:p-12">
+        <h2 class="text-2xl font-bold md:text-3xl">Ready to Get Started?</h2>
+        <p class="mt-4 leading-relaxed text-muted-foreground">
+          Call <a href={business.phoneTel} class="font-semibold text-primary hover:underline">{business.phone}</a> now for a free estimate. We answer immediately, any time of day.
+        </p>
+        <div class="mt-8">
+          <a
+            href={business.phoneTel}
+            class="inline-flex items-center justify-center gap-2 rounded-md bg-accent px-8 py-4 text-base font-bold text-accent-foreground shadow-lg transition-colors hover:bg-accent/90"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            Call {business.phone}
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
