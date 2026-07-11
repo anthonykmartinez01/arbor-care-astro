@@ -8,6 +8,7 @@ import ContentSection from "../components/sections/ContentSection.astro";
 import FaqAccordion from "../components/sections/FaqAccordion.astro";
 import RelatedServices from "../components/sections/RelatedServices.astro";
 import { treeServiceHub } from "../data/treeServiceCluster";
+import { isScheduledFuture } from "../lib/schedule";
 import { business } from "../data/business";
 
 const serviceDescription =
@@ -253,6 +254,9 @@ const toc = [...contentToc, ...faqs.map((f, i) => ({ label: f.q, href: `#faq-${i
       <li>Checking nearby trees for wind stress that might cause a second fall</li>
       <li>Hauling debris off your property, not just piling it in the yard</li>
     </ul>
+    {!isScheduledFuture("/fallen-tree-removal-denver-co/") && (
+      <p>When a tree's already on the ground, see our dedicated <a href="/fallen-tree-removal-denver-co/">fallen tree removal</a> service for how we clear it fast and safely.</p>
+    )}
   </ContentSection>
 
   <ContentSection
@@ -272,6 +276,9 @@ const toc = [...contentToc, ...faqs.map((f, i) => ({ label: f.q, href: `#faq-${i
     </ul>
     <p>I've walked properties in Washington Park and Berkeley where half the block's ash trees are dead or dying, and the owners had no idea until a limb came down. That's the problem with this pest. It works from the inside out.</p>
     <p>Once an ash tree is infested past a certain point, removal is the safer call. A dead or dying ash gets brittle fast, and brittle wood near a house, fence, or power line isn't something to wait on. We've removed hundreds of ash trees across Denver — our <a href="/tree-removal/">tree removal process</a> covers what the whole job looks like from start to finish. Caught early, targeted tree treatment may save a tree that isn't too far gone.</p>
+    {!isScheduledFuture("/ash-tree-removal-denver-co/") && (
+      <p>See our dedicated <a href="/ash-tree-removal-denver-co/">ash tree removal</a> page for how we handle emerald ash borer removals across Denver.</p>
+    )}
   </ContentSection>
 
   <CtaBanner heading="Ready when you are — get in touch today." note="Call now for a free estimate. Arbor Care Tree Solutions is ready to help." />
