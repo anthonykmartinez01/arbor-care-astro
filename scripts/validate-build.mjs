@@ -14,6 +14,13 @@ import { join, relative } from "node:path";
 const SITE = "https://arborcaretreesolutions.com";
 const DIST = "dist";
 
+// Pages intentionally left with NO inbound internal links (owner's call).
+// They stay indexable and in the sitemap — discoverable via the sitemap, just
+// not linked from anywhere on the site. Exempt from the orphan check only.
+const ORPHAN_ALLOWLIST = new Set([
+  "/debris-removal-service-denver-co/",
+]);
+
 const errors = [];
 const warnings = [];
 const err = (msg) => errors.push(msg);
@@ -174,6 +181,7 @@ const linkedRoutes = new Set(
 );
 for (const [route, p] of indexable) {
   if (route === "/" || route === "/404.html" || route === "/404/") continue;
+  if (ORPHAN_ALLOWLIST.has(route)) continue; // intentional orphan (owner's call)
   if (!linkedRoutes.has(route)) err(`Orphan page (no inbound internal links): ${route}`);
 }
 
