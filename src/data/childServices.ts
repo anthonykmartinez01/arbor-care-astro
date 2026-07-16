@@ -865,6 +865,12 @@ export const childServicesData: Record<string, ChildServiceData> = {
           alt: "Holiday lights and decor installation service in Denver, Colorado",
           align: "left",
         },
+        link: {
+          before: "See our dedicated ",
+          anchor: "holiday lights and decor",
+          href: "/holiday-lights-denver-co/",
+          after: " page for install timing, packages, and takedown.",
+        },
       },
     ],
     faqs: [
