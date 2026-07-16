@@ -13,6 +13,10 @@ export interface ChildServiceData {
     paragraphs: string[];
     // Optional bullet list rendered after the paragraphs in this section.
     bullets?: string[];
+    // Optional contextual link rendered as a sentence after the paragraphs:
+    // `{before}<a href>{anchor}</a>{after}`. Only sections that set this
+    // render a link — other template pages are unaffected.
+    link?: { before?: string; anchor: string; href: string; after?: string };
     // Optional inline image floated left or right (md+ only).
     image?: {
       src: string;
@@ -812,6 +816,12 @@ export const childServicesData: Record<string, ChildServiceData> = {
           src: "/assets/landscaper-bush-and-shrub-trimming-and-removal.webp",
           alt: "Bush and shrub trimming and removal service in Denver, Colorado",
           align: "left",
+        },
+        link: {
+          before: "For a closer look at how we shape overgrown shrubs back into line, see our dedicated ",
+          anchor: "bush and shrub trimming",
+          href: "/bush-shrub-trimming-denver-co/",
+          after: " page.",
         },
       },
       {

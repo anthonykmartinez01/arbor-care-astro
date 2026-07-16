@@ -157,6 +157,11 @@ const whyChooseBadges = [
               {section.bullets.map((b) => <li>{b}</li>)}
             </ul>
           )}
+          {section.link && (
+            <p class="mt-6 leading-relaxed text-muted-foreground">
+              {section.link.before}<a href={section.link.href} class="font-medium text-primary underline">{section.link.anchor}</a>{section.link.after}
+            </p>
+          )}
           {idx === data.sections.length - 1 && (
             <>
               <div class="clear-both"></div>
