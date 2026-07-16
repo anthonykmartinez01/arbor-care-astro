@@ -843,6 +843,12 @@ export const childServicesData: Record<string, ChildServiceData> = {
           alt: "Tree planting service in Denver, Colorado",
           align: "right",
         },
+        link: {
+          before: "See our dedicated ",
+          anchor: "tree planting",
+          href: "/tree-planting-denver-co/",
+          after: " page for how we pick the right species and plant it to last.",
+        },
       },
       {
         heading: "Holiday Lights and Decor",
