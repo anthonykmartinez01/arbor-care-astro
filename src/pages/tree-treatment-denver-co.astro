@@ -1,7 +1,10 @@
 ---
 import ChildServiceTemplate from "../components/sections/ChildServiceTemplate.astro";
+import RelatedArboristServices from "../components/sections/RelatedArboristServices.astro";
 import { childServicesData } from "../data/childServices";
 const data = childServicesData["/tree-treatment-denver-co"];
 ---
 
-<ChildServiceTemplate data={data} />
+<ChildServiceTemplate data={data}>
+  <RelatedArboristServices slot="related" currentSlug="/tree-treatment-denver-co/" />
+</ChildServiceTemplate>

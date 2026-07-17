@@ -1,0 +1,235 @@
+---
+import BaseLayout from "../components/layout/BaseLayout.astro";
+import ServiceSchema from "../components/schema/ServiceSchema.astro";
+import FAQSchema from "../components/schema/FAQSchema.astro";
+import PageContents from "../components/sections/PageContents.astro";
+import CtaBanner from "../components/sections/CtaBanner.astro";
+import ContentSection from "../components/sections/ContentSection.astro";
+import FaqAccordion from "../components/sections/FaqAccordion.astro";
+import RelatedArboristServices from "../components/sections/RelatedArboristServices.astro";
+import { business } from "../data/business";
+import { scheduleGuard } from "../lib/schedule";
+
+const guard = scheduleGuard(Astro);
+if (guard) return guard;
+
+const serviceDescription =
+  "Arbor Care Tree Solutions provides crown thinning in Denver that selectively opens dense canopies on trees like silver maples and honeylocusts before spring snowstorms hit, reducing storm damage while preserving the tree's natural shape.";
+
+const faqs = [
+  {
+    q: "How long does a crown thinning appointment take?",
+    a: "Most crown thinning jobs take a few hours to a full day, depending on the tree's size. A mature silver maple or honeylocust with a dense canopy takes longer than a smaller tree. Thomas walks the property first to check crown density and branch attachments before any cutting starts. That first look adds time but saves you from a rushed job. We work through the crown in sections, checking the shape as we go, so bigger or older trees naturally take more time.",
+  },
+  {
+    q: "What should I expect when your crew arrives for crown thinning?",
+    a: "You'll see us assess the whole tree before anyone climbs up with a chainsaw. We mark crossing branches and interior deadwood first, then set up climbing gear based on the tree's size and what's nearby, like fences or a garage roof. Cuts happen in small, controlled steps spread evenly around the crown. We stop and check the shape every few cuts instead of stripping one side bare. You'll always know what's coming out and why before we make the cut.",
+  },
+  {
+    q: "What time of year is best for crown thinning in Denver?",
+    a: "Late winter or early spring, before Denver's heavy spring snowstorms hit, is the best window. Those storms drop wet, heavy snow while trees still have leaves or thick buds, and a dense canopy catches that snow like a net. Thinning before the storms lets wind and snow pass through the branches instead of piling up. We see the most storm damage on older maples and honeylocusts in neighborhoods like Park Hill, where canopies have gone years without a trim.",
+  },
+  {
+    q: "How much of my tree's canopy will you remove?",
+    a: "We only remove select branches spread evenly through the canopy, never a big chunk from one side. The goal is to let light and air move through the tree while keeping its natural shape and size intact. We focus first on crossing branches and interior deadwood, since those cause the most rubbing damage and disease risk. A healthy tree should still look full afterward, just less crowded inside. If a tree needs more removed than that, it may need reduction instead of thinning.",
+  },
+  {
+    q: "How often does a tree need crown thinning?",
+    a: "Most healthy trees need thinning every few years, not every season. Trees that grow fast or that haven't been pruned in years, like older silver maples around Denver, often need it more often at first to catch up. Once the canopy is opened up and balanced, future thinning visits are usually lighter. Young trees under five or six years old usually don't need thinning at all, since they're still building their basic branch structure.",
+  },
+];
+
+const contentToc = [
+  { label: "Signs Your Tree's Canopy Is Too Dense", href: "#signs-your-trees-canopy-is-too-dense" },
+  { label: "Crown Thinning vs. Crown Reduction: Know the Difference", href: "#crown-thinning-vs-crown-reduction-know-the-difference" },
+  { label: "When Crown Thinning Isn't the Right Fix", href: "#when-crown-thinning-isnt-the-right-fix" },
+  { label: "What Happens During a Professional Crown Thinning Visit", href: "#what-happens-during-a-professional-crown-thinning-visit" },
+  { label: "Timing Crown Thinning Ahead of Denver's Spring Snow Season", href: "#timing-crown-thinning-ahead-of-denvers-spring-snow-season" },
+];
+const toc = [...contentToc, ...faqs.map((f, i) => ({ label: f.q, href: `#faq-${i}` }))];
+---
+
+<BaseLayout
+  title="Crown Thinning Denver CO | Arbor Care Tree Solutions"
+  description="Crown thinning in Denver, CO. Open dense canopies to cut spring snow-load damage and keep trees healthy. ISA-certified arborists. Call (303) 949-6818."
+  preloadImage="/assets/crown-thinning-canopy-branch-cut-denver.webp"
+  preloadImageMobile="/assets/crown-thinning-canopy-branch-cut-denver-mobile.webp"
+>
+  <ServiceSchema slot="head" name="Crown Thinning" description={serviceDescription} url="/crown-thinning-denver-co/" />
+  <FAQSchema slot="head" faqs={faqs} />
+
+  <!-- HERO -->
+  <section class="relative flex min-h-[500px] items-center overflow-hidden md:min-h-[60vh]">
+    <picture>
+      <source media="(max-width: 767px)" srcset="/assets/crown-thinning-canopy-branch-cut-denver-mobile.webp" width="800" height="800" />
+      <img
+        src="/assets/crown-thinning-canopy-branch-cut-denver.webp"
+        alt="Arbor Care Tree Solutions arborist thinning a dense tree canopy in Denver, CO"
+        class="absolute inset-0 h-full w-full object-cover"
+        width="1024"
+        height="1024"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+      />
+    </picture>
+    <div class="absolute inset-0 bg-black/60"></div>
+    <div class="container relative z-10 py-20 pb-28 text-center md:py-28">
+      <div class="mx-auto max-w-3xl">
+        <h1 class="text-3xl font-bold leading-tight text-white md:text-5xl">
+          Crown Thinning in Denver
+          <span class="mt-2 block text-xl text-accent md:text-2xl">Open Up Your Canopy Before the Spring Snow Hits</span>
+        </h1>
+        <p class="mx-auto mt-4 text-lg text-white/80">
+          Licensed, fully insured, and serving all of Denver and the surrounding areas.
+        </p>
+        <div class="mt-8">
+          <a
+            href={business.phoneTel}
+            class="inline-flex items-center justify-center gap-2 rounded-md bg-accent px-8 py-4 text-base font-bold text-accent-foreground shadow-lg transition-colors hover:bg-accent/90"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            Call Now {business.phone}
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="absolute bottom-0 left-0 right-0 bg-primary/95 backdrop-blur-sm">
+      <div class="container flex flex-wrap items-center justify-center gap-x-8 gap-y-2 py-3 text-sm text-primary-foreground">
+        <span class="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg>
+          <span class="font-medium">Licensed & Fully Insured</span>
+        </span>
+        <span class="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
+          <span class="font-medium">ISA-Certified Arborists</span>
+        </span>
+        <span class="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          <span class="font-medium">Serves All of Denver</span>
+        </span>
+        <span class="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <span class="font-medium">Available 24/7</span>
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <!-- TABLE OF CONTENTS -->
+  <PageContents items={toc} />
+
+  <CtaBanner heading="Need Crown Thinning?" />
+
+  <!-- CONTENT SECTIONS -->
+  <ContentSection
+    id="signs-your-trees-canopy-is-too-dense"
+    heading="Signs Your Tree's Canopy Is Too Dense"
+    image={{ src: "/assets/crown-thinning-pruning-shears-branch-detail-denver.webp", alt: "Close-up of hand pruning shears cutting tree branch for crown thinning", title: "crown-thinning-pruning-shears-branch-detail-denver", align: "left" }}
+  >
+    <p>Most folks don't look up until something goes wrong. That's normal, but there are clues you can catch before a storm makes the decision for you.</p>
+    <p>Stand under the tree at noon. See mostly shade, barely any light dappling through? That's a dense canopy. A healthy tree lets some sun filter down, enough to keep grass or shade plants alive underneath. If your lawn's gone patchy and thin right under the drip line, the canopy above it is probably choking out light it needs.</p>
+    <p>Look for branches crossing and rubbing against each other. Over time that rubbing wears through bark, and that's an open door for disease and pests. We see this every single week on maples and honeylocust trees around older Denver neighborhoods like Park Hill, where the canopies have gone years without a trim.</p>
+    <ul>
+      <li>Thick clusters of small twiggy growth bunched near the outer canopy</li>
+      <li>Leaves only growing on the outside, with a bare, shaded interior</li>
+      <li>Whole limbs that sway heavily in wind instead of flexing individually</li>
+      <li>Visible dead or weak wood tangled inside the live growth</li>
+      <li>A canopy that looks like a solid green ball instead of an open, layered shape</li>
+    </ul>
+    <p>Here's the one that gets people to finally call us. Denver's spring snowstorms drop wet, heavy snow while trees still have leaves or thick buds. A dense canopy catches that snow like a net, and the extra weight is exactly what snaps big limbs. Thinning the crown lets wind and snow pass through instead of piling up.</p>
+  </ContentSection>
+
+  <ContentSection
+    id="crown-thinning-vs-crown-reduction-know-the-difference"
+    heading="Crown Thinning vs. Crown Reduction: Know the Difference"
+    alt={true}
+    image={{ src: "/assets/crown-thinning-vs-reduction-result-denver.webp", alt: "Tree canopy after crown thinning shows more light reaching lawn in Denver", title: "crown-thinning-vs-reduction-result-denver", align: "right" }}
+  >
+    <p>Folks mix these up all the time, and we get it. Both jobs happen up in the canopy. Both involve a chainsaw and a lot of careful climbing. But they solve two completely different problems, and picking the wrong one can hurt the tree instead of helping it.</p>
+    <p>Crown thinning removes select branches throughout the canopy to let light and air move through the tree. The tree keeps its natural shape and its overall size. Crown reduction, on the other hand, cuts back the outer branches to shrink the tree's overall height or spread, usually because it's grown too close to a roofline, a power line, or a neighbor's fence.</p>
+    <p>Here's how we tell homeowners to think about it:</p>
+    <ul>
+      <li>Thinning is about density. Too many branches crowded together, blocking wind and light.</li>
+      <li>Reduction is about size. The tree's gotten too big for the space it's in.</li>
+      <li>Thinning keeps the tree's natural form intact. Reduction changes its silhouette.</li>
+    </ul>
+    <p>We see this mix-up a lot with older silver maples and honeylocusts around Denver, trees that have been growing for decades with no real pruning plan. The canopy gets so thick that wind can't pass through it, and that's when storm damage happens. A homeowner will ask for a "trim" thinking that means reduction, when what the tree needs is thinning to relieve that wind load.</p>
+    <p>Most of the time, when someone calls us worried about a tree that "looks too full," thinning is the fix, not a full-scale reduction. Reduction cuts are bigger, they stress the tree more, and they should only happen when size is genuinely the issue. Getting this wrong means bigger wounds than necessary, and bigger wounds take longer to close up. An ISA-certified arborist can look at your tree and tell you in five minutes which one you need.</p>
+  </ContentSection>
+
+  <ContentSection
+    id="when-crown-thinning-isnt-the-right-fix"
+    heading="When Crown Thinning Isn't the Right Fix"
+    image={{ src: "/assets/dense-canopy-signs-homeowner-view-denver.webp", alt: "Homeowner noticing overly dense tree canopy from kitchen window in Denver", title: "dense-canopy-signs-homeowner-view-denver", align: "left" }}
+  >
+    <p>Here's something not every tree company will tell you straight: crown thinning isn't always the answer. If your tree is leaning over the garage or has a split trunk, thinning the canopy won't fix that. That's a structural problem, and it usually calls for crown reduction or removal instead.</p>
+    <p>We get calls all the time from folks who think their tree "just needs thinned out" when the real issue is deadwood. If most of what's bothering you is dead branches hanging over the driveway, that's deadwooding, not thinning. Different job, different result. Thinning opens up a healthy canopy so air and light move through it better. Deadwooding pulls out what's already dead or dying before it drops on someone's car.</p>
+    <p>And if your tree's dropping large limbs during wind events, or you're seeing mushrooms at the base, thinning won't solve that either. That's a job for a tree risk assessment first. We've walked properties around Washington Park where big old silver maples look fine from the street but have serious internal decay from decades of poor pruning cuts. Thinning a tree like that just moves weight around, it doesn't fix the underlying problem.</p>
+    <p>Young trees usually don't need thinning at all. A tree under five or six years old is still building its structure. Thinning it too early can slow it down.</p>
+    <p>So ask yourself: is the canopy just dense, or is something wrong with the tree? Dense and healthy is a thinning job. Damaged, leaning, or diseased is something else entirely. A quick look usually tells us which one you're dealing with.</p>
+  </ContentSection>
+
+  <CtaBanner
+    heading="Thinking about Crown Thinning in Denver? Let's talk."
+    note="Call now for a free estimate. Arbor Care Tree Solutions is ready to help."
+  />
+
+  <ContentSection
+    id="what-happens-during-a-professional-crown-thinning-visit"
+    heading="What Happens During a Professional Crown Thinning Visit"
+    alt={true}
+    image={{ src: "/assets/crown-thinning-not-right-fix-inspection-denver.webp", alt: "Arborist inspecting tree trunk before recommending crown thinning in Denver", title: "crown-thinning-not-right-fix-inspection-denver", align: "right" }}
+  >
+    <p>Here's what happens when we show up for a crown thinning job. It's not just guys with chainsaws hacking away at random branches. There's a process, and skipping steps is how trees get hurt instead of helped.</p>
+    <p>First, Thomas walks the property and looks at the whole tree, not just the branches you're worried about. He's got 30 years doing this, so he's checking crown density, branch attachment points, and whether the tree's even a good candidate for thinning in the first place. Some trees need it. Some don't. We'll tell you straight if yours falls into the second group.</p>
+    <p>Once we're set to go, here's the general order of work:</p>
+    <ol>
+      <li><a href="https://extension.colostate.edu/resource/pruning-mature-shade-trees/" target="_blank" rel="noopener">Assess the crown and mark</a> which limbs come out, focusing on crossing branches and interior deadwood first.</li>
+      <li>Set up climbing gear or rigging, depending on the tree's size and what's around it, like fences or a garage roof.</li>
+      <li>Remove selected branches in small, controlled cuts, spreading the work evenly around the crown instead of stripping one side.</li>
+      <li>Step back and check the canopy shape after every few cuts, not just at the end.</li>
+      <li>Clean up every stick, chip, and leaf before we leave.</li>
+    </ol>
+    <p>That last step matters more than people think. We've pulled up to Denver homes near mature elm and ash canopies where a previous crew left brush piled against the fence line for weeks. That's not how we operate. Every job site gets left cleaner than we found it.</p>
+    <p>And no, we don't rush this. Thinning done fast is thinning done wrong. We've seen the lopsided regrowth that follows a sloppy job more times than we'd like. A careful visit usually takes a few hours depending on the tree's size, but the time's worth it. You get a tree that still looks like a tree, just healthier and letting more light through.</p>
+  </ContentSection>
+
+  <ContentSection
+    id="timing-crown-thinning-ahead-of-denvers-spring-snow-season"
+    heading="Timing Crown Thinning Ahead of Denver's Spring Snow Season"
+    image={{ src: "/assets/crown-thinning-before-snow-season-denver.webp", alt: "Tree crew thinning a canopy before Denver's snow season", title: "crown-thinning-before-snow-season-denver", align: "left" }}
+  >
+    <p>Denver gets some of its heaviest snow in March and April, not January. Front Range old-timers call it "Miracle March" for a reason. These late-season storms dump wet, heavy snow that clings to branches instead of the light powder you'd get in December. A crown packed with dense growth catches that snow like a net. Thin it out first, and the snow falls through instead of piling up on weak limbs.</p>
+    <p>We schedule most crown thinning jobs in late winter, before the trees break dormancy and before those heavy spring storms roll in. This timing matters more here than in a lot of other places. Denver's swing from warm dry days to sudden snow dumps puts real stress on trees that are already carrying too much weight in their canopy. Thin branches out in February, and the tree heads into spring lighter and better able to shed snow load instead of snapping under it.</p>
+    <p>Not every tree needs this on the same schedule, though. Fast growers like silver maple and cottonwood build up dense growth fast and benefit from thinning almost every year. Slower growers might only need it every few years. More often than not, when we get called out after a March snowstorm for storm damage cleanup, the tree that failed had a crown that hadn't been thinned in years.</p>
+    <p>So what's the real window? Late winter, once the coldest stretch has passed but before buds start swelling. Wait too long into spring, and you're cutting into active growth, which stresses the tree more than it should. Wait too long overall, and you're rolling the dice on the next heavy snow.</p>
+  </ContentSection>
+
+  <!-- FAQ -->
+  <FaqAccordion faqs={faqs} subheading="Common questions about crown thinning in Denver" />
+
+  <!-- RELATED (arborist cluster: siblings + hub) -->
+  <RelatedArboristServices currentSlug="/crown-thinning-denver-co/" />
+
+  <!-- BOTTOM CTA -->
+  <section class="py-16 md:py-24">
+    <div class="container">
+      <div class="mx-auto max-w-2xl rounded-xl border-2 border-accent/30 bg-card p-8 text-center md:p-12">
+        <h2 class="text-2xl font-bold md:text-3xl">Ready to Get Started?</h2>
+        <p class="mt-4 leading-relaxed text-muted-foreground">
+          Call <a href={business.phoneTel} class="font-semibold text-primary hover:underline">{business.phone}</a> now for a free estimate. We answer immediately, any time of day.
+        </p>
+        <div class="mt-8">
+          <a
+            href={business.phoneTel}
+            class="inline-flex items-center justify-center gap-2 rounded-md bg-accent px-8 py-4 text-base font-bold text-accent-foreground shadow-lg transition-colors hover:bg-accent/90"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            Call {business.phone}
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

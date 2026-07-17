@@ -29,6 +29,8 @@ export const SCHEDULED_PAGES: Record<string, string> = {
   // "/example-future-page": "2026-08-15",
   "/fallen-tree-removal-denver-co/": "2026-07-12",
   "/ash-tree-removal-denver-co/": "2026-07-13",
+  "/crown-thinning-denver-co/": "2026-07-17",
+  "/tree-health-maintenance-denver-co/": "2026-07-18",
 };
 
 /** Normalize to the site's canonical trailing-slash form. */
