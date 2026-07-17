@@ -872,6 +872,26 @@ export const childServicesData: Record<string, ChildServiceData> = {
           after: " page for install timing, packages, and takedown.",
         },
       },
+      {
+        heading: "Brush Removal",
+        paragraphs: [
+          "Storm season is when the brush piles up fast. Heavy spring snow in March and April snaps limbs off Denver's cottonwoods and elms, and you wake up to a yard full of broken branches across the driveway.",
+          "Brush removal is a different job than tree removal. It's the low, tangled stuff: scrub oak, buckthorn, dead saplings, and years of overgrowth along a fence line. If it can be cut by hand or with a small chainsaw, that's brush. We clear it, chip or haul it, and rake the area clean before we leave.",
+          "Around Ruby Hill and the Bear Creek greenbelt, we clear a lot of volunteer saplings and scrub that creep in along drainage ditches and property lines. Denver's dry late summers turn that overgrowth into fuel, so getting it out matters.",
+          "Not every pile needs a crew. A few bags of trimmings can go to the county drop-off. But thick, tangled overgrowth or storm-blown limbs are worth handing off, and we sort out which is which for free during the estimate.",
+        ],
+        image: {
+          src: "/assets/landscaper-brush-removal.webp",
+          alt: "Brush removal service in Denver, Colorado",
+          align: "right",
+        },
+        link: {
+          before: "See our dedicated ",
+          anchor: "brush removal",
+          href: "/brush-removal-denver-co/",
+          after: " page for storm cleanup, scrub oak, and overgrowth clearing.",
+        },
+      },
     ],
     faqs: [
       { q: "How do I know if I need tree removal or just trimming?", a: "If the tree has dead branches in the upper crown, trunk cracks, or fungal growth at the base, removal is likely the right call. Trimming works when the tree is structurally sound but overgrown or unbalanced. A quick on-site look tells us which direction to go. We never recommend removal unless the tree is genuinely past saving." },
