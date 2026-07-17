@@ -100,9 +100,13 @@ const year = new Date().getFullYear();
   </div>
 
   <div class="border-t border-primary-foreground/20">
-    <div class="container flex flex-col items-center justify-between gap-2 py-4 text-xs opacity-70 sm:flex-row">
-      <p>&copy; {year} {business.name}. All rights reserved.</p>
-      <div class="flex gap-4">
+    <div class="container flex flex-col items-center justify-between gap-2 py-4 text-xs sm:flex-row">
+      <p class="opacity-70">&copy; {year} {business.name}. All rights reserved.</p>
+      <p>
+        Built by{" "}
+        <a href="https://kailenflow.com/" target="_blank" rel="noopener" class="font-semibold text-accent hover:underline">KailenFlow</a>
+      </p>
+      <div class="flex gap-4 opacity-70">
         <a href="/privacy-policy/" class="hover:underline">Privacy Policy</a>
         <a href="/terms-of-service/" class="hover:underline">Terms of Service</a>
         <a href="/sitemap/" class="hover:underline">Sitemap</a>
