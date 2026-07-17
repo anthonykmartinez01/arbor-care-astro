@@ -7,6 +7,7 @@ import CtaBanner from "../components/sections/CtaBanner.astro";
 import ContentSection from "../components/sections/ContentSection.astro";
 import FaqAccordion from "../components/sections/FaqAccordion.astro";
 import { business } from "../data/business";
+import { isScheduledFuture } from "../lib/schedule";
 
 const serviceDescription =
   "Arbor Care Tree Solutions provides full-service arborist care across Denver, including tree trimming, crown reduction, disease diagnosis, and storm damage assessment for residential properties from Washington Park to surrounding neighborhoods.";
@@ -187,6 +188,9 @@ const toc = [...contentToc, ...faqs.map((f, i) => ({ label: f.q, href: `#faq-${i
       <li>Watering schedules built around our low humidity</li>
     </ul>
     <p>I've walked properties in Washington Park where a single maple was struggling for three straight seasons, and it wasn't disease. It was compacted soil choking the roots. A maintenance plan caught it before we lost the tree.</p>
+    {!isScheduledFuture("/tree-health-maintenance-denver-co/") && (
+      <p>See our dedicated <a href="/tree-health-maintenance-denver-co/">tree health maintenance page</a> for how we spot drought stress, pests, and early decline before it spreads.</p>
+    )}
   </ContentSection>
 
   <ContentSection
@@ -223,6 +227,9 @@ const toc = [...contentToc, ...faqs.map((f, i) => ({ label: f.q, href: `#faq-${i
       <li>Interior deadwood building up from lack of sunlight</li>
     </ul>
     <p>I've climbed enough Denver trees to know a poorly thinned crown does more harm than good. Over-thinning stresses the tree and invites sunscald on thin bark species. We remove branches in a pattern that keeps the tree balanced, not stripped. This work takes an eye trained on how each species responds, not just a saw and a ladder.</p>
+    {!isScheduledFuture("/crown-thinning-denver-co/") && (
+      <p>The dedicated <a href="/crown-thinning-denver-co/">crown thinning page</a> covers how we decide what to remove and why timing ahead of Denver's spring snow matters.</p>
+    )}
   </ContentSection>
 
   <CtaBanner heading="Ready when you are — get in touch today." note="Call now for a free estimate. Arbor Care Tree Solutions is ready to help." />
