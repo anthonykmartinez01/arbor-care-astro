@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../components/layout/BaseLayout.astro";
 import EstimateModalNative from "../components/ui/EstimateModalNative.astro";
+import RelatedLandscaperServices from "../components/sections/RelatedLandscaperServices.astro";
 import { business } from "../data/business";
 
 const offerings = [
@@ -106,6 +107,9 @@ const offerings = [
       </div>
     </div>
   </section>
+
+  <!-- RELATED (cluster: siblings + landscaper hub) -->
+  <RelatedLandscaperServices currentSlug="/holiday-lights-denver-co/" />
 
   <!-- CTA -->
   <section class="py-16 md:py-24 bg-muted">

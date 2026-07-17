@@ -147,8 +147,8 @@ export const childServicesData: Record<string, ChildServiceData> = {
 
   "/tree-planting-denver-co": {
     path: "/tree-planting-denver-co",
-    parentPath: "/arborist-service-denver-co",
-    parentTitle: "Arborist Services",
+    parentPath: "/landscaper-denver-co",
+    parentTitle: "Landscaping Services",
     titleTag: "Tree Planting Denver CO | Fast, Professional Service",
     metaDescription: "Professional tree planting in Denver, CO. Right species, right depth, right soil prep. ISA-certified arborists. Free estimates. Call (303) 949-6818.",
     h1: "Tree Planting in Denver, CO",
@@ -189,7 +189,7 @@ export const childServicesData: Record<string, ChildServiceData> = {
     finalCta: {
       headline: "Ready to Plant a Tree That Will Actually Thrive?",
       body: "Call us for a free estimate. We'll help you pick the right species and make sure it goes in correctly.",
-      parentLinkText: "Learn more about our full arborist services in Denver.",
+      parentLinkText: "See all our Denver landscaping services.",
     },
     schema: { "@context": "https://schema.org", "@type": "Service", serviceType: "Tree Planting", name: "Tree Planting Denver CO", provider: { "@type": "LocalBusiness", name: "Arbor Care Tree Solutions", telephone: "(303) 949-6818", address: { "@type": "PostalAddress", streetAddress: "1130 S Santa Fe Dr", addressLocality: "Denver", addressRegion: "CO", postalCode: "80223" } }, areaServed: { "@type": "City", name: "Denver" } },
   },
@@ -294,8 +294,8 @@ export const childServicesData: Record<string, ChildServiceData> = {
 
   "/bush-shrub-trimming-denver-co": {
     path: "/bush-shrub-trimming-denver-co",
-    parentPath: "/tree-trimming",
-    parentTitle: "Tree Trimming & Pruning",
+    parentPath: "/landscaper-denver-co",
+    parentTitle: "Landscaping Services",
     titleTag: "Bush & Shrub Trimming Denver CO | Fast, Professional Service",
     metaDescription: "Bush and shrub trimming in Denver, CO. Proper technique for healthy regrowth. Free estimates, no trip charge. Call (303) 949-6818.",
     h1: "Bush & Shrub Trimming in Denver, CO",
@@ -336,7 +336,7 @@ export const childServicesData: Record<string, ChildServiceData> = {
     finalCta: {
       headline: "Shrubs Getting Out of Hand?",
       body: "Call us for a free estimate. We'll get them shaped up properly and leave your property looking clean.",
-      parentLinkText: "See our full tree trimming and pruning services in Denver.",
+      parentLinkText: "See all our Denver landscaping services.",
     },
     schema: { "@context": "https://schema.org", "@type": "Service", serviceType: "Bush and Shrub Trimming", name: "Bush & Shrub Trimming Denver CO", provider: { "@type": "LocalBusiness", name: "Arbor Care Tree Solutions", telephone: "(303) 949-6818", address: { "@type": "PostalAddress", streetAddress: "1130 S Santa Fe Dr", addressLocality: "Denver", addressRegion: "CO", postalCode: "80223" } }, areaServed: { "@type": "City", name: "Denver" } },
   },

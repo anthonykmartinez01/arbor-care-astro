@@ -1,0 +1,230 @@
+---
+import BaseLayout from "../components/layout/BaseLayout.astro";
+import ServiceSchema from "../components/schema/ServiceSchema.astro";
+import FAQSchema from "../components/schema/FAQSchema.astro";
+import PageContents from "../components/sections/PageContents.astro";
+import CtaBanner from "../components/sections/CtaBanner.astro";
+import ContentSection from "../components/sections/ContentSection.astro";
+import FaqAccordion from "../components/sections/FaqAccordion.astro";
+import RelatedLandscaperServices from "../components/sections/RelatedLandscaperServices.astro";
+import { business } from "../data/business";
+
+const serviceDescription =
+  "Arbor Care Tree Solutions clears storm-damaged brush, scrub oak, and tangled undergrowth across Denver, prioritizing rush cleanup calls during the heavy March and April snow-load season when cottonwoods and elms shed the most debris.";
+
+const faqs = [
+  {
+    q: "How fast can you get to my property after a storm?",
+    a: "We schedule storm cleanup calls as priority jobs, especially during Denver's busy March and April stretch. Spring snow loads snap branches off cottonwoods and elms fast, so we know timing matters. Call as soon as you spot the damage. Wet brush left sitting through a rainy week turns moldy and draws pests, so getting on the schedule early saves you a bigger mess later.",
+  },
+  {
+    q: "What should I expect when your crew arrives?",
+    a: "We walk your property first and tell you what the job takes before we touch a branch. Our crew flags anything tricky, like poison ivy mixed into a brush pile or a slope that changes how we haul debris out. We clear in sections from the edges in, chip or load as we go, then rake the area clean before we leave. No pile sits around for days.",
+  },
+  {
+    q: "How do I know if it's brush removal or tree removal?",
+    a: "Size is the tip-off. If you can cut it with hand tools or a small chainsaw and drag it yourself, that's brush. If it needs a bucket truck or rigging ropes, that's a standing tree job. Around Ruby Hill and the Bear Creek greenbelt, we see a lot of scrub oak and volunteer saplings that fall into the brush category. Not sure which one you've got? We'll tell you straight during your estimate.",
+  },
+  {
+    q: "Why does Denver get so busy with brush removal in spring?",
+    a: "Heavy, wet spring snow lands on branches already weakened by a dry winter, and something gives. Older neighborhoods with mature elms and cottonwoods see this pile up worse than newer developments with younger trees. A single overnight storm can drop whole sections of canopy across your yard or driveway, which is why our phones ring hardest in March and April.",
+  },
+  {
+    q: "Can I just haul the brush to the dump myself?",
+    a: "For a small pile of shrub trimmings, yes, Denver's yard debris drop-off is your cheapest option. Brush removal crews make sense for thicker jobs, tangled buckthorn, dead root balls, storm-blown limbs, or years of undergrowth along a fence line. If it fits in a few trash bags, save your money and skip the call.",
+  },
+  {
+    q: "What if the brush pile is hiding a bigger problem?",
+    a: "Clearing the brush won't fix what's underneath it, like a leaning dead tree or an ash showing dieback. If you spot a hazardous limb or a tree that looks unstable near the pile, start with a tree risk assessment first. That way you know what you're dealing with before anyone touches the debris.",
+  },
+];
+
+const contentToc = [
+  { label: "Brush Removal vs. Tree Removal: Know the Difference", href: "#brush-removal-vs-tree-removal-know-the-difference" },
+  { label: "Spring Storms Bring Denver's Busiest Brush Season", href: "#spring-storms-bring-denvers-busiest-brush-season" },
+  { label: "When Brush Removal Isn't the Right Call", href: "#when-brush-removal-isnt-the-right-call" },
+  { label: "What to Expect During a Brush Removal Visit", href: "#what-to-expect-during-a-brush-removal-visit" },
+  { label: "How Brush Removal Pricing Works", href: "#how-brush-removal-pricing-works" },
+];
+const toc = [...contentToc, ...faqs.map((f, i) => ({ label: f.q, href: `#faq-${i}` }))];
+---
+
+<BaseLayout
+  title="Brush Removal Denver CO | Arbor Care Tree Solutions"
+  description="Brush removal in Denver, CO. Storm cleanup, scrub oak clearing, and overgrowth hauling by licensed, insured crews. Free estimates. Call (303) 949-6818."
+  preloadImage="/assets/brush-removal-scrub-oak-clearing-denver-backyard.webp"
+  preloadImageMobile="/assets/brush-removal-scrub-oak-clearing-denver-backyard-mobile.webp"
+>
+  <ServiceSchema slot="head" name="Brush Removal" description={serviceDescription} url="/brush-removal-denver-co/" />
+  <FAQSchema slot="head" faqs={faqs} />
+
+  <!-- HERO -->
+  <section class="relative flex min-h-[500px] items-center overflow-hidden md:min-h-[60vh]">
+    <picture>
+      <source media="(max-width: 767px)" srcset="/assets/brush-removal-scrub-oak-clearing-denver-backyard-mobile.webp" width="800" height="800" />
+      <img
+        src="/assets/brush-removal-scrub-oak-clearing-denver-backyard.webp"
+        alt="Arbor Care Tree Solutions crew clearing brush and scrub oak from a Denver, CO backyard"
+        class="absolute inset-0 h-full w-full object-cover"
+        width="1024"
+        height="1024"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+      />
+    </picture>
+    <div class="absolute inset-0 bg-black/60"></div>
+    <div class="container relative z-10 py-20 pb-28 text-center md:py-28">
+      <div class="mx-auto max-w-3xl">
+        <h1 class="text-3xl font-bold leading-tight text-white md:text-5xl">
+          Brush Removal in Denver
+          <span class="mt-2 block text-xl text-accent md:text-2xl">Storm Cleanup, Scrub Oak & Overgrowth Clearing</span>
+        </h1>
+        <p class="mx-auto mt-4 text-lg text-white/80">
+          Licensed, fully insured, and serving all of Denver and the surrounding areas.
+        </p>
+        <div class="mt-8">
+          <a
+            href={business.phoneTel}
+            class="inline-flex items-center justify-center gap-2 rounded-md bg-accent px-8 py-4 text-base font-bold text-accent-foreground shadow-lg transition-colors hover:bg-accent/90"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            Call Now {business.phone}
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="absolute bottom-0 left-0 right-0 bg-primary/95 backdrop-blur-sm">
+      <div class="container flex flex-wrap items-center justify-center gap-x-8 gap-y-2 py-3 text-sm text-primary-foreground">
+        <span class="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg>
+          <span class="font-medium">Licensed & Fully Insured</span>
+        </span>
+        <span class="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
+          <span class="font-medium">ISA-Certified Arborists</span>
+        </span>
+        <span class="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          <span class="font-medium">Serves All of Denver</span>
+        </span>
+        <span class="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <span class="font-medium">Available 24/7</span>
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <!-- TABLE OF CONTENTS -->
+  <PageContents items={toc} />
+
+  <CtaBanner heading="Need Brush Removal?" />
+
+  <!-- CONTENT SECTIONS -->
+  <ContentSection
+    id="brush-removal-vs-tree-removal-know-the-difference"
+    heading="Brush Removal vs. Tree Removal: Know the Difference"
+    image={{ src: "/assets/brush-removal-loppers-buckthorn-cutting-denver.webp", alt: "Gloved hands cutting buckthorn stem during brush removal job", title: "brush-removal-loppers-buckthorn-cutting-denver", align: "left" }}
+  >
+    <p>Here's where a lot of homeowners get confused. Brush removal and tree removal sound like they belong on the same job ticket, but they're two different jobs with two different price structures and two different crews showing up with different gear. Brush removal is about clearing the low stuff, scrub oak, buckthorn, wild honeysuckle, dead saplings, tangled vines, and the piles of cut branches that build up along a fence line. Tree removal is cutting down a standing tree, trunk and all, often with a crane or rigging involved.</p>
+    <p>We get calls all the time from folks who think they need a full tree removal quote when what they've really got is an overgrown thicket that just needs clearing. And we get the opposite too, someone thinks a few loppers will handle what's a leaning, hazardous tree that needs a trained eye. Nine times out of ten, the tip-off is size. If you can cut it with hand tools or a small chainsaw and drag it to the curb yourself, that's brush. If it needs a bucket truck or rigging ropes, that's tree work.</p>
+    <p>Around Ruby Hill and the Bear Creek greenbelt areas, we clear a lot of scrub oak and volunteer saplings that creep in along drainage ditches and property lines. Denver's dry stretches in late summer turn that brush into fuel fast.</p>
+    <p>Not sure which category your yard falls into? That's a fair question, and it's one we answer for free every time we come out for an estimate. Getting it right up front means you're not paying for equipment you don't need, or worse, tackling something too big for a weekend project.</p>
+  </ContentSection>
+
+  <ContentSection
+    id="spring-storms-bring-denvers-busiest-brush-season"
+    heading="Spring Storms Bring Denver's Busiest Brush Season"
+    alt={true}
+    image={{ src: "/assets/brush-removal-cleared-yard-after-denver.webp", alt: "Cleared Denver yard after brush removal service completed", title: "brush-removal-cleared-yard-after-denver", align: "right" }}
+  >
+    <p>March and April are when our phone rings the most. Denver sits right where heavy, wet spring snow meets brittle winter-dry branches, and something has to give. Cottonwoods and elms all over the metro area lose limbs during these late-season storms, sometimes whole sections of canopy come down overnight. You wake up, step outside, and there's a pile of broken branches across your yard or driveway. That's brush removal season, and it hits fast.</p>
+    <p>Here's the thing most homeowners don't realize until it happens to them: a heavy spring snow load does more damage than a summer windstorm. The snow is wet, it's dense, and it clings to branches that already took a beating over winter. Add a gust of wind on top of that snow load, and you get exactly the kind of storm debris we clean up constantly this time of year. Neighborhoods with mature tree cover, older properties with decades-old elms and cottonwoods, see this pile up worse than newer developments with younger, smaller trees.</p>
+    <p>So what do you do with a yard full of broken limbs and brush after a storm rolls through?</p>
+    <p>You could stack it yourself and haul it to the dump over a few weekends. Some folks do exactly that. But if you've got a full yard of tangled branches, wet brush is heavy, awkward, and not worth the strain on your back or your truck's suspension.</p>
+    <p>This is where timing matters more than people think. Brush left sitting through a wet spring turns into a mess of mold and rot fast, and it becomes a hiding spot for pests before you know it. Clear it early, and you avoid that whole mess.</p>
+  </ContentSection>
+
+  <ContentSection
+    id="when-brush-removal-isnt-the-right-call"
+    heading="When Brush Removal Isn't the Right Call"
+    image={{ src: "/assets/brush-removal-homeowner-storm-damage-view-denver.webp", alt: "Homeowner viewing overgrown brush through kitchen window Denver", title: "brush-removal-homeowner-storm-damage-view-denver", align: "left" }}
+  >
+    <p>Not every pile of branches and overgrowth needs a crew. Let's be honest about that.</p>
+    <p>If you've got a small pile of trimmings from cutting back a few shrubs, a truck run to the county drop-off or your regular yard waste pickup will handle it. Denver's yard debris programs exist for a reason, and for a wheelbarrow's worth of clippings, that's your cheapest, fastest option. We'd rather tell you that upfront than send someone out for a job that doesn't need us.</p>
+    <p>Same goes for seasonal leaf cleanup or grass clippings. That's yard waste, not brush removal. Brush removal is for the heavier stuff, thick tangles of buckthorn, dead shrub root balls, blown-down limbs after a windstorm, or years of accumulated undergrowth along a fence line that's <a href="https://tallahasseefpd.colorado.gov/sites/tallahasseefpd/files/documents/CO%20State%20Forest%20Service%20-%20Protecting%20Your%20Home-Defensible%20Zones.pdf" target="_blank" rel="noopener">turned into a fire hazard</a>. If you're just tidying up after a weekend of pruning, save your money.</p>
+    <p>There's another case worth mentioning. If the brush pile is hiding a bigger problem, a leaning dead tree, a hazardous limb over the garage, or an ash tree showing dieback, clearing the brush first won't fix what's underneath it. In that situation you're better off starting with a tree risk assessment so you know what you're dealing with before anyone touches the debris.</p>
+    <p>And if it's on a neighbor's property line? That's a conversation for the two of you, not a job for us to referee.</p>
+    <p>So ask yourself: can this fit in a few trash bags, or does it need a crew and a truck? If it's the bags, you're covered on your own.</p>
+  </ContentSection>
+
+  <CtaBanner
+    heading="Proudly serving Denver — reach out anytime."
+    note="Call now for a free estimate. Arbor Care Tree Solutions is ready to help."
+  />
+
+  <ContentSection
+    id="what-to-expect-during-a-brush-removal-visit"
+    heading="What to Expect During a Brush Removal Visit"
+    alt={true}
+    image={{ src: "/assets/brush-removal-crew-estimate-driveway-denver.webp", alt: "Crew reviewing estimate during brush removal visit in Denver", title: "brush-removal-crew-estimate-driveway-denver", align: "right" }}
+  >
+    <p>Here's how it goes. We show up, we look at the pile or the overgrowth, and we tell you straight what it'll take to clear it. No guessing games.</p>
+    <p>Most brush removal jobs in Denver fall into two camps: storm cleanup after a spring hailstorm knocks branches down, or seasonal clearing where scrub oak and dead undergrowth has taken over a fence line. Either way, the process looks about the same once we're on site.</p>
+    <ol>
+      <li>We walk the property first and flag anything that needs a closer look, like poison ivy mixed into the brush or a slope that changes how we haul debris out.</li>
+      <li>We cut and clear in sections, working from the edges in so nothing gets left half done.</li>
+      <li>We chip or load everything as we go. Piles don't sit around for days.</li>
+      <li>We rake and blow the area clean before we leave.</li>
+    </ol>
+    <p>Nine times out of ten, the brush is thicker than it looks from the street. That's just how it works with Denver's mix of native scrub and volunteer trees that seed in along fence lines and drainage areas. You might think it's a quick trim, we get out there and it's three trucks worth.</p>
+    <p>Bring us any specifics before we start. Got a sprinkler line buried near the brush? Say so. Worried about a spot where the dog digs? Point it out. We'd rather know upfront than find it the hard way with a chainsaw.</p>
+    <p>And once we're done, the site looks like nobody was ever there, except for the space where the brush used to be.</p>
+  </ContentSection>
+
+  <ContentSection
+    id="how-brush-removal-pricing-works"
+    heading="How Brush Removal Pricing Works"
+    image={{ src: "/assets/brush-removal-vs-tree-removal-debris-denver.webp", alt: "Chainsaw beside tree limbs and brush piles showing job difference", title: "brush-removal-vs-tree-removal-debris-denver", align: "left" }}
+  >
+    <p>Brush removal pricing isn't one-size-fits-all, and any company that quotes you a number over the phone without seeing your yard is guessing. Every job comes down to volume, access, and what's in that pile. A truck-sized load of trimmed branches costs less to clear than the same volume of thorny, tangled overgrowth that's been sitting for two seasons.</p>
+    <p>Most companies in this trade price brush removal one of two ways: by volume (think cubic yards or truckloads) or by time and crew size for bigger jobs. Volume-based pricing tends to work better for smaller residential piles. Time-based pricing usually applies when there's chainsaw work involved, or when the brush is mixed with fallen limbs and stump debris.</p>
+    <p>A few things push the cost up. Steep slopes. Fencing that blocks equipment. Brush piled against a house or garage where we have to hand-carry it out instead of running it straight to a chipper. And access matters more than most homeowners expect - older Denver neighborhoods with narrow alleys can slow down hauling equipment, which adds labor time even if the pile itself isn't huge.</p>
+    <p>A few things bring it down. Brush that's already cut to manageable lengths. Clear access from the street. No fencing or gates to navigate. Piles kept away from structures and away from anything we'd need to hand-clear first.</p>
+    <p>Here's what we'd ask before hiring anyone for this kind of work:</p>
+    <ul>
+      <li>Is the estimate based on volume or time, and what happens if the job runs long?</li>
+      <li>Does the price include hauling and disposal, or is that separate?</li>
+      <li>Will they give you a firm number after seeing the site, not just a phone guess?</li>
+    </ul>
+    <p>We give free in-person estimates with no trip charge, because a real number only comes from a real look at the pile.</p>
+  </ContentSection>
+
+  <!-- FAQ -->
+  <FaqAccordion faqs={faqs} subheading="Common questions about brush removal in Denver" />
+
+  <!-- RELATED (cluster: siblings + landscaper hub) -->
+  <RelatedLandscaperServices currentSlug="/brush-removal-denver-co/" />
+
+  <!-- BOTTOM CTA -->
+  <section class="py-16 md:py-24">
+    <div class="container">
+      <div class="mx-auto max-w-2xl rounded-xl border-2 border-accent/30 bg-card p-8 text-center md:p-12">
+        <h2 class="text-2xl font-bold md:text-3xl">Ready to Get Started?</h2>
+        <p class="mt-4 leading-relaxed text-muted-foreground">
+          Call <a href={business.phoneTel} class="font-semibold text-primary hover:underline">{business.phone}</a> now for a free estimate. We answer immediately, any time of day.
+        </p>
+        <div class="mt-8">
+          <a
+            href={business.phoneTel}
+            class="inline-flex items-center justify-center gap-2 rounded-md bg-accent px-8 py-4 text-base font-bold text-accent-foreground shadow-lg transition-colors hover:bg-accent/90"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            Call {business.phone}
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
