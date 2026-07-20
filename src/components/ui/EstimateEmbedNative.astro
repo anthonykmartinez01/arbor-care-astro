@@ -19,31 +19,10 @@ const iframeId = "inline-XjWxHG1n0SQeIqxhg944";
   data-layout-iframe-id={iframeId}
   data-form-id="XjWxHG1n0SQeIqxhg944"
   title="Free Estimate Form"
-  loading="lazy"
+  loading="eager"
+  fetchpriority="high"
 ></iframe>
 
-<script define:vars={{ estimateScript: business.estimateScript, iframeId }}>
-  function loadFormEmbed() {
-    if (document.querySelector(`script[src="${estimateScript}"]`)) return;
-    const s = document.createElement("script");
-    s.src = estimateScript;
-    s.async = true;
-    document.body.appendChild(s);
-  }
-
-  const iframeEl = document.getElementById(iframeId);
-  if ("IntersectionObserver" in window && iframeEl) {
-    const io = new IntersectionObserver(
-      (entries) => {
-        if (entries.some((e) => e.isIntersecting)) {
-          loadFormEmbed();
-          io.disconnect();
-        }
-      },
-      { rootMargin: "300px" }
-    );
-    io.observe(iframeEl);
-  } else {
-    loadFormEmbed();
-  }
-</script>
+<!-- Loaded eagerly, not deferred — the lead form must be ready as fast as
+     possible, ahead of any PageSpeed/TBT consideration. -->
+<script src={business.estimateScript} async fetchpriority="high"></script>
