@@ -1,11 +1,12 @@
 ---
 import { business } from "../../data/business";
+const iframeId = "inline-XjWxHG1n0SQeIqxhg944";
 ---
 
 <iframe
   src={business.estimateForm}
   style="width: 100%; border: none; overflow: hidden; min-height: 600px;"
-  id="inline-XjWxHG1n0SQeIqxhg944"
+  id={iframeId}
   data-layout="{'id':'INLINE'}"
   data-trigger-type="alwaysShow"
   data-trigger-value=""
@@ -15,17 +16,34 @@ import { business } from "../../data/business";
   data-deactivation-value=""
   data-form-name="Free Estimate"
   data-height="600"
-  data-layout-iframe-id="inline-XjWxHG1n0SQeIqxhg944"
+  data-layout-iframe-id={iframeId}
   data-form-id="XjWxHG1n0SQeIqxhg944"
   title="Free Estimate Form"
   loading="lazy"
 ></iframe>
 
-<script>
-  if (!document.querySelector('script[src="https://go.kailenflow.com/js/form_embed.js"]')) {
-    const s = document.createElement('script');
-    s.src = 'https://go.kailenflow.com/js/form_embed.js';
+<script define:vars={{ estimateScript: business.estimateScript, iframeId }}>
+  function loadFormEmbed() {
+    if (document.querySelector(`script[src="${estimateScript}"]`)) return;
+    const s = document.createElement("script");
+    s.src = estimateScript;
     s.async = true;
     document.body.appendChild(s);
+  }
+
+  const iframeEl = document.getElementById(iframeId);
+  if ("IntersectionObserver" in window && iframeEl) {
+    const io = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((e) => e.isIntersecting)) {
+          loadFormEmbed();
+          io.disconnect();
+        }
+      },
+      { rootMargin: "300px" }
+    );
+    io.observe(iframeEl);
+  } else {
+    loadFormEmbed();
   }
 </script>

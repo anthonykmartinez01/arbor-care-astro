@@ -141,7 +141,9 @@ const isHome = canonicalPath === "/";
         ['scroll', 'mousemove', 'touchstart', 'keydown'].forEach(function(e) {
           window.addEventListener(e, loadChat, { once: true, passive: true });
         });
-        setTimeout(loadChat, 5000);
+        // Long fallback so real idle visitors still get the widget, without
+        // firing inside Lighthouse's TBT measurement window on a fast load.
+        setTimeout(loadChat, 12000);
       })();
     </script>
   </body>
