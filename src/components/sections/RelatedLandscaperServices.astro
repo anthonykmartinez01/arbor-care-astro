@@ -5,9 +5,11 @@ interface Props {
   /** Slug of the current page — excluded from the sibling list. */
   currentSlug: string;
   heading?: string;
+  /** Hide the trailing hub link when this renders on the hub page itself. */
+  showHubLink?: boolean;
 }
 
-const { currentSlug, heading = "Related Landscaping Services" } = Astro.props;
+const { currentSlug, heading = "Related Landscaping Services", showHubLink = true } = Astro.props;
 
 const links = landscaperServices.filter((s) => s.slug !== currentSlug);
 ---
@@ -34,7 +36,7 @@ const links = landscaperServices.filter((s) => s.slug !== currentSlug);
         </a>
       ))}
     </div>
-    <div class="mt-10 text-center">
+    {showHubLink && (<div class="mt-10 text-center">
       <a
         href={LANDSCAPER_HUB}
         class="inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:underline"
@@ -43,5 +45,6 @@ const links = landscaperServices.filter((s) => s.slug !== currentSlug);
         See all our landscaping services
       </a>
     </div>
+    )}
   </div>
 </section>

@@ -91,7 +91,7 @@ export const childServicesData: Record<string, ChildServiceData> = {
     finalCta: {
       headline: "Think Your Tree Needs Treatment?",
       body: "Don't wait for the problem to get worse. Call us for a free assessment — we'll tell you what's happening and what it will take to fix it.",
-      parentLinkText: "Learn more about our full arborist services in Denver.",
+      parentLinkText: "See our full arborist services in Denver.",
     },
     schema: { "@context": "https://schema.org", "@type": "Service", serviceType: "Tree Treatment", name: "Tree Treatment Denver CO", provider: { "@type": "LocalBusiness", name: "Arbor Care Tree Solutions", telephone: "(303) 949-6818", address: { "@type": "PostalAddress", streetAddress: "1130 S Santa Fe Dr", addressLocality: "Denver", addressRegion: "CO", postalCode: "80223" } }, areaServed: { "@type": "City", name: "Denver" } },
   },
@@ -639,7 +639,7 @@ export const childServicesData: Record<string, ChildServiceData> = {
   "/brush-chipping-denver-co": {
     path: "/brush-chipping-denver-co",
     parentPath: "/",
-    parentTitle: "Home",
+    parentTitle: "Denver Tree Service",
     titleTag: "Brush Chipping Denver CO | Fast, Professional Service",
     metaDescription: "Brush chipping in Denver, CO. On-site chipping of branches and brush into mulch. Fast cleanup, free estimates. Call (303) 949-6818.",
     h1: "Brush Chipping in Denver, CO",
@@ -688,7 +688,7 @@ export const childServicesData: Record<string, ChildServiceData> = {
   "/land-clearing-denver-co": {
     path: "/land-clearing-denver-co",
     parentPath: "/",
-    parentTitle: "Home",
+    parentTitle: "Denver Tree Service",
     titleTag: "Land Clearing Denver CO | Fast, Professional Service",
     metaDescription: "Land clearing in Denver, CO. Trees, brush & stumps cleared for construction, landscaping, or fire mitigation. Free estimates. Call (303) 949-6818.",
     h1: "Land Clearing in Denver, CO",
@@ -737,7 +737,7 @@ export const childServicesData: Record<string, ChildServiceData> = {
   "/debris-removal-service-denver-co": {
     path: "/debris-removal-service-denver-co",
     parentPath: "/",
-    parentTitle: "Home",
+    parentTitle: "Denver Tree Service",
     titleTag: "Debris Removal Service Denver CO | Arbor Care Tree Solutions",
     metaDescription: "Tree debris removal in Denver, CO. Storm cleanup, post-tree-work hauling, complete site cleanup by ISA-certified arborists. Free estimates. Call (303) 949-6818.",
     h1: "Debris Removal Service in Denver, CO",
@@ -787,7 +787,7 @@ export const childServicesData: Record<string, ChildServiceData> = {
   "/landscaper-denver-co": {
     path: "/landscaper-denver-co",
     parentPath: "/",
-    parentTitle: "Home",
+    parentTitle: "Denver Tree Service",
     titleTag: "Landscaper Denver CO | Tree Care & Landscape Services",
     metaDescription: "Arbor Care Tree Solutions provides landscaper services in Denver: tree removal, trimming, pruning, stump grinding, shrub trimming, and emergency tree removal. Call (303) 949-6818.",
     h1: "Landscaper in Denver, CO",

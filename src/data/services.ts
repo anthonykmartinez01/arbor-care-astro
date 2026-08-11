@@ -60,8 +60,8 @@ export const secondaryCategories: ServiceCategory[] = [
 ];
 
 export const generalServices: ServiceRoute[] = [
-  { title: "Brush Chipping", path: "/brush-chipping-denver-co", parentPath: "/", parentTitle: "Home" },
-  { title: "Land Clearing", path: "/land-clearing-denver-co", parentPath: "/", parentTitle: "Home" },
+  { title: "Brush Chipping", path: "/brush-chipping-denver-co", parentPath: "/", parentTitle: "Denver Tree Service" },
+  { title: "Land Clearing", path: "/land-clearing-denver-co", parentPath: "/", parentTitle: "Denver Tree Service" },
 ];
 
 export function getAllServiceRoutes(): ServiceRoute[] {

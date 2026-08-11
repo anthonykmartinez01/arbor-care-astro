@@ -6,6 +6,8 @@ import PageContents from "../components/sections/PageContents.astro";
 import CtaBanner from "../components/sections/CtaBanner.astro";
 import ContentSection from "../components/sections/ContentSection.astro";
 import FaqAccordion from "../components/sections/FaqAccordion.astro";
+import RelatedArboristServices from "../components/sections/RelatedArboristServices.astro";
+import { ARBORIST_HUB } from "../data/arboristServices";
 import { business } from "../data/business";
 import { isScheduledFuture } from "../lib/schedule";
 
@@ -254,6 +256,13 @@ const toc = [...contentToc, ...faqs.map((f, i) => ({ label: f.q, href: `#faq-${i
 
   <!-- FAQ -->
   <FaqAccordion faqs={faqs} subheading="Common questions about arborist service in Denver" />
+
+  <!-- SUB-SERVICE LINK GRID (same targets already linked in the body copy) -->
+  <RelatedArboristServices
+    currentSlug={ARBORIST_HUB}
+    heading="Our Arborist Services"
+    showHubLink={false}
+  />
 
   <!-- BOTTOM CTA -->
   <section class="py-16 md:py-24">

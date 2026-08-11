@@ -1,7 +1,17 @@
 ---
 import ChildServiceTemplate from "../components/sections/ChildServiceTemplate.astro";
+import RelatedLandscaperServices from "../components/sections/RelatedLandscaperServices.astro";
 import { childServicesData } from "../data/childServices";
+import { LANDSCAPER_HUB } from "../data/landscaperServices";
 const data = childServicesData["/landscaper-denver-co"];
 ---
 
-<ChildServiceTemplate data={data} />
+<ChildServiceTemplate data={data}>
+  <!-- Sub-service link grid — same targets already linked in the body copy. -->
+  <RelatedLandscaperServices
+    slot="related"
+    currentSlug={LANDSCAPER_HUB}
+    heading="Our Landscaping Services"
+    showHubLink={false}
+  />
+</ChildServiceTemplate>

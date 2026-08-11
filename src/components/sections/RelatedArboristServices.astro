@@ -6,9 +6,11 @@ interface Props {
   /** Slug of the current page — excluded from the sibling list. */
   currentSlug: string;
   heading?: string;
+  /** Hide the trailing hub link when this renders on the hub page itself. */
+  showHubLink?: boolean;
 }
 
-const { currentSlug, heading = "Related Arborist Services" } = Astro.props;
+const { currentSlug, heading = "Related Arborist Services", showHubLink = true } = Astro.props;
 
 // Link to every other service in the cluster, except any page whose publish
 // date hasn't arrived yet (those links appear automatically on go-live day
@@ -40,7 +42,7 @@ const links = arboristServices.filter(
         </a>
       ))}
     </div>
-    <div class="mt-10 text-center">
+    {showHubLink && (<div class="mt-10 text-center">
       <a
         href={ARBORIST_HUB}
         class="inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:underline"
@@ -49,5 +51,6 @@ const links = arboristServices.filter(
         See all our arborist services
       </a>
     </div>
+    )}
   </div>
 </section>

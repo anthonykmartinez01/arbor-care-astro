@@ -16,7 +16,9 @@ interface Props {
 }
 
 const { data, clusterSlug } = Astro.props;
-const homePath = data.parentPath === "/" ? "/tree-service-denver-co" : data.parentPath;
+// Link straight to "/" rather than the /tree-service-denver-co alias, which
+// only 301-redirects here — same destination, without the redirect hop.
+const homePath = data.parentPath;
 
 // Hero image with optional per-page override (falls back to the default
 // tree-service hero used everywhere else).
