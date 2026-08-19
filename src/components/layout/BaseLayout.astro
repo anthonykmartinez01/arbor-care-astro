@@ -2,6 +2,8 @@
 import { business } from "../../data/business";
 import Header from "./Header.astro";
 import Footer from "./Footer.astro";
+import OpenAiPixel from "../analytics/OpenAiPixel.astro";
+import OpenAiConversions from "../analytics/OpenAiConversions.astro";
 import OrganizationSchema from "../schema/OrganizationSchema.astro";
 import WebSiteSchema from "../schema/WebSiteSchema.astro";
 import BreadcrumbSchema from "../schema/BreadcrumbSchema.astro";
@@ -48,6 +50,10 @@ const isHome = canonicalPath === "/";
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- OpenAI Ads pixel — must run as early as possible in <head> -->
+    <OpenAiPixel />
+
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalUrl} />
@@ -110,6 +116,8 @@ const isHome = canonicalPath === "/";
     />
   </head>
   <body>
+    <OpenAiConversions />
+
     <Header />
     <main>
       <slot />

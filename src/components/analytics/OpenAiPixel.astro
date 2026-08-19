@@ -1,0 +1,22 @@
+---
+// OpenAI Ads (ChatGPT Ads) measurement pixel — sitewide base install.
+//
+// Loaded natively rather than through Partytown (a deliberate exception to the
+// Partytown rule in CLAUDE.md): OpenAI's docs require this to run as early as
+// possible in <head>, and routing a conversion pixel through a web worker risks
+// silently dropping attribution. Lead tracking accuracy wins over TBT here.
+// The SDK itself is fetched async, so it never blocks render.
+//
+// Docs: https://developers.openai.com/ads/measurement-pixel
+import { business } from "../../data/business";
+
+const { id, debug } = business.openAiPixel;
+
+// Emitted verbatim via set:html so the build never tree-shakes the oaiq()
+// bootstrap calls out of the bundle (same reasoning as the GA snippet).
+const snippet = `!function(w,d,s,u){if(w.oaiq)return;var q=function(){q.q.push(arguments)};q.q=[];w.oaiq=q;var j=d.createElement(s);j.async=1;j.src=u;var f=d.getElementsByTagName(s)[0];f.parentNode.insertBefore(j,f)}(window,document,"script","https://bzrcdn.openai.com/sdk/oaiq.min.js");
+oaiq("init",{pixelId:"${id}"${debug ? ",debug:true" : ""}});
+oaiq("measure","page_viewed",{type:"contents"});`;
+---
+
+<script is:inline set:html={snippet} />

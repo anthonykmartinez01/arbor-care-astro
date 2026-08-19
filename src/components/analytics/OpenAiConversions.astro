@@ -1,0 +1,81 @@
+---
+// OpenAI Ads conversion events for the site's real lead actions.
+//
+// The estimate/contact forms are cross-origin GoHighLevel iframes, so their
+// submission can't be observed from the DOM. A completed submission surfaces
+// two ways, and either may fire depending on how the form is configured:
+//   1. GHL redirects the visitor to /thank-you/
+//   2. GHL posts a "submitted" message up to the parent window
+// Both are handled, then collapsed into a single lead_created conversion so one
+// submission is never counted twice.
+//
+// Phone taps are sent as a separate custom "click_to_call" event rather than
+// lead_created — a tap is intent, not a confirmed lead, and keeping them apart
+// stops it from diluting form-lead quality in Ads Manager. Both can still be
+// marked as conversions there.
+---
+
+<script is:inline>
+  (function () {
+    // A single submission seen via both paths within this window = one lead.
+    var LEAD_DEDUPE_MS = 30000;
+
+    function eventId() {
+      try {
+        return crypto.randomUUID();
+      } catch (e) {
+        return "e-" + Date.now() + "-" + Math.random().toString(16).slice(2);
+      }
+    }
+
+    function measure(name, data, options) {
+      if (typeof window.oaiq !== "function") return;
+      window.oaiq("measure", name, data, options);
+    }
+
+    function fireLead() {
+      try {
+        var last = Number(sessionStorage.getItem("oaiq_lead_at") || 0);
+        if (Date.now() - last < LEAD_DEDUPE_MS) return;
+        sessionStorage.setItem("oaiq_lead_at", String(Date.now()));
+      } catch (e) {
+        // Private mode / storage blocked — still record the conversion.
+      }
+      measure("lead_created", { type: "customer_action" }, { event_id: eventId() });
+    }
+
+    // --- Path 1: the post-submission thank-you page ---------------------
+    if (location.pathname.replace(/\/+$/, "") === "/thank-you") fireLead();
+
+    // --- Path 2: GHL's cross-origin submit message ----------------------
+    var FORM_HOSTS = /(^|\.)(kailenflow\.com|leadconnectorhq\.com)$/;
+
+    window.addEventListener("message", function (e) {
+      var host;
+      try {
+        host = new URL(e.origin).hostname;
+      } catch (err) {
+        return;
+      }
+      if (!FORM_HOSTS.test(host)) return;
+
+      var d = e.data;
+      var signal = typeof d === "string" ? d : (d && (d.type || d.event || d.action)) || "";
+      if (typeof signal === "string" && /submit/i.test(signal)) fireLead();
+    });
+
+    // --- Click-to-call --------------------------------------------------
+    document.addEventListener(
+      "click",
+      function (e) {
+        var link = e.target && e.target.closest && e.target.closest('a[href^="tel:"]');
+        if (!link) return;
+        measure("custom", { type: "custom" }, {
+          custom_event_name: "click_to_call",
+          event_id: eventId(),
+        });
+      },
+      true
+    );
+  })();
+</script>
