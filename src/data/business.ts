@@ -55,10 +55,10 @@ export const business = {
   },
   analyticsId: "G-HSVRLLPLR8",
   // OpenAI Ads (ChatGPT Ads) measurement pixel — see components/analytics/.
-  // `debug` logs SDK activity to the console; turn it off once the install is
-  // verified in OpenAI Ads Manager.
+  // Install verified; `debug` is off so the SDK stops logging to the console.
+  // Flip it back to true if conversions ever need troubleshooting.
   openAiPixel: {
     id: "BrQpYxD13BT94xCUH3rbM8",
-    debug: true,
+    debug: false,
   },
 } as const;
