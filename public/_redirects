@@ -7,13 +7,27 @@
 #
 # Targets intentionally match netlify.toml exactly (no trailing slash) so
 # behaviour is identical to the Netlify deploy.
+#
+# Each source is listed twice. Netlify matches a rule with or without the
+# trailing slash; Cloudflare matches the exact path only. Without the "/"
+# variants, e.g. /about/ would serve Astro's meta-refresh stub page (200)
+# instead of the 301 that Netlify returns.
 
-/tree-service-denver-co           /                              301
-/services                         /tree-services                 301
-/about                            /about-arbor-care-index        301
-/contact                          /contact-us                    301
-/tree-trimming-pruning-denver-co  /tree-trimming                 301
-/tree-removal-denver-co           /tree-removal                  301
-/other-services                   /firewood-supplier-denver-co   301
-/new-index-2                      /free-estimates                301
-/new-page                         /holiday-lights-denver-co      301
+/tree-service-denver-co            /                              301
+/tree-service-denver-co/           /                              301
+/services                          /tree-services                 301
+/services/                         /tree-services                 301
+/about                             /about-arbor-care-index        301
+/about/                            /about-arbor-care-index        301
+/contact                           /contact-us                    301
+/contact/                          /contact-us                    301
+/tree-trimming-pruning-denver-co   /tree-trimming                 301
+/tree-trimming-pruning-denver-co/  /tree-trimming                 301
+/tree-removal-denver-co            /tree-removal                  301
+/tree-removal-denver-co/           /tree-removal                  301
+/other-services                    /firewood-supplier-denver-co   301
+/other-services/                   /firewood-supplier-denver-co   301
+/new-index-2                       /free-estimates                301
+/new-index-2/                      /free-estimates                301
+/new-page                          /holiday-lights-denver-co      301
+/new-page/                         /holiday-lights-denver-co      301
