@@ -7,8 +7,8 @@
     "start": "astro dev",
     "build": "astro build && node scripts/validate-build.mjs",
     "validate": "node scripts/validate-build.mjs",
-    "deploy": "npx --yes netlify-cli deploy --prod --build && node scripts/indexnow-ping.mjs",
-    "login": "npx --yes netlify-cli login",
+    "deploy": "git push origin main",
+    "ping": "node scripts/indexnow-ping.mjs",
     "preview": "astro preview",
     "astro": "astro"
   },

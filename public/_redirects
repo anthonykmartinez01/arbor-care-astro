@@ -1,0 +1,19 @@
+# Cloudflare Pages redirects — mirrors the [[redirects]] block in netlify.toml.
+#
+# Only PATH-based rules can live here. The host-based rule
+# (www.arborcaretreesolutions.com -> arborcaretreesolutions.com) cannot be
+# expressed in _redirects and is implemented as a Cloudflare Redirect Rule
+# on the zone instead.
+#
+# Targets intentionally match netlify.toml exactly (no trailing slash) so
+# behaviour is identical to the Netlify deploy.
+
+/tree-service-denver-co           /                              301
+/services                         /tree-services                 301
+/about                            /about-arbor-care-index        301
+/contact                          /contact-us                    301
+/tree-trimming-pruning-denver-co  /tree-trimming                 301
+/tree-removal-denver-co           /tree-removal                  301
+/other-services                   /firewood-supplier-denver-co   301
+/new-index-2                      /free-estimates                301
+/new-page                         /holiday-lights-denver-co      301

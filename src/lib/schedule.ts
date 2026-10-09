@@ -1,6 +1,11 @@
 /**
  * WordPress-style scheduled publishing.
  *
+ * ⚠ INACTIVE since 2026-10-08: the daily rebuild workflow is disabled and the
+ * site now publishes only when code is pushed (Cloudflare Pages Git build).
+ * A future-dated page will NOT go live on its date by itself — it goes live
+ * on the first push after that date. Every entry below is already past.
+ *
  * HOW TO SCHEDULE A PAGE (two steps, both required — opt-in only):
  *   1. Add the page's path + publish date to SCHEDULED_PAGES below.
  *   2. Add the guard to the top of that page's frontmatter:
