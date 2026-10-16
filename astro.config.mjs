@@ -42,7 +42,7 @@ export default defineConfig({
     '/contact': '/contact-us',
     '/tree-trimming-pruning-denver-co': '/tree-trimming',
     '/tree-removal-denver-co': '/tree-removal',
-    '/other-services': '/firewood-supplier-denver-co',
+    '/other-services': '/tree-services',
     // Renamed pages (descriptive slugs) — preserve old URLs.
     '/new-index-2': '/free-estimates',
     '/new-page': '/holiday-lights-denver-co',

@@ -2,7 +2,7 @@
 
 > ISA-Certified arborists providing professional tree services throughout Denver, CO and the surrounding metro area.
 
-Arbor Care Tree Solutions is a family-owned, licensed and insured tree service company based at 1130 S Santa Fe Dr, Denver, CO 80223. Led by ISA-Certified Arborist Thomas Fraser with 30 years of experience, the company offers tree removal, emergency tree removal, tree trimming and pruning, stump grinding and removal, arborist and tree-health services, firewood sales and delivery, and seasonal landscaping across Denver and nearby cities. Free estimates, no trip charge, and 24/7 emergency response.
+Arbor Care Tree Solutions is a family-owned, licensed and insured tree service company based at 1130 S Santa Fe Dr, Denver, CO 80223. Led by ISA-Certified Arborist Thomas Fraser with 30 years of experience, the company offers tree removal, emergency tree removal, tree trimming and pruning, stump grinding and removal, arborist and tree-health services, and seasonal landscaping across Denver and nearby cities. Free estimates, no trip charge, and 24/7 emergency response.
 
 ## Pages
 
@@ -12,7 +12,6 @@ Arbor Care Tree Solutions is a family-owned, licensed and insured tree service c
 - [Tree Trimming & Pruning](https://arborcaretreesolutions.com/tree-trimming/): ISA-certified trimming and pruning
 - [Stump Grinding](https://arborcaretreesolutions.com/stump-grinding-denver-co/): Below-grade stump grinding
 - [Arborist Services](https://arborcaretreesolutions.com/arborist-service-denver-co/): Tree health assessments and treatment
-- [Firewood Supplier](https://arborcaretreesolutions.com/firewood-supplier-denver-co/): Seasoned hardwood for sale and delivery
 - [Our Work](https://arborcaretreesolutions.com/our-work/): Project photos across Denver
 - [Testimonials](https://arborcaretreesolutions.com/testimonials/): Customer reviews
 - [About](https://arborcaretreesolutions.com/about-arbor-care-index/): Background on the team and Thomas Fraser

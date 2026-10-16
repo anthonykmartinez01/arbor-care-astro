@@ -25,8 +25,15 @@
 /tree-trimming-pruning-denver-co/  /tree-trimming                 301
 /tree-removal-denver-co            /tree-removal                  301
 /tree-removal-denver-co/           /tree-removal                  301
-/other-services                    /firewood-supplier-denver-co   301
-/other-services/                   /firewood-supplier-denver-co   301
+/other-services                    /tree-services                 301
+/other-services/                   /tree-services                 301
+# Firewood pages removed (client no longer offers firewood)
+/firewood-supplier-denver-co       /tree-services                 301
+/firewood-supplier-denver-co/      /tree-services                 301
+/seasoned-firewood-denver-co       /tree-services                 301
+/seasoned-firewood-denver-co/      /tree-services                 301
+/firewood-delivery-denver-co       /tree-services                 301
+/firewood-delivery-denver-co/      /tree-services                 301
 /new-index-2                       /free-estimates                301
 /new-index-2/                      /free-estimates                301
 /new-page                          /holiday-lights-denver-co      301

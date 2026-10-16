@@ -49,14 +49,6 @@ export const secondaryCategories: ServiceCategory[] = [
       { title: "Tree Planting", path: "/tree-planting-denver-co", parentPath: "/arborist-service-denver-co", parentTitle: "Arborist Services" },
     ],
   },
-  {
-    title: "Firewood Supply",
-    path: "/firewood-supplier-denver-co",
-    children: [
-      { title: "Seasoned Firewood for Sale", path: "/seasoned-firewood-denver-co", parentPath: "/firewood-supplier-denver-co", parentTitle: "Firewood Supply" },
-      { title: "Firewood Delivery", path: "/firewood-delivery-denver-co", parentPath: "/firewood-supplier-denver-co", parentTitle: "Firewood Supply" },
-    ],
-  },
 ];
 
 export const generalServices: ServiceRoute[] = [
