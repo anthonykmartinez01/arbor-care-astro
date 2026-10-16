@@ -71,7 +71,26 @@
 
 [[redirects]]
   from = "/other-services"
-  to = "/firewood-supplier-denver-co"
+  to = "/tree-services"
+  status = 301
+  force = true
+
+# Firewood pages removed (client no longer offers firewood)
+[[redirects]]
+  from = "/firewood-supplier-denver-co"
+  to = "/tree-services"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/seasoned-firewood-denver-co"
+  to = "/tree-services"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/firewood-delivery-denver-co"
+  to = "/tree-services"
   status = 301
   force = true
 
